@@ -23,6 +23,7 @@ jobs:
             cp -r * ~/vrdistribucion &&
             mv ~/vrdistribucion . &&
             ls -la
+            ls -la vrdistribucion/
 
       - name: Prepare SSH to work with the remote server
         run: |
@@ -40,7 +41,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           port: 22
           key: "~/.ssh/deploy_key"
-          source: "~/vrdistribucion/*"
+          source: "vrdistribucion/*"
           target: "/var/www/html/vrdistribucion/"
 
       # 2) Ejecutar comandos remotos usando la clave SSH
