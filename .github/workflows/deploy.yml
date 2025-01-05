@@ -32,7 +32,6 @@ jobs:
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key &&
             chmod 600 ~/.ssh/deploy_key
 
-
       - name: Publish
         uses: nogsantos/scp-deploy@master
         with:
@@ -42,17 +41,6 @@ jobs:
           port: 22
           user: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      # 1) Copiar archivos al servidor remoto usando la clave SSH
-      - name: Copy to remote using scp
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          port: 22
-          key: $${{ secrets.SSH_PRIVATE_KEY }}
-          source: "vrdistribucion/*"
-          target: "/var/www/html/vrdistribucion/"
 
       # 2) Ejecutar comandos remotos usando la clave SSH
       - name: Execute remote command
