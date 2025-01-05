@@ -38,7 +38,7 @@ jobs:
             host: ${{ secrets.REMOTE_HOST }} # "example.com"
             port: 22 # 22
             user: ${{ secrets.REMOTE_USER }} # "user"
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            pass: ${{ secrets.REMOTE_PASS }}
             connect_timeout: 10s
             scp: |
                 "vrdistribucion/*" => /var/www/html/vrdistribucion
