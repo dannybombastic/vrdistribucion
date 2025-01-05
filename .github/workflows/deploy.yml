@@ -13,7 +13,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: vrditribucion
     steps:
       - name: Checkout
         uses: actions/checkout@v2
