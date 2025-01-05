@@ -43,7 +43,7 @@ jobs:
             scp: |
                 "vrdistribucion/*" => /var/www/html/vrdistribucion
             last_ssh: |
-              sudo chmod -R 774 /var/www/html/* ; chown -R www-data:www-data /var/www/html
+              sudo chmod -R 774 /var/www/html/* ; chown -R ubuntu: /var/www/html
 
 
       # 2) Ejecutar comandos remotos usando la clave SSH
