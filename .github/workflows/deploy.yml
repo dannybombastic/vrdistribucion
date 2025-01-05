@@ -38,7 +38,7 @@ jobs:
             host: ${{ secrets.REMOTE_HOST }} # "example.com"
             port: 22 # 22
             user: ${{ secrets.REMOTE_USER }} # "user"
-            key: ~/.ssh/deploy_key
+            key: "~/.ssh/deploy_key"
             connect_timeout: 10s
             scp: |
                 "vrdistribucion/*" => /var/www/html/vrdistribucion
