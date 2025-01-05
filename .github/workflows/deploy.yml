@@ -40,7 +40,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           port: 22
-          key: "~/.ssh/deploy_key"
+          password: $${{ secrets.REMOTE_PASS }}
           source: "vrdistribucion/*"
           target: "/var/www/html/vrdistribucion/"
 
