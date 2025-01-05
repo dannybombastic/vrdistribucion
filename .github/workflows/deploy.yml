@@ -33,14 +33,16 @@ jobs:
             chmod 600 ~/.ssh/deploy_key
 
       - name: Publish
-        uses: nogsantos/scp-deploy@master
+        uses: ilCollez/ssh-scp-deploy@v1.3.0
         with:
-          src: ./vrdistribucion/*
-          host: ${{ secrets.REMOTE_HOST }}
-          remote: /var/www/html/vrdistribucion/
-          port: 22
-          user: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+            host: ${{ secrets.REMOTE_HOST }} # "example.com"
+            port: 22 # 22
+            username: ${{ secrets.REMOTE_USER }} # "user"
+            password: ${{ secrets.REMOTE_PASS }} # "password"
+            files: |
+                vrdistribucion/*
+            remote-path: "/var/www/html/vrdistribucion"
+            clean: true
 
       # 2) Ejecutar comandos remotos usando la clave SSH
       - name: Execute remote command
