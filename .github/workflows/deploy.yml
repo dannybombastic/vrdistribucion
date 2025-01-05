@@ -18,11 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: copy into dist folder dependencies
-        run: |
-          mkdir ~/vrdistribucion &&
-          cp -r * ~/vrdistribucion &&
-          mv ~/vrdistribucion .
 
       # 1) Copiar archivos al servidor remoto usando la clave SSH
       - name: Copy to remote using scp
@@ -31,9 +26,9 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           port: 22
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.REMOTE_PASS }}
           source: "vrdistribucion/*"
-          target: "/var/www/html/"
+          target: "/var/www/html/vrdistribucion/"
 
       # 2) Ejecutar comandos remotos usando la clave SSH
       - name: Execute remote command
