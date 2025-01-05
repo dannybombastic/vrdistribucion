@@ -41,7 +41,9 @@ jobs:
             user: ${{ secrets.REMOTE_USER }} # "user"
             pass: ${{ secrets.REMOTE_PASS }}
             connect_timeout: 10s
+            first_ssh: |
+              rm -rf /var/www/html/vrdistribucion/*
             scp: |
                 "vrdistribucion/*" => /var/www/html/vrdistribucion
             last_ssh: |
-              sudo chmod -R 774 /var/www/html/* ; chown -R ubuntu: /var/www/html
+              chmod -R 774 /var/www/html/* ; chown -R ubuntu: /var/www/html
