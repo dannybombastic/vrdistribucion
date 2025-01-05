@@ -1,67 +1,46 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: CI Deploy VRDISTRIBUCION
 
 on:
   push:
     branches:
-        - main
+      - main
   pull_request:
     types:
-       - submitted
+      - submitted
     branches:
-        - main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: copy into dist folder dependencies
-      run: |
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: copy into dist folder dependencies
+        run: |
           mkdir ~/vrdistribucion &&
           cp -r * ~/vrdistribucion &&
           mv ~/vrdistribucion .
 
-  
-    - name: Prepare SSH to work with the remote server
-      run: |
-          cd ~ && mkdir .ssh &&
-          touch ~/.ssh/known_hosts &&
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key &&
-          chmod 600 ~/.ssh/deploy_key
+      # 1) Copiar archivos al servidor remoto usando la clave SSH
+      - name: Copy to remote using scp
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          port: 22
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "vrdistribucion/*"
+          target: "/var/www/html/"
 
-    - name: Copy to remote using sct template
-      uses: appleboy/scp-action@master
-      with:
-        # ssh remote host
-        host:  ${{secrets.REMOTE_HOST}}
-        # ssh remote user
-        username: ${{secrets.REMOTE_USER}}
-        # ssh remote port
-        port: 22 # optional, default is 22
-        # ssh remote password
-        password: ${{secrets.REMOTE_PASS}}
-        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
-        # key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
-        # source to copy from
-        source: "vrdistribucion/*" # optional
-        # destination to download on server
-        target: "/var/www/html/" # optional
-
-    - name: Execute remote command using ssh template
-      uses: cross-the-world/ssh-pipeline@v1.2.0
-      with:
-        # hostname / IP of the server
-        host: ${{secrets.REMOTE_HOST}}
-        # ssh port of the server
-        port: 22 # optional, default is 22
-        # user of the server
-        user: ${{secrets.REMOTE_USER}}
-        # private ssh key registered on the server
-        pass: ${{secrets.REMOTE_PASS}}
-        # command to be executed
-        script: chmod -R 774 /var/www/html/* ; chown -R www-data:www-data /var/www/html
+      # 2) Ejecutar comandos remotos usando la clave SSH
+      - name: Execute remote command
+        uses: cross-the-world/ssh-pipeline@v1.2.0
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          port: 22
+          user: ${{ secrets.REMOTE_USER }}
+          privKey: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: chmod -R 774 /var/www/html/* ; chown -R www-data:www-data /var/www/html
