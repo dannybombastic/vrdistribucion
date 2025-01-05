@@ -3,12 +3,12 @@ name: CI Deploy VRDISTRIBUCION
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types:
       - submitted
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
