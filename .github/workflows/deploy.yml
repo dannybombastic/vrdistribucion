@@ -33,6 +33,16 @@ jobs:
             chmod 600 ~/.ssh/deploy_key
 
 
+      - name: Publish
+        uses: nogsantos/scp-deploy@master
+        with:
+          src: ./vrdistribucion/*
+          host: ${{ secrets.REMOTE_HOST }}
+          remote: /var/www/html/vrdistribucion/
+          port: 22
+          user: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       # 1) Copiar archivos al servidor remoto usando la clave SSH
       - name: Copy to remote using scp
         uses: appleboy/scp-action@v0.1.7
