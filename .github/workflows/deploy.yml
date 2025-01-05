@@ -33,16 +33,18 @@ jobs:
             chmod 600 ~/.ssh/deploy_key
 
       - name: Publish
-        uses: ilCollez/ssh-scp-deploy@v1.3.0
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:
             host: ${{ secrets.REMOTE_HOST }} # "example.com"
             port: 22 # 22
-            username: ${{ secrets.REMOTE_USER }} # "user"
-            password: ${{ secrets.REMOTE_PASS }} # "password"
-            files: |
-                vrdistribucion/*
-            remote-path: "/var/www/html/vrdistribucion"
-            clean: true
+            user: ${{ secrets.REMOTE_USER }} # "user"
+            pass: ${{ secrets.REMOTE_PASS }} # "password"
+            connect_timeout: 10s
+            scp: |
+                "vrdistribucion/*" => /var/www/html/vrdistribucion
+            last_ssh: |
+              chmod -R 774 /var/www/html/* ; chown -R www-data:www-data /var/www/html
+
 
       # 2) Ejecutar comandos remotos usando la clave SSH
       - name: Execute remote command
