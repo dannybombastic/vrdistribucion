@@ -21,7 +21,8 @@ jobs:
         run: |
             mkdir ~/vrdistribucion &&
             cp -r * ~/vrdistribucion &&
-            mv ~/vrdistribucion .
+            mv ~/vrdistribucion . &&
+            ls -la 
 
 
       # 1) Copiar archivos al servidor remoto usando la clave SSH
