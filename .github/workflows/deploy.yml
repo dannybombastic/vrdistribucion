@@ -38,20 +38,9 @@ jobs:
             host: ${{ secrets.REMOTE_HOST }} # "example.com"
             port: 22 # 22
             user: ${{ secrets.REMOTE_USER }} # "user"
-            pass: ${{ secrets.REMOTE_PASS }} # "password"
+            key: ~/.ssh/deploy_key
             connect_timeout: 10s
             scp: |
                 "vrdistribucion/*" => /var/www/html/vrdistribucion
             last_ssh: |
               sudo chmod -R 774 /var/www/html/* ; chown -R ubuntu: /var/www/html
-
-
-      # 2) Ejecutar comandos remotos usando la clave SSH
-      - name: Execute remote command
-        uses: cross-the-world/ssh-pipeline@v1.2.0
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          port: 22
-          user: ${{ secrets.REMOTE_USER }}
-          privKey: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: chmod -R 774 /var/www/html/* ; chown -R www-data:www-data /var/www/html
