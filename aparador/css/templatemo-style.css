@@ -783,7 +783,7 @@ figure.effect-sadie:hover p {
   }
 
   .tm-img-gallery-container .grid-item {
-    margin-bottom: 20px; /* Espaciado entre grid-items */
+    margin-bottom: 0px; /* Espaciado entre grid-items */
   }
 
   /* Opcional: Añadir un borde o sombra para separar visualmente los elementos */
