@@ -1005,6 +1005,7 @@ figure.effect-sadie:hover p {
 
 body > div.cd-slider-nav > nav > div > button {
   background-color: transparent; /* Color del ícono */
+  border: none; /* Quitar borde */
   font-size: 1.8em; /* Tamaño actual del ícono */
   color: rgb(252, 252, 252); /* Color del ícono */
   transition: color 0.3s ease; /* Transición suave para efectos hover */
