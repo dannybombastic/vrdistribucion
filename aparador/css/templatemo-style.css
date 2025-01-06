@@ -744,7 +744,6 @@ figure.effect-sadie:hover p {
 
 /* Media Queries */
 
-
 /* Mostrar solo el párrafo en figcaption para dispositivos móviles */
 @media (max-width: 768px) {
     /* Ocultar el título */
@@ -759,20 +758,34 @@ figure.effect-sadie:hover p {
         transform: translate(0, 0);
         transition: none; /* Eliminar transiciones */
         position: static; /* Posicionar de manera estática */
-        background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente para legibilidad */
-        color: #fff; /* Texto blanco para contraste */
+        background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
+        color: #fff; /* Texto blanco */
         padding: 10px; /* Espaciado interno */
         margin: 0; /* Eliminar márgenes si es necesario */
+        width: 100%; /* Asegurar que ocupe todo el ancho del contenedor */
+        box-sizing: border-box; /* Incluir padding en el ancho */
     }
 
-    /* Opcional: Ajustar el enlace "Ver más" */
+    /* Ajustar el enlace "Ver más" */
     .tm-img-gallery-container .grid-item figure.effect-sadie figcaption a {
-        display: none; /* Ocultar el enlace si no es necesario */
+        display: block;
+        text-align: center;
+        margin-top: 5px;
+        color: #fff; /* Asegurar que el enlace sea visible */
     }
 
-    /* Opcional: Asegurar que la imagen se muestre correctamente */
-    .tm-img-gallery-container .grid-item figure.effect-sadie img {
+    /* Asegurar que la imagen y el figcaption estén correctamente dispuestos */
+    .tm-img-gallery-container .grid-item figure.effect-sadie {
         display: block;
+    }
+
+    .tm-img-gallery-container .grid-item {
+        margin-bottom: 20px; /* Espaciado entre grid-items */
+    }
+
+    /* Opcional: Añadir un borde o sombra para separar visualmente los elementos */
+    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption {
+        border-top: 1px solid #fff;
     }
 }
 
