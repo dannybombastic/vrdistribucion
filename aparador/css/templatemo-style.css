@@ -207,13 +207,13 @@ button:focus {
 .cd-slider-nav .nav-item:nth-of-type(2).selected .nav-link,
 .cd-slider-nav .nav-item:nth-of-type(2) .nav-link:hover,
 .cd-slider-nav .nav-item:nth-of-type(2) .nav-link:focus {
-  background-color: #ed544c;
+  background-color: #000000;
 }
 
 .cd-slider-nav .nav-item:nth-of-type(3).selected .nav-link,
 .cd-slider-nav .nav-item:nth-of-type(3) .nav-link:hover,
 .cd-slider-nav .nav-item:nth-of-type(3) .nav-link:focus {
-  background-color: #eaa319;
+  background-color: #000000;
 }
 
 .cd-slider-nav .nav-item:nth-of-type(4).selected .nav-link,
