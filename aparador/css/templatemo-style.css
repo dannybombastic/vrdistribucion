@@ -143,14 +143,10 @@ button:focus {
 }
 .navbar-nav .nav-item {
   float: none;
-
 }
 .nav-item a {
-	text-align: center;
-
-  }
-
-
+  text-align: center;
+}
 
 .cd-slider-nav a,
 .navbar-nav .nav-link {
@@ -746,48 +742,55 @@ figure.effect-sadie:hover p {
 
 /* Mostrar solo el párrafo en figcaption para dispositivos móviles */
 @media (max-width: 768px) {
-    /* Ocultar el título */
-    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption h2.tm-figure-title {
-        display: none;
-    }
+  /* Ocultar el título */
+  .tm-img-gallery-container
+    .grid-item
+    figure.effect-sadie
+    figcaption
+    h2.tm-figure-title {
+    display: none;
+  }
 
-    /* Mostrar siempre el párrafo */
-    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption p.tm-figure-description {
-        display: block;
-        opacity: 1;
-        transform: translate(0, 0);
-        transition: none; /* Eliminar transiciones */
-        position: static; /* Posicionar de manera estática */
-        background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
-        color: #fff; /* Texto blanco */
-        margin: 0; /* Eliminar márgenes si es necesario */
-        width: 100%; /* Asegurar que ocupe todo el ancho del contenedor */
-        box-sizing: border-box; /* Incluir padding en el ancho */
-    }
+  /* Mostrar siempre el párrafo */
+  .tm-img-gallery-container
+    .grid-item
+    figure.effect-sadie
+    figcaption
+    p.tm-figure-description {
+    display: block;
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: none; /* Eliminar transiciones */
+    position: static; /* Posicionar de manera estática */
+    background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
+    color: #fff; /* Texto blanco */
+    margin: 0; /* Eliminar márgenes si es necesario */
+    width: 100%; /* Asegurar que ocupe todo el ancho del contenedor */
+    box-sizing: border-box; /* Incluir padding en el ancho */
+  }
 
-    /* Ajustar el enlace "Ver más" */
-    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption a {
-        display: block;
-        text-align: center;
-        margin-top: 5px;
-        color: #fff; /* Asegurar que el enlace sea visible */
-    }
+  /* Ajustar el enlace "Ver más" */
+  .tm-img-gallery-container .grid-item figure.effect-sadie figcaption a {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    color: #fff; /* Asegurar que el enlace sea visible */
+  }
 
-    /* Asegurar que la imagen y el figcaption estén correctamente dispuestos */
-    .tm-img-gallery-container .grid-item figure.effect-sadie {
-        display: block;
-    }
+  /* Asegurar que la imagen y el figcaption estén correctamente dispuestos */
+  .tm-img-gallery-container .grid-item figure.effect-sadie {
+    display: block;
+  }
 
-    .tm-img-gallery-container .grid-item {
-        margin-bottom: 20px; /* Espaciado entre grid-items */
-    }
+  .tm-img-gallery-container .grid-item {
+    margin-bottom: 20px; /* Espaciado entre grid-items */
+  }
 
-    /* Opcional: Añadir un borde o sombra para separar visualmente los elementos */
-    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption {
-        border-top: 1px solid #fff;
-    }
+  /* Opcional: Añadir un borde o sombra para separar visualmente los elementos */
+  .tm-img-gallery-container .grid-item figure.effect-sadie figcaption {
+    border-top: 1px solid #fff;
+  }
 }
-
 
 @media only screen and (min-width: 400px) {
   .cd-hero-slider h2 {
@@ -903,7 +906,6 @@ figure.effect-sadie:hover p {
     padding-right: 10px;
   }
 
-
   .cd-full-width .container-fluid.tm-page-width {
     max-width: 1200px;
   }
@@ -1001,11 +1003,9 @@ figure.effect-sadie:hover p {
   }
 }
 
-
-
 body > div.cd-slider-nav > nav > div > button {
-	background-color: transparent;  /* Color del ícono */
-	font-size: 1.8em; /* Tamaño actual del ícono */
-    color: rgb(252, 252, 252); /* Color del ícono */
-    transition: color 0.3s ease; /* Transición suave para efectos hover */
+  background-color: transparent; /* Color del ícono */
+  font-size: 1.8em; /* Tamaño actual del ícono */
+  color: rgb(252, 252, 252); /* Color del ícono */
+  transition: color 0.3s ease; /* Transición suave para efectos hover */
 }
