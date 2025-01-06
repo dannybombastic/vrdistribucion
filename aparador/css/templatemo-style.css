@@ -744,6 +744,39 @@ figure.effect-sadie:hover p {
 
 /* Media Queries */
 
+
+/* Mostrar solo el párrafo en figcaption para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Ocultar el título */
+    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption h2.tm-figure-title {
+        display: none;
+    }
+
+    /* Mostrar siempre el párrafo */
+    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption p.tm-figure-description {
+        display: block;
+        opacity: 1;
+        transform: translate(0, 0);
+        transition: none; /* Eliminar transiciones */
+        position: static; /* Posicionar de manera estática */
+        background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente para legibilidad */
+        color: #fff; /* Texto blanco para contraste */
+        padding: 10px; /* Espaciado interno */
+        margin: 0; /* Eliminar márgenes si es necesario */
+    }
+
+    /* Opcional: Ajustar el enlace "Ver más" */
+    .tm-img-gallery-container .grid-item figure.effect-sadie figcaption a {
+        display: none; /* Ocultar el enlace si no es necesario */
+    }
+
+    /* Opcional: Asegurar que la imagen se muestre correctamente */
+    .tm-img-gallery-container .grid-item figure.effect-sadie img {
+        display: block;
+    }
+}
+
+
 @media only screen and (min-width: 400px) {
   .cd-hero-slider h2 {
     font-size: 1.4em;
