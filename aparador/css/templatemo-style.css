@@ -760,7 +760,6 @@ figure.effect-sadie:hover p {
         position: static; /* Posicionar de manera estática */
         background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
         color: #fff; /* Texto blanco */
-        padding: 10px; /* Espaciado interno */
         margin: 0; /* Eliminar márgenes si es necesario */
         width: 100%; /* Asegurar que ocupe todo el ancho del contenedor */
         box-sizing: border-box; /* Incluir padding en el ancho */
