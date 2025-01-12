@@ -1,4 +1,8 @@
+
 User-agent: *
-Disallow:
+Disallow: /errorpage/
+
+User-agent: *
+Allow: /
 
 Sitemap: https://vrdistribucion.com/sitemap.xml
