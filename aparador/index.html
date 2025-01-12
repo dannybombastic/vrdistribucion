@@ -743,8 +743,6 @@
                                                 77500, Cancún, QR.<br />
                                                 <em>Tel:</em> +52 998 236 1177
                                             </p>
-                                            <!-- google map goes here -->
-                                            <div id="google-map"></div>
                                         </div>
 
                                     </div>
@@ -887,44 +885,7 @@
 
         });
 
-        /* Google map
-        ------------------------------------------------*/
-        var map = '';
-        var center;
-
-        function initialize() {
-            var mapOptions = {
-                zoom: 13,
-                center: new google.maps.LatLng(21.161908, -86.851528), // Coordenadas de Cancún, México
-                scrollwheel: false
-            };
-
-            map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
-
-            google.maps.event.addDomListener(map, 'idle', function () {
-                calculateCenter();
-            });
-
-            google.maps.event.addDomListener(window, 'resize', function () {
-                map.setCenter(center);
-            });
-        }
-
-        function calculateCenter() {
-            center = map.getCenter();
-        }
-
-        function loadGoogleMap() {
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=initialize';
-            document.body.appendChild(script);
-        }
-
-        // DOM is ready
-        $(function () {
-            loadGoogleMap(); // Google Map
-        });
+      
 
     </script>
 
