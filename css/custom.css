@@ -8,3 +8,10 @@
   */
 
 /*----------- ADD YOUR CUSTOM CSS STYLES BELOW -----------*/
+
+
+div .resume-section .resume-item .resume-item  {
+  margin-left: 0px;
+  padding-left: 0px;
+  border: none;
+}
