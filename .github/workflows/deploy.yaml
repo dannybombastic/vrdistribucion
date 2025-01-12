@@ -43,8 +43,8 @@ jobs:
             connect_timeout: 10s
             first_ssh: |
               rm -rf /var/www/html/vrdistribucion/*
-              cp -r /var/www/html/vrdistribucion/errorpage/* /var/www/html/errorpage
             scp: |
                 "vrdistribucion/*" => /var/www/html/vrdistribucion
             last_ssh: |
+              cp -r /var/www/html/vrdistribucion/errorpage/* /var/www/html/errorpage
               chmod -R 774 /var/www/html/vrdistribucion/* ; chown -R ubuntu: /var/www/html/vrdistribucion
