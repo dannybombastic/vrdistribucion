@@ -11,10 +11,9 @@
 
   n(function () {}), n(window).on("load", function () {});
 
-   // create empty array to store the images
+  // create empty array to store the images
 
-
-   const invitaciones = [
+  const invitaciones = [
     "Invitacion_personalizada_1.jpg",
     "Invitacion_personalizada_2.jpg",
     "Invitacion_personalizada_4.jpg",
@@ -124,9 +123,9 @@
     "1000002842.webp",
     "1000002887.webp",
     "1000002913.webp",
-    "1000002914.webp"
+    "1000002914.webp",
   ];
-  const contenedor2 = document.getElementById("productos");
+  const contenedor = document.getElementById("productos");
 
   function shuffleArray(array) {
     // Realizamos una copia para no mutar el array original,
@@ -144,12 +143,9 @@
     return arr;
   }
 
-
   function putPictures(context, archivos) {
     const images = [];
     // // Obtenemos el contenedor donde se van a colocar los elementos
-    // const contenedor = document.getElementById(context + "-pic");
-
 
     // Recorremos la lista de archivos para generar el HTML y añadirlo al contenedor
     archivos.forEach((archivo, indice) => {
@@ -164,8 +160,8 @@
         <a class="portfolio-item" href="${rutaCompleta}" data-lightbox>
           <div class="portfolio-wrapper">
             <img class="img-fluid" alt="${context} ${
-              indice + 1
-            }" src="${rutaCompleta}" />
+        indice + 1
+      }" src="${rutaCompleta}" />
             <div class="item-content">
               <h6 class="content-title">${context} ${indice + 1}</h6>
               <span class="content-more">Más Info</span>
@@ -175,18 +171,20 @@
       </div>
     `;
 
-      // Insertamos el HTML en el contenedor
+      // Insertamos el HTML en el array
       images.push(html);
     });
 
+    // Devolvemos el array con todo el HTML generado
     return images;
   }
 
-  console.log("iiinvitaciones", putPictures("invitaciones", invitaciones));
-  const randomImages = [...putPictures("invitaciones", invitaciones), ...putPictures("Corporativo", corporativo), ...putPictures("velas", velas)];
+  const randomImages = [
+    ...putPictures("invitaciones", invitaciones),
+    ...putPictures("Corporativo", corporativo),
+    ...putPictures("velas", velas),
+  ];
 
-  console.log("ramdon",randomImages);
-
-  contenedor2.innerHTML = shuffleArray(randomImages).join("");
-
+  // Insertamos el HTML en el contenedor
+  contenedor.innerHTML = shuffleArray(randomImages).join("");
 })(jQuery);
