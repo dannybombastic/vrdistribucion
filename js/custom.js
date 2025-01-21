@@ -12,6 +12,9 @@
   n(function () {}), n(window).on("load", function () {
 
 
+   // create empty array to store the images
+
+
     const invitaciones = [
         "Invitacion_personalizada_1.jpg",
         "Invitacion_personalizada_2.jpg",
@@ -124,10 +127,30 @@
         "1000002913.webp",
         "1000002914.webp"
       ];
+      const contenedor2 = document.getElementById("productos");
+
+      function shuffleArray(array) {
+        // Realizamos una copia para no mutar el array original,
+        // aunque si quieres modificar el original, puedes quitar
+        // esta línea y trabajar directamente sobre 'array'.
+        const arr = [...array];
+
+        for (let i = arr.length - 1; i > 0; i--) {
+          // Elegimos un índice aleatorio entre 0 e i
+          const j = Math.floor(Math.random() * (i + 1));
+          // Intercambiamos elementos arr[i] y arr[j]
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+
+        return arr;
+      }
+
 
       function putPictures(context, archivos) {
-        // Obtenemos el contenedor donde se van a colocar los elementos
-        const contenedor = document.getElementById(context + "-pic");
+        const images = [];
+        // // Obtenemos el contenedor donde se van a colocar los elementos
+        // const contenedor = document.getElementById(context + "-pic");
+
 
         // Recorremos la lista de archivos para generar el HTML y añadirlo al contenedor
         archivos.forEach((archivo, indice) => {
@@ -154,14 +177,18 @@
         `;
 
           // Insertamos el HTML en el contenedor
-          contenedor.innerHTML += html;
+          images.push(html);
         });
+
+        return images;
       }
 
-      putPictures("invitaciones", invitaciones);
-      putPictures("Corporativo", corporativo);
-      putPictures("velas", velas);
+      console.log("iiinvitaciones", putPictures("invitaciones", invitaciones));
+      const randomImages = [...putPictures("invitaciones", invitaciones), ...putPictures("Corporativo", corporativo), ...putPictures("velas", velas)];
 
+      console.log("ramdon",randomImages);
+
+      contenedor2.innerHTML = randomImages.join("");
 
   });
 
