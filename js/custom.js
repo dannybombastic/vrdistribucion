@@ -181,15 +181,15 @@
     "viniles_rotulacion_vinil_gran_formato.jpg",
   ];
   const velas = [
-    "1000002619.webp",
-    "1000002633.webp",
-    "1000002671.webp",
-    "1000002731.webp",
-    "1000002771.webp",
-    "1000002842.webp",
-    "1000002887.webp",
-    "1000002913.webp",
-    "1000002914.webp",
+    "1000002619.jpg",
+    "1000002633.jpg",
+    "1000002671.jpg",
+    "1000002731.jpg",
+    "1000002771.jpg",
+    "1000002842.jpg",
+    "1000002887.jpg",
+    "1000002913.jpg",
+    "1000002914.jpg",
   ];
   const contenedor = document.getElementById("productos");
 
