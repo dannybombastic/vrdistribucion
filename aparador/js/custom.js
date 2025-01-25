@@ -75,8 +75,7 @@
       const rutaCompleta = archivo.includes("/")
         ? archivo
         : "img/" + context + "/" + archivo;
-
-
+      
       const html = `
             <div class="grid-item">
             <figure class="effect-sadie">
@@ -101,9 +100,10 @@
     // Devolvemos el array con todo el HTML generado
     return images;
   }
-   const temporal = putPictures("galeria1", galeria1).join("");
+  const temporal = putPictures("galeria1", galeria1).join("");
   // Insertamos el HTML en el contenedor
   contenedor1.innerHTML = temporal;
   contenedor2.innerHTML = putPictures("galeria2", galeria2).join("");
   contenedor3.innerHTML = temporal;
+
 })(jQuery);
