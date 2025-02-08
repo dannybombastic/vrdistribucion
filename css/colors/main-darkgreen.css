@@ -234,3 +234,7 @@ a:not(.btn):focus {
 .contact-section .contact-info .list-info .info-icon i {
   color: #009e66;
 }
+
+.container-w100 {
+ width: 100% !important;
+}
