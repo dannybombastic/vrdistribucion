@@ -13,6 +13,7 @@
 
   gtag('config', 'G-DLSGS9C2TK');
 </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
 
 
@@ -60,18 +61,30 @@
     href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&amp;display=swap"
     rel="stylesheet" />
   <!-- CSS vendors-->
-  <link rel="stylesheet" href="css/bootstrap-custom.css" media="print" onload="this.media='all';"/>
-  <link rel="stylesheet" href="css/ionicons.min.css" media="print" onload="this.media='all';"/>
-  <link rel="stylesheet" href="css/tiny-slider.css" media="print" onload="this.media='all';"/>
-  <link rel="stylesheet" href="css/lity.min.css" media="print" onload="this.media='all';"/>
-  <link rel="stylesheet" href="css/simplebar.min.css" media="print" onload="this.media='all';"/>
-  <link rel="stylesheet" href="css/jquery.mb.YTPlayer.min.css" media="print" onload="this.media='all';"/>
-  <!-- Main CSS-->
-  <link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all';"/>
-  <!-- CSS Color scheme-->
-  <link id="color-scheme" rel="stylesheet" href="css/colors/main-darkgreen.css"  media="print" onload="this.media='all';"/>
-  <!-- Custom CSS-->
-  <link rel="stylesheet" href="css/custom.css" media="print" onload="this.media='all';"/>
+  <link rel="preload" href="css/bootstrap-custom.css" as="style" onload="this.rel='stylesheet'"/>
+  <link rel="preload" href="css/ionicons.min.css" as="style" onload="this.rel='stylesheet'"/>
+  <link rel="preload" href="css/tiny-slider.css" as="style" onload="this.rel='stylesheet'"/>
+  <link rel="preload" href="css/lity.min.css" as="style" onload="this.rel='stylesheet'"/>
+  <link rel="preload" href="css/simplebar.min.css" as="style" onload="this.rel='stylesheet'"/>
+  <link rel="preload" href="css/jquery.mb.YTPlayer.min.css" as="style" onload="this.rel='stylesheet'"/>
+  <!-- Main CSS -->
+  <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'"/>
+  <!-- CSS Color scheme -->
+  <link id="color-scheme" rel="preload" href="css/colors/main-darkgreen.css" as="style" onload="this.rel='stylesheet'"/>
+  <!-- Custom CSS -->
+  <link rel="preload" href="css/custom.css" as="style" onload="this.rel='stylesheet'"/>
+  <noscript>
+    <link rel="stylesheet" href="css/bootstrap-custom.css"/>
+    <link rel="stylesheet" href="css/ionicons.min.css"/>
+    <link rel="stylesheet" href="css/tiny-slider.css"/>
+    <link rel="stylesheet" href="css/lity.min.css"/>
+    <link rel="stylesheet" href="css/simplebar.min.css"/>
+    <link rel="stylesheet" href="css/jquery.mb.YTPlayer.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link id="color-scheme" rel="stylesheet" href="css/colors/main-darkgreen.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+  </noscript>
+
 
 </head>
 
