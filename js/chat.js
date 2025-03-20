@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => reject(new Error('Timeout')), 30000);
                 });
 
-                const fetchPromise = fetch('http://localhost:8000/api/chat', {
+                const fetchPromise = fetch('https://vrdistribucion.com/api/chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

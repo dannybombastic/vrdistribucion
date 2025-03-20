@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
 
 app = FastAPI()
 
@@ -23,19 +23,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount static files
-app.mount("/css", StaticFiles(directory="css"), name="css")
-app.mount("/js", StaticFiles(directory="js"), name="js")
 
 # Templates
 templates = Jinja2Templates(directory=".")
 
 # System prompt template
-
-
-@app.get("/chat")
-async def read_root(request: Request):
-    return templates.TemplateResponse("chat.html", {"request": request})
 
 @app.post("/api/chat")
 async def chat(request: Request):
