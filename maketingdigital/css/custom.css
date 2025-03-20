@@ -34,6 +34,15 @@ body {
     .hero-section .vr-distribucion {
         font-size: 2.5rem;
         letter-spacing: 1px;
+        padding: 0 15px;
+    }
+    .hero-section h1 {
+        padding: 0 15px;
+        font-size: 2rem;
+    }
+    .hero-section p {
+        padding: 0 20px;
+        font-size: 1.1rem;
     }
 }
 
@@ -41,6 +50,15 @@ body {
     .hero-section .vr-distribucion {
         font-size: 2rem;
         letter-spacing: 1px;
+        padding: 0 10px;
+    }
+    .hero-section h1 {
+        padding: 0 10px;
+        font-size: 1.8rem;
+    }
+    .hero-section p {
+        padding: 0 15px;
+        font-size: 1rem;
     }
 }
 
@@ -64,7 +82,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 .cta-button:hover {
@@ -83,8 +101,6 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
 }
-
-
 
 .service-card {
     text-align: center;
@@ -191,6 +207,16 @@ body {
     background-color: var(--light-bg);
     color: var(--text-color);
     padding: 4rem 0;
+}
+
+/* Add spacing for contact form elements in mobile */
+@media (max-width: 768px) {
+    .contact-section form button {
+        margin-bottom: 2rem;
+    }
+    .contact-section .col-lg-6:first-child {
+        margin-bottom: 3rem;
+    }
 }
 
 .social-links a {
