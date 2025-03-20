@@ -110,12 +110,110 @@ a, button, .btn {
 
 /* Social icons hover effect */
 .social-icons li a {
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 5px;
 }
 
 .social-icons li a:hover {
-  transform: translateY(-3px);
-  color: var(--custom);
+  transform: translateY(-5px) rotate(360deg);
+  background: var(--custom);
+  color: #fff;
+}
+
+/* Facebook specific animation */
+.social-icons li a[href*="facebook"]:hover {
+  background: #1877f2;
+  animation: bounce 0.5s ease infinite;
+}
+
+/* Instagram specific animation */
+.social-icons li a[href*="instagram"]:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  animation: pulse 0.5s ease infinite;
+}
+
+/* LinkedIn specific animation */
+.social-icons li a[href*="linkedin"]:hover {
+  background: #0077b5;
+  animation: shake 0.5s ease infinite;
+}
+
+/* WhatsApp specific animation */
+.social-icons li a[href*="whatsapp"]:hover {
+  background: #25D366;
+  animation: wobble 0.5s ease infinite;
+}
+
+/* Keyframe animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Mobile responsiveness improvements */
+@media only screen and (max-width: 768px) {
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .social-icons li {
+    margin: 0;
+  }
+
+  .social-icons li a {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 1.2rem;
+  }
+
+  /* Adjust fixed social icons for mobile */
+  .fixed-block.block-right {
+    bottom: 20px;
+    right: 15px;
+  }
+
+  .fixed-block.block-right .social-icons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Ensure WhatsApp button doesn't overlap with social icons */
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
 }
 
 /* Existing styles */
