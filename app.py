@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', "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")
+OPENROUTER_API_KEY = "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"
 
 app = FastAPI()
 
