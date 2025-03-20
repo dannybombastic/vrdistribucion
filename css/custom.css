@@ -9,15 +9,123 @@
 
 /*----------- ADD YOUR CUSTOM CSS STYLES BELOW -----------*/
 
+/* Smooth transitions for all interactive elements */
+a, button, .btn {
+  transition: all 0.3s ease-in-out;
+}
 
+/* Enhanced text hover effects */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
 
+.nav-link:hover {
+  color: var(--custom) !important;
+}
 
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--custom);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Content title hover effects */
+.content-title {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.content-title:hover {
+  transform: translateX(5px);
+  color: var(--custom);
+}
+
+/* Section headings hover effect */
+.section-title {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.section-title:hover {
+  color: var(--custom);
+}
+
+/* Service items hover enhancement */
+.single-service {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.single-service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 158, 102, 0.1);
+}
+
+/* Portfolio item hover enhancement */
+.portfolio-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.portfolio-wrapper:hover {
+  transform: scale(1.02);
+}
+
+/* Blog post hover effects */
+.single-post {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.single-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact form input focus enhancement */
+.form-control {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--custom);
+  box-shadow: 0 0 0 0.2rem rgba(0, 158, 102, 0.25);
+}
+
+/* Button hover enhancement */
+.btn.button-scheme {
+  transition: all 0.3s ease;
+}
+
+.btn.button-scheme:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 158, 102, 0.3);
+}
+
+/* Social icons hover effect */
+.social-icons li a {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons li a:hover {
+  transform: translateY(-3px);
+  color: var(--custom);
+}
+
+/* Existing styles */
 div .resume-section .resume-item .resume-item  {
   margin-left: 0px;
   padding-left: 0px;
   border: none;
 }
-/* Estilos generales para el botón de WhatsApp */
+
+/* Enhanced WhatsApp float button */
 .whatsapp-float {
   position: fixed;
   width: 60px;
@@ -28,7 +136,7 @@ div .resume-section .resume-item .resume-item  {
   text-align: center;
   box-shadow: 2px 2px 3px #999;
   z-index: 100;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,33 +146,37 @@ div .resume-section .resume-item .resume-item  {
   width: 35px;
   height: 35px;
   border-radius: 50%;
+  transition: transform 0.3s ease;
 }
 
 .whatsapp-float:hover {
   background-color: #128C7E;
   transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
 }
 
-/* Posicionamiento para pantallas grandes */
+.whatsapp-float:hover img {
+  transform: rotate(360deg);
+}
+
+/* Responsive adjustments */
 @media only screen and (min-width: 601px) {
   .whatsapp-float {
-      left: 20px; /* Ajusta según sea necesario */
-      bottom: 80px;
+    left: 20px;
+    bottom: 80px;
   }
 }
 
-/* Posicionamiento para pantallas móviles */
 @media only screen and (max-width: 600px) {
   .whatsapp-float {
-      right: 20px; /* Ajusta según sea necesario */
-      bottom: 40px;
-      width: 50px;
-      height: 50px;
+    right: 20px;
+    bottom: 40px;
+    width: 50px;
+    height: 50px;
   }
 
   .whatsapp-float img {
-      width: 30px;
-      height: 30px;
+    width: 30px;
+    height: 30px;
   }
 }
-

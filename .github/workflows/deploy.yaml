@@ -7,7 +7,7 @@ on:
       - master
   pull_request:
     types:
-      - submitted
+      - opened
     branches:
       - master
 
