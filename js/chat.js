@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle chat window
     chatToggle.addEventListener('click', () => {
         chatContainer.classList.toggle('collapsed');
+        if (!chatContainer.classList.contains('collapsed')) {
+            chatToggle.style.display = 'none';
+        }
     });
 
     // Minimize chat window
@@ -23,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close chat window
     closeBtn.addEventListener('click', () => {
         chatContainer.classList.add('collapsed');
+        chatToggle.style.display = 'block';
     });
 
     // Handle message sending
