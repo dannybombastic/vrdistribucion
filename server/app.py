@@ -23,7 +23,7 @@ app = FastAPI()
 # Configure CORS with specific origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000", "https://vrdistribucion.com"],
+    allow_origins=["http://127.0.0.1:8000", "https://vrdistribucion.com", "*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -228,9 +228,8 @@ async def chat_ia(request: Request):
                 url='https://openrouter.ai/api/v1/chat/completions',
                 headers={
                     'Authorization': f'Bearer {OPENROUTER_API_KEY}',
-                    'Content-Type': 'application/json',
-                    'HTTP-Referer': HTTP_REFERRER,
-                    'X-Title': X_TITLE,
+                    'Content-Type': 'application/json'
+
                 },
                 json={
                     'model': 'google/gemma-3-1b-it:free',
