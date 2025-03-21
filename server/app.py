@@ -11,6 +11,8 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
+HTTP_REFERRER = "https://vrdistribucion.com"
+X_TITLE = "VR Distribución Asistente IA"
 
 # Validate API key format
 if not OPENROUTER_API_KEY or not OPENROUTER_API_KEY.startswith('sk-'):
@@ -21,7 +23,7 @@ app = FastAPI()
 # Configure CORS with specific origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8000", "https://vrdistribucion.com"],
+    allow_origins=["http://127.0.0.1:8000", "https://vrdistribucion.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -62,6 +64,8 @@ Debes seguir estas reglas estrictamente:
 7- intenta que los mensajes sean cortos y directos
 """
 
+
+
 @app.post("/api/chat")
 async def chat(request: Request):
     try:
@@ -97,11 +101,11 @@ async def chat(request: Request):
                 headers={
                     'Authorization': f'Bearer {OPENROUTER_API_KEY}',
                     'Content-Type': 'application/json',
-                    'HTTP-Referer': os.getenv('HTTP_REFERER', 'http://localhost:8000'),
-                    'X-Title': os.getenv('X_TITLE', 'VR Distribución Chat'),
+                    'HTTP-Referer': HTTP_REFERRER,
+                    'X-Title': X_TITLE,
                 },
                 json={
-                    'model': 'anthropic/claude-3-sonnet',
+                    'model': 'google/gemma-3-1b-it:free',
                     'messages': messages,
                     'max_tokens': 950,
                     'temperature': 0.7,
@@ -154,6 +158,135 @@ async def chat(request: Request):
             status_code=500,
             content={"error": "Error interno del servidor"}
         )
+
+
+# System prompt template
+AGENT_SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución.
+
+Debes seguir estas reglas estrictamente:
+
+0. Tu empresa es VR Distribución.
+1. SOLO responderás en español.
+2. SOLO proporcionarás información relacionada con los servicios y productos de VR Distribución.
+3. La información debe provenir ÚNICAMENTE de:
+   - https://vrdistribucion.com
+   - https://vrdistribucion.com/webdesigncancun/
+   - https://g.co/kgs/ZwV6J9 (para horarios, teléfonos y direcciones)
+   - VR DISTRIBUCION
+   - + 52 998 236 1177
+
+4. Servicios principales sobre los que puedes informar (con énfasis en marketing digital, web y agentes IA):
+   - Marketing digital (estrategias, consultoría, campañas publicitarias, etc.)
+   - Diseño web (sitios web, optimización, SEO)
+   - Manejo de redes sociales
+   - Branding y diseño gráfico
+   - Publicidad y contenido
+   - Agentes IA (soluciones conversacionales, automatización, etc.)
+
+5. Si te preguntan sobre algo fuera de estos temas, amablemente redirige la conversación hacia los servicios de VR Distribución relacionados con marketing digital, diseño web o agentes IA.
+
+6. Mantén un tono profesional pero amigable.
+
+7. Intenta que los mensajes sean cortos y directos.
+"""
+
+HTTP_REFERRER = "https://vrdistribucion.com"
+X_TITLE = "VR Distribución marketing digital Asistente IA"
+
+
+@app.post("/api/marketing/chat")
+async def chat_ia(request: Request):
+    try:
+        # Parse request data
+        data = await request.json()
+        user_message = data.get('message', '').strip()
+
+        # Validate user message
+        if not user_message:
+            return JSONResponse(
+                status_code=400,
+                content={"error": "El mensaje no puede estar vacío"}
+            )
+
+        conversation_history = data.get('conversation_history', [])
+
+        # Prepare messages for the API
+        messages = [
+            {"role": "system", "content": AGENT_SYSTEM_PROMPT}
+        ]
+
+        # Add conversation history
+        if conversation_history:
+            messages.extend(conversation_history)
+
+        # Add the current user message
+        messages.append({"role": "user", "content": user_message})
+
+        try:
+            # Make request to OpenRouter API
+            response = requests.post(
+                url='https://openrouter.ai/api/v1/chat/completions',
+                headers={
+                    'Authorization': f'Bearer {OPENROUTER_API_KEY}',
+                    'Content-Type': 'application/json',
+                    'HTTP-Referer': HTTP_REFERRER,
+                    'X-Title': X_TITLE,
+                },
+                json={
+                    'model': 'google/gemma-3-1b-it:free',
+                    'messages': messages,
+                    'max_tokens': 950,
+                    'temperature': 0.7,
+                    'stream': False
+                },
+                timeout=30  # Add timeout
+            )
+
+            response.raise_for_status()  # Raise an exception for bad status codes
+
+            # Parse the response
+            response_data = response.json()
+
+            # Extract the assistant's message
+            assistant_message = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
+
+            if not assistant_message:
+                raise ValueError("No response generated by the API")
+
+            # Log successful interaction
+            print(f"User: {user_message}")
+            print(f"Assistant: {assistant_message}")
+
+            return JSONResponse(content={"response": assistant_message})
+
+        except requests.exceptions.Timeout:
+            return JSONResponse(
+                status_code=504,
+                content={"error": "La solicitud ha excedido el tiempo de espera"}
+            )
+        except requests.exceptions.RequestException as e:
+            return JSONResponse(
+                status_code=502,
+                content={"error": f"Error al comunicarse con el servicio: {str(e)}"}
+            )
+        except ValueError as e:
+            return JSONResponse(
+                status_code=500,
+                content={"error": str(e)}
+            )
+
+    except json.JSONDecodeError:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Formato de solicitud inválido"}
+        )
+    except Exception as e:
+        print(f"Error inesperado: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Error interno del servidor"}
+        )
+
 
 if __name__ == "__main__":
     import uvicorn
