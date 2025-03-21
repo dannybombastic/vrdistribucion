@@ -482,3 +482,30 @@ div .resume-section .resume-item .resume-item  {
 .chat-messages::-webkit-scrollbar-thumb:hover {
     background: var(--placeholder-color);
 }
+
+/* Add mobile responsiveness for chat */
+@media screen and (max-width: 768px) {
+    .chat-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 350px;
+        bottom: 100px;
+    }
+
+    .chat-container.collapsed {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .chat-toggle {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 30px;
+    }
+
+    .chat-toggle:hover {
+        transform: translateX(-50%) scale(1.1);
+    }
+}
