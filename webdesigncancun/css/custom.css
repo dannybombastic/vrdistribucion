@@ -109,6 +109,10 @@ body {
     margin-bottom: 1rem;
 }
 
+.section-title p {
+    font-size: 1rem;
+}
+
 .service-card {
     text-align: center;
     padding: 2rem;
@@ -329,4 +333,527 @@ footer {
 
 .send-btn:hover {
     background-color: var(--button-hover);
+}
+
+/* AI Section Styles */
+.ai-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.ai-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.ai-features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ai-features i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.workflow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.step:hover {
+    transform: translateX(10px);
+}
+
+.step-number {
+    background-color: var(--primary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.step p {
+    margin: 0;
+    color: #666;
+}
+
+.chat-system {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.chat-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.chat-features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chat-features i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.chat-demo {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.chat-demo p {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .step {
+        padding: 0.8rem;
+    }
+
+    .ai-card, .chat-system {
+        padding: 1.5rem;
+    }
+}
+
+/* AI Document Management Section Styles */
+.ai-doc-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.ai-doc-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.ai-doc-features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #666;
+}
+
+.ai-doc-features i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.ai-doc-benefits {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.benefit-item {
+    padding: 1rem;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-item i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-item h4 {
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.benefit-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.ai-doc-workflow {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-doc-card, .ai-doc-benefits, .ai-doc-workflow {
+        padding: 1.5rem;
+    }
+}
+
+/* Chat Styles */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background-color: var(--chat-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.chat-container.collapsed {
+    transform: translateY(calc(100% + 20px));
+}
+
+.chat-header {
+    padding: 15px;
+    background-color: var(--header-bg);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-title {
+    color: white;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chat-title i {
+    color: var(--secondary-color);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+.message.user {
+    background-color: var(--user-message-bg);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message.assistant {
+    background-color: var(--message-bg);
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.chat-input-container {
+    padding: 15px;
+    background-color: var(--header-bg);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input {
+    flex-grow: 1;
+    background-color: var(--message-bg);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white;
+    resize: none;
+    max-height: 100px;
+    min-height: 40px;
+}
+
+.chat-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+.chat-input:focus {
+    outline: none;
+}
+
+.chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.chat-toggle:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.chat-toggle i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+
+    .chat-container.collapsed {
+        transform: translateY(100%);
+    }
+
+    .chat-toggle {
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chat-toggle span {
+        display: none;
+    }
+
+    .chat-toggle i {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .chat-toggle:hover {
+        transform: translateX(-50%) translateY(-2px);
+    }
+}
+
+/* AI Section Mobile Responsiveness */
+@media (max-width: 768px) {
+    .ai-card {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ai-features li {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .workflow-steps {
+        gap: 1rem;
+    }
+
+    .step {
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+
+    .step-number {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+    }
+
+    .step h4 {
+        font-size: 1rem;
+    }
+
+    .step p {
+        font-size: 0.85rem;
+    }
+
+    .chat-system {
+        padding: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .chat-features li {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .chat-demo {
+        margin-top: 1.5rem;
+    }
+
+    .chat-demo p {
+        font-size: 0.9rem;
+    }
+
+    .chat-demo .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* AI Document Management Mobile Styles */
+    .ai-doc-card, .ai-doc-benefits, .ai-doc-workflow {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ai-doc-features li {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .benefit-item {
+        padding: 0.8rem;
+    }
+
+    .benefit-item i {
+        font-size: 1.3rem;
+    }
+
+    .benefit-item h4 {
+        font-size: 1rem;
+    }
+
+    .benefit-item p {
+        font-size: 0.85rem;
+    }
+
+    /* Section Title Mobile Adjustments */
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-title p {
+        font-size: 1rem;
+    }
+
+    /* Container Padding Adjustments */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Row Spacing Adjustments */
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .col-lg-6, .col-md-4 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-card, .chat-system, .ai-doc-card, .ai-doc-benefits, .ai-doc-workflow {
+        padding: 1rem;
+    }
+
+    .ai-features li, .chat-features li, .ai-doc-features li {
+        font-size: 0.85rem;
+    }
+
+    .step h4 {
+        font-size: 0.95rem;
+    }
+
+    .step p {
+        font-size: 0.8rem;
+    }
+
+    .benefit-item h4 {
+        font-size: 0.95rem;
+    }
+
+    .benefit-item p {
+        font-size: 0.8rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
+
+    .section-title p {
+        font-size: 0.9rem;
+    }
 }

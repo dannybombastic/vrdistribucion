@@ -46,18 +46,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => reject(new Error('Timeout')), 30000);
                 });
 
-                const fetchPromise = fetch('https://vrdistribucion.com/api/chat', {
+                // Get API URL from environment or use default
+                const API_URL = 'https://vrdistribucion.com/api/marketing/chat';
+
+                const fetchPromise = fetch(API_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
-
                     },
                     body: JSON.stringify({
                         message: message,
                         conversation_history: conversationHistory
                     })
                 });
+
 
                 // Race between fetch and timeout
                 const response = await Promise.race([fetchPromise, timeoutPromise]);
@@ -66,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadingMessage.remove();
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorData = await response.json().catch(() => null);
+                    throw new Error(errorData?.error || `HTTP error! status: ${response.status}`);
                 }
 
                 // Try to get the response as text first
@@ -84,22 +88,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             content: responseData.response
                         });
                     } else {
-                        // If JSON but no response field, use the raw JSON
-                        const message = JSON.stringify(responseData, null, 2);
-                        addMessage(message, 'assistant');
-                        conversationHistory.push({
-                            role: "assistant",
-                            content: message
-                        });
+                        throw new Error('Invalid response format from server');
                     }
                 } catch (jsonError) {
-                    // If not valid JSON, use the raw text
-                    console.log('Response is not JSON, using raw text:', responseText);
-                    addMessage(responseText, 'assistant');
-                    conversationHistory.push({
-                        role: "assistant",
-                        content: responseText
-                    });
+                    console.error('Error parsing response:', jsonError);
+                    throw new Error('Error processing server response');
                 }
 
             } catch (error) {
