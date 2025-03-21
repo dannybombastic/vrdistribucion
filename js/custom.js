@@ -152,7 +152,7 @@
     },
   ];
 
-  const recuerdos = [
+  const velas = [
     {
       src: "1000002619.jpg",
       title: "Vela 2619",
@@ -242,7 +242,7 @@
   const randomImages = [
     ...putPictures("invitaciones", invitaciones),
     ...putPictures("Corporativo", corporativo),
-    ...putPictures("velas", recuerdos),
+    ...putPictures("velas", velas),
     ...putPictures("centros", centros),
   ];
 
