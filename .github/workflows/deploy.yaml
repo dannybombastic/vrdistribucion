@@ -50,5 +50,5 @@ jobs:
               cp -r /var/www/html/vrdistribucion/errorpage/* /var/www/html/errorpage
               chmod -R 774 /var/www/html/vrdistribucion/* ; chown -R ubuntu: /var/www/html/vrdistribucion
               chmod -R 774 /home/ubuntu/server/* ; chown -R ubuntu: /home/ubuntu/server
-              sudo -u ubuntu python3 -m pip install -r /home/ubuntu/server/requirements.txt
+              sudo -u ubuntu /home/ubuntu/server/venv/bin/python -m pip install -r /home/ubuntu/server/requirements.txt
               systemctl restart app.service
