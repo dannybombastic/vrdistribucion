@@ -13,6 +13,7 @@ load_dotenv()
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
 HTTP_REFERRER = "https://vrdistribucion.com"
 X_TITLE = "VR Distribución Asistente IA"
+MODEL = "mistralai/mistral-small-3.1-24b-instruct:free"
 
 # Validate API key format
 if not OPENROUTER_API_KEY or not OPENROUTER_API_KEY.startswith('sk-'):
@@ -20,10 +21,15 @@ if not OPENROUTER_API_KEY or not OPENROUTER_API_KEY.startswith('sk-'):
 
 app = FastAPI()
 
-# Configure CORS with specific origins
+if os.getenv('ENV') == 'development':
+    print("development")
+    cors_origins = ["http://127.0.0.1:8000", "https://vrdistribucion.com","*"]
+else:
+    print("production")
+    cors_origins = ["https://vrdistribucion.com"]# Configure CORS with specific origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000", "https://vrdistribucion.com"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -34,35 +40,26 @@ app.add_middleware(
 templates = Jinja2Templates(directory=".")
 
 # System prompt template
-SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución.
-Debes seguir estas reglas estrictamente:
+SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución. Sigue estas reglas estrictamente:
 
-0. tu empresa es VR Distribución
-1. SOLO responderás en español.
-2. SOLO proporcionarás información relacionada con los servicios y productos de VR Distribución.
-3. La información debe provenir ÚNICAMENTE de:
-   - https://vrdistribucion.com
-   - https://vrdistribucion.com/aparador/
-   - https://vrdistribucion.com/maketingdigital/
-   - https://g.co/kgs/ZwV6J9h aqui mira los horaios telefonos ydirecciones
-   - VR DISTRIBUCION
-   - + 52 998 236 1177
-
-
-
-4. Servicios principales sobre los que puedes informar:
+1. Tu empresa es vrdistribucion.com.
+2. Responde únicamente en español.
+3. No uses markdown en tus respuestas.
+4. Proporciona siempre los enlaces de nuestro sitio web utilizando la etiqueta <a href="url_ejemplo" target="_blank">.
+5. La información que brindes debe estar relacionada con los servicios y productos de VR Distribución.
+6. Basa tus respuestas ÚNICAMENTE en las siguientes fuentes:
+   - https://vrdistribucion.com" # VR Distribución Sitio Principal
+   - https://vrdistribucion.com/webdesigncancun/" # Diseño Web en Cancún y marketing digital
+   - https://g.co/kgs/2AydBGG" # Horarios, teléfonos y direcciones<
+7. Servicios principales sobre los que puedes informar:
    - Diseño de invitaciones y papelería
    - Centros de mesa y decoración
    - Marketing digital
    - Servicios de impresión
    - Diseño gráfico
-
-5. Si te preguntan sobre algo fuera de estos temas, amablemente redirige la conversación hacia los servicios de VR Distribución.
-
-6. Mantén un tono profesional pero amigable.
-
-7- intenta que los mensajes sean cortos y directos
-"""
+8. Si te preguntan sobre temas que no estén dentro de estos servicios, redirige amablemente la conversación hacia las ofertas de VR Distribución.
+9. Mantén un tono profesional pero amigable.
+10. Mantén tus mensajes cortos y directos."""
 
 
 
@@ -105,7 +102,7 @@ async def chat(request: Request):
                     'X-Title': X_TITLE,
                 },
                 json={
-                    'model': 'google/gemma-3-1b-it:free',
+                    'model': MODEL,
                     'messages': messages,
                     'max_tokens': 950,
                     'temperature': 0.7,
@@ -161,21 +158,19 @@ async def chat(request: Request):
 
 
 # System prompt template
-AGENT_SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución.
-
-Debes seguir estas reglas estrictamente:
+AGENT_SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución. Debes seguir estas reglas estrictamente:
 
 0. Tu empresa es VR Distribución.
-1. SOLO responderás en español.
-2. SOLO proporcionarás información relacionada con los servicios y productos de VR Distribución.
+1. Responde únicamente en español.
+2. Proporciona información exclusivamente relacionada con los servicios y productos de VR Distribución.
 3. La información debe provenir ÚNICAMENTE de:
-   - https://vrdistribucion.com
-   - https://vrdistribucion.com/webdesigncancun/
-   - https://g.co/kgs/ZwV6J9 (para horarios, teléfonos y direcciones)
+   - https://vrdistribucion.com # VR Distribución (Sitio Principal)</a>
+   - https://vrdistribucion.com/webdesigncancun/ # Diseño Web en Cancún</a>
+   - https://g.co/kgs/2AydBGG # Horarios, teléfonos y direcciones</a>
    - VR DISTRIBUCION
-   - + 52 998 236 1177
+   - +52 998 236 1177
 
-4. Servicios principales sobre los que puedes informar (con énfasis en marketing digital, web y agentes IA):
+4. Principales servicios sobre los que puedes informar (con énfasis en marketing digital, web y agentes IA):
    - Marketing digital (estrategias, consultoría, campañas publicitarias, etc.)
    - Diseño web (sitios web, optimización, SEO)
    - Manejo de redes sociales
@@ -183,12 +178,13 @@ Debes seguir estas reglas estrictamente:
    - Publicidad y contenido
    - Agentes IA (soluciones conversacionales, automatización, etc.)
 
-5. Si te preguntan sobre algo fuera de estos temas, amablemente redirige la conversación hacia los servicios de VR Distribución relacionados con marketing digital, diseño web o agentes IA.
+5. Si se pregunta sobre algo fuera de estos temas, redirige amablemente la conversación a los servicios de VR Distribución relacionados con marketing digital, diseño web o agentes IA.
 
 6. Mantén un tono profesional pero amigable.
 
-7. Intenta que los mensajes sean cortos y directos.
-"""
+7. Mantén tus mensajes cortos y directos.
+
+8. Proporciona siempre los enlaces utilizando la etiqueta HTML <a>."""
 
 HTTP_REFERRER = "https://vrdistribucion.com"
 X_TITLE = "VR Distribución marketing digital Asistente IA"
@@ -232,7 +228,7 @@ async def chat_ia(request: Request):
 
                 },
                 json={
-                    'model': 'google/gemma-3-1b-it:free',
+                    'model': MODEL,
                     'messages': messages,
                     'max_tokens': 950,
                     'temperature': 0.7,
