@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const chatMessages = document.getElementById('chat-messages');
+    const prod = "https://vrdistribucion.com/api/chat"
+    const dev = "http://localhost:8000/api/chat"
+    let apiUrl;
+    if (window.location.hostname != "vrdistribucion.com" ) {
+        apiUrl = dev;
+    } else {
+        console.log("production");
+        apiUrl = prod;
+    }
 
     // Initialize conversation history
     let conversationHistory = [];
@@ -51,10 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => reject(new Error('Timeout')), 30000);
                 });
 
-                // Get API URL from environment or use default
-                const API_URL = 'https://vrdistribucion.com/api/marketing/chat';
 
-                const fetchPromise = fetch(API_URL, {
+                const fetchPromise = fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
