@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const chatContainer = document.getElementById('chat-container');
     const chatToggle = document.getElementById('chat-toggle');
@@ -138,17 +140,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
+    const converter = new showdown.Converter();
     // Add message to chat
     function addMessage(text, sender) {
         console.log(text);
 
+        // Convertir
+        const htmlContent = converter.makeHtml(text);
 
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}`;
         messageDiv.innerHTML = `
             <div class="message-content">
-                ${text}
+                ${htmlContent}
             </div>
         `;
         chatMessages.appendChild(messageDiv);
