@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const chatMessages = document.getElementById('chat-messages');
-    const prod = "https://vrdistribucion.com/api/chat"
-    const dev = "http://localhost:8000/api/chat"
+    const prod = "https://vrdistribucion.com/api/chat/openai"
+    const dev = "http://localhost:8000/api/chat/openai"
     let apiUrl;
 
 
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add message to chat
     function addMessage(text, sender) {
         console.log(text);
-        
+
 
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}`;
