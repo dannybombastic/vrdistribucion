@@ -8,25 +8,40 @@ import json
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
+
+# =====================
+# CLAVE DE OPENAI
+# =====================
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("La variable de entorno OPENAI_API_KEY no está configurada.")
+
+# =====================
+# CLAVE DE OPENROUTER
+# =====================
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
+if not OPENROUTER_API_KEY or not OPENROUTER_API_KEY.startswith('sk-'):
+    raise ValueError("Invalid o falta la OPENROUTER_API_KEY. Debe iniciar con 'sk-'")
+
 HTTP_REFERRER = "https://vrdistribucion.com"
 X_TITLE = "VR Distribución Asistente IA"
 MODEL = "mistralai/mistral-small-3.1-24b-instruct:free"
 
-# Validate API key format
-if not OPENROUTER_API_KEY or not OPENROUTER_API_KEY.startswith('sk-'):
-    raise ValueError("Invalid or missing OPENROUTER_API_KEY. Must start with 'sk-'")
-
 app = FastAPI()
 
+# Ambiente y configuración de CORS
 if os.getenv('ENV') == 'development':
     print("development")
-    cors_origins = ["http://127.0.0.1:8000", "https://vrdistribucion.com","*"]
+    cors_origins = [
+        "http://127.0.0.1:8000",
+        "https://vrdistribucion.com",
+        "*"
+    ]
 else:
     print("production")
-    cors_origins = ["https://vrdistribucion.com"]# Configure CORS with specific origins
+    cors_origins = ["https://vrdistribucion.com"]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
@@ -35,11 +50,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# Templates
 templates = Jinja2Templates(directory=".")
 
-# System prompt template
+# =====================
+# PROMPTS
+# =====================
 SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución. Sigue estas reglas estrictamente:
 
 1. Tu empresa es vrdistribucion.com.
@@ -47,10 +62,21 @@ SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar infor
 3. No uses markdown en tus respuestas.
 4. Proporciona siempre los enlaces de nuestro sitio web utilizando la etiqueta <a href="url_ejemplo" target="_blank">.
 5. La información que brindes debe estar relacionada con los servicios y productos de VR Distribución.
-6. Basa tus respuestas ÚNICAMENTE en las siguientes fuentes:
-   - https://vrdistribucion.com" # VR Distribución Sitio Principal
-   - https://vrdistribucion.com/webdesigncancun/" # Diseño Web en Cancún y marketing digital
-   - https://g.co/kgs/2AydBGG" # Horarios, teléfonos y direcciones<
+3. Usa internet para obtener la información. La información debe provenir ÚNICAMENTE de:
+   - https://vrdistribucion.com # sitio principal
+   - https://vrdistribucion.com/webdesigncancun/ # diseño web en cancún, marketing digital y agentes IA
+   - https://g.co/kgs/2AydBGG  # horarios, teléfonos y direcciones
+   - VR DISTRIBUCION
+   - Dirección: Lat. Av. Tulum Supermanzana 2, Bancos, 77500 Cancún, Q.R., México
+   - Teléfono: +52 998 236 1177
+   - Horario:
+        sábado	11:00–18:00
+        domingo	Cerrado
+        lunes	11:00–18:00
+        martes	11:00–18:00
+        miércoles	11:00–18:00
+        jueves	11:00–18:00
+        viernes	11:00–18:00
 7. Servicios principales sobre los que puedes informar:
    - Diseño de invitaciones y papelería
    - Centros de mesa y decoración
@@ -59,18 +85,54 @@ SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar infor
    - Diseño gráfico
 8. Si te preguntan sobre temas que no estén dentro de estos servicios, redirige amablemente la conversación hacia las ofertas de VR Distribución.
 9. Mantén un tono profesional pero amigable.
-10. Mantén tus mensajes cortos y directos."""
+10. Mantén tus mensajes cortos y directos.
+"""
+
+AGENT_SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución. Debes seguir estas reglas estrictamente:
+
+0. Tu empresa es VR Distribución.
+1. Responde únicamente en español.
+2. Proporciona información exclusivamente relacionada con los servicios y productos de VR Distribución.
+3. Usa internet para obtener la información. La información debe provenir ÚNICAMENTE de:
+   - https://vrdistribucion.com # sitio principal
+   - https://vrdistribucion.com/webdesigncancun/ # diseño web en cancún, marketing digital y agentes IA
+   - https://g.co/kgs/2AydBGG  # horarios, teléfonos y direcciones
+   - VR DISTRIBUCION
+   - Dirección: Lat. Av. Tulum Supermanzana 2, Bancos, 77500 Cancún, Q.R., México
+   - Teléfono: +52 998 236 1177
+   - Horario:
+        sábado	11:00–18:00
+        domingo	Cerrado
+        lunes	11:00–18:00
+        martes	11:00–18:00
+        miércoles	11:00–18:00
+        jueves	11:00–18:00
+        viernes	11:00–18:00
 
 
+4. Principales servicios sobre los que puedes informar (con énfasis en marketing digital, web y agentes IA):
+   - Marketing digital (estrategias, consultoría, campañas publicitarias, etc.)
+   - Diseño web (sitios web, optimización, SEO)
+   - Manejo de redes sociales
+   - Branding y diseño gráfico
+   - Publicidad y contenido
+   - Agentes IA (soluciones conversacionales, automatización, etc.)
+
+5. Si se pregunta sobre algo fuera de estos temas, redirige amablemente la conversación a los servicios de VR Distribución relacionados con marketing digital, diseño web o agentes IA.
+6. Mantén un tono profesional pero amigable.
+7. Mantén tus mensajes cortos y directos.
+8. Proporciona siempre los enlaces utilizando la etiqueta HTML <a>.
+"""
+
+# =====================
+# ENDPOINTS OpenRouter
+# =====================
 
 @app.post("/api/chat")
 async def chat(request: Request):
     try:
-        # Parse request data
         data = await request.json()
         user_message = data.get('message', '').strip()
-
-        # Validate user message
         if not user_message:
             return JSONResponse(
                 status_code=400,
@@ -79,20 +141,14 @@ async def chat(request: Request):
 
         conversation_history = data.get('conversation_history', [])
 
-        # Prepare messages for the API
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT}
         ]
-
-        # Add conversation history
         if conversation_history:
             messages.extend(conversation_history)
-
-        # Add the current user message
         messages.append({"role": "user", "content": user_message})
 
         try:
-            # Make request to OpenRouter API
             response = requests.post(
                 url='https://openrouter.ai/api/v1/chat/completions',
                 headers={
@@ -108,21 +164,15 @@ async def chat(request: Request):
                     'temperature': 0.7,
                     'stream': False
                 },
-                timeout=30  # Add timeout
+                timeout=30
             )
+            response.raise_for_status()
 
-            response.raise_for_status()  # Raise an exception for bad status codes
-
-            # Parse the response
             response_data = response.json()
-
-            # Extract the assistant's message
             assistant_message = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
-
             if not assistant_message:
                 raise ValueError("No response generated by the API")
 
-            # Log successful interaction
             print(f"User: {user_message}")
             print(f"Assistant: {assistant_message}")
 
@@ -157,47 +207,11 @@ async def chat(request: Request):
         )
 
 
-# System prompt template
-AGENT_SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución. Debes seguir estas reglas estrictamente:
-
-0. Tu empresa es VR Distribución.
-1. Responde únicamente en español.
-2. Proporciona información exclusivamente relacionada con los servicios y productos de VR Distribución.
-3. La información debe provenir ÚNICAMENTE de:
-   - https://vrdistribucion.com # VR Distribución (Sitio Principal)</a>
-   - https://vrdistribucion.com/webdesigncancun/ # Diseño Web en Cancún</a>
-   - https://g.co/kgs/2AydBGG # Horarios, teléfonos y direcciones</a>
-   - VR DISTRIBUCION
-   - +52 998 236 1177
-
-4. Principales servicios sobre los que puedes informar (con énfasis en marketing digital, web y agentes IA):
-   - Marketing digital (estrategias, consultoría, campañas publicitarias, etc.)
-   - Diseño web (sitios web, optimización, SEO)
-   - Manejo de redes sociales
-   - Branding y diseño gráfico
-   - Publicidad y contenido
-   - Agentes IA (soluciones conversacionales, automatización, etc.)
-
-5. Si se pregunta sobre algo fuera de estos temas, redirige amablemente la conversación a los servicios de VR Distribución relacionados con marketing digital, diseño web o agentes IA.
-
-6. Mantén un tono profesional pero amigable.
-
-7. Mantén tus mensajes cortos y directos.
-
-8. Proporciona siempre los enlaces utilizando la etiqueta HTML <a>."""
-
-HTTP_REFERRER = "https://vrdistribucion.com"
-X_TITLE = "VR Distribución marketing digital Asistente IA"
-
-
 @app.post("/api/marketing/chat")
 async def chat_ia(request: Request):
     try:
-        # Parse request data
         data = await request.json()
         user_message = data.get('message', '').strip()
-
-        # Validate user message
         if not user_message:
             return JSONResponse(
                 status_code=400,
@@ -206,26 +220,19 @@ async def chat_ia(request: Request):
 
         conversation_history = data.get('conversation_history', [])
 
-        # Prepare messages for the API
         messages = [
             {"role": "system", "content": AGENT_SYSTEM_PROMPT}
         ]
-
-        # Add conversation history
         if conversation_history:
             messages.extend(conversation_history)
-
-        # Add the current user message
         messages.append({"role": "user", "content": user_message})
 
         try:
-            # Make request to OpenRouter API
             response = requests.post(
                 url='https://openrouter.ai/api/v1/chat/completions',
                 headers={
                     'Authorization': f'Bearer {OPENROUTER_API_KEY}',
                     'Content-Type': 'application/json'
-
                 },
                 json={
                     'model': MODEL,
@@ -234,21 +241,15 @@ async def chat_ia(request: Request):
                     'temperature': 0.7,
                     'stream': False
                 },
-                timeout=30  # Add timeout
+                timeout=30
             )
+            response.raise_for_status()
 
-            response.raise_for_status()  # Raise an exception for bad status codes
-
-            # Parse the response
             response_data = response.json()
-
-            # Extract the assistant's message
             assistant_message = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
-
             if not assistant_message:
-                raise ValueError("No response generated by the API")
+                raise ValueError("No response generated by el API")
 
-            # Log successful interaction
             print(f"User: {user_message}")
             print(f"Assistant: {assistant_message}")
 
@@ -277,6 +278,172 @@ async def chat_ia(request: Request):
         )
     except Exception as e:
         print(f"Error inesperado: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Error interno del servidor"}
+        )
+
+# ============================
+# ENDPOINTS OpenAI Oficiales
+# ============================
+
+# IMPORTANTE: Estos endpoints usan la API de OpenAI en https://api.openai.com/v1/chat/completions
+# Debes tener tu propia OPENAI_API_KEY y un modelo válido (p. ej.: "gpt-3.5-turbo")
+
+OPENAI_MODEL = "gpt-3.5-turbo"  # Puedes cambiar el modelo aquí
+
+@app.post("/api/chat/openai")
+async def chat_openai(request: Request):
+    try:
+        data = await request.json()
+        user_message = data.get('message', '').strip()
+        if not user_message:
+            return JSONResponse(
+                status_code=400,
+                content={"error": "El mensaje no puede estar vacío"}
+            )
+
+        conversation_history = data.get('conversation_history', [])
+
+        # Construimos los mensajes
+        messages = [
+            {"role": "system", "content": SYSTEM_PROMPT}
+        ]
+        if conversation_history:
+            messages.extend(conversation_history)
+        messages.append({"role": "user", "content": user_message})
+
+        try:
+            # Llamada a la API oficial de OpenAI
+            response = requests.post(
+                url="https://api.openai.com/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENAI_API_KEY}",
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "model": OPENAI_MODEL,
+                    "messages": messages,
+                    "max_tokens": 950,
+                    "temperature": 0.7,
+                    "stream": False
+                },
+                timeout=30
+            )
+            response.raise_for_status()
+
+            response_data = response.json()
+            assistant_message = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
+            if not assistant_message:
+                raise ValueError("No se recibió respuesta de la API de OpenAI")
+
+            print(f"User: {user_message}")
+            print(f"Assistant (OpenAI): {assistant_message}")
+
+            return JSONResponse(content={"response": assistant_message})
+
+        except requests.exceptions.Timeout:
+            return JSONResponse(
+                status_code=504,
+                content={"error": "La solicitud a OpenAI ha excedido el tiempo de espera"}
+            )
+        except requests.exceptions.RequestException as e:
+            return JSONResponse(
+                status_code=502,
+                content={"error": f"Error al comunicarse con OpenAI: {str(e)}"}
+            )
+        except ValueError as e:
+            return JSONResponse(
+                status_code=500,
+                content={"error": str(e)}
+            )
+
+    except json.JSONDecodeError:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Formato de solicitud inválido"}
+        )
+    except Exception as e:
+        print(f"Error inesperado en /api/chat/openai: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Error interno del servidor"}
+        )
+
+
+@app.post("/api/marketing/chat/openai")
+async def chat_ia_openai(request: Request):
+    try:
+        data = await request.json()
+        user_message = data.get('message', '').strip()
+        if not user_message:
+            return JSONResponse(
+                status_code=400,
+                content={"error": "El mensaje no puede estar vacío"}
+            )
+
+        conversation_history = data.get('conversation_history', [])
+
+        # Construimos los mensajes
+        messages = [
+            {"role": "system", "content": AGENT_SYSTEM_PROMPT}
+        ]
+        if conversation_history:
+            messages.extend(conversation_history)
+        messages.append({"role": "user", "content": user_message})
+
+        try:
+            # Llamada a la API oficial de OpenAI
+            response = requests.post(
+                url="https://api.openai.com/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENAI_API_KEY}",
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "model": OPENAI_MODEL,
+                    "messages": messages,
+                    "max_tokens": 950,
+                    "temperature": 0.7,
+                    "stream": False
+                },
+                timeout=30
+            )
+            response.raise_for_status()
+
+            response_data = response.json()
+            assistant_message = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
+            if not assistant_message:
+                raise ValueError("No se recibió respuesta de la API de OpenAI")
+
+            print(f"User: {user_message}")
+            print(f"Assistant (OpenAI): {assistant_message}")
+
+            return JSONResponse(content={"response": assistant_message})
+
+        except requests.exceptions.Timeout:
+            return JSONResponse(
+                status_code=504,
+                content={"error": "La solicitud a OpenAI ha excedido el tiempo de espera"}
+            )
+        except requests.exceptions.RequestException as e:
+            return JSONResponse(
+                status_code=502,
+                content={"error": f"Error al comunicarse con OpenAI: {str(e)}"}
+            )
+        except ValueError as e:
+            return JSONResponse(
+                status_code=500,
+                content={"error": str(e)}
+            )
+
+    except json.JSONDecodeError:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Formato de solicitud inválido"}
+        )
+    except Exception as e:
+        print(f"Error inesperado en /api/marketing/chat/openai: {str(e)}")
         return JSONResponse(
             status_code=500,
             content={"error": "Error interno del servidor"}
