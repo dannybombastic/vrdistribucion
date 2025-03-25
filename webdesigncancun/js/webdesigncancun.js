@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Minimize chat window
     minimizeBtn.addEventListener('click', () => {
         chatContainer.classList.add('collapsed');
+        chatToggle.style.display = 'block';
     });
 
     // Close chat window
