@@ -21,24 +21,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Toggle chat window
     chatToggle.addEventListener('click', () => {
-        chatContainer.classList.toggle('collapsed');
-        // hide button when chat is open
-        if (!chatContainer.classList.contains('collapsed')) {
-            chatToggle.style.display = 'none';
-        }
+        toggleChat();
     });
 
     // Minimize chat window
     minimizeBtn.addEventListener('click', () => {
-        chatContainer.classList.add('collapsed');
-        chatToggle.style.display = 'block';
+        toggleChat();
     });
 
     // Close chat window
     closeBtn.addEventListener('click', () => {
+        toggleChat();
+    });
+
+
+
+    function toggleChat() {
+        if (chatContainer.classList.contains('collapsed')) {
+            chatContainer.classList.remove('collapsed');
+            chatToggle.style.display = 'none';
+            return
+        }
         chatContainer.classList.add('collapsed');
         chatToggle.style.display = 'block';
-    });
+    }
 
     // Handle message sending
     async function sendMessage() {
