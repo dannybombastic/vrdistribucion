@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const chatContainer = document.getElementById('chat-container');
     const chatToggle = document.getElementById('chat-toggle');
@@ -6,9 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const chatMessages = document.getElementById('chat-messages');
-    const prod = "https://vrdistribucion.com/api/marketing/chat/openai"
-    const dev = "http://localhost:8000/api/marketing/chat/openai"
+    const prod = "https://vrdistribucion.com/api/chat/openai"
+    const dev = "http://localhost:8000/api/chat/openai"
     let apiUrl;
+
+
     if (window.location.hostname != "vrdistribucion.com" ) {
         apiUrl = dev;
     } else {
@@ -16,13 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
         apiUrl = prod;
     }
 
+
     // Initialize conversation history
     let conversationHistory = [];
 
     // Toggle chat window
     chatToggle.addEventListener('click', () => {
         chatContainer.classList.toggle('collapsed');
-        // hide button when chat is open
         if (!chatContainer.classList.contains('collapsed')) {
             chatToggle.style.display = 'none';
         }
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Minimize chat window
     minimizeBtn.addEventListener('click', () => {
         chatContainer.classList.add('collapsed');
+        chatToggle.style.display = 'block';
     });
 
     // Close chat window
@@ -60,19 +65,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => reject(new Error('Timeout')), 30000);
                 });
 
-
                 const fetchPromise = fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
+
                     },
                     body: JSON.stringify({
                         message: message,
                         conversation_history: conversationHistory
                     })
                 });
-
 
                 // Race between fetch and timeout
                 const response = await Promise.race([fetchPromise, timeoutPromise]);
@@ -81,8 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadingMessage.remove();
 
                 if (!response.ok) {
-                    const errorData = await response.json().catch(() => null);
-                    throw new Error(errorData?.error || `HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 // Try to get the response as text first
@@ -100,11 +103,22 @@ document.addEventListener('DOMContentLoaded', function() {
                             content: responseData.response
                         });
                     } else {
-                        throw new Error('Invalid response format from server');
+                        // If JSON but no response field, use the raw JSON
+                        const message = JSON.stringify(responseData, null, 2);
+                        addMessage(message, 'assistant');
+                        conversationHistory.push({
+                            role: "assistant",
+                            content: message
+                        });
                     }
                 } catch (jsonError) {
-                    console.error('Error parsing response:', jsonError);
-                    throw new Error('Error processing server response');
+                    // If not valid JSON, use the raw text
+                    console.log('Response is not JSON, using raw text:', responseText);
+                    addMessage(responseText, 'assistant');
+                    conversationHistory.push({
+                        role: "assistant",
+                        content: responseText
+                    });
                 }
 
             } catch (error) {
@@ -127,14 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
+    const converter = new showdown.Converter();
     // Add message to chat
     function addMessage(text, sender) {
+        console.log(text);
+
+        // Convertir
+        const htmlContent = converter.makeHtml(text);
+
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}`;
         messageDiv.innerHTML = `
             <div class="message-content">
-                ${text}
+                ${htmlContent}
             </div>
         `;
         chatMessages.appendChild(messageDiv);

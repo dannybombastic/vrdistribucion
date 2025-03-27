@@ -9,50 +9,62 @@
 !(function (n) {
   "use strict";
 
-  n(function () {}), n(window).on("load", function () {});
+//  n(function () {}), n(window).on("load", function () {});
 
   // Arrays convertidos a objetos { src, title }
   const centros = [
-    { src: "centro_de_mesa_Boda_15_años_herreria_personalizados_54.jpg", title: "Item 10", href: "/aparador" },
+    { src: "centro_de_mesa_Boda_15_años_herreria_personalizados_54.jpg",
+      title: "Item 10",
+      href: "/aparador",
+      static: "/static/home/img"
+    },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_59.jpg",
       title: "Centros de mesa Boda",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_60.jpg",
       title: "Centros de mesa XV Años",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_61.jpg",
       title: "Centros de mesa Corporativas",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_62.jpg",
       title: "Centros de mesa Bautizo",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_63.jpg",
       title: "Centros de mesa Baby Shower",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_64.jpg",
       title: "Botellas Personalizadas",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_65.jpg",
       title: "Centro de Mesa Boda 65",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "centro_de_mesa_Boda_15_años_herreria_personalizados_66.jpg",
       title: "Centro de Mesa Boda 66",
       href: "/aparador",
+      static: "/static/home/img",
     },
   ];
 
@@ -61,46 +73,55 @@
       src: "Invitacion_personalizada_15_años_boda_Bautizo_lasser_62.jpg",
       title: "Invitaciones de Boda",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_15_años_boda_Bautizo_lasser_63.jpg",
       title: "Invitaciones de XV Años",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_15_años_boda_Bautizo_lasser_64.jpg",
       title: "Invitaciones de Corporativas",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_15_años_boda_Bautizo_lasser_65.jpg",
       title: "Invitaciones Bautizo",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_15_años_boda_Bautizo_lasser_66.jpg",
       title: "Invitaciones Baby Shower",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_15_años_boda_Bautizo_lasser_67.jpg",
       title: "Etiquetas",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_15_años_boda_Bautizo_lasser_68.jpg",
       title: "Cajas personalizadas",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_Bautizo_3.jpg",
       title: "Complementos",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Invitacion_personalizada_Boda_7.jpg",
       title: "Invitaciones Infantiles",
       href: "/aparador",
+      static: "/static/home/img",
     },
   ];
 
@@ -109,46 +130,55 @@
       src: "toldo_tela_rotulacion_en-tela_estructuras_Herreria.jpg",
       title: "Estructuras y Toldos",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "toldos_abatibles_tela_estructura_aluminio.jpg",
       title: "Papelería",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "toldos_de_tela_toldo_estructuras.jpg",
       title: "Lonas pequeño y Gran formato",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "toldos_pcv_estructuras_instalacion_herreria.jpg",
       title: "Viniles",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "toldos_sombrillas_cortinas_telas_umbrella.jpg",
       title: "señalización",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "vinil_estatico_para_vidrio.jpg",
       title: "Neon Flexible y Cajas de Luz",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Vinil_rotulacion_Gran_formato_instalacion.jpg",
       title: "Proyectos",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "Vinil_rotulacion_instalacio.jpg",
       title: "Vinil ",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "viniles_rotulacion_vinil_gran_formato.jpg",
       title: "Viniles Rotulación",
       href: "/aparador",
+      static: "/static/home/img",
     },
   ];
 
@@ -157,46 +187,55 @@
       src: "1000002619.jpg",
       title: "Vela 2619",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002633.jpg",
       title: "Vela 2633",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002671.jpg",
       title: "Vela 2671",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002731.jpg",
       title: "Vela 2731",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002771.jpg",
       title: "Vela 2771",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002842.jpg",
       title: "Vela 2842",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002887.jpg",
       title: "Vela 2887",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002913.jpg",
       title: "Vela 2913",
       href: "/aparador",
+      static: "/static/home/img",
     },
     {
       src: "1000002914.jpg",
       title: "Vela 2914",
       href: "/aparador",
+      static: "/static/home/img",
     },
   ];
 
@@ -219,7 +258,7 @@
       // Se construye la ruta completa; si el src ya contiene "/", se usa tal cual
       const rutaCompleta = archivo.src.includes("/")
         ? archivo.src
-        : "img/" + context + "/" + archivo.src;
+        : archivo.static + "/" + context + "/" + archivo.src;
 
       const html = `
       <div class="single-item col-6 col-lg-4 ${context}">

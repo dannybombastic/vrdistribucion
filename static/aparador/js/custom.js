@@ -74,8 +74,8 @@
       // (por ejemplo, podría ser "assets/images/" + archivo)
       const rutaCompleta = archivo.includes("/")
         ? archivo
-        : "img/" + context + "/" + archivo;
-      
+        : "/static/aparador/img/" + context + "/" + archivo;
+
       const html = `
             <div class="grid-item">
             <figure class="effect-sadie">

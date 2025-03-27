@@ -25,4 +25,13 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+
+    <url>
+        <loc>https://vrdistribucion.com/cookie-consent/</loc>
+        <lastmod>2025-03-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
 </urlset>
