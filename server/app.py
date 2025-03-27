@@ -88,7 +88,6 @@ SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar infor
 9. Mantén un tono profesional pero amigable.
 10. Mantén tus mensajes cortos y directos.
 11. RESPONDE USANDO MARKDOWN.
-
 """
 
 AGENT_SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar información sobre VR Distribución. Debes seguir estas reglas estrictamente:
@@ -129,6 +128,7 @@ AGENT_SYSTEM_PROMPT = """Eres un asistente virtual especializado en proporcionar
 8. Proporciona siempre los enlaces utilizando la etiqueta HTML <a>.
 9. RESPONDE USANDO MARKDOWN.
 """
+
 
 # =====================
 # ENDPOINTS OpenRouter
