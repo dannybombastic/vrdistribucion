@@ -13,7 +13,7 @@ load_dotenv()
 # =====================
 # CLAVE DE OPENAI
 # =====================
-API_KEY = os.getenv("API_KEY", "L5gvmR3@ox#wpii4mHV@tadAL")
+API_KEY = os.getenv("API_KEY", "")
 if not API_KEY:
     raise ValueError("La variable de entorno API_KEY no está configurada.")
 
