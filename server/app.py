@@ -13,13 +13,13 @@ load_dotenv()
 # =====================
 # CLAVE DE OPENAI
 # =====================
-API_KEY = os.getenv("API_KEY", "")
-if not API_KEY:
-    raise ValueError("La variable de entorno API_KEY no está configurada.")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("La variable de entorno OPENAI_API_KEY no está configurada.")
 
-MARKETING_API_URL= "https://durbanod.com/webhook/f0269ef0-2bde-400e-a4e7-2d22cd98483b"
+MARKETING_API_URL= "https://api.openai.com/v1/chat/completions"
 
-VRDITRIBUCION_API_URL= "https://durbanod.com/webhook/f0269ef0-2bde-400e-a4e7-2d22cd984855"
+VRDITRIBUCION_API_URL= "https://api.openai.com/v1/chat/completions"
 
 # =====================
 # CLAVE DE OPENROUTER
@@ -27,7 +27,7 @@ VRDITRIBUCION_API_URL= "https://durbanod.com/webhook/f0269ef0-2bde-400e-a4e7-2d2
 
 HTTP_REFERRER = "https://vrdistribucion.com"
 X_TITLE = "VR Distribución Asistente IA"
-MODEL = "mistralai/mistral-small-3.1-24b-instruct:free"
+MODEL = "gpt-3.5-turbo" # Puedes cambiar el modelo aquí
 
 app = FastAPI()
 
@@ -150,7 +150,7 @@ async def chat(request: Request):
             response = requests.post(
                 url=VRDITRIBUCION_API_URL,
                 headers={
-                    'CONSEC': f'{API_KEY}',
+                    "Authorization": f"Bearer {OPENAI_API_KEY}",
                     'Content-Type': 'application/json',
                     'HTTP_REFERRER': f'{HTTP_REFERRER}',
                     'X_TITLE': f'{X_TITLE}',
@@ -219,7 +219,7 @@ async def chat_ia(request: Request):
             response = requests.post(
                 url=MARKETING_API_URL,
                 headers={
-                    'CONSEC': f'{API_KEY}',
+                    "Authorization": f"Bearer {OPENAI_API_KEY}",
                     'Content-Type': 'application/json',
                     'HTTP_REFERRER': f'{HTTP_REFERRER}',
                     'X_TITLE': f'{X_TITLE}',
@@ -298,7 +298,7 @@ async def chat_openai(request: Request):
             response = requests.post(
                 url=VRDITRIBUCION_API_URL,
                 headers={
-                    "CONSEC": f"{API_KEY}",
+                    "Authorization": f"Bearer {OPENAI_API_KEY}",
                     "Content-Type": "application/json",
                     'HTTP_REFERRER': f'{HTTP_REFERRER}',
                     'X_TITLE': f'{X_TITLE}',
@@ -368,7 +368,7 @@ async def chat_ia_openai(request: Request):
             response = requests.post(
                 url=MARKETING_API_URL,
                 headers={
-                    "CONSEC": f"{API_KEY}",
+                    "Authorization": f"Bearer {OPENAI_API_KEY}",
                     "Content-Type": "application/json",
                     'HTTP_REFERRER': f'{HTTP_REFERRER}',
                     'X_TITLE': f'{X_TITLE}',
