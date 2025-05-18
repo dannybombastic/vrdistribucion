@@ -404,7 +404,7 @@ async def chat_ia_openai(request: Request):
 
             print(f"User: {user_message}")
             print(f"Assistant (OpenAI): {assistant_message}")
-
+            conversation_history.append({"role": "assistant", "content": assistant_message})
             return JSONResponse(content={"response": assistant_message})
 
         except requests.exceptions.Timeout:
