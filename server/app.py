@@ -151,9 +151,7 @@ async def chat(request: Request):
                 url=VRDITRIBUCION_API_URL,
                 headers={
                     "Authorization": f"Bearer {OPENAI_API_KEY}",
-                    'Content-Type': 'application/json',
-                    'HTTP_REFERRER': f'{HTTP_REFERRER}',
-                    'X_TITLE': f'{X_TITLE}',
+                    'Content-Type': 'application/json'
                 },
                 json={
                     'model': MODEL,
@@ -220,9 +218,7 @@ async def chat_ia(request: Request):
                 url=MARKETING_API_URL,
                 headers={
                     "Authorization": f"Bearer {OPENAI_API_KEY}",
-                    'Content-Type': 'application/json',
-                    'HTTP_REFERRER': f'{HTTP_REFERRER}',
-                    'X_TITLE': f'{X_TITLE}',
+                    'Content-Type': 'application/json'
                 },
                 json={
                     'model': MODEL,
@@ -299,16 +295,17 @@ async def chat_openai(request: Request):
                 url=VRDITRIBUCION_API_URL,
                 headers={
                     "Authorization": f"Bearer {OPENAI_API_KEY}",
-                    "Content-Type": "application/json",
-                    'HTTP_REFERRER': f'{HTTP_REFERRER}',
-                    'X_TITLE': f'{X_TITLE}',
+                    'Content-Type': 'application/json'
                 },
                 json={
-                    "model": OPENAI_MODEL,
-                    "chatInput": user_message,
-                    "max_tokens": 950,
-                    "temperature": 0.7,
-                    "stream": False
+                    'model': MODEL,
+                        'messages': [
+                            {"role": "system", "content": SYSTEM_PROMPT},
+                            {"role": "user", "content": user_message}
+                        ],
+                        'max_tokens': 950,
+                        'temperature': 0.7,
+                        'stream': False
                 },
                 timeout=30
             )
@@ -374,11 +371,14 @@ async def chat_ia_openai(request: Request):
                     'X_TITLE': f'{X_TITLE}',
                 },
                 json={
-                    "model": OPENAI_MODEL,
-                    "chatInput": user_message,
-                    "max_tokens": 950,
-                    "temperature": 0.7,
-                    "stream": False
+                    'model': MODEL,
+                        'messages': [
+                            {"role": "system", "content": SYSTEM_PROMPT},
+                            {"role": "user", "content": user_message}
+                        ],
+                        'max_tokens': 950,
+                        'temperature': 0.7,
+                        'stream': False
                 },
                 timeout=30
             )
