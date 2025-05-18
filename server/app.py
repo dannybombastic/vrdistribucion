@@ -289,30 +289,37 @@ async def chat_openai(request: Request):
                 content={"error": "El mensaje no puede estar vacío"}
             )
 
+        conversation_history = data.get('conversation_history', [])
+
+        # Construimos los mensajes
+        messages = [
+            {"role": "system", "content": SYSTEM_PROMPT}
+        ]
+        if conversation_history:
+            messages.extend(conversation_history)
+        messages.append({"role": "user", "content": user_message})
+
         try:
             # Llamada a la API oficial de OpenAI
             response = requests.post(
-                url=VRDITRIBUCION_API_URL,
+                url="https://api.openai.com/v1/chat/completions",
                 headers={
                     "Authorization": f"Bearer {OPENAI_API_KEY}",
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
                 json={
-                    'model': MODEL,
-                        'messages': [
-                            {"role": "system", "content": SYSTEM_PROMPT},
-                            {"role": "user", "content": user_message}
-                        ],
-                        'max_tokens': 950,
-                        'temperature': 0.7,
-                        'stream': False
+                    "model": OPENAI_MODEL,
+                    "messages": messages,
+                    "max_tokens": 950,
+                    "temperature": 0.7,
+                    "stream": False
                 },
                 timeout=30
             )
             response.raise_for_status()
 
             response_data = response.json()
-            assistant_message = response_data.get('output', '')
+            assistant_message = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
             if not assistant_message:
                 raise ValueError("No se recibió respuesta de la API de OpenAI")
 
@@ -360,32 +367,38 @@ async def chat_ia_openai(request: Request):
                 status_code=400,
                 content={"error": "El mensaje no puede estar vacío"}
             )
+
+        conversation_history = data.get('conversation_history', [])
+
+        # Construimos los mensajes
+        messages = [
+            {"role": "system", "content": AGENT_SYSTEM_PROMPT}
+        ]
+        if conversation_history:
+            messages.extend(conversation_history)
+        messages.append({"role": "user", "content": user_message})
+
         try:
             # Llamada a la API oficial de OpenAI
             response = requests.post(
-                url=MARKETING_API_URL,
+                url="https://api.openai.com/v1/chat/completions",
                 headers={
                     "Authorization": f"Bearer {OPENAI_API_KEY}",
-                    "Content-Type": "application/json",
-                    'HTTP_REFERRER': f'{HTTP_REFERRER}',
-                    'X_TITLE': f'{X_TITLE}',
+                    "Content-Type": "application/json"
                 },
                 json={
-                    'model': MODEL,
-                        'messages': [
-                            {"role": "system", "content": SYSTEM_PROMPT},
-                            {"role": "user", "content": user_message}
-                        ],
-                        'max_tokens': 950,
-                        'temperature': 0.7,
-                        'stream': False
+                    "model": OPENAI_MODEL,
+                    "messages": messages,
+                    "max_tokens": 950,
+                    "temperature": 0.7,
+                    "stream": False
                 },
                 timeout=30
             )
             response.raise_for_status()
 
             response_data = response.json()
-            assistant_message = response_data.get('output', '')
+            assistant_message = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
             if not assistant_message:
                 raise ValueError("No se recibió respuesta de la API de OpenAI")
 
@@ -421,6 +434,7 @@ async def chat_ia_openai(request: Request):
             status_code=500,
             content={"error": "Error interno del servidor"}
         )
+
 
 
 if __name__ == "__main__":
