@@ -34,7 +34,7 @@ jobs:
             chmod 600 ~/.ssh/deploy_key
 
       - name: Publish
-        uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.5
+        uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
         with:
             host: ${{ secrets.REMOTE_HOST }} # "example.com"
             port: 22 # 22
