@@ -7,14 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const sendBtn = document.getElementById('send-btn');
     const chatMessages = document.getElementById('chat-messages');
     const prod = "https://vrdistribucion.com/api/marketing/chat/openai"
+    const prodwww = "https://www.vrdistribucion.com/api/marketing/chat/openai"
     const dev = "http://localhost:8000/api/marketing/chat/openai"
     let apiUrl;
-    if (window.location.hostname != "vrdistribucion.com" ) {
-        apiUrl = dev;
-    } else {
-        console.log("production");
+    if (window.location.hostname === "vrdistribucion.com" ) {
         apiUrl = prod;
+    } 
+    else if (window.location.hostname === "www.vrdistribucion.com" ) {
+        apiUrl = prodwww;
     }
+    else {
+        console.log("production");
+        apiUrl = dev;
+    }
+
 
     // Initialize conversation history
     let conversationHistory = [];

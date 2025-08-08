@@ -37,11 +37,12 @@ if os.getenv('ENV') == 'development':
     cors_origins = [
         "http://127.0.0.1:8000",
         "https://vrdistribucion.com",
+        "https://www.vrdistribucion.com",
         "*"
     ]
 else:
     print("production")
-    cors_origins = ["https://vrdistribucion.com"]
+    cors_origins = ["https://vrdistribucion.com", "https://www.vrdistribucion.com"]
 
 app.add_middleware(
     CORSMiddleware,
