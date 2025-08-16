@@ -197,6 +197,27 @@
     <link rel="stylesheet" href="/static/cookie-consent/cookie-consent.css" />
   </noscript>
 
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net;
+    script-src-elem 'self' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net;
+    script-src-attr 'unsafe-inline';
+    style-src  'self' 'unsafe-inline' https://fonts.googleapis.com;
+    style-src-elem 'self' https://fonts.googleapis.com;
+    style-src-attr 'unsafe-inline';
+    img-src    'self' data: https:;
+    font-src   'self' https://fonts.gstatic.com;
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
+    frame-src  https://www.youtube.com https://www.youtube-nocookie.com;
+    child-src  https://www.youtube.com https://www.youtube-nocookie.com;
+    frame-ancestors 'self';
+    media-src  'self';
+    object-src 'none';
+    base-uri   'self';
+    form-action 'self';
+    upgrade-insecure-requests;
+    block-all-mixed-content
+  ">
 
 </head>
 
@@ -285,20 +306,24 @@
       <div class="fixed-block block-right">
         <ul class="list-unstyled social-icons">
           <li>
-            <a href="https://www.instagram.com/vrcancunonline?igsh=MTFrcjdybGsyNzV4aw==" target="_blank"><i
-                class="icon ion-logo-instagram"></i></a>
+            <a href="https://www.instagram.com/vrcancunonline?igsh=MTFrcjdybGsyNzV4aw==" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de VR Distribución" title="Instagram">
+              <i class="icon ion-logo-instagram" aria-hidden="true"></i>
+            </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/share/15oBN2xkPS/?mibextid=wwXIfr" target="_blank"><i
-                class="icon ion-logo-facebook"></i></a>
+            <a href="https://www.facebook.com/share/15oBN2xkPS/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Abrir Facebook de VR Distribución" title="Facebook">
+              <i class="icon ion-logo-facebook" aria-hidden="true"></i>
+            </a>
           </li>
           <li>
-            <a href="#0"><i class="icon ion-logo-linkedin"></i></a>
+            <a href="#0" aria-label="Perfil de LinkedIn (no disponible)" title="LinkedIn">
+              <i class="icon ion-logo-linkedin" aria-hidden="true"></i>
+            </a>
           </li>
           <li>
             <a href="https://wa.me/5219982361177?text=Hola%2C%20estoy%20interesado%20en%20tus%20servicios"
-              target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-              <i class="icon ion-logo-whatsapp"></i>
+              target="_blank" rel="noopener noreferrer" aria-label="Enviar mensaje por WhatsApp" title="WhatsApp" style="text-decoration: none; color: inherit;">
+              <i class="icon ion-logo-whatsapp" aria-hidden="true"></i>
             </a>
           </li>
         </ul>
@@ -391,18 +416,16 @@
                     <div class="d-block d-sm-flex align-items-center">
                       <ul class="list-unstyled list-inline content-follow">
                         <li class="list-inline-item">
-                          <a href="#0"><i class="icon ion-logo-twitter"></i></a>
+                          <a href="#0" aria-label="Abrir Twitter de VR Distribución" title="Twitter"><i class="icon ion-logo-twitter" aria-hidden="true"></i></a>
                         </li>
                         <li class="list-inline-item">
-                          <a href="https://www.instagram.com/vrcancunonline?igsh=MTFrcjdybGsyNzV4aw=="
-                            target="_blank"><i class="icon ion-logo-instagram"></i></a>
+                          <a href="https://www.instagram.com/vrcancunonline?igsh=MTFrcjdybGsyNzV4aw==" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de VR Distribución" title="Instagram"><i class="icon ion-logo-instagram" aria-hidden="true"></i></a>
                         </li>
                         <li class="list-inline-item">
-                          <a href="#0"><i class="icon ion-logo-linkedin"></i></a>
+                          <a href="#0" aria-label="Perfil de LinkedIn (no disponible)" title="LinkedIn"><i class="icon ion-logo-linkedin" aria-hidden="true"></i></a>
                         </li>
                         <li class="list-inline-item">
-                          <a href="https://www.facebook.com/share/15oBN2xkPS/?mibextid=wwXIfr" target="_blank"><i
-                              class="icon ion-logo-facebook"></i></a>
+                          <a href="https://www.facebook.com/share/15oBN2xkPS/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Abrir Facebook de VR Distribución" title="Facebook"><i class="icon ion-logo-facebook" aria-hidden="true"></i></a>
                         </li>
                       </ul>
                     </div>
@@ -950,10 +973,10 @@
                   </p>
                 </div>
                 <div class="col-12 col-lg-6 video-part">
-                  <a class="media-lightbox" href="https://www.youtube.com/watch?v=doteMqP6eSc" data-lightbox>
+                  <a class="media-lightbox" href="https://www.youtube.com/watch?v=doteMqP6eSc" data-lightbox aria-label="Ver video del taller en YouTube" title="Ver video del taller en YouTube">
                     <div class="embed-responsive embed-responsive-16by9">
                       <div class="embed-responsive-item element-cover-bg">
-                        <span class="play-wrapper"><i class="icon ion-md-play"></i></span>
+                        <span class="play-wrapper"><i class="icon ion-md-play" aria-hidden="true"></i></span>
                       </div>
                     </div>
                   </a>
@@ -1375,12 +1398,12 @@
   <!-- Chat Widget -->
   <div id="chat-container" class="chat-container collapsed">
     <div class="chat-header">
-      <button id="close-btn" class="control-btn">
+      <button id="close-btn" class="control-btn" aria-label="Cerrar chat" title="Cerrar chat">
         <i class="icon ion-md-close"></i>
       </button>
       <span class="chat-title">VR Distribución</span>
       <div class="chat-controls">
-        <button id="minimize-btn" class="control-btn">
+        <button id="minimize-btn" class="control-btn" aria-label="Minimizar chat" title="Minimizar chat">
           <i class="icon ion-md-remove"></i>
         </button>
 
@@ -1402,13 +1425,46 @@
     </div>
   </div>
 
-  <button id="chat-toggle" class="chat-toggle">
+  <button id="chat-toggle" class="chat-toggle" aria-label="Abrir chat" title="Abrir chat">
     <ion-icon name="chatbubbles-outline"></ion-icon>
     <!--  need a whatsapp a big icon -->
     <i class="icon ion-logo-whatsapp"></i>
   </button>
   <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
   <script src="/static/home/js/chat.js"></script>
+  <!-- Add aria-labels to dynamically injected portfolio items -->
+  <script>
+    (function () {
+      function toLabelFromHref(href) {
+        try {
+          var pathname = new URL(href, location.href).pathname;
+          var base = pathname.split('/').pop() || '';
+          base = decodeURIComponent(base).replace(/\.[a-z0-9]+$/i, '').replace(/[_-]+/g, ' ').trim();
+          return base ? ('Ver imagen ampliada: ' + base) : null;
+        } catch (e) { return null; }
+      }
+      function enhancePortfolioItems() {
+        document.querySelectorAll('#productos a.portfolio-item').forEach(function (a) {
+          if (!a.getAttribute('aria-label')) {
+            var img = a.querySelector('img');
+            var label = img && img.alt ? ('Ver imagen ampliada: ' + img.alt) : toLabelFromHref(a.getAttribute('href') || '');
+            if (label) a.setAttribute('aria-label', label);
+          }
+          if (a.target === '_blank') {
+            var rel = (a.getAttribute('rel') || '').split(' ').filter(Boolean);
+            ['noopener', 'noreferrer'].forEach(function (r) { if (!rel.includes(r)) rel.push(r); });
+            a.setAttribute('rel', rel.join(' '));
+          }
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', enhancePortfolioItems);
+      } else {
+        enhancePortfolioItems();
+      }
+      window.addEventListener('load', enhancePortfolioItems);
+    })();
+  </script>
 
   <!-- Additional Schema for Local SEO -->
   <script type="application/ld+json">

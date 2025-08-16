@@ -470,3 +470,11 @@ div .resume-section .resume-item .resume-item  {
         transform: translateX(-50%) scale(1.1);
     }
 }
+
+/* Ensure consistent h1 size inside sectioning elements */
+article h1,
+aside h1,
+nav h1,
+section h1 {
+  font-size: 2em;
+}
