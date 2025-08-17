@@ -157,6 +157,7 @@ async def chat(request: Request):
                 headers={
                     "Authorization": f"Bearer {X_TOKEN}",
                     'Content-Type': 'application/json',
+                    'X-Token': X_TOKEN
                 },
                 json={
                     'chatInput': user_message,
@@ -225,6 +226,7 @@ async def chat_ia(request: Request):
                 headers={
                     "Authorization": f"Bearer {X_TOKEN}",
                     'Content-Type': 'application/json',
+                    'X-Token': X_TOKEN
                 },
                 json={
                     'chatInput': user_message,
