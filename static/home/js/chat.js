@@ -9,13 +9,12 @@ function generateUUID() {
 }
 
 
-// function that get the local time of the user
+// function that get the local time of the user also add the day of the week and format it
 function getLocalTime() {
     const now = new Date();
-    return now.toLocaleString();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+    return now.toLocaleString('es-MX', options);
 }
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const chatContainer = document.getElementById('chat-container');
     const chatToggle = document.getElementById('chat-toggle');
