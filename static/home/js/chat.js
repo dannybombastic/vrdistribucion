@@ -1,4 +1,12 @@
 
+// generate uuid for sesion id
+function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const chatContainer = document.getElementById('chat-container');
@@ -79,7 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     body: JSON.stringify({
                         message: message,
-                        conversation_history: conversationHistory
+                        conversation_history: conversationHistory,
+                        sessionId: generateUUID()
                     })
                 });
 
