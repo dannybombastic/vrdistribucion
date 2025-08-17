@@ -1,3 +1,4 @@
+import uuid
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -162,6 +163,7 @@ async def chat(request: Request):
                     'max_tokens': 950,
                     'temperature': 0.7,
                     'stream': False
+                    "sessionId": str(uuid.uuid4())
                 },
                 timeout=30
             )
@@ -228,7 +230,8 @@ async def chat_ia(request: Request):
                     'chatInput': user_message,
                     'max_tokens': 950,
                     'temperature': 0.7,
-                    'stream': False
+                    'stream': False,
+                    "sessionId": str(uuid.uuid4())
                 },
                 timeout=30
             )
