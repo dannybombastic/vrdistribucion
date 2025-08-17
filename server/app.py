@@ -14,12 +14,13 @@ load_dotenv()
 # CLAVE DE OPENAI
 # =====================
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+X_TOKEN = os.getenv("X_TOKEN")
 if not OPENAI_API_KEY:
     raise ValueError("La variable de entorno OPENAI_API_KEY no está configurada.")
 
-MARKETING_API_URL= "https://api.openai.com/v1/chat/completions"
+MARKETING_API_URL= "https://dannybombastic.app.n8n.cloud/webhook/7048eeb4-986e-4ff2-bc1c-013222bc477f"
 
-VRDITRIBUCION_API_URL= "https://api.openai.com/v1/chat/completions"
+VRDITRIBUCION_API_URL= "https://dannybombastic.app.n8n.cloud/webhook/7048eeb4-986e-4ff2-bc1c-013222bc477f"
 
 # =====================
 # CLAVE DE OPENROUTER
@@ -38,11 +39,12 @@ if os.getenv('ENV') == 'development':
         "http://127.0.0.1:8000",
         "https://vrdistribucion.com",
         "https://www.vrdistribucion.com",
+        "https://dannybombastic.app.n8n.cloud/"
         "*"
     ]
 else:
     print("production")
-    cors_origins = ["https://vrdistribucion.com", "https://www.vrdistribucion.com"]
+    cors_origins = ["https://vrdistribucion.com", "https://www.vrdistribucion.com", "https://dannybombastic.app.n8n.cloud"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -152,10 +154,10 @@ async def chat(request: Request):
                 url=VRDITRIBUCION_API_URL,
                 headers={
                     "Authorization": f"Bearer {OPENAI_API_KEY}",
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Token': X_TOKEN
                 },
                 json={
-                    'model': MODEL,
                     'chatInput': user_message,
                     'max_tokens': 950,
                     'temperature': 0.7,
@@ -219,10 +221,10 @@ async def chat_ia(request: Request):
                 url=MARKETING_API_URL,
                 headers={
                     "Authorization": f"Bearer {OPENAI_API_KEY}",
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Token': X_TOKEN
                 },
                 json={
-                    'model': MODEL,
                     'chatInput': user_message,
                     'max_tokens': 950,
                     'temperature': 0.7,
