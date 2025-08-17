@@ -6,6 +6,12 @@ function generateUUID() {
     });
 }
 
+// function that get the local time of the user
+function getLocalTime() {
+    const now = new Date();
+    return now.toLocaleString();
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const chatContainer = document.getElementById('chat-container');
@@ -92,7 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify({
                         message: message,
                         conversation_history: conversationHistory,
-                        sessionId: generateUUID()
+                        sessionId: generateUUID(),
+                        timestamp: getLocalTime()
                     })
                 });
 
