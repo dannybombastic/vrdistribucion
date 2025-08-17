@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const chatMessages = document.getElementById('chat-messages');
-    const prod = "https://vrdistribucion.com/api/marketing/chat/openai"
-    const prodwww = "https://www.vrdistribucion.com/api/marketing/chat/openai"
+    const prod = "https://vrdistribucion.com/api/marketing/chat"
+    const prodwww = "https://www.vrdistribucion.com/api/marketing/chat"
     const dev = "http://localhost:8000/api/marketing/chat/openai"
     let apiUrl;
     if (window.location.hostname === "vrdistribucion.com" ) {
