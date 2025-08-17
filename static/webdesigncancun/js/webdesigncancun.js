@@ -4,6 +4,7 @@ function generateUUID() {
             v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
+}
 // function that get the local time of the user also add the day of the week and format it
 function getLocalTime() {
     const now = new Date();
