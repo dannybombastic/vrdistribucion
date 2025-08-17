@@ -144,6 +144,7 @@ async def chat(request: Request):
     try:
         data = await request.json()
         user_message = data.get('message', '').strip()
+        uuid = data.get('sessionId', '').strip()
         if not user_message:
             return JSONResponse(
                 status_code=400,
@@ -162,8 +163,8 @@ async def chat(request: Request):
                     'chatInput': user_message,
                     'max_tokens': 950,
                     'temperature': 0.7,
-                    'stream': False
-                    "sessionId": str(uuid.uuid4())
+                    'stream': False,
+                    "sessionId": uuid
                 },
                 timeout=30
             )
@@ -231,7 +232,7 @@ async def chat_ia(request: Request):
                     'max_tokens': 950,
                     'temperature': 0.7,
                     'stream': False,
-                    "sessionId": str(uuid.uuid4())
+                    "sessionId": uuid
                 },
                 timeout=30
             )
