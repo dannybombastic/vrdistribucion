@@ -153,7 +153,7 @@ async def chat(request: Request):
             response = requests.post(
                 url=VRDITRIBUCION_API_URL,
                 headers={
-                    "Authorization": f"Bearer {OPENAI_API_KEY}",
+                    "Authorization": f"Bearer {X_TOKEN}",
                     'Content-Type': 'application/json',
                     'X-Token': X_TOKEN
                 },
@@ -220,7 +220,7 @@ async def chat_ia(request: Request):
             response = requests.post(
                 url=MARKETING_API_URL,
                 headers={
-                    "Authorization": f"Bearer {OPENAI_API_KEY}",
+                    "Authorization": f"Bearer {X_TOKEN}",
                     'Content-Type': 'application/json',
                     'X-Token': X_TOKEN
                 },
