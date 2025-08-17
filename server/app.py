@@ -157,7 +157,6 @@ async def chat(request: Request):
                 headers={
                     "Authorization": f"Bearer {X_TOKEN}",
                     'Content-Type': 'application/json',
-                    'X-Token': X_TOKEN
                 },
                 json={
                     'chatInput': user_message,
@@ -214,6 +213,7 @@ async def chat_ia(request: Request):
     try:
         data = await request.json()
         user_message = data.get('message', '').strip()
+        uuid = data.get('sessionId', '').strip()
         if not user_message:
             return JSONResponse(
                 status_code=400,
@@ -225,7 +225,6 @@ async def chat_ia(request: Request):
                 headers={
                     "Authorization": f"Bearer {X_TOKEN}",
                     'Content-Type': 'application/json',
-                    'X-Token': X_TOKEN
                 },
                 json={
                     'chatInput': user_message,
