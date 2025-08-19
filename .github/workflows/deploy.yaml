@@ -42,7 +42,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSS3AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSS3SAK }}
           SOURCE_DIR: ./vrdistribucion/static
-          DEST_DIR: AWS_S3_BUCKET/vrdistribucion
+          DEST_DIR: vrdistribucion
 
 
 
