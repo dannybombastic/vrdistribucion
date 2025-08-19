@@ -33,6 +33,19 @@ jobs:
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key &&
             chmod 600 ~/.ssh/deploy_key
 
+## add upload files to s3 bucket the content of the folder static
+
+      - name: Upload static files to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWSS3AK }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSS3SAK }}
+          SOURCE_DIR: ./vrdistribucion/static
+          DEST_DIR: s3://$AWS_S3_BUCKET
+
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
         with:
