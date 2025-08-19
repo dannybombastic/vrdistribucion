@@ -22,6 +22,8 @@ jobs:
         uses: actions/checkout@v2
       - name: copy into folder dependencies
         run: |
+            mkdir -p ~/vrdistribucion
+            cp -R ${{ github.workspace }}/* ~/vrdistribucion
             ls -la ${{ github.workspace }}
             echo $PWD
             cd ${{ github.workspace }}
@@ -40,7 +42,7 @@ jobs:
 
       - name: Remove unnecessary files
         run: |
-          rm -rf ${{ github.workspace }}/static
+          rm -rf ~/vrdistribucion/static
 
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
@@ -53,8 +55,8 @@ jobs:
             first_ssh: |
               rm -rf /var/www/html/vrdistribucion/*
             scp: |
-                "${{ github.workspace }}/*" => /var/www/html/vrdistribucion
-                "${{ github.workspace }}/server/*" => /home/ubuntu/server/
+                "~/vrdistribucion/*" => /var/www/html/vrdistribucion
+                "~/vrdistribucion/server/*" => /home/ubuntu/server/
             last_ssh: |
               sudo systemctl stop app
               sudo -u ubuntu chmod -R 774 /var/www/html/vrdistribucion/ ; sudo -u ubuntu chown -R ubuntu: /var/www/html/vrdistribucion
