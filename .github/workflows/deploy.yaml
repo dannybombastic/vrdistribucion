@@ -33,6 +33,7 @@ jobs:
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key &&
             chmod 600 ~/.ssh/deploy_key
 
+
       - name: Upload static files to S3
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -43,7 +44,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSS3SAK }}
           SOURCE_DIR: ./vrdistribucion/static
           DEST_DIR: vrdistribucion
-
 
 
       - name: Publish
