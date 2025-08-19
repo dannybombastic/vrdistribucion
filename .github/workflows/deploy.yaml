@@ -16,7 +16,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: vrdistribucion
+    environment: vrditribucion
     steps:
       - name: Checkout
         uses: actions/checkout@v2
