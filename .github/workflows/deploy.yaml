@@ -40,9 +40,9 @@ jobs:
           SOURCE_DIR: ${{ github.workspace }}/static
           DEST_DIR: vrdistribucion
 
-      - name: Remove unnecessary files
-        run: |
-          rm -rf ~/vrdistribucion/static
+      # - name: Remove unnecessary files
+      #   run: |
+      #     rm -rf ~/vrdistribucion/static
 
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
@@ -55,8 +55,8 @@ jobs:
             first_ssh: |
               rm -rf /var/www/html/vrdistribucion/*
             scp: |
-                "~/vrdistribucion/*" => /var/www/html/vrdistribucion
-                "~/vrdistribucion/server/*" => /home/ubuntu/server/
+                "vrdistribucion/*" => /var/www/html/vrdistribucion
+                "vrdistribucion/server/*" => /home/ubuntu/server/
             last_ssh: |
               sudo systemctl stop app
               sudo -u ubuntu chmod -R 774 /var/www/html/vrdistribucion/ ; sudo -u ubuntu chown -R ubuntu: /var/www/html/vrdistribucion
