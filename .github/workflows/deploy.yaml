@@ -24,14 +24,6 @@ jobs:
         run: |
             ls -la ${{ github.workspace }}
 
-      - name: Prepare SSH to work with the remote server
-        run: |
-            cd ~ && mkdir -p .ssh
-            touch ~/.ssh/known_hosts
-            echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-            chmod 600 ~/.ssh/deploy_key
-            ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-
       - name: Upload static files to S3
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -40,12 +32,12 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSS3AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSS3SAK }}
-          SOURCE_DIR: ${{ github.workspace }}/vrdistribucion/static
+          SOURCE_DIR: ${{ github.workspace }}/static
           DEST_DIR: vrdistribucion
 
       - name: Remove unnecessary files
         run: |
-          rm -rf ${{ github.workspace }}/vrdistribucion/static
+          rm -rf ${{ github.workspace }}/static
 
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
@@ -58,8 +50,8 @@ jobs:
             first_ssh: |
               rm -rf /var/www/html/vrdistribucion/*
             scp: |
-                "${{ github.workspace }}/vrdistribucion/*" => /var/www/html/vrdistribucion
-                "${{ github.workspace }}/vrdistribucion/server/*" => /home/ubuntu/server/
+                "${{ github.workspace }}/*" => /var/www/html/vrdistribucion
+                "${{ github.workspace }}/server/*" => /home/ubuntu/server/
             last_ssh: |
               sudo systemctl stop app
               cp -r /var/www/html/vrdistribucion/errorpage/* /var/www/html/errorpage
