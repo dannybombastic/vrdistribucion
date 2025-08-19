@@ -24,7 +24,6 @@ jobs:
             cp -r * ~/vrdistribucion 
             mv ~/vrdistribucion . 
             ls -la
-            ls -la ~/vrdistribucion/
 
       - name: Prepare SSH to work with the remote server
         run: |
