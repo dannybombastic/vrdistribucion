@@ -40,9 +40,10 @@ jobs:
           SOURCE_DIR: ${{ github.workspace }}/static
           DEST_DIR: vrdistribucion
 
-      # - name: Remove unnecessary files
-      #   run: |
-      #     rm -rf ~/vrdistribucion/static
+      - name: Remove unnecessary files
+        run: |
+          rm -rf ~/vrdistribucion/static
+          ls -la ~/vrdistribucion
 
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
