@@ -34,7 +34,6 @@ jobs:
             chmod 600 ~/.ssh/deploy_key
 
 
-
       - name: Upload static files to S3
         uses: jakejarvis/s3-sync-action@master
         with:
