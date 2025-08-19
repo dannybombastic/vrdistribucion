@@ -24,7 +24,7 @@ jobs:
         run: |
             mkdir -p ~/vrdistribucion
             cp -R ${{ github.workspace }}/* ~/vrdistribucion
-            ls -la ${{ github.workspace }}
+            ls -la ~/vrdistribucion
             echo $PWD
             cd ${{ github.workspace }}
             ls -la
