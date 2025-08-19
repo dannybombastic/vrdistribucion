@@ -21,9 +21,6 @@ jobs:
       - name: copy into folder dependencies
         working-directory: ${{ github.workspace }}/vrdistribucion
         run: |
-            mkdir ~/vrdistribucion 
-            cp -r * ~/vrdistribucion 
-            mv ~/vrdistribucion . 
             ls -la ${{ github.workspace }}/vrdistribucion
 
       - name: Prepare SSH to work with the remote server
@@ -42,7 +39,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSS3AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSS3SAK }}
-          SOURCE_DIR: ./vrdistribucion/static
+          SOURCE_DIR: ${{ github.workspace }}/vrdistribucion/static
           DEST_DIR: vrdistribucion
 
       - name: Remove unnecessary files
