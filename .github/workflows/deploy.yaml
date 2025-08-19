@@ -22,9 +22,6 @@ jobs:
         uses: actions/checkout@v2
       - name: copy into folder dependencies
         run: |
-            mkdir -p ~/vrdistribucion
-            cp -R ${{ github.workspace }}/* ~/vrdistribucion
-            ls -la ~/vrdistribucion
             echo $PWD
             cd ${{ github.workspace }}
             ls -la
@@ -42,8 +39,8 @@ jobs:
 
       - name: Remove unnecessary files
         run: |
-          rm -rf ~/vrdistribucion/static
-          ls -la ~/vrdistribucion
+          rm -rf ${{ github.workspace }}/static
+          ls -la ${{ github.workspace }}
 
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
