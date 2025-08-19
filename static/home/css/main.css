@@ -1278,7 +1278,7 @@ hr {
   margin-bottom: 0;
 }
 .video-section .video-part .embed-responsive-item {
-  background-image: url(https://vrdistribucion.s3.eu-west-3.amazonaws.com/vrdistribucion/home/img/video.jpg);
+  background-image: url(https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/video.jpg);
 }
 .video-section .video-part .embed-responsive-item:before {
   background-color: rgba(0, 0, 0, 0.2);

@@ -74,7 +74,7 @@
       // (por ejemplo, podría ser "assets/images/" + archivo)
       const rutaCompleta = archivo.includes("/")
         ? archivo
-        : "https://vrdistribucion.s3.eu-west-3.amazonaws.com/vrdistribucion/aparador/img/" + context + "/" + archivo;
+        : "https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/aparador/img/" + context + "/" + archivo;
 
       const html = `
             <div class="grid-item">
