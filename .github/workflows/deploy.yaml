@@ -24,7 +24,7 @@ jobs:
             cp -r * ~/vrdistribucion &&
             mv ~/vrdistribucion . &&
             ls -la
-            ls -la vrdistribucion/
+            ls -la ~/vrdistribucion/
 
       - name: Prepare SSH to work with the remote server
         run: |
@@ -47,7 +47,7 @@ jobs:
 
       - name: Remove unnecessary files
         run: |
-          rm -rf ~/vrdistribucion/static
+          rm -rf vrdistribucion/static
 
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
@@ -60,7 +60,7 @@ jobs:
             first_ssh: |
               rm -rf /var/www/html/vrdistribucion/*
             scp: |
-                "~/vrdistribucion/*" => /var/www/html/vrdistribucion
+                "vrdistribucion/*" => /var/www/html/vrdistribucion
                 "server/*" => /home/ubuntu/server/
             last_ssh: |
               sudo systemctl stop app
