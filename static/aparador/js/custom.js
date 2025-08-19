@@ -79,7 +79,7 @@
       const html = `
             <div class="grid-item">
             <figure class="effect-sadie">
-                <img src="${rutaCompleta.replace(".", "-tn.")}" alt="${context} ${indice + 1}"
+                <img src="${rutaCompleta.replace(".jpg", "-tn.jpg")}" alt="${context} ${indice + 1}"
                     class="img-fluid tm-img">
                 <figcaption>
                     <h2 class="tm-figure-title">${context} <span><strong>${
