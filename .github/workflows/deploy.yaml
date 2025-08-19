@@ -50,8 +50,8 @@ jobs:
             first_ssh: |
               rm -rf /var/www/html/vrdistribucion/*
             scp: |
-                "${{ github.workspace }}/*" => /var/www/html/vrdistribucion
-                "${{ github.workspace }}/server/*" => /home/ubuntu/server/
+                "vrdistribucion/*" => /var/www/html/vrdistribucion
+                "vrdistribucion/server/*" => /home/ubuntu/server/
             last_ssh: |
               sudo systemctl stop app
               cp -r /var/www/html/vrdistribucion/errorpage/* /var/www/html/errorpage
