@@ -18,12 +18,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        working-directory: ~/vrdistribucion
       - name: copy into folder dependencies
         run: |
             mkdir ~/vrdistribucion 
             cp -r * ~/vrdistribucion 
             mv ~/vrdistribucion . 
-            ls -la
+            ls -la ${{ github.workspace }}/vrdistribucion
 
       - name: Prepare SSH to work with the remote server
         run: |
@@ -46,7 +47,7 @@ jobs:
 
       - name: Remove unnecessary files
         run: |
-          rm -rf ~/vrdistribucion/static
+          rm -rf ${{ github.workspace }}/vrdistribucion/static
 
       - name: Publish
         uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
@@ -59,12 +60,13 @@ jobs:
             first_ssh: |
               rm -rf /var/www/html/vrdistribucion/*
             scp: |
-                "vrdistribucion/*" => /var/www/html/vrdistribucion
-                "vrdistribucion/server/*" => /home/ubuntu/server/
+                "${{ github.workspace }}/vrdistribucion/*" => /var/www/html/vrdistribucion
+                "${{ github.workspace }}/vrdistribucion/server/*" => /home/ubuntu/server/
             last_ssh: |
               sudo systemctl stop app
               cp -r /var/www/html/vrdistribucion/errorpage/* /var/www/html/errorpage
               sudo -u ubuntu chmod -R 774 /var/www/html/vrdistribucion/* ; sudo -u ubuntu chown -R ubuntu: /var/www/html/vrdistribucion
               sudo -u ubuntu chmod -R 774 /home/ubuntu/server/* ; sudo -u ubuntu chown -R ubuntu: /home/ubuntu/server
               sudo -u ubuntu /home/ubuntu/server/venv/bin/python -m pip install -r /home/ubuntu/server/requirements.txt
+              rm 
               sudo systemctl start app
