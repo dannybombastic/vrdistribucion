@@ -58,6 +58,6 @@ jobs:
             last_ssh: |
               sudo systemctl stop app
               sudo -u ubuntu chmod -R 774 /var/www/html/vrdistribucion/ ; sudo -u ubuntu chown -R ubuntu: /var/www/html/vrdistribucion
-              sudo -u ubuntu chmod -R 774 /home/ubuntu/server/* ; sudo -u ubuntu chown -R ubuntu: /home/ubuntu/server
+              sudo -u ubuntu chmod -R 774 /home/ubuntu/server/ ; sudo -u ubuntu chown -R ubuntu: /home/ubuntu/server
               sudo -u ubuntu /home/ubuntu/server/venv/bin/python -m pip install -r /home/ubuntu/server/requirements.txt
               sudo systemctl start app
