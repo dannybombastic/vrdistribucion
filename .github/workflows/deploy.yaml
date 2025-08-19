@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
       - name: copy into folder dependencies
         run: |
-            ls -la ${{ github.workspace }}/vrdistribucion
+            ls -la ${{ github.workspace }}
 
       - name: Prepare SSH to work with the remote server
         run: |
