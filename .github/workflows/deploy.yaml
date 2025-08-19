@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: copy into folder dependencies
-        working-directory: ${{ github.workspace }}/vrdistribucion
+        working-directory: vrdistribucion
         run: |
             ls -la ${{ github.workspace }}/vrdistribucion
 
