@@ -46,7 +46,7 @@ if os.getenv('ENV') == 'production':
         "https://vrdistribucion.com",
         "https://www.vrdistribucion.com",
         "https://dannybombastic.app.n8n.cloud",
-        "*"
+
     ]
 else:
     print("development environment")
