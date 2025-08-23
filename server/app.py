@@ -54,8 +54,6 @@ else:
         "http://127.0.0.1:5501",
         "http://127.0.0.1:8000",
         "http://localhost:8000",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
         "https://vrdistribucion.com",
         "https://www.vrdistribucion.com",
         "https://dannybombastic.app.n8n.cloud",
