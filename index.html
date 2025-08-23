@@ -281,7 +281,7 @@
     style-src-attr 'unsafe-inline';
     img-src    'self' data: https:;
     font-src   'self' https://fonts.gstatic.com https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com data:;
-    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
+    connect-src 'self' http://127.0.0.1:8000 http://localhost:8000 https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
     frame-src  https://www.youtube.com https://www.youtube-nocookie.com;
     child-src  https://www.youtube.com https://www.youtube-nocookie.com;
     frame-ancestors 'self';
@@ -984,9 +984,9 @@
     <a href="#">Términos de Servicio</a>
   </footer>
 
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/landing.js"></script>
+  
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js"></script>
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
+  <script src="./static/landing/js/contactForm.js"></script>
 
   <!-- Chat Widget -->
   <div id="chat-container" class="chat-container collapsed">
