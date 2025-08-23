@@ -1,1 +1,5 @@
 *.sh
+*.log
+*.tmp
+*.bak
+*.env
