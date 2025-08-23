@@ -1,5 +1,30 @@
 /**
- * VR Distribución - Contact Form Handler
+ * VR Distribución - Conta    getApiUrl() {
+        const isLocalhost = window.location.hostname === 'localhost' || 
+                           window.location.hostname === '127.0.0.1' ||
+                           window.location.hostname === '0.0.0.0' ||
+                           window.location.port === '3000' ||
+                           window.location.port === '5500' ||
+                           window.location.href.includes('127.0.0.1');
+        
+        console.log('API URL Detection:');
+        console.log('hostname:', window.location.hostname);
+        console.log('port:', window.location.port);
+        console.log('href:', window.location.href);
+        console.log('isLocalhost:', isLocalhost);
+        
+        if (isLocalhost) {
+            console.log('Using localhost API URL');
+            return 'http://127.0.0.1:8000/api/contact';
+        } else if (window.location.hostname === 'vrdistribucion.com' || window.location.hostname === 'www.vrdistribucion.com') {
+            console.log('Using production API URL');
+            return 'https://vrdistribucion.com/api/contact';
+        }
+        
+        // Fallback to localhost if unsure
+        console.log('Fallback to localhost API URL');
+        return 'http://127.0.0.1:8000/api/contact';
+    }ler
  * Maneja el envío seguro del formulario de contacto
  */
 
@@ -142,24 +167,6 @@ class ContactForm {
         event.stopImmediatePropagation();
         console.log('Form submit event triggered!');
         
-        // DEBUG: Verificar valores inmediatamente después de preventDefault
-        console.log('DEBUG: Values immediately after preventDefault:');
-        console.log('Name (cached):', this.nameField?.value);
-        console.log('Email (cached):', this.emailField?.value);
-        console.log('Phone (cached):', this.phoneField?.value);
-        console.log('Message (cached):', this.messageField?.value);
-        
-        // DEBUG: Verificar valores usando fresh selectors
-        console.log('DEBUG: Values using fresh selectors after preventDefault:');
-        const nameFieldFresh = this.form.querySelector('#contact-name');
-        const emailFieldFresh = this.form.querySelector('#contact-email');
-        const phoneFieldFresh = this.form.querySelector('#contact-phone');
-        const messageFieldFresh = this.form.querySelector('#contact-message');
-        console.log('Name (fresh):', nameFieldFresh?.value);
-        console.log('Email (fresh):', emailFieldFresh?.value);
-        console.log('Phone (fresh):', phoneFieldFresh?.value);
-        console.log('Message (fresh):', messageFieldFresh?.value);
-        
         if (this.isSubmitting) {
             console.log('Form already submitting, ignoring...');
             return;
@@ -169,13 +176,6 @@ class ContactForm {
 
         // Limpiar mensajes de error previos
         // TEMPORARILY DISABLED: this.clearErrors();
-
-        // DEBUG: Verificar valores justo antes de validación
-        console.log('DEBUG: Values just before validation:');
-        console.log('Name (cached):', this.nameField?.value);
-        console.log('Email (cached):', this.emailField?.value);
-        console.log('Phone (cached):', this.phoneField?.value);
-        console.log('Message (cached):', this.messageField?.value);
 
         // Validar formulario
         if (!this.validateForm()) {
@@ -253,13 +253,6 @@ class ContactForm {
     validateForm() {
         let isValid = true;
         console.log('Starting form validation...');
-        
-        // DEBUG: Verificar valores al inicio de validación
-        console.log('DEBUG: Values at start of validateForm:');
-        console.log('Name (cached):', this.nameField?.value);
-        console.log('Email (cached):', this.emailField?.value);
-        console.log('Phone (cached):', this.phoneField?.value);
-        console.log('Message (cached):', this.messageField?.value);
         
         // Validar nombre usando referencia cacheada
         console.log('Name field:', this.nameField?.value);
