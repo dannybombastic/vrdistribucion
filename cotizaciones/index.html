@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Contacto - VR Distribución | Solicita tu Cotización Personalizada</title>
+  <meta name="description" content="Solicita tu cotización personalizada para invitaciones y eventos. Virginia Ruiz - VR Distribución. 25 años de experiencia en Cancún." />
+  <meta name="robots" content="noindex, follow" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <link rel="stylesheet" href="/static/cotizaciones/css/cotizaciones.css" />
+</head>
+<body>
+  <!-- FLOATING PARTICLES -->
+  <div class="particles" id="particles"></div>
+
+  <!-- HEADER CON BOTÓN DE REGRESO -->
+  <header class="header">
+    <a href="/" class="back-button" title="Volver al inicio">✕</a>
+    <h1 class="header-title">Contacto</h1>
+  </header>
+
+  <!-- CONTAINER PRINCIPAL -->
+  <div class="container">
+    <div class="form-container">
+      <div class="form-header">
+        <h1>Solicita tu Cotización</h1>
+        <p>Cuéntanos sobre tu evento y te enviaremos una propuesta personalizada en menos de 24 horas</p>
+      </div>
+
+      <div class="form-content">
+        <form id="contactForm" method="POST">
+          <!-- INFORMACIÓN PERSONAL -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo <span class="required">*</span></label>
+              <input type="text" id="nombre" name="nombre" required maxlength="100" placeholder="Tu nombre completo">
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required maxlength="254" placeholder="tu@email.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono <span class="required">*</span></label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="999 123 4567" maxlength="20">
+            </div>
+            <div class="form-group">
+              <label for="ciudad">Ciudad <span class="required">*</span></label>
+              <select id="ciudad" name="ciudad" required>
+                <option value="">Selecciona tu ciudad</option>
+                <optgroup label="Quintana Roo">
+                  <option value="Cancún">Cancún</option>
+                  <option value="Playa del Carmen">Playa del Carmen</option>
+                  <option value="Cozumel">Cozumel</option>
+                  <option value="Tulum">Tulum</option>
+                  <option value="Chetumal">Chetumal</option>
+                  <option value="Isla Mujeres">Isla Mujeres</option>
+                  <option value="Puerto Morelos">Puerto Morelos</option>
+                  <option value="Felipe Carrillo Puerto">Felipe Carrillo Puerto</option>
+                  <option value="Bacalar">Bacalar</option>
+                  <option value="José María Morelos">José María Morelos</option>
+                  <option value="Lázaro Cárdenas">Lázaro Cárdenas</option>
+                </optgroup>
+                <optgroup label="Yucatán">
+                  <option value="Mérida">Mérida</option>
+                  <option value="Valladolid">Valladolid</option>
+                  <option value="Progreso">Progreso</option>
+                  <option value="Tizimín">Tizimín</option>
+                  <option value="Izamal">Izamal</option>
+                </optgroup>
+                <optgroup label="Campeche">
+                  <option value="Campeche">Campeche</option>
+                  <option value="Ciudad del Carmen">Ciudad del Carmen</option>
+                  <option value="Champotón">Champotón</option>
+                </optgroup>
+                <optgroup label="Tabasco">
+                  <option value="Villahermosa">Villahermosa</option>
+                  <option value="Cárdenas">Cárdenas</option>
+                  <option value="Comalcalco">Comalcalco</option>
+                </optgroup>
+                <optgroup label="Chiapas">
+                  <option value="Tuxtla Gutiérrez">Tuxtla Gutiérrez</option>
+                  <option value="San Cristóbal de las Casas">San Cristóbal de las Casas</option>
+                  <option value="Tapachula">Tapachula</option>
+                </optgroup>
+                <optgroup label="Veracruz">
+                  <option value="Veracruz">Veracruz</option>
+                  <option value="Coatzacoalcos">Coatzacoalcos</option>
+                  <option value="Poza Rica">Poza Rica</option>
+                </optgroup>
+                <option value="Otra">Otra</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- INFORMACIÓN DEL EVENTO -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tipoEvento">Tipo de evento <span class="required">*</span></label>
+              <select id="tipoEvento" name="tipoEvento" required>
+                <option value="">Selecciona tu evento</option>
+                <option value="boda">Boda</option>
+                <option value="xv-anos">XV Años</option>
+                <option value="bautizo">Bautizo</option>
+                <option value="baby-shower">Baby Shower</option>
+                <option value="aniversario">Aniversario</option>
+                <option value="graduacion">Graduación</option>
+                <option value="corporativo">Evento Corporativo</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fechaEvento">Fecha del evento</label>
+              <input type="date" id="fechaEvento" name="fechaEvento">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="invitados">Número aproximado de invitados</label>
+              <select id="invitados" name="invitados">
+                <option value="">Selecciona cantidad</option>
+                <option value="1-30">1 - 30 invitados</option>
+                <option value="31-50">31 - 50 invitados</option>
+                <option value="51-100">51 - 100 invitados</option>
+                <option value="101-150">101 - 150 invitados</option>
+                <option value="151-200">151 - 200 invitados</option>
+                <option value="200+">Más de 200 invitados</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="presupuesto">Presupuesto aproximado</label>
+              <select id="presupuesto" name="presupuesto">
+                <option value="">Selecciona rango</option>
+                <option value="menos-5000">Menos de $5,000 MXN</option>
+                <option value="5000-10000">$5,000 - $10,000 MXN</option>
+                <option value="10000-15000">$10,000 - $15,000 MXN</option>
+                <option value="15000-25000">$15,000 - $25,000 MXN</option>
+                <option value="mas-25000">Más de $25,000 MXN</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SERVICIOS DE INTERÉS -->
+          <div class="form-group">
+            <label>Servicios de interés <span class="required">*</span></label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+              <label class="checkbox-group" for="invitaciones">
+                <div class="checkbox-custom">
+                  <input type="checkbox" id="invitaciones" name="servicios[]" value="invitaciones">
+                  <span class="checkmark"></span>
+                </div>
+                <span class="checkbox-label">Invitaciones personalizadas</span>
+              </label>
+              <label class="checkbox-group" for="centros">
+                <div class="checkbox-custom">
+                  <input type="checkbox" id="centros" name="servicios[]" value="centros">
+                  <span class="checkmark"></span>
+                </div>
+                <span class="checkbox-label">Centros de mesa</span>
+              </label>
+              <label class="checkbox-group" for="velas">
+                <div class="checkbox-custom">
+                  <input type="checkbox" id="velas" name="servicios[]" value="velas">
+                  <span class="checkmark"></span>
+                </div>
+                <span class="checkbox-label">Velas personalizadas</span>
+              </label>
+              <label class="checkbox-group" for="recuerdos">
+                <div class="checkbox-custom">
+                  <input type="checkbox" id="recuerdos" name="servicios[]" value="recuerdos">
+                  <span class="checkmark"></span>
+                </div>
+                <span class="checkbox-label">Recuerdos</span>
+              </label>
+              <label class="checkbox-group" for="decoracion">
+                <div class="checkbox-custom">
+                  <input type="checkbox" id="decoracion" name="servicios[]" value="decoracion">
+                  <span class="checkmark"></span>
+                </div>
+                <span class="checkbox-label">Decoración general</span>
+              </label>
+              <label class="checkbox-group" for="papeleria">
+                <div class="checkbox-custom">
+                  <input type="checkbox" id="papeleria" name="servicios[]" value="papeleria">
+                  <span class="checkmark"></span>
+                </div>
+                <span class="checkbox-label">Papelería completa</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- MENSAJE -->
+          <div class="form-group">
+            <label for="mensaje">Cuéntanos más sobre tu evento</label>
+            <textarea id="mensaje" name="mensaje" maxlength="2000" placeholder="Describe tu visión, colores preferidos, estilo, o cualquier detalle especial que tengamos que saber..."></textarea>
+          </div>
+
+          <!-- CONSENTIMIENTO -->
+          <label class="checkbox-group" for="privacidad">
+            <div class="checkbox-custom">
+              <input type="checkbox" id="privacidad" name="privacidad" required>
+              <span class="checkmark"></span>
+            </div>
+            <span class="checkbox-label">
+              <span class="required">*</span> Acepto el tratamiento de mis datos personales para recibir información sobre servicios de VR Distribución. Puedes consultar nuestra política de privacidad.
+            </span>
+          </label>
+
+          <!-- BOTÓN DE ENVÍO -->
+          <button type="submit" class="submit-button">
+            Enviar Solicitud de Cotización
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE ÉXITO -->
+  <div id="successScreen" class="success-screen">
+    <div class="success-container">
+      <div class="success-card">
+        <div class="success-icon">✨</div>
+        <h1 class="success-title">¡Solicitud Enviada!</h1>
+        <p class="success-subtitle">Hemos recibido tu solicitud correctamente</p>
+        
+        <div id="aiMessage" class="ai-message">
+          <div class="loading-ai">
+            <span>Generando mensaje personalizado</span>
+            <div class="loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="eventDetails" class="event-details" style="display: none;">
+          <!-- Se llenará dinámicamente -->
+        </div>
+
+        <div class="success-actions">
+          <a href="index.html" class="action-button action-primary">
+            🏠 Volver al Inicio
+          </a>
+          <a href="https://wa.me/529981234567" class="action-button action-secondary" target="_blank">
+            📱 WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/cotizaciones/js/cotizaciones.js"></script>
+</body>

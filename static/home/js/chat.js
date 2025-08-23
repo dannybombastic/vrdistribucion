@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatMessages = document.getElementById('chat-messages');
     const prod = "https://vrdistribucion.com/api/chat"
     const prodwww = "https://www.vrdistribucion.com/api/chat"
-    const dev = "http://localhost:8000/api/chat/openai"
+    const dev = "http://localhost:8000/api/chat"
     let apiUrl;
 
 
@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         chatContainer.classList.toggle('collapsed');
         if (!chatContainer.classList.contains('collapsed')) {
             chatToggle.style.display = 'none';
+        } else {
+            chatToggle.style.display = 'block';
         }
     });
 

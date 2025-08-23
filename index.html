@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DLSGS9C2TK');
+  </script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
   <title>VR Distribución - Invitaciones Personalizadas y Eventos Únicos en Cancún | Virginia Ruiz</title>
   <meta name="description" content="VR Distribución - Virginia Ruiz. 25 años de experiencia en diseño gráfico, invitaciones personalizadas, centros de mesa y decoración para bodas y eventos en Cancún. Especialistas en celebraciones únicas." />
-  <meta name="keywords" content="invitaciones personalizadas, centros de mesa, bodas Cancún, quinceañeras, eventos corporativos, diseño gráfico, decoración eventos, Virginia Ruiz, velas decorativas, recuerdos personalizados, papelería eventos, impresión digital Cancún" />
-  <meta name="author" content="Virginia Ruiz - VR Distribución" />
-  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="invitaciones personalizadas Cancún, centros de mesa Quintana Roo, decoraciones bodas Cancún, velas aromáticas eventos, recuerdos personalizados, papelería eventos, diseño gráfico Cancún, Virginia Ruiz, VR Distribución, eventos corporativos, cumpleaños, bautizos, quinceañeras Cancún, impresión digital, serigrafía, sublimación, grabado láser, Riviera Maya, Plaza del Carmen, Cozumel, Tulum" />
+  <meta name="author" content="Virginia Ruiz Rodríguez - VR Distribución" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="language" content="es-MX" />
   <meta name="geo.region" content="MX-QR" />
   <meta name="geo.placename" content="Cancún, Quintana Roo, México" />
@@ -28,6 +37,10 @@
   <meta property="og:site_name" content="VR Distribución" />
   <meta property="og:locale" content="es_MX" />
   
+  <!-- Enhanced Business Meta Data -->
+  <meta property="business:contact_data:phone_number" content="+52 998 236 1177" />
+  <meta property="business:contact_data:email" content="vr.distribucion@gmail.com" />
+  
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="VR Distribución - Invitaciones Personalizadas Cancún" />
@@ -36,7 +49,7 @@
   <meta name="twitter:image:alt" content="VR Distribución - Virginia Ruiz" />
   
   <!-- Business/Local SEO -->
-  <meta name="business:contact_data:street_address" content="Plaza Galerías Lat. Av. Tulum Supermanzana 2, Bancos" />
+  <meta name="business:contact_data:street_address" content="Plaza Galerías Lat. Local 32, Av. Tulum Supermanzana 2, Bancos" />
   <meta name="business:contact_data:locality" content="Cancún" />
   <meta name="business:contact_data:region" content="Quintana Roo" />
   <meta name="business:contact_data:postal_code" content="77500" />
@@ -48,12 +61,29 @@
   <link rel="canonical" href="https://vrdistribucion.com" />
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="apple-touch-icon" href="images/logo.png" />
+  <link rel="icon" type="image/png" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" />
+  <link rel="apple-touch-icon" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" />
+  
+  <!-- Enhanced Favicons -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/favicon-16x16.png" />
+  
+  <!-- Mobile Web App Configuration -->
+  <meta name="apple-mobile-web-app-title" content="VR Invitaciones">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2c3e50">
+  <meta name="msapplication-TileColor" content="#2c3e50">
+  <meta name="format-detection" content="telephone=no">
   
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://vrdistribucion.s3-accelerate.amazonaws.com" />
+  
+  <!-- Ionicons for chat widget -->
+  <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -62,15 +92,19 @@
     "@type": "LocalBusiness",
     "@id": "https://vrdistribucion.com",
     "name": "VR Distribución",
-    "alternateName": "Virginia Ruiz Diseñadora",
-    "description": "Diseñadora en Comunicación Visual con 25 años de experiencia. Especializada en invitaciones personalizadas, centros de mesa y decoración para eventos en Cancún.",
+    "alternateName": "Virginia Ruiz Distribución",
+    "description": "Especialistas en invitaciones personalizadas, centros de mesa, velas aromáticas y decoraciones para eventos en Cancún. 25 años creando experiencias únicas para bodas, cumpleaños, bautizos y eventos corporativos.",
+    "image": "https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png",
     "url": "https://vrdistribucion.com",
-    "telephone": "+52 998 236 1177",
-    "email": "vr.distribucion@gmail.com",
+    "telephone": "+52-998-236-1177",
+    "email": "vrdistribucion@gmail.com",
     "priceRange": "$19-$39",
+    "paymentAccepted": "Cash, Credit Card, Debit Card",
+    "currenciesAccepted": "MXN",
+    "openingHours": "Mo-Sa 09:00-18:00",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Plaza Galerías Lat. Av. Tulum Supermanzana 2, Bancos",
+      "streetAddress": "Plaza Galerías Lat. Local 32, Av. Tulum Supermanzana 2, Bancos",
       "addressLocality": "Cancún",
       "addressRegion": "Quintana Roo",
       "postalCode": "77500",
@@ -83,35 +117,31 @@
     },
     "founder": {
       "@type": "Person",
-      "name": "Virginia Ruiz",
-      "jobTitle": "Diseñadora en Comunicación Visual",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "VR Distribución"
-      }
+      "name": "Virginia Ruiz Rodríguez",
+      "jobTitle": "Diseñadora de Eventos y Asesora Gráfica"
     },
     "areaServed": [
       {
-        "@type": "City",
+        "@type": "Place",
         "name": "Cancún"
       },
       {
-        "@type": "State",
+        "@type": "Place", 
         "name": "Quintana Roo"
       },
       {
-        "@type": "Country",
-        "name": "México"
+        "@type": "Place",
+        "name": "República Mexicana"
       }
     ],
     "serviceType": [
-      "Invitaciones Personalizadas",
-      "Centros de Mesa",
-      "Decoración de Eventos",
-      "Diseño Gráfico",
-      "Impresión Digital",
-      "Velas Decorativas",
-      "Recuerdos Personalizados"
+      "Invitaciones personalizadas",
+      "Centros de mesa",
+      "Decoraciones para eventos",
+      "Velas aromáticas",
+      "Recuerdos para eventos",
+      "Diseño gráfico",
+      "Papelería corporativa"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -185,16 +215,108 @@
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "2",
-      "bestRating": "5",
-      "worstRating": "1"
+      "ratingValue": "4.9",
+      "reviewCount": "150"
     }
   }
   </script>
 
-  <link rel="stylesheet" href="static/home/css/landing.css">
+  <!-- WebSite Schema for Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "VR Distribución",
+    "url": "https://vrdistribucion.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vrdistribucion.com/aparador/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 
+  <!-- FAQ Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué servicios ofrece VR Distribución en Cancún?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ofrecemos invitaciones personalizadas, centros de mesa elegantes, velas aromáticas, decoraciones para eventos, recuerdos personalizados y servicios de diseño gráfico para bodas, cumpleaños, bautizos y eventos corporativos en Cancún y Quintana Roo."
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "¿Cuánto cuesta una invitación personalizada?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestros paquetes van desde $19 USD para invitaciones básicas hasta $39 USD para diseños premium VIP. El precio depende de la complejidad del diseño, materiales utilizados y cantidad solicitada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Realizan envíos a toda la República Mexicana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, atendemos eventos en Cancún, Playa del Carmen, Cozumel, Tulum y toda la zona de Quintana Roo. Tenemos 25 años de experiencia sirviendo a la región."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
+    script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
+    script-src-attr 'unsafe-inline';
+    style-src  'self' 'unsafe-inline' https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
+    style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
+    style-src-attr 'unsafe-inline';
+    img-src    'self' data: https:;
+    font-src   'self' https://fonts.gstatic.com https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com data:;
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
+    frame-src  https://www.youtube.com https://www.youtube-nocookie.com;
+    child-src  https://www.youtube.com https://www.youtube-nocookie.com;
+    frame-ancestors 'self';
+    media-src  'self' https://vrdistribucion.s3-accelerate.amazonaws.com;
+    object-src 'none';
+    base-uri   'self';
+    form-action 'self';
+    upgrade-insecure-requests;
+    block-all-mixed-content
+  ">
+
+  <!-- Performance Critical Resource Preloads -->
+  <link rel="preload" href="/static/landing/css/landing.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+  </noscript>
+
+
+  <!-- Global Background Styles -->
+  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/global-background.css">
+  
+  <!-- Text Enhancement for Glassmorphism -->
+  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/text-enhancement.css">
+  
+  <!-- Social Media Animations -->
+  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/social-animations.css">
+
+  <!-- Performance Optimizations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://vrdistribucion.s3-accelerate.amazonaws.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
 </head>
 <body>
@@ -213,27 +335,106 @@
 
   <!-- HEADER -->
   <header role="banner">
-    <img src="/static/landing/img/logo.png" alt="VR Distribución" class="logo" />
+    <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" alt="VR Distribución" class="logo" />
     <nav role="navigation" aria-label="Navegación principal">
       <ul>
-        <li><a href="#hero">Inicio</a></li>
+        <li><a href="/home">Portafolio</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="hero" role="main">
-    <div>
-      <h1>Invitaciones y Detalles para Bodas y Celebraciones Hechos a Mano en Cancún</h1>
-      <p>Diseño impreso y digital para bodas, XV años, bautizos y celebraciones especiales • Láser, Foil, Letterpress • +25 años de experiencia</p>
-      <div class="hero-badges">
-        <span class="badge">+25 años</span>
-        <span class="badge">Taller propio</span>
-        <span class="badge">Envíos en Quintana Roo</span>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-text">Virginia Ruiz • 25 Años Creando Momentos Únicos</span>
+          <div class="hero-eyebrow-line"></div>
+        </div>
+        
+        <h1 class="hero-title">
+          <span class="title-main">Diseñamos</span>
+          <span class="title-highlight">Experiencias</span>
+          <span class="title-sub">que Perduran en el Corazón</span>
+        </h1>
+        
+        <p class="hero-description">
+          Cada invitación, cada detalle y cada momento que creamos cuenta una historia única. Transformamos tus ideas en 
+          <strong>recuerdos tangibles</strong> que tus invitados atesorarán para siempre. Desde <strong>bodas de ensueño</strong> 
+          hasta <strong>celebraciones íntimas</strong>, hacemos que cada evento sea extraordinario.
+        </p>
+        
+        <div class="hero-features">
+          <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <span class="feature-text">Diseño 100% Personalizado</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <span class="feature-text">Entrega Express</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🌟</div>
+            <span class="feature-text">Calidad Premium</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">�</div>
+            <span class="feature-text">Envíos a toda la República</span>
+          </div>
+        </div>
+        
+        <div class="hero-ctas">
+          <a href="/cotizaciones" class="cta-primary">
+            <span class="cta-text">Crear mi Invitación</span>
+            <div class="cta-arrow">✨</div>
+          </a>
+          <a href="https://wa.me/5219982361177" class="cta-secondary" target="_blank">
+            <div class="whatsapp-icon">💬</div>
+            <span>Asesoría Gratuita</span>
+          </a>
+        </div>
+        
+        <div class="hero-social-proof">
+          <div class="social-proof-item">
+            <div class="social-proof-number">1500+</div>
+            <div class="social-proof-label">Eventos Únicos</div>
+          </div>
+          <div class="social-proof-item">
+            <div class="social-proof-number">99%</div>
+            <div class="social-proof-label">Satisfacción</div>
+          </div>
+          <div class="social-proof-item">
+            <div class="social-proof-number">25</div>
+            <div class="social-proof-label">Años de Pasión</div>
+          </div>
+        </div>
       </div>
-      <div class="hero-ctas">
-        <a href="#cotizar" class="cta primary">Cotizar mi Evento</a>
-        <a href="https://wa.me/5219982361177" class="cta secondary" target="_blank">WhatsApp</a>
+      
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="card-shimmer"></div>
+          <div class="card-content">
+            <div class="sample-invitation">
+              <div class="invitation-header"></div>
+              <div class="invitation-lines">
+                <div class="line long"></div>
+                <div class="line medium"></div>
+                <div class="line short"></div>
+              </div>
+              <div class="invitation-details">
+                <div class="detail-item"></div>
+                <div class="detail-item"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="floating-elements">
+          <div class="float-element element-1">🌟</div>
+          <div class="float-element element-2">💖</div>
+          <div class="float-element element-3">✨</div>
+          <div class="float-element element-4">🎨</div>
+        </div>
       </div>
     </div>
   </section>
@@ -326,7 +527,7 @@
           </li>
         </ul>
         <div class="benefits-cta">
-          <a href="#contact" class="cta-benefits">Solicitar Cotización Gratuita</a>
+          <a href="/cotizaciones" class="cta-benefits">Solicitar Cotización Gratuita</a>
         </div>
       </div>
     </div>
@@ -357,7 +558,7 @@
             <li>1 revisión de diseño</li>
             <li>Entrega en 5-7 días</li>
           </ul>
-          <a href="#" class="cta-paquete">Seleccionar Básico</a>
+          <a href="/cotizaciones" class="cta-paquete">Cotizar Paquete Básico</a>
         </div>
       </div>
 
@@ -427,76 +628,106 @@
 
     <div class="paquetes-footer">
       <p>¿Necesitas algo diferente? Creamos cotizaciones personalizadas para cada evento</p>
-      <a href="#" class="cta-secondary">Solicitar Cotización Personalizada</a>
+      <a href="/cotizaciones" class="cta-secondary">Solicitar Cotización Personalizada</a>
     </div>
   </section>
 
-  <!-- HIGHLIGHTED TESTIMONIAL -->
-  <section class="featured-testimonial-section" role="region" aria-labelledby="featured-testimonial-heading">
-    <div class="featured-testimonial-container">
-      <h2 id="featured-testimonial-heading" class="sr-only">Testimonial destacado</h2>
-      <blockquote class="featured-testimonial">
-        <p class="testimonial-text">"Virginia transformó completamente mi boda. Desde las invitaciones hasta los últimos detalles, todo fue perfecto. Su creatividad y profesionalismo superaron todas mis expectativas."</p>
-        <footer class="testimonial-author">
-          <cite>
-            <strong>María Elena Vázquez</strong>
-            <span class="author-title">Novia 2024, Playa del Carmen</span>
-          </cite>
-        </footer>
-      </blockquote>
+  <!-- EXPERIENCIA PROFESIONAL - ANIMACIÓN INTERACTIVA -->
+  <section class="experience-section" role="region" aria-labelledby="experience-heading">
+    <div class="experience-container">
+      <canvas id="professionalCanvas" class="professional-canvas"></canvas>
+      <div class="experience-overlay">
+        <div class="experience-content">
+          <h2 id="experience-heading">Experiencia que Transforma Ideas</h2>
+          <p class="experience-subtitle">Diseño profesional respaldado por décadas de excelencia</p>
+          <div class="experience-grid">
+            <div class="experience-metric" data-animate="25">
+              <div class="metric-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <span class="metric-number">25+</span>
+              <span class="metric-label">Años de Experiencia</span>
+            </div>
+            <div class="experience-metric" data-animate="1500">
+              <div class="metric-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 11H7v9a2 2 0 002 2h8a2 2 0 002-2v-9h-2m-1 0V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v5m5 2v4h2v-4m-7 0v4h2v-4m1-5h2v3h-2z"/>
+                </svg>
+              </div>
+              <span class="metric-number">1500+</span>
+              <span class="metric-label">Proyectos Realizados</span>
+            </div>
+            <div class="experience-metric" data-animate="98">
+              <div class="metric-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              </div>
+              <span class="metric-number">98%</span>
+              <span class="metric-label">Satisfacción Cliente</span>
+            </div>
+          </div>
+          <div class="experience-cta">
+            <a href="/cotizaciones" class="cta-professional">Iniciar mi Proyecto</a>
+            <a href="/aparador" class="cta-secondary">Ver Portafolio</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SERVICES / PRODUCTS -->
+    <!-- SERVICES / PRODUCTS -->
   <section id="services" role="region" aria-labelledby="services-heading">
     <h2 id="services-heading">Mis Servicios</h2>
     <div class="grid">
       <div class="card">
-        <img src="static/landing/img/product1.jpg" alt="Invitaciones Personalizadas" />
+        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4" alt="Invitaciones Personalizadas" autoplay muted loop></video>
         <div class="card-content">
           <h3>Invitaciones Personalizadas Cancún</h3>
           <p>Diseños únicos a tu medida para bodas, quinceañeras, bautizos y eventos corporativos en Cancún. Papelería de la más alta calidad que refleja el estilo y tema de tu celebración especial.</p>
-          <a href="#contact">Solicitar Cotización</a>
+          <a href="/cotizaciones">Solicitar Cotización</a>
         </div>
       </div>
       <div class="card">
-        <img src="static/landing/img/product2.jpg" alt="Centros de Mesa" />
+        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/cntro_de_mesa.mp4" alt="Centros de Mesa" autoplay muted loop></video>
         <div class="card-content">
           <h3>Centros de Mesa y Arreglos Elegantes</h3>
           <p>Centros de mesa elegantes, temáticos y totalmente personalizados para bodas y eventos en Cancún. Diseños únicos que cautivarán a tus invitados desde el primer momento.</p>
-          <a href="#contact">Ver Más</a>
+          <a href="/cotizaciones">Ver Más</a>
         </div>
       </div>
       <div class="card">
-        <img src="static/landing/img/product3.jpg" alt="Velas y Detalles" />
+        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_decorativas.mp4" alt="Velas Decorativas" autoplay muted loop></video>
         <div class="card-content">
           <h3>Velas y Detalles Decorativos</h3>
           <p>Velas aromáticas, recuerdos y accesorios cuidadosamente hechos para complementar la atmósfera de tu celebración. Recuerdos y souvenirs personalizados.</p>
-          <a href="#contact">Conocer Más</a>
+          <a href="/cotizaciones">Conocer Más</a>
         </div>
       </div>
       <div class="card">
-        <img src="static/landing/img/product1.jpg" alt="Diseño Temático" />
+        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones_white.mp4" alt="Invitaciones Elegantes" autoplay muted loop></video>
         <div class="card-content">
-          <h3>Diseño Temático</h3>
-          <p>Creamos ambientes soñados con decoraciones y estilos que van desde lo clásico a lo más moderno. Asesoría integral en cada detalle.</p>
-          <a href="#contact">Consultar</a>
+          <h3>Invitaciones Elegantes</h3>
+          <p>Invitaciones con acabados premium en tonos elegantes y diseños sofisticados. Perfectas para eventos exclusivos y celebraciones de alta gama.</p>
+          <a href="/cotizaciones">Consultar</a>
         </div>
       </div>
       <div class="card">
-        <img src="static/landing/img/product2.jpg" alt="Diseño Digital" />
+        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/rotulos_iluminados.mp4" alt="Rótulos Iluminados" autoplay muted loop></video>
         <div class="card-content">
-          <h3>Diseño Digital Personalizado</h3>
-          <p>Soluciones de diseño digital profesional: invitaciones digitales, identidad visual, contenido para redes sociales y material promocional.</p>
-          <a href="#contact">Ver Portfolio</a>
+          <h3>Rótulos y Señalética Iluminada</h3>
+          <p>Rótulos personalizados con iluminación LED para eventos, bodas y celebraciones. Diseños únicos que destacan y crean ambiente especial.</p>
+          <a href="/cotizaciones">Ver Portfolio</a>
         </div>
       </div>
       <div class="card">
-        <img src="static/landing/img/product3.jpg" alt="Impresión Profesional" />
+        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_con_cruz_cristiana.mp4" alt="Velas Religiosas" autoplay muted loop></video>
         <div class="card-content">
-          <h3>Servicios de Impresión</h3>
-          <p>Impresión digital, offset, serigrafía, grabado láser y sublimación. Desde tarjetas de presentación hasta rotulación de gran formato.</p>
-          <a href="#contact">Cotizar</a>
+          <h3>Velas y Artículos Religiosos</h3>
+          <p>Velas especiales para ceremonias religiosas, bautizos, primeras comuniones y eventos cristianos. Diseños respetuosos y significativos.</p>
+          <a href="/cotizaciones">Cotizar</a>
         </div>
       </div>
     </div>
@@ -605,7 +836,7 @@
     <h2 id="testimonials-heading">Testimonios</h2>
     <div class="testimonials-grid">
       <div class="testimonial">
-        <img src="static/landing/img/customer1.jpg" alt="Julia Sakura" />
+        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer1.jpg" alt="Julia Sakura" />
         <p>"Gracias a Virginia, mis invitaciones de boda fueron espectaculares. Los centros de mesa y los detalles de velas encantaron a todos. ¡Súper recomendada!"</p>
         <div>
           <strong>Julia Sakura</strong>
@@ -613,7 +844,7 @@
         </div>
       </div>
       <div class="testimonial">
-        <img src="static/landing/img/customer2.jpg" alt="John Santana" />
+        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer2.jpg" alt="John Santana" />
         <p>"Virginia entendió el concepto de mi evento corporativo y logró una decoración impecable. Las invitaciones con nuestro branding fueron un plus profesional."</p>
         <div>
           <strong>John Santana</strong>
@@ -630,33 +861,68 @@
       <form role="form" aria-labelledby="contact-form-heading" novalidate>
         <h3 id="contact-form-heading" class="sr-only">Formulario de contacto</h3>
         
-        <div class="form-group">
-          <label for="contact-name">Nombre completo *</label>
-          <input 
-            type="text" 
-            id="contact-name" 
-            name="name" 
-            required 
-            aria-required="true"
-            aria-describedby="name-error"
-          />
-          <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Nombre completo *</label>
+            <input 
+              type="text" 
+              id="contact-name" 
+              name="name" 
+              required 
+              aria-required="true"
+              aria-describedby="name-error"
+            />
+            <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Correo electrónico *</label>
+            <input 
+              type="email" 
+              id="contact-email" 
+              name="email" 
+              required 
+              aria-required="true"
+              aria-describedby="email-error"
+            />
+            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="contact-email">Correo electrónico *</label>
-          <input 
-            type="email" 
-            id="contact-email" 
-            name="email" 
-            required 
-            aria-required="true"
-            aria-describedby="email-error"
-          />
-          <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-phone">Teléfono</label>
+            <input 
+              type="tel" 
+              id="contact-phone" 
+              name="phone" 
+              placeholder="999 123 4567"
+              maxlength="20"
+              aria-describedby="phone-error"
+            />
+            <div id="phone-error" class="error-message" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-event">Tipo de evento</label>
+            <select 
+              id="contact-event" 
+              name="event-type"
+              aria-describedby="event-error"
+            >
+              <option value="">Selecciona tu evento</option>
+              <option value="boda">Boda</option>
+              <option value="cumpleanos">Cumpleaños</option>
+              <option value="bautizo">Bautizo</option>
+              <option value="quinceanera">Quinceañera</option>
+              <option value="corporativo">Evento Corporativo</option>
+              <option value="otro">Otro</option>
+            </select>
+            <div id="event-error" class="error-message" role="alert" aria-live="polite"></div>
+          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-full-width">
           <label for="contact-message">Cuéntame sobre tu evento o proyecto *</label>
           <textarea 
             id="contact-message" 
@@ -681,13 +947,32 @@
         <p><strong>Tel:</strong> <a href="tel:+529982361177">+52 998 236 1177</a></p>
         <p><strong>WhatsApp:</strong> <a href="https://wa.me/529982361177?text=Hola%2C%20estoy%20interesado%20en%20tus%20servicios">+52 998 236 1177</a></p>
         <p><strong>Email:</strong> <a href="mailto:vr.distribucion@gmail.com">vr.distribucion@gmail.com</a></p>
-        <p><strong>Ubicación:</strong> Plaza Galerías Lat. Av. Tulum, Cancún, Q.R., México</p>
+        <p><strong>Ubicación:</strong> Plaza Galerías Lat. Local 32, Av. Tulum, Cancún, Q.R., México</p>
         <p><strong>Años de experiencia:</strong> 25 años</p>
-        <p>
-          <a href="https://www.instagram.com/vrcancunonline" target="_blank">Instagram</a> |
-          <a href="https://www.facebook.com/share/15oBN2xkPS/" target="_blank">Facebook</a> |
-          <a href="https://www.youtube.com/watch?v=doteMqP6eSc" target="_blank">YouTube</a>
-        </p>
+        
+        <!-- Social Media Links -->
+        <div class="social-media-section">
+          <h4>Síguenos en nuestras redes sociales</h4>
+          <div class="social-icons-container">
+            <a href="https://www.instagram.com/vrcancunonline?igsh=MTFrcjdybGsyNzV4aw==" target="_blank" rel="noopener noreferrer" aria-label="Seguir en Instagram" title="Instagram" class="social-icon instagram">
+              <i class="icon ion-logo-instagram" aria-hidden="true"></i>
+              <span class="social-tooltip">Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/share/15oBN2xkPS/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Seguir en Facebook" title="Facebook" class="social-icon facebook">
+              <i class="icon ion-logo-facebook" aria-hidden="true"></i>
+              <span class="social-tooltip">Facebook</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=doteMqP6eSc" target="_blank" rel="noopener noreferrer" aria-label="Ver en YouTube" title="YouTube" class="social-icon youtube">
+              <i class="icon ion-logo-youtube" aria-hidden="true"></i>
+              <span class="social-tooltip">YouTube</span>
+            </a>
+            <a href="https://wa.me/5219982361177?text=Hola%2C%20estoy%20interesado%20en%20tus%20servicios" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" title="WhatsApp" class="social-icon whatsapp">
+              <i class="icon ion-logo-whatsapp" aria-hidden="true"></i>
+              <span class="social-tooltip">WhatsApp</span>
+            </a>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
@@ -699,7 +984,46 @@
     <a href="#">Términos de Servicio</a>
   </footer>
 
-  <script src="static/home/js/landing.js"></script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/landing.js"></script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js"></script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
+
+  <!-- Chat Widget -->
+  <div id="chat-container" class="chat-container collapsed">
+    <div class="chat-header">
+      <button id="close-btn" class="control-btn" aria-label="Cerrar chat" title="Cerrar chat">
+        <i class="icon ion-md-close"></i>
+      </button>
+      <span class="chat-title">VR Distribución</span>
+      <div class="chat-controls">
+        <button id="minimize-btn" class="control-btn" aria-label="Minimizar chat" title="Minimizar chat">
+          <i class="icon ion-md-remove"></i>
+        </button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="message assistant">
+        <div class="message-content">
+          <p>¡Hola! Soy el asistente virtual de VR Distribución.</p>
+          <p>¿En qué puedo ayudarte con tu evento especial?</p>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input-container">
+      <textarea id="chat-input" placeholder="Escribe tu mensaje aquí..." rows="1"></textarea>
+      <button id="send-btn" class="send-btn">
+        <i class="icon ion-md-send"></i>
+      </button>
+    </div>
+  </div>
+
+  <button id="chat-toggle" class="chat-toggle" aria-label="Abrir chat" title="Abrir chat">
+    <i class="icon ion-logo-whatsapp"></i>
+  </button>
+
+  <!-- Chat Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
 
 </body>
 </html>
