@@ -30,8 +30,10 @@ class ContactForm {
         
         if (isLocalhost) {
             return 'http://127.0.0.1:8000/api/contact';
-        } else {
+        } else if (window.location.hostname === 'vrdistribucion.com') {
             return 'https://vrdistribucion.com/api/contact';
+        } else if (window.location.hostname === 'www.vrdistribucion.com') {
+            return 'https://www.vrdistribucion.com/api/contact';
         }
     }
 
