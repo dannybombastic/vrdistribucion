@@ -6,6 +6,9 @@
 
 class ContactForm {
     constructor() {
+        console.log('ContactForm constructor called');
+        console.log('Document ready state:', document.readyState);
+        
         this.form = document.querySelector('#contact form');
         this.submitButton = this.form?.querySelector('button[type="submit"]');
         this.isSubmitting = false;
@@ -21,12 +24,14 @@ class ContactForm {
      */
     getApiUrl() {
         const isLocalhost = window.location.hostname === 'localhost' || 
-                           window.location.hostname === '127.0.0.1';
+                           window.location.hostname === '127.0.0.1' ||
+                           window.location.hostname === '0.0.0.0' ||
+                           window.location.port === '3000';
         
         if (isLocalhost) {
             return 'http://127.0.0.1:8000/api/contact';
         } else {
-            return 'https://api.vrdistribucion.com/api/contact';
+            return 'https://vrdistribucion.com/api/contact';
         }
     }
 
@@ -34,18 +39,27 @@ class ContactForm {
      * Inicializa el formulario
      */
     init() {
+        console.log('Attempting to find contact form...');
+        console.log('Form selector: #contact form');
+        console.log('Form found:', this.form);
+        
         if (!this.form) {
             console.error('Formulario de contacto no encontrado');
+            console.log('Available elements with #contact:', document.querySelector('#contact'));
+            console.log('All forms on page:', document.querySelectorAll('form'));
             return;
         }
 
+        console.log('Submit button:', this.submitButton);
+        
         // Agregar event listener para el envío del formulario
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         
         // Agregar validación en tiempo real
         this.addRealTimeValidation();
         
-        console.log('Contact form initialized');
+        console.log('Contact form initialized successfully');
+        console.log('API URL:', this.apiUrl);
     }
 
     /**
@@ -335,6 +349,8 @@ class ContactForm {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded - Initializing ContactForm');
+    console.log('Location:', window.location.href);
     new ContactForm();
 });
 
