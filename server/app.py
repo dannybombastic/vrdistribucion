@@ -24,7 +24,7 @@ MARKETING_API_URL= "https://dannybombastic.app.n8n.cloud/webhook/7048eeb4-986e-4
 VRDITRIBUCION_API_URL= "https://dannybombastic.app.n8n.cloud/webhook/7048eeb4-986e-4ff2-bc1c-013222bc477f"
 
 # URL del webhook de N8N para cotizaciones
-COTIZACIONES_API_URL = "https://dannybombastic.app.n8n.cloud/webhook/9057a53d-bf82-469a-a534-f27b39adb9a2"
+COTIZACIONES_API_URL = "https://dannybombastic.app.n8n.cloud/webhook/9057a53d-bf82-469a-a534-f27b39adb9a32"
 
 # URL del webhook de N8N para formulario de contacto
 CONTACT_API_URL = "https://dannybombastic.app.n8n.cloud/webhook/9057a53d-bf82-469a-a534-f27b39adb9a2"
