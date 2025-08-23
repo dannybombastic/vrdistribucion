@@ -1,7 +1,9 @@
-*.sh
 *.log
 *.tmp
 *.bak
 *.env
-__pycache__/
+
+*.sh
+.env
 venv/
+__pycache__/

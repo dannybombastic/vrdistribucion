@@ -2333,13 +2333,16 @@
     
     .experience-content h2 {
       font-size: 2.5rem;
-      color: #1f2937;
+      color: #1f2937 !important;
       margin-bottom: 1rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+      /* Removemos el efecto transparente problemático */
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      background-clip: unset !important;
+      position: relative;
     }
     
     .experience-subtitle {
@@ -2635,6 +2638,7 @@
       
       .experience-content h2 {
         font-size: 2rem;
+        ;
       }
       
       .experience-subtitle {
@@ -2930,8 +2934,26 @@
       .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card.featured { transform: none; }
       .grid { grid-template-columns: 1fr; }
-      #about { margin: 4rem 1rem 2rem; }
-      #about h2, #services h2 { font-size: 2rem; }
+      
+      /* Mejoras para about en móvil */
+      #about { 
+        margin: 3rem 1rem 2rem; 
+        padding: 3rem 1.5rem;
+        border-radius: 16px;
+      }
+      #about h2, #services h2 { 
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+      #about p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0 auto 1.2rem;
+        padding: 0 0.5rem;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
       
       /* Fix para paquetes en móvil */
       .paquetes-section {
@@ -3504,4 +3526,29 @@
 
 .chat-toggle * {
     box-sizing: border-box;
+}
+
+/* Media query para móviles pequeños */
+@media (max-width: 480px) {
+  #about {
+    margin: 2rem 0.5rem 1rem;
+    padding: 2rem 1rem;
+    border-radius: 12px;
+  }
+  
+  #about h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  #about p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 auto 1rem;
+    padding: 0 0.25rem;
+    text-align: left;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+  }
 }

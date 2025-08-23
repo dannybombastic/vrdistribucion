@@ -23,6 +23,12 @@ MARKETING_API_URL= "https://dannybombastic.app.n8n.cloud/webhook/7048eeb4-986e-4
 
 VRDITRIBUCION_API_URL= "https://dannybombastic.app.n8n.cloud/webhook/7048eeb4-986e-4ff2-bc1c-013222bc477f"
 
+# URL del webhook de N8N para cotizaciones
+COTIZACIONES_API_URL = "https://dannybombastic.app.n8n.cloud/webhook/9057a53d-bf82-469a-a534-f27b39adb9a2"
+
+# URL del webhook de N8N para formulario de contacto
+CONTACT_API_URL = "https://dannybombastic.app.n8n.cloud/webhook/9057a53d-bf82-469a-a534-f27b39adb9a2"
+
 # =====================
 # CLAVE DE OPENROUTER
 
@@ -34,18 +40,25 @@ MODEL = "gpt-3.5-turbo" # Puedes cambiar el modelo aquí
 app = FastAPI()
 
 # Ambiente y configuración de CORS
-if os.getenv('ENV') == 'development':
-    print("development")
+if os.getenv('ENV') == 'production':
+    print("production environment")
     cors_origins = [
-        "http://127.0.0.1:8000",
         "https://vrdistribucion.com",
         "https://www.vrdistribucion.com",
-        "https://dannybombastic.app.n8n.cloud/"
-        "*"
+        "https://dannybombastic.app.n8n.cloud",
+
     ]
 else:
-    print("production")
-    cors_origins = ["https://vrdistribucion.com", "https://www.vrdistribucion.com", "https://dannybombastic.app.n8n.cloud"]
+    print("development environment")
+    cors_origins = [
+        "http://127.0.0.1:5501",
+        "http://127.0.0.1:8000",
+        "http://localhost:8000",
+        "https://vrdistribucion.com",
+        "https://www.vrdistribucion.com",
+        "https://dannybombastic.app.n8n.cloud",
+        "*"
+    ]
 
 app.add_middleware(
     CORSMiddleware,
@@ -448,6 +461,170 @@ async def chat_ia_openai(request: Request):
             content={"error": "Error interno del servidor"}
         )
 
+
+# ============================
+# ENDPOINT PARA COTIZACIONES
+# ============================
+
+@app.post("/api/cotizaciones")
+async def submit_cotizacion(request: Request):
+    """
+    Endpoint para recibir solicitudes de cotización desde el frontend
+    y reenviarlas al webhook de N8N de forma segura
+    """
+    try:
+        # Obtener los datos del formulario
+        data = await request.json()
+        
+        # Validaciones básicas
+        if not data.get('nombre') or not data.get('email') or not data.get('telefono'):
+            return JSONResponse(
+                status_code=400,
+                content={"error": "Faltan campos obligatorios (nombre, email, teléfono)"}
+            )
+        
+        # Agregar metadatos de seguridad
+        data['source'] = 'vrdistribucion.com'
+        data['ip_address'] = request.client.host if request.client else 'unknown'
+        data['user_agent'] = request.headers.get('user-agent', 'unknown')
+        data['submission_time'] = data.get('timestamp', '')
+        
+        print(f"Recibida cotización de: {data.get('nombre')} - {data.get('email')}")
+        
+        try:
+            # Reenviar a N8N con el token seguro
+            response = requests.post(
+                url=COTIZACIONES_API_URL,
+                headers={
+                    "Authorization": f"Bearer {X_TOKEN}",
+                    "Content-Type": "application/json",
+                    "X-TOKEN": X_TOKEN
+                },
+                json=data,
+                timeout=30
+            )
+            response.raise_for_status()
+            
+            # Intentar obtener la respuesta de N8N
+            try:
+                response_data = response.json()
+            except json.JSONDecodeError:
+                # Si N8N no devuelve JSON válido, crear respuesta por defecto
+                response_data = {
+                    "status": "success",
+                    "message": "Cotización recibida correctamente"
+                }
+            
+            print(f"Cotización enviada exitosamente a N8N para: {data.get('nombre')}")
+            
+            return JSONResponse(content=response_data)
+            
+        except requests.exceptions.Timeout:
+            print("Timeout al enviar cotización a N8N")
+            return JSONResponse(
+                status_code=504,
+                content={"error": "La solicitud tardó demasiado tiempo. Por favor intenta de nuevo."}
+            )
+        except requests.exceptions.RequestException as e:
+            print(f"Error al comunicarse con N8N: {str(e)}")
+            return JSONResponse(
+                status_code=502,
+                content={"error": "Error al procesar la solicitud. Por favor intenta de nuevo."}
+            )
+            
+    except json.JSONDecodeError:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Formato de datos inválido"}
+        )
+    except Exception as e:
+        print(f"Error inesperado en /api/cotizaciones: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Error interno del servidor"}
+        )
+
+
+# ============================
+# ENDPOINT PARA FORMULARIO DE CONTACTO
+# ============================
+
+@app.post("/api/contact")
+async def submit_contact(request: Request):
+    """
+    Endpoint para recibir mensajes del formulario de contacto
+    y reenviarlos al webhook de N8N de forma segura
+    """
+    try:
+        # Obtener los datos del formulario
+        data = await request.json()
+        
+        # Validaciones básicas
+        if not data.get('name') or not data.get('email') or not data.get('message'):
+            return JSONResponse(
+                status_code=400,
+                content={"error": "Nombre, email y mensaje son campos obligatorios"}
+            )
+        
+        # Agregar metadatos de seguridad
+        contact_data = {
+            'name': data.get('name'),
+            'email': data.get('email'),
+            'phone': data.get('phone', ''),  # Campo opcional
+            'message': data.get('message'),
+            'source': 'vrdistribucion.com - Formulario de Contacto',
+            'ip_address': request.client.host if request.client else 'unknown',
+            'user_agent': request.headers.get('user-agent', 'unknown'),
+            'submission_time': data.get('timestamp', ''),
+            'form_type': 'contact'
+        }
+        
+        print(f"Recibido mensaje de contacto de: {contact_data.get('name')} - {contact_data.get('email')}")
+        
+        try:
+            # Enviar datos a N8N
+            response = requests.post(
+                url=CONTACT_API_URL,
+                headers={
+                    "Content-Type": "application/json",
+                    "X-Token": X_TOKEN
+                },
+                json=contact_data,
+                timeout=30
+            )
+            response.raise_for_status()
+            
+            return JSONResponse(
+                status_code=200,
+                content={
+                    "success": True,
+                    "message": "Tu mensaje ha sido enviado correctamente. Te contactaremos pronto."
+                }
+            )
+            
+        except requests.exceptions.Timeout:
+            return JSONResponse(
+                status_code=504,
+                content={"error": "El servidor tardó demasiado en responder. Intenta nuevamente."}
+            )
+        except requests.exceptions.RequestException as e:
+            print(f"Error al enviar a N8N: {str(e)}")
+            return JSONResponse(
+                status_code=502,
+                content={"error": "Error al procesar tu solicitud. Intenta nuevamente."}
+            )
+            
+    except json.JSONDecodeError:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Formato de datos inválido"}
+        )
+    except Exception as e:
+        print(f"Error inesperado en /api/contact: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Error interno del servidor"}
+        )
 
 
 if __name__ == "__main__":
