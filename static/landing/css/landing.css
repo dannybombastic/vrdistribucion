@@ -1398,13 +1398,14 @@ header nav a:hover {
 }
 
 #about {
-    padding: 5rem 2rem;
+    padding: 4rem 3rem;
     position: relative;
     border-radius: 24px;
-    margin: 6rem 2rem 2rem;
+    margin: 4rem 1rem 2rem;
     text-align: center;
     color: #1f2937;
-    overflow: hidden
+    overflow: hidden;
+    box-sizing: border-box
 }
 
 #about::before {
@@ -1455,13 +1456,15 @@ header nav a:hover {
 }
 
 #about p {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto 1.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
     color: #4b5563;
     position: relative;
-    z-index: 4
+    z-index: 4;
+    padding: 0 1rem;
+    box-sizing: border-box
 }
 
 #services {
@@ -2852,15 +2855,23 @@ footer a:hover {
 
     .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem
+        gap: 1rem;
+        padding: 0 0.5rem
     }
 
     .metric-item {
-        padding: 1.5rem .75rem
+        padding: 1.5rem 0.5rem;
+        text-align: center
     }
 
     .metric-number {
-        font-size: 2rem
+        font-size: 2rem;
+        margin-bottom: 0.5rem
+    }
+
+    .metric-label {
+        font-size: 0.9rem;
+        line-height: 1.3
     }
 
     .clients-strip {
@@ -2874,6 +2885,46 @@ footer a:hover {
 
     .client-type {
         font-size: .8rem
+    }
+
+    .caminos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+        max-width: 100%
+    }
+
+    .camino-card {
+        padding: 1.5rem;
+        margin: 0 auto;
+        max-width: 350px;
+        width: 100%
+    }
+
+    .camino-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem
+    }
+
+    .camino-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem
+    }
+
+    .camino-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem
+    }
+
+    .camino-features li {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem
+    }
+
+    .cta-camino {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.85rem
     }
 }
 
@@ -2899,9 +2950,10 @@ footer a:hover {
     }
 
     #about {
-        margin: 3rem 1rem 2rem;
-        padding: 3rem 1.5rem;
-        border-radius: 16px
+        margin: 3rem 0.5rem 2rem;
+        padding: 3rem 2rem;
+        border-radius: 16px;
+        box-sizing: border-box
     }
 
     #about h2,
@@ -2914,10 +2966,11 @@ footer a:hover {
         font-size: 1rem;
         line-height: 1.6;
         margin: 0 auto 1.2rem;
-        padding: 0 .5rem;
+        padding: 0 1rem;
         max-width: 100%;
         word-wrap: break-word;
-        overflow-wrap: break-word
+        overflow-wrap: break-word;
+        box-sizing: border-box
     }
 
     .paquetes-section {
@@ -3577,9 +3630,10 @@ button:focus {
 
 @media (max-width:480px) {
     #about {
-        margin: 2rem .5rem 1rem;
-        padding: 2rem 1rem;
-        border-radius: 12px
+        margin: 2rem 0.25rem 1rem;
+        padding: 2rem 1.5rem;
+        border-radius: 12px;
+        box-sizing: border-box
     }
 
     #about h2 {
@@ -3591,10 +3645,73 @@ button:focus {
         font-size: .95rem;
         line-height: 1.5;
         margin: 0 auto 1rem;
-        padding: 0 .25rem;
+        padding: 0 1rem;
         text-align: left;
         hyphens: auto;
         -webkit-hyphens: auto;
-        -ms-hyphens: auto
+        -ms-hyphens: auto;
+        max-width: 100%;
+        box-sizing: border-box
+    }
+
+    .caminos-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+        max-width: 100%
+    }
+
+    .camino-card {
+        padding: 1.2rem;
+        margin: 0 auto;
+        max-width: 300px;
+        width: 100%
+    }
+
+    .camino-icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem
+    }
+
+    .camino-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem
+    }
+
+    .camino-card p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-bottom: 1rem
+    }
+
+    .camino-features li {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem
+    }
+
+    .cta-camino {
+        padding: 0.6rem 1.1rem;
+        font-size: 0.8rem
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        padding: 0 0.5rem
+    }
+
+    .metric-item {
+        padding: 1.2rem 0.5rem;
+        text-align: center
+    }
+
+    .metric-number {
+        font-size: 1.8rem;
+        margin-bottom: 0.4rem
+    }
+
+    .metric-label {
+        font-size: 0.85rem;
+        line-height: 1.2
     }
 }
