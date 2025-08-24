@@ -31,8 +31,8 @@
 
 class ContactForm {
     constructor() {
-        console.log('ContactForm constructor called');
-        console.log('Document ready state:', document.readyState);
+        // console.log('ContactForm constructor called');
+        // console.log('Document ready state:', document.readyState);
         
         this.form = document.querySelector('#contact form');
         this.submitButton = this.form?.querySelector('button[type="submit"]');
@@ -103,14 +103,14 @@ class ContactForm {
         }
         
         this.attachEventListeners();
-        console.log('ContactForm initialized successfully');
+        // console.log('ContactForm initialized successfully');
     }
 
     /**
      * Configura los event listeners del formulario
      */
     attachEventListeners() {
-        console.log('Attaching event listeners...');
+        // console.log('Attaching event listeners...');
         
         // Event listener para el submit del formulario
         if (this.form) {
@@ -125,11 +125,11 @@ class ContactForm {
                 console.log('Button type:', this.submitButton.type);
                 
                 // Debug: verificar valores actuales usando referencias cacheadas
-                console.log('Current field values at button click (cached references):');
-                console.log('Name:', this.nameField?.value || '[empty]');
-                console.log('Email:', this.emailField?.value || '[empty]');
-                console.log('Phone:', this.phoneField?.value || '[empty]');
-                console.log('Message:', this.messageField?.value || '[empty]');
+                // console.log('Current field values at button click (cached references):');
+                // console.log('Name:', this.nameField?.value || '[empty]');
+                // console.log('Email:', this.emailField?.value || '[empty]');
+                // console.log('Phone:', this.phoneField?.value || '[empty]');
+                // console.log('Message:', this.messageField?.value || '[empty]');
                 
                 // Debug: verificar valores usando querySelector fresh
                 console.log('Current field values at button click (fresh selectors):');
@@ -138,17 +138,17 @@ class ContactForm {
                 const phoneFieldFresh = this.form.querySelector('#contact-phone');
                 const messageFieldFresh = this.form.querySelector('#contact-message');
                 
-                console.log('Name (fresh):', nameFieldFresh?.value || '[empty]');
-                console.log('Email (fresh):', emailFieldFresh?.value || '[empty]');
-                console.log('Phone (fresh):', phoneFieldFresh?.value || '[empty]');
-                console.log('Message (fresh):', messageFieldFresh?.value || '[empty]');
+                // console.log('Name (fresh):', nameFieldFresh?.value || '[empty]');
+                // console.log('Email (fresh):', emailFieldFresh?.value || '[empty]');
+                // console.log('Phone (fresh):', phoneFieldFresh?.value || '[empty]');
+                // console.log('Message (fresh):', messageFieldFresh?.value || '[empty]');
                 
                 // Debug: comparar referencias
-                console.log('Are cached references the same as fresh?');
-                console.log('Name same?', this.nameField === nameFieldFresh);
-                console.log('Email same?', this.emailField === emailFieldFresh);
-                console.log('Phone same?', this.phoneField === phoneFieldFresh);
-                console.log('Message same?', this.messageField === messageFieldFresh);
+                // console.log('Are cached references the same as fresh?');
+                // console.log('Name same?', this.nameField === nameFieldFresh);
+                // console.log('Email same?', this.emailField === emailFieldFresh);
+                // console.log('Phone same?', this.phoneField === phoneFieldFresh);
+                // console.log('Message same?', this.messageField === messageFieldFresh);
             });
             console.log('Submit button listener attached');
         }
