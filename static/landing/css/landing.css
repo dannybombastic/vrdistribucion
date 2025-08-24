@@ -374,7 +374,8 @@ header nav a:hover {
     font-weight: 600;
     font-size: .9rem;
     text-transform: uppercase;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+
 }
 
 .hero-eyebrow-line {
@@ -1372,29 +1373,7 @@ header nav a:hover {
 }
 
 @media (max-width:768px) {
-    .hero {
-        padding: 5rem 1rem 2rem;
-        min-height: 50vh;
-        margin-top: 1rem
-    }
-
-    .hero>div {
-        padding: 1.5rem 1rem
-    }
-
-    .hero h1 {
-        font-size: 2rem
-    }
-
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 1rem
-    }
-
-    .cta {
-        padding: .8rem 2rem;
-        font-size: .9rem
-    }
+    /* Removed duplicate hero styles - consolidated in the main mobile section */
 }
 
 #about {
@@ -2501,27 +2480,81 @@ footer a:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, .15)
 }
 
+/* Mobile Override - Force hero content to top */
 @media (max-width:768px) {
+    body {
+        padding-top: 0 !important;
+    }
+    
+    section.hero {
+        padding: 0 !important;
+        margin-top: 0 !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+    
+    .hero-container {
+        padding: 0 !important;
+        padding-top: calc(80px + 2.5rem) !important;
+        padding-left: 4vw !important;
+        padding-right: 4vw !important;
+        padding-bottom: 2rem !important;
+        margin: 0 !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+    
+    .hero .hero-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .hero-content {
+        justify-content: flex-start !important;
+        align-items: center !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
     .hero {
-        padding: 0;
+        padding: 0 !important;
         min-height: 100vh;
         height: auto;
         width: 100vw;
-        margin-left: calc(-50vw + 50%)
+        margin-left: calc(-50vw + 50%);
+        margin-top: 0 !important;
     }
 
     .hero-container {
         flex-direction: column;
-        gap: 2rem;
-        padding: 6rem 6vw 4rem;
+        gap: 1.5rem;
+        padding: 0.5rem 6vw 4rem !important;
         text-align: center;
         width: 100vw;
         min-height: 100vh;
         max-width: none;
         margin: 0;
-        justify-content: center;
+        justify-content: flex-start !important;
         align-items: center;
-        box-sizing: border-box
+        box-sizing: border-box;
+        padding-top: calc(80px + 2.5rem) !important;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0 !important;
+    }
+
+    .hero-eyebrow {
+        margin-bottom: 1.2rem !important;
+    }
+
+    .hero-eyebrow-text {
+        padding-top: 2rem !important;
     }
 
     .hero-content {
@@ -2572,7 +2605,11 @@ footer a:hover {
     }
 
     .hero-title {
-        font-size: 2.5rem
+        font-size: 2.5rem;
+        margin-top: 0 !important;
+        margin-bottom: 1.2rem !important;
+        line-height: 1.2 !important;
+        padding-top: 0 !important;
     }
 
     .title-sub {
@@ -2580,17 +2617,21 @@ footer a:hover {
     }
 
     .hero-description {
-        font-size: 1.1rem
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-features {
-        grid-template-columns: 1fr;
-        gap: .75rem
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-ctas {
         flex-direction: column;
-        align-items: center
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .cta-primary,
@@ -3993,6 +4034,59 @@ button:focus {
 
 /* Solo para dispositivos muy pequeños (menos de 400px) */
 @media (max-width:400px) {
+    body {
+        padding-top: 0 !important;
+    }
+    
+    /* Hero section optimizations for very small screens */
+    .hero {
+        padding: 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .hero-container {
+        padding-top: calc(80px + 2rem) !important;
+        gap: 1rem !important;
+        padding: 0.5rem 4vw 3rem !important;
+        justify-content: flex-start !important;
+    }
+    
+    .hero-eyebrow {
+        margin-bottom: 1rem !important;
+    }
+    
+    .hero-eyebrow-text {
+        padding-top: 1.5rem !important;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.2 !important;
+        padding-top: 0 !important;
+    }
+    
+    .title-sub {
+        font-size: 1.6rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .hero-features {
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-ctas {
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+    }
+
     #about {
         margin: 2rem 0.25rem 1rem;
         padding: 2rem 1.5rem;
