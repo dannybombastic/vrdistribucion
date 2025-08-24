@@ -43,7 +43,7 @@ jobs:
           ls -la ${{ github.workspace }}
 
       - name: Publish
-        uses: yitianyigexiangfa/ssh-scp-ssh-pipelines@v1.1.5
+        uses: dannybombastic/ssh-scp-ssh-pipelines@v1.1.5
         with:
             host: ${{ secrets.REMOTE_HOST }}
             port: 22
