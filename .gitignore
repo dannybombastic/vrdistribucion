@@ -2,7 +2,7 @@
 *.tmp
 *.bak
 *.env
-
+.github/
 *.sh
 .env
 venv/

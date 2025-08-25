@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         apiUrl = prodwww;
     }
     else {
-        console.log("production");
+       // console.log("production");
         apiUrl = dev;
     }
 

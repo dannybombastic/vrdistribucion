@@ -1,33 +1,3 @@
-/**
- * VR Distribución - Conta    getApiUrl() {
-        const isLocalhost = window.location.hostname === 'localhost' || 
-                           window.location.hostname === '127.0.0.1' ||
-                           window.location.hostname === '0.0.0.0' ||
-                           window.location.port === '3000' ||
-                           window.location.port === '5500' ||
-                           window.location.href.includes('127.0.0.1');
-        
-        console.log('API URL Detection:');
-        console.log('hostname:', window.location.hostname);
-        console.log('port:', window.location.port);
-        console.log('href:', window.location.href);
-        console.log('isLocalhost:', isLocalhost);
-        
-        if (isLocalhost) {
-            console.log('Using localhost API URL');
-            return 'http://127.0.0.1:8000/api/contact';
-        } else if (window.location.hostname === 'vrdistribucion.com' || window.location.hostname === 'www.vrdistribucion.com') {
-            console.log('Using production API URL');
-            return 'https://vrdistribucion.com/api/contact';
-        }
-        
-        // Fallback to localhost if unsure
-        console.log('Fallback to localhost API URL');
-        return 'http://127.0.0.1:8000/api/contact';
-    }ler
- * Maneja el envío seguro del formulario de contacto
- */
-
 
 class ContactForm {
     constructor() {
@@ -70,15 +40,15 @@ class ContactForm {
      * Inicializa el formulario
      */
     init() {
-        console.log('Initializing ContactForm...');
+       // console.log('Initializing ContactForm...');
         
         if (!this.form) {
             console.error('Contact form not found!');
             return;
         }
         
-        console.log('Form found:', this.form);
-        console.log('Form innerHTML:', this.form.innerHTML.substring(0, 200) + '...');
+       // console.log('Form found:', this.form);
+        //console.log('Form innerHTML:', this.form.innerHTML.substring(0, 200) + '...');
         
         // Cache field references con debugging detallado
         this.nameField = this.form.querySelector('#contact-name');
@@ -86,16 +56,16 @@ class ContactForm {
         this.phoneField = this.form.querySelector('#contact-phone');
         this.messageField = this.form.querySelector('#contact-message');
         
-        console.log('Cached field references:');
-        console.log('Name field:', this.nameField);
-        console.log('Name field value:', this.nameField?.value);
-        console.log('Name field HTML:', this.nameField?.outerHTML);
-        console.log('Email field:', this.emailField);
-        console.log('Email field value:', this.emailField?.value);
-        console.log('Phone field:', this.phoneField);
-        console.log('Phone field value:', this.phoneField?.value);
-        console.log('Message field:', this.messageField);
-        console.log('Message field value:', this.messageField?.value);
+        // console.log('Cached field references:');
+        // console.log('Name field:', this.nameField);
+        // console.log('Name field value:', this.nameField?.value);
+        // console.log('Name field HTML:', this.nameField?.outerHTML);
+        // console.log('Email field:', this.emailField);
+        // console.log('Email field value:', this.emailField?.value);
+        // console.log('Phone field:', this.phoneField);
+        // console.log('Phone field value:', this.phoneField?.value);
+        // console.log('Message field:', this.messageField);
+        // console.log('Message field value:', this.messageField?.value);
         
         if (!this.nameField || !this.emailField || !this.phoneField || !this.messageField) {
             console.error('Some form fields are missing!');
@@ -115,14 +85,14 @@ class ContactForm {
         // Event listener para el submit del formulario
         if (this.form) {
             this.form.addEventListener('submit', (event) => this.handleSubmit(event));
-            console.log('Form submit listener attached');
+         //   console.log('Form submit listener attached');
         }
         
         // Event listener para el botón submit
         if (this.submitButton) {
             this.submitButton.addEventListener('click', (event) => {
-                console.log('Submit button clicked!');
-                console.log('Button type:', this.submitButton.type);
+               // console.log('Submit button clicked!');
+               // console.log('Button type:', this.submitButton.type);
                 
                 // Debug: verificar valores actuales usando referencias cacheadas
                 // console.log('Current field values at button click (cached references):');
@@ -132,7 +102,7 @@ class ContactForm {
                 // console.log('Message:', this.messageField?.value || '[empty]');
                 
                 // Debug: verificar valores usando querySelector fresh
-                console.log('Current field values at button click (fresh selectors):');
+               // console.log('Current field values at button click (fresh selectors):');
                 const nameFieldFresh = this.form.querySelector('#contact-name');
                 const emailFieldFresh = this.form.querySelector('#contact-email');
                 const phoneFieldFresh = this.form.querySelector('#contact-phone');
@@ -150,12 +120,12 @@ class ContactForm {
                 // console.log('Phone same?', this.phoneField === phoneFieldFresh);
                 // console.log('Message same?', this.messageField === messageFieldFresh);
             });
-            console.log('Submit button listener attached');
+        //    console.log('Submit button listener attached');
         }
         
         // Agregar validación en tiempo real
         this.addRealTimeValidation();
-        console.log('Real-time validation added');
+       // console.log('Real-time validation added');
     }
 
     /**
@@ -165,32 +135,32 @@ class ContactForm {
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-        console.log('Form submit event triggered!');
+       // console.log('Form submit event triggered!');
         
         if (this.isSubmitting) {
-            console.log('Form already submitting, ignoring...');
+            // console.log('Form already submitting, ignoring...');
             return;
         }
 
-        console.log('Starting form submission process...');
+        //console.log('Starting form submission process...');
 
         // Limpiar mensajes de error previos
         // TEMPORARILY DISABLED: this.clearErrors();
 
         // Validar formulario
         if (!this.validateForm()) {
-            console.log('Form validation failed');
+            // console.log('Form validation failed');
             return;
         }
 
         // Obtener datos del formulario
         const formData = this.getFormData();
-        console.log('Form data:', formData);
-        console.log('API URL:', this.apiUrl);
-        
+        // console.log('Form data:', formData);
+        // console.log('API URL:', this.apiUrl);
+
         try {
             this.setSubmitting(true);
-            console.log('Sending request to:', this.apiUrl);
+            // console.log('Sending request to:', this.apiUrl);
             
             // Enviar datos al backend
             const response = await fetch(this.apiUrl, {
@@ -201,23 +171,23 @@ class ContactForm {
                 body: JSON.stringify(formData)
             });
 
-            console.log('Response status:', response.status);
-            console.log('Response headers:', response.headers);
+            // console.log('Response status:', response.status);
+            // console.log('Response headers:', response.headers);
 
             const result = await response.json();
             console.log('Response data:', result);
 
             if (response.ok && result.success) {
-                console.log('Success! Showing success message');
+               // console.log('Success! Showing success message');
                 this.showSuccess(result.message);
                 this.resetForm();
             } else {
-                console.log('Error in response:', result.error);
+                // console.log('Error in response:', result.error);
                 this.showError(result.error || 'Error al enviar el mensaje');
             }
 
         } catch (error) {
-            console.error('Error al enviar formulario:', error);
+           // console.error('Error al enviar formulario:', error);
             this.showError('Error de conexión. Por favor intenta nuevamente.');
         } finally {
             this.setSubmitting(false);
@@ -228,12 +198,12 @@ class ContactForm {
      * Obtiene los datos del formulario
      */
     getFormData() {
-        console.log('Getting form data using cached references...');
-        console.log('Cached field elements:');
-        console.log('Name field element:', this.nameField);
-        console.log('Email field element:', this.emailField);
-        console.log('Phone field element:', this.phoneField);
-        console.log('Message field element:', this.messageField);
+        // console.log('Getting form data using cached references...');
+        // console.log('Cached field elements:');
+        // console.log('Name field element:', this.nameField);
+        // console.log('Email field element:', this.emailField);
+        // console.log('Phone field element:', this.phoneField);
+        // console.log('Message field element:', this.messageField);
         
         const formData = {
             name: this.nameField?.value.trim() || '',
@@ -252,16 +222,16 @@ class ContactForm {
      */
     validateForm() {
         let isValid = true;
-        console.log('Starting form validation...');
-        
+        // console.log('Starting form validation...');
+
         // Validar nombre usando referencia cacheada
-        console.log('Name field:', this.nameField?.value);
+        // console.log('Name field:', this.nameField?.value);
         if (!this.nameField?.value.trim()) {
-            console.log('Name validation failed: empty');
+            // console.log('Name validation failed: empty');
             this.showFieldError('name-error', 'El nombre es obligatorio');
             isValid = false;
         } else if (this.nameField.value.trim().length < 2) {
-            console.log('Name validation failed: too short');
+            // console.log('Name validation failed: too short');
             this.showFieldError('name-error', 'El nombre debe tener al menos 2 caracteres');
             isValid = false;
         } else {
@@ -269,13 +239,13 @@ class ContactForm {
         }
 
         // Validar email usando referencia cacheada
-        console.log('Email field:', this.emailField?.value);
+        // console.log('Email field:', this.emailField?.value);
         if (!this.emailField?.value.trim()) {
-            console.log('Email validation failed: empty');
+            // console.log('Email validation failed: empty');
             this.showFieldError('email-error', 'El email es obligatorio');
             isValid = false;
         } else if (!this.isValidEmail(this.emailField.value.trim())) {
-            console.log('Email validation failed: invalid format');
+            // console.log('Email validation failed: invalid format');
             this.showFieldError('email-error', 'Por favor ingresa un email válido');
             isValid = false;
         } else {
@@ -283,9 +253,9 @@ class ContactForm {
         }
 
         // Validar teléfono usando referencia cacheada (opcional pero si se ingresa debe ser válido)
-        console.log('Phone field:', this.phoneField?.value);
+        // console.log('Phone field:', this.phoneField?.value);
         if (this.phoneField?.value.trim() && !this.isValidPhone(this.phoneField.value.trim())) {
-            console.log('Phone validation failed: invalid format');
+            // console.log('Phone validation failed: invalid format');
             this.showFieldError('phone-error', 'Por favor ingresa un teléfono válido');
             isValid = false;
         } else {
@@ -293,20 +263,20 @@ class ContactForm {
         }
 
         // Validar mensaje usando referencia cacheada
-        console.log('Message field length:', this.messageField?.value.trim().length);
+        // console.log('Message field length:', this.messageField?.value.trim().length);
         if (!this.messageField?.value.trim()) {
-            console.log('Message validation failed: empty');
+            // console.log('Message validation failed: empty');
             this.showFieldError('message-error', 'El mensaje es obligatorio');
             isValid = false;
         } else if (this.messageField.value.trim().length < 5) {
-            console.log('Message validation failed: too short');
+            // console.log('Message validation failed: too short');
             this.showFieldError('message-error', 'El mensaje debe tener al menos 5 caracteres');
             isValid = false;
         } else {
             console.log('Message validation passed');
         }
 
-        console.log('Form validation result:', isValid);
+        // console.log('Form validation result:', isValid);
         return isValid;
     }
 
@@ -502,8 +472,8 @@ class ContactForm {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded - Initializing ContactForm');
-    console.log('Location:', window.location.href);
+   // console.log('DOM Content Loaded - Initializing ContactForm');
+    // console.log('Location:', window.location.href);
     new ContactForm();
 });
 

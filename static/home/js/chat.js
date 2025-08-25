@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         apiUrl = prodwww;
     }
     else {
-        console.log("production");
+        //console.log("production");
         apiUrl = dev;
     }
 
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const converter = new showdown.Converter();
     // Add message to chat
     function addMessage(text, sender) {
-        console.log(text);
+       // console.log(text);
 
         // Convertir
         const htmlContent = converter.makeHtml(text);
