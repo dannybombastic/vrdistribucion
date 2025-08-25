@@ -61,7 +61,7 @@ class GalleryManager {
         this.gallerySections = document.querySelectorAll('.gallery-section');
         
         // Lightbox elements will be created dynamically
-        // console.log('DOM elements cached:', {
+         console.log('DOM elements cached:', {
             tabs: this.galleryTabs.length,
             sections: this.gallerySections.length
         });
