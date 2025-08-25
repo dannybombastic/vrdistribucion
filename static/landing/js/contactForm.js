@@ -48,7 +48,7 @@ class ContactForm {
         }
         
        // console.log('Form found:', this.form);
-        //console.log('Form innerHTML:', this.form.innerHTML.substring(0, 200) + '...');
+        //// console.log('Form innerHTML:', this.form.innerHTML.substring(0, 200) + '...');
         
         // Cache field references con debugging detallado
         this.nameField = this.form.querySelector('#contact-name');
@@ -85,7 +85,7 @@ class ContactForm {
         // Event listener para el submit del formulario
         if (this.form) {
             this.form.addEventListener('submit', (event) => this.handleSubmit(event));
-         //   console.log('Form submit listener attached');
+         //   // console.log('Form submit listener attached');
         }
         
         // Event listener para el botón submit
@@ -120,7 +120,7 @@ class ContactForm {
                 // console.log('Phone same?', this.phoneField === phoneFieldFresh);
                 // console.log('Message same?', this.messageField === messageFieldFresh);
             });
-        //    console.log('Submit button listener attached');
+        //    // console.log('Submit button listener attached');
         }
         
         // Agregar validación en tiempo real
@@ -142,7 +142,7 @@ class ContactForm {
             return;
         }
 
-        //console.log('Starting form submission process...');
+        //// console.log('Starting form submission process...');
 
         // Limpiar mensajes de error previos
         // TEMPORARILY DISABLED: this.clearErrors();
@@ -175,7 +175,7 @@ class ContactForm {
             // console.log('Response headers:', response.headers);
 
             const result = await response.json();
-            console.log('Response data:', result);
+            // console.log('Response data:', result);
 
             if (response.ok && result.success) {
                // console.log('Success! Showing success message');
@@ -213,7 +213,7 @@ class ContactForm {
             timestamp: new Date().toISOString()
         };
         
-        console.log('Raw form data from cached references:', formData);
+        // console.log('Raw form data from cached references:', formData);
         return formData;
     }
 
@@ -235,7 +235,7 @@ class ContactForm {
             this.showFieldError('name-error', 'El nombre debe tener al menos 2 caracteres');
             isValid = false;
         } else {
-            console.log('Name validation passed');
+            // console.log('Name validation passed');
         }
 
         // Validar email usando referencia cacheada
@@ -249,7 +249,7 @@ class ContactForm {
             this.showFieldError('email-error', 'Por favor ingresa un email válido');
             isValid = false;
         } else {
-            console.log('Email validation passed');
+            // console.log('Email validation passed');
         }
 
         // Validar teléfono usando referencia cacheada (opcional pero si se ingresa debe ser válido)
@@ -259,7 +259,7 @@ class ContactForm {
             this.showFieldError('phone-error', 'Por favor ingresa un teléfono válido');
             isValid = false;
         } else {
-            console.log('Phone validation passed');
+            // console.log('Phone validation passed');
         }
 
         // Validar mensaje usando referencia cacheada
@@ -273,7 +273,7 @@ class ContactForm {
             this.showFieldError('message-error', 'El mensaje debe tener al menos 5 caracteres');
             isValid = false;
         } else {
-            console.log('Message validation passed');
+            // console.log('Message validation passed');
         }
 
         // console.log('Form validation result:', isValid);

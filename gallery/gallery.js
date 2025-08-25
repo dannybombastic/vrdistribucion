@@ -28,7 +28,7 @@ class GalleryManager {
      * Initialize the gallery manager
      */
     init() {
-        console.log('Initializing Gallery Manager...');
+        // console.log('Initializing Gallery Manager...');
         
         // Wait for DOM to be fully loaded
         if (document.readyState === 'loading') {
@@ -42,7 +42,7 @@ class GalleryManager {
      * Setup all gallery functionality
      */
     setup() {
-        console.log('Setting up Gallery Manager...');
+        // console.log('Setting up Gallery Manager...');
         
         this.cacheDOMElements();
         this.createLightboxHTML();
@@ -50,7 +50,7 @@ class GalleryManager {
         this.setupTabNavigation();
         this.collectImages();
         
-        console.log('Gallery Manager initialized successfully');
+        // console.log('Gallery Manager initialized successfully');
     }
 
     /**
@@ -61,7 +61,7 @@ class GalleryManager {
         this.gallerySections = document.querySelectorAll('.gallery-section');
         
         // Lightbox elements will be created dynamically
-        console.log('DOM elements cached:', {
+        // console.log('DOM elements cached:', {
             tabs: this.galleryTabs.length,
             sections: this.gallerySections.length
         });
@@ -78,7 +78,7 @@ class GalleryManager {
             this.lightboxTitle = document.getElementById('lightbox-title');
             this.lightboxDescription = document.getElementById('lightbox-description');
             this.lightboxCounter = document.getElementById('lightbox-counter');
-            console.log('Lightbox elements found in DOM');
+            // console.log('Lightbox elements found in DOM');
         } else {
             console.warn('Lightbox overlay not found in DOM');
         }
@@ -100,7 +100,7 @@ class GalleryManager {
         // Window resize
         window.addEventListener('resize', () => this.handleResize());
         
-        console.log('Event listeners setup complete');
+        // console.log('Event listeners setup complete');
     }
 
     /**
@@ -136,7 +136,7 @@ class GalleryManager {
             }
         });
         
-        console.log(`Setup click listeners for ${images.length} images`);
+        // console.log(`Setup click listeners for ${images.length} images`);
     }
 
     /**
@@ -173,7 +173,7 @@ class GalleryManager {
         // Touch/swipe gestures for mobile
         this.setupTouchGestures();
 
-        console.log('Lightbox controls setup complete');
+        // console.log('Lightbox controls setup complete');
     }
 
     /**
@@ -266,7 +266,7 @@ class GalleryManager {
             }
         });
 
-        console.log('Keyboard navigation setup complete');
+        // console.log('Keyboard navigation setup complete');
     }
 
     /**
@@ -283,14 +283,14 @@ class GalleryManager {
             });
         });
 
-        console.log('Tab navigation setup complete');
+        // console.log('Tab navigation setup complete');
     }
 
     /**
      * Switch between gallery styles
      */
     switchGallery(galleryType) {
-        console.log(`Switching to gallery: ${galleryType}`);
+        // console.log(`Switching to gallery: ${galleryType}`);
         
         // Update tab states
         this.galleryTabs.forEach(tab => {
@@ -342,14 +342,14 @@ class GalleryManager {
             index: index
         }));
 
-        console.log(`Collected ${this.images.length} images from ${this.currentGallery} gallery`);
+        // console.log(`Collected ${this.images.length} images from ${this.currentGallery} gallery`);
     }
 
     /**
      * Open lightbox with specified image
      */
     openLightbox(event, imageIndex) {
-        console.log(`Opening lightbox for image ${imageIndex}`);
+        // console.log(`Opening lightbox for image ${imageIndex}`);
         
         if (!this.lightboxOverlay || !this.images.length) {
             console.error('Lightbox not available or no images found');
@@ -386,7 +386,7 @@ class GalleryManager {
      * Close lightbox
      */
     closeLightbox() {
-        console.log('Closing lightbox');
+        // console.log('Closing lightbox');
         
         if (!this.isLightboxOpen) return;
 
@@ -486,7 +486,7 @@ class GalleryManager {
         this.resizeTimeout = setTimeout(() => {
             if (this.isLightboxOpen) {
                 // Refresh lightbox layout if needed
-                console.log('Handling resize while lightbox is open');
+                // console.log('Handling resize while lightbox is open');
             }
         }, 250);
     }
@@ -550,7 +550,7 @@ class GalleryAnimations {
      */
     setupIntersectionObserver() {
         if (!('IntersectionObserver' in window)) {
-            console.log('IntersectionObserver not supported');
+            // console.log('IntersectionObserver not supported');
             return;
         }
 
@@ -613,14 +613,14 @@ class GalleryAnimations {
             ticking = false;
         };
 
-        const requestAnimationFrame = () => {
+        const handleScroll = () => {
             if (!ticking) {
-                requestAnimationFrame(updateAnimations);
+                window.requestAnimationFrame(updateAnimations);
                 ticking = true;
             }
         };
 
-        window.addEventListener('scroll', requestAnimationFrame, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
     }
 
     /**
@@ -685,17 +685,17 @@ class GalleryPerformance {
                 const observer = new PerformanceObserver((list) => {
                     list.getEntries().forEach((entry) => {
                         if (entry.entryType === 'largest-contentful-paint') {
-                            console.log('LCP:', entry.startTime);
+                            // console.log('LCP:', entry.startTime);
                         }
                         if (entry.entryType === 'layout-shift') {
-                            console.log('CLS:', entry.value);
+                            // console.log('CLS:', entry.value);
                         }
                     });
                 });
 
                 observer.observe({ entryTypes: ['largest-contentful-paint', 'layout-shift'] });
             } catch (e) {
-                console.log('Performance observer not fully supported');
+                // console.log('Performance observer not fully supported');
             }
         }
     }
@@ -706,7 +706,7 @@ class GalleryPerformance {
     checkLoadComplete() {
         if (this.metrics.imagesLoaded >= this.metrics.totalImages) {
             const loadTime = performance.now() - this.metrics.loadStartTime;
-            console.log(`Gallery loaded: ${this.metrics.totalImages} images in ${loadTime.toFixed(2)}ms`);
+            // console.log(`Gallery loaded: ${this.metrics.totalImages} images in ${loadTime.toFixed(2)}ms`);
         }
     }
 
@@ -725,7 +725,7 @@ class GalleryPerformance {
  * Initialize gallery when DOM is ready
  */
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Initializing VR Distribución Gallery...');
+    // console.log('Initializing VR Distribución Gallery...');
     
     // Initialize main gallery manager
     window.galleryManager = new GalleryManager();
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize performance monitoring
     window.galleryPerformance = new GalleryPerformance();
     
-    console.log('Gallery initialization complete');
+    // console.log('Gallery initialization complete');
 });
 
 // Export for debugging and external access

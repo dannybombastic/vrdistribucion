@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         apiUrl = prodwww;
     }
     else {
-        //console.log("production");
+        //// console.log("production");
         apiUrl = dev;
     }
 
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 } catch (jsonError) {
                     // If not valid JSON, use the raw text
-                    console.log('Response is not JSON, using raw text:', responseText);
+                    // console.log('Response is not JSON, using raw text:', responseText);
                     addMessage(responseText, 'assistant');
                     conversationHistory.push({
                         role: "assistant",
