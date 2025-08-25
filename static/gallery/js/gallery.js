@@ -722,6 +722,160 @@ class GalleryPerformance {
 }
 
 /**
+ * Mobile Menu Manager
+ * Handles mobile hamburger menu functionality
+ */
+class MobileMenuManager {
+    constructor() {
+        this.mobileToggle = null;
+        this.nav = null;
+        this.icon = null;
+        this.isInitialized = false;
+        
+        this.init();
+    }
+
+    /**
+     * Initialize mobile menu functionality
+     */
+    init() {
+        // Wait for DOM to be fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setup());
+        } else {
+            this.setup();
+        }
+    }
+
+    /**
+     * Setup mobile menu elements and event listeners
+     */
+    setup() {
+        console.log('Inicializando menú móvil...');
+        
+        // Cache DOM elements
+        this.mobileToggle = document.querySelector('.mobile-menu-toggle');
+        this.nav = document.querySelector('header nav');
+        this.icon = this.mobileToggle?.querySelector('i');
+        
+        console.log('Elementos encontrados:', {
+            mobileToggle: !!this.mobileToggle,
+            nav: !!this.nav,
+            icon: !!this.icon
+        });
+        
+        if (!this.mobileToggle || !this.nav || !this.icon) {
+            console.error('No se encontraron todos los elementos del menú móvil');
+            return;
+        }
+        
+        this.setupEventListeners();
+        this.isInitialized = true;
+        console.log('Menú móvil inicializado correctamente');
+    }
+
+    /**
+     * Setup all event listeners for mobile menu
+     */
+    setupEventListeners() {
+        // Toggle button click
+        this.mobileToggle.addEventListener('click', (e) => this.handleToggleClick(e));
+        
+        // Close menu when clicking on navigation links
+        this.setupNavLinkListeners();
+        
+        // Close menu when clicking outside
+        this.setupOutsideClickListener();
+    }
+
+    /**
+     * Handle toggle button click
+     */
+    handleToggleClick(e) {
+        e.preventDefault();
+        console.log('Click en botón hamburguesa');
+        
+        const isOpen = this.nav.classList.contains('active');
+        console.log('Estado actual:', isOpen ? 'abierto' : 'cerrado');
+        
+        if (isOpen) {
+            this.closeMenu();
+        } else {
+            this.openMenu();
+        }
+    }
+
+    /**
+     * Open mobile menu
+     */
+    openMenu() {
+        this.nav.classList.add('active');
+        this.icon.className = 'icon ion-md-close';
+        this.mobileToggle.setAttribute('aria-expanded', 'true');
+        this.mobileToggle.setAttribute('aria-label', 'Cerrar menú');
+        console.log('Menú abierto');
+    }
+
+    /**
+     * Close mobile menu
+     */
+    closeMenu() {
+        this.nav.classList.remove('active');
+        this.icon.className = 'icon ion-md-menu';
+        this.mobileToggle.setAttribute('aria-expanded', 'false');
+        this.mobileToggle.setAttribute('aria-label', 'Abrir menú');
+        console.log('Menú cerrado');
+    }
+
+    /**
+     * Setup navigation link event listeners
+     */
+    setupNavLinkListeners() {
+        const navLinks = document.querySelectorAll('header nav a');
+        console.log('Enlaces encontrados:', navLinks.length);
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('Click en enlace, cerrando menú');
+                this.closeMenu();
+            });
+        });
+    }
+
+    /**
+     * Setup outside click listener to close menu
+     */
+    setupOutsideClickListener() {
+        document.addEventListener('click', (e) => {
+            if (!this.mobileToggle.contains(e.target) && !this.nav.contains(e.target)) {
+                if (this.nav.classList.contains('active')) {
+                    console.log('Click fuera del menú, cerrando');
+                    this.closeMenu();
+                }
+            }
+        });
+    }
+
+    /**
+     * Check if mobile menu is open
+     */
+    isMenuOpen() {
+        return this.nav?.classList.contains('active') || false;
+    }
+
+    /**
+     * Get mobile menu state
+     */
+    getState() {
+        return {
+            isInitialized: this.isInitialized,
+            isMenuOpen: this.isMenuOpen(),
+            hasElements: !!(this.mobileToggle && this.nav && this.icon)
+        };
+    }
+}
+
+/**
  * Initialize gallery when DOM is ready
  */
 document.addEventListener('DOMContentLoaded', () => {
@@ -729,6 +883,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize main gallery manager
     window.galleryManager = new GalleryManager();
+    
+    // Initialize mobile menu manager
+    window.mobileMenuManager = new MobileMenuManager();
     
     // Initialize animations (if not reduced motion)
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -745,3 +902,4 @@ document.addEventListener('DOMContentLoaded', () => {
 window.GalleryManager = GalleryManager;
 window.GalleryAnimations = GalleryAnimations;
 window.GalleryPerformance = GalleryPerformance;
+window.MobileMenuManager = MobileMenuManager;
