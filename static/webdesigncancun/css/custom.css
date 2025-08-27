@@ -684,8 +684,8 @@ footer {
 
     .chat-toggle {
         bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 20px;
+        transform: none;
         width: 60px;
         height: 60px;
         padding: 0;
@@ -704,7 +704,7 @@ footer {
     }
 
     .chat-toggle:hover {
-        transform: translateX(-50%) translateY(-2px);
+        transform: translateY(-2px);
     }
 }
 

@@ -293,26 +293,17 @@
     block-all-mixed-content
   ">
 
+  <!-- Combined Styles FIRST (Global Background + Text Enhancement + Social Animations + Cookie Consent) -->
+  <link rel="stylesheet" href="/static/home/css/combined-styles.css">
+  
   <!-- Performance Critical Resource Preloads -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="/static/landing/css/landing.css" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.rel='stylesheet'">
-  <!-- Cookie Consent CSS -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.css" as="style" onload="this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css">
+    <link rel="stylesheet" href="/static/home/css/combined-styles.css">
+    <link rel="stylesheet" href="/static/landing/css/landing.css">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.css">
   </noscript>
-
-
-  <!-- Global Background Styles -->
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/global-background.css">
-  
-  <!-- Text Enhancement for Glassmorphism -->
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/text-enhancement.css">
-  
-  <!-- Social Media Animations -->
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/social-animations.css">
 
   <!-- Performance Optimizations -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -382,7 +373,7 @@
             <span class="feature-text">Calidad Premium</span>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">�</div>
+            <div class="feature-icon">🚚</div>
             <span class="feature-text">Envíos a toda la República</span>
           </div>
         </div>
@@ -1030,7 +1021,7 @@
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
 
   <!-- Cookie Consent JS -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js" async></script>
+  <script src="/static/cookie-consent/cookie-consent.js" defer></script>
 
 </body>
 </html>
