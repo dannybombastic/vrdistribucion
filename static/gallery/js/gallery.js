@@ -13,6 +13,7 @@ class GalleryManager {
         this.focusedElementBeforeLightbox = null;
         
         // DOM references
+        this.container = document.querySelector('main') || document.body;
         this.lightboxOverlay = null;
         this.lightboxImage = null;
         this.lightboxTitle = null;
@@ -25,12 +26,23 @@ class GalleryManager {
     }
 
     /**
-     * Initialize the gallery manager
+     * Initialize gallery when DOM is ready
      */
     init() {
-        // console.log('Initializing Gallery Manager...');
+        // Ensure body scroll is enabled at start
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         
-        // Wait for DOM to be fully loaded
+        // console.log('Initializing gallery');
+        
+        if (!this.container) {
+            console.error('Gallery container not found');
+            return;
+        }
+
+        console.log('Gallery container found:', this.container.tagName);
+
+        // Wait for DOM to be fully loaded before setting up
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.setup());
         } else {
@@ -44,6 +56,10 @@ class GalleryManager {
     setup() {
         // console.log('Setting up Gallery Manager...');
         
+        // Ensure scroll is never locked during initialization
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
         this.cacheDOMElements();
         this.createLightboxHTML();
         this.setupEventListeners();
@@ -52,6 +68,12 @@ class GalleryManager {
         this.collectImages();
         this.setupImageClickListeners(); // Setup after gallery is set
         
+        // Final check to ensure scroll is available
+        setTimeout(() => {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        }, 100);
+        
         // console.log('Gallery Manager initialized successfully');
     }
 
@@ -59,16 +81,22 @@ class GalleryManager {
      * Set default gallery based on device type and screen size
      */
     setDefaultGalleryForDevice() {
-        const isMobile = this.isMobileDevice();
-        const isSmallScreen = window.innerWidth <= 800;
+        // Removed automatic gallery switching to prevent scroll issues on mobile
+        // Users can manually select their preferred gallery style
+        // 
+        // const isMobile = this.isMobileDevice();
+        // const isSmallScreen = window.innerWidth <= 800;
+        // 
+        // if (isMobile || isSmallScreen) {
+        //     // Switch to polaroid gallery for mobile and small screens
+        //     this.switchGallery('polaroid');
+        // } else {
+        //     // Keep masonry for desktop and larger screens
+        //     this.switchGallery('masonry');
+        // }
         
-        if (isMobile || isSmallScreen) {
-            // Switch to polaroid gallery for mobile and small screens
-            this.switchGallery('polaroid');
-        } else {
-            // Keep masonry for desktop and larger screens
-            this.switchGallery('masonry');
-        }
+        // Set default to masonry for all devices
+        this.switchGallery('masonry');
     }
 
     /**
@@ -91,7 +119,7 @@ class GalleryManager {
         this.gallerySections = document.querySelectorAll('.gallery-section');
         
         // Lightbox elements will be created dynamically
-         console.log('DOM elements cached:', {
+        console.log('DOM elements cached:', {
             tabs: this.galleryTabs.length,
             sections: this.gallerySections.length
         });
@@ -338,7 +366,10 @@ class GalleryManager {
      */
     setupTabNavigation() {
         this.galleryTabs.forEach(tab => {
-            tab.addEventListener('click', () => this.switchGallery(tab.dataset.gallery));
+            tab.addEventListener('click', () => {
+                console.log('Tab clicked:', tab.dataset.gallery);
+                this.switchGallery(tab.dataset.gallery);
+            });
             tab.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -347,14 +378,14 @@ class GalleryManager {
             });
         });
 
-        // console.log('Tab navigation setup complete');
+        console.log('Tab navigation setup complete');
     }
 
     /**
      * Switch between gallery styles
      */
     switchGallery(galleryType) {
-        // console.log(`Switching to gallery: ${galleryType}`);
+        console.log(`Switching to gallery: ${galleryType}`);
         
         // Update tab states
         this.galleryTabs.forEach(tab => {
@@ -425,46 +456,42 @@ class GalleryManager {
     }
 
     /**
-     * Open lightbox with specified image
+     * Safely manage body scroll - prevents permanent scroll locking
      */
-    openLightbox(event, imageIndex) {
-        console.log(`Opening lightbox for image ${imageIndex}, total images: ${this.images.length}`);
-        
-        if (!this.lightboxOverlay || !this.images.length) {
-            console.error('Lightbox not available or no images found');
+    setBodyScroll(enable = true) {
+        if (enable) {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        } else {
+            // Only disable scroll if lightbox is actually open
+            if (this.isLightboxOpen) {
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    }
+
+    /**
+     * Open lightbox with image at specified index
+     */
+    openLightbox(imageIndex) {
+        if (!this.images || this.images.length === 0) {
+            console.warn('No images available for lightbox');
             return;
         }
 
-        // Validate image index
-        if (imageIndex < 0 || imageIndex >= this.images.length) {
-            console.error(`Invalid image index: ${imageIndex}, valid range: 0-${this.images.length - 1}`);
-            return;
-        }
-
-        // Store the focused element before opening lightbox
+        // Store focus for accessibility
         this.focusedElementBeforeLightbox = document.activeElement;
 
         this.currentImageIndex = imageIndex;
         this.isLightboxOpen = true;
 
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-        
-        // Show lightbox
+        // Prevent body scroll safely
+        this.setBodyScroll(false);
+
+        // Show lightbox and load image
         this.lightboxOverlay.classList.add('active');
         this.lightboxOverlay.setAttribute('aria-hidden', 'false');
-        
-        // Load image
         this.loadLightboxImage();
-        
-        // Focus management for accessibility
-        setTimeout(() => {
-            const closeBtn = this.lightboxOverlay.querySelector('.lightbox-close');
-            if (closeBtn) closeBtn.focus();
-        }, 100);
-
-        // Announce to screen readers
-        this.announceToScreenReader('Galería de imágenes abierta. Use las flechas para navegar, Escape para cerrar.');
     }
 
     /**
@@ -477,8 +504,8 @@ class GalleryManager {
 
         this.isLightboxOpen = false;
         
-        // Restore body scroll
-        document.body.style.overflow = '';
+        // Restore body scroll safely
+        this.setBodyScroll(true);
         
         // Hide lightbox
         this.lightboxOverlay.classList.remove('active');
