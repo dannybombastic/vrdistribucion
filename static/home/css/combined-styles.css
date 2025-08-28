@@ -2694,3 +2694,23 @@ div.contact-info p:last-child,
         font-size: 0.85rem !important;
     }
 }
+
+/* =============================================================================
+   GALLERY MOBILE FIXES
+   ============================================================================= */
+
+/* Fix polaroid background being black */
+.polaroid {
+    background: white !important;
+}
+
+/* Ensure polaroid maintains white background in all states */
+.polaroid-item .polaroid {
+    background: white !important;
+}
+
+/* Fix any global overrides affecting polaroid background */
+.polaroid-grid .polaroid-item .polaroid {
+    background: white !important;
+    color: #333 !important;
+}

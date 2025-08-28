@@ -593,6 +593,9 @@ class GalleryManager {
         const isMobile = this.isMobileDevice();
         const isSmallScreen = window.innerWidth <= 800;
         
+        // Commented out automatic switching to polaroid on mobile
+        // Users can manually select their preferred gallery style
+        /*
         if ((isMobile || isSmallScreen) && this.currentGallery !== 'polaroid') {
             // Switch to polaroid for mobile/small screens
             this.switchGallery('polaroid');
@@ -600,6 +603,7 @@ class GalleryManager {
             // Switch back to masonry for larger screens (only if currently on polaroid)
             this.switchGallery('masonry');
         }
+        */
     }
 
     /**
