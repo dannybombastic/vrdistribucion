@@ -48,9 +48,38 @@ class GalleryManager {
         this.createLightboxHTML();
         this.setupEventListeners();
         this.setupTabNavigation();
+        this.setDefaultGalleryForDevice();
         this.collectImages();
         
         // console.log('Gallery Manager initialized successfully');
+    }
+
+    /**
+     * Set default gallery based on device type and screen size
+     */
+    setDefaultGalleryForDevice() {
+        const isMobile = this.isMobileDevice();
+        const isSmallScreen = window.innerWidth <= 800;
+        
+        if (isMobile || isSmallScreen) {
+            // Switch to polaroid gallery for mobile and small screens
+            this.switchGallery('polaroid');
+        } else {
+            // Keep masonry for desktop and larger screens
+            this.switchGallery('masonry');
+        }
+    }
+
+    /**
+     * Detect if device is mobile
+     */
+    isMobileDevice() {
+        return (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+            ('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0)
+        );
     }
 
     /**
@@ -488,7 +517,26 @@ class GalleryManager {
                 // Refresh lightbox layout if needed
                 // console.log('Handling resize while lightbox is open');
             }
+            
+            // Check if we need to switch gallery based on new screen size
+            this.checkGalleryForScreenSize();
         }, 250);
+    }
+
+    /**
+     * Check and switch gallery based on current screen size
+     */
+    checkGalleryForScreenSize() {
+        const isMobile = this.isMobileDevice();
+        const isSmallScreen = window.innerWidth <= 800;
+        
+        if ((isMobile || isSmallScreen) && this.currentGallery !== 'polaroid') {
+            // Switch to polaroid for mobile/small screens
+            this.switchGallery('polaroid');
+        } else if (!isMobile && !isSmallScreen && this.currentGallery === 'polaroid') {
+            // Switch back to masonry for larger screens (only if currently on polaroid)
+            this.switchGallery('masonry');
+        }
     }
 
     /**

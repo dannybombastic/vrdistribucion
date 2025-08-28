@@ -398,7 +398,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1 !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .hero-eyebrow-text {
     font-size: 0.75rem;
   }
@@ -409,7 +409,18 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .hero-eyebrow-line {
-    display: none;
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-eyebrow-text {
+    font-size: 0.7rem;
+  }
+  
+  .hero-eyebrow {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 }
 
