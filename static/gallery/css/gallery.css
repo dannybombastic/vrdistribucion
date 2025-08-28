@@ -176,52 +176,9 @@ header nav a:hover {
   color: white;
 }
 
-/* Mobile Menu Toggle */
-.mobile-menu-toggle {
-  display: none !important; /* Oculto por defecto en desktop */
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-  border: none;
-  font-size: 1.4rem;
-  color: white;
-  cursor: pointer;
-  padding: 0.75rem;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-base);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  width: 48px;
-  height: 48px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
+/* Mobile Menu Toggle styles moved to combined-styles.css for centralization */
 
-.mobile-menu-toggle::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
-}
-
-.mobile-menu-toggle:hover::before {
-  left: 100%;
-}
-
-.mobile-menu-toggle:hover {
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-  /* Removed transform: scale to prevent position changes */
-}
-
-.mobile-menu-toggle:active {
-  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  /* Removed transform: scale to prevent position changes */
-}
+/* Mobile Menu Toggle styles moved to combined-styles.css for centralization */
 
 /* Mobile Navigation */
 @media (max-width: 768px) {
@@ -231,24 +188,7 @@ header nav a:hover {
     position: relative;
   }
   
-  .mobile-menu-toggle {
-    display: flex !important; /* Solo visible en móvil */
-    z-index: 1002;
-    position: absolute;
-    right: 1rem; /* Margen cómodo desde el borde derecho */
-    top: 50%;
-    transform: translateY(-50%) !important; /* Force the centering transform */
-    margin: 0;
-  }
-  
-  /* Override hover/active effects for mobile to prevent position changes */
-  .mobile-menu-toggle:hover {
-    transform: translateY(-50%) !important;
-  }
-  
-  .mobile-menu-toggle:active {
-    transform: translateY(-50%) !important;
-  }
+  /* Mobile toggle positioning and effects controlled by combined-styles.css */
   
   header nav {
     position: absolute !important;

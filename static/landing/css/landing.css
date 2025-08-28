@@ -53,51 +53,7 @@ img {
     display: block
 }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 1);
-    backdrop-filter: blur(24px) saturate(180%);
-    border: none;
-    box-shadow: 0 8px 32px rgba(31, 38, 135, .15), inset 0 1px 0 rgba(255, 255, 255, .8);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 90px;
-    z-index: 1000;
-    border-radius: 0;
-    transition: all .8s cubic-bezier(.4, 0, .2, 1);
-    transform: translateY(0)
-}
-
-/* FORCE WHITE HEADER - MAXIMUM SPECIFICITY */
-html body header, 
-body header,
-header, 
-header.header,
-.header,
-#header {
-    background: white !important;
-    background-color: white !important;
-}
-
-/* Header background effects removed */
-
-header:hover {
-    height: 110px;
-    padding: 1.5rem 2rem;
-    border-radius: 0 0 25px 25px;
-    border: 1px solid rgba(255, 255, 255, .4);
-    transform: translateY(0);
-    box-shadow: 0 12px 40px rgba(31, 38, 135, .25), inset 0 1px 0 rgba(255, 255, 255, .9);
-    transition: all .3s cubic-bezier(.25, .46, .45, .94)
-}
-
-/* Header hover background effects removed */
+/* Header styles moved to combined-styles.css for centralization */
 
 @media (max-width:1024px) {
     .hero-container {
@@ -125,56 +81,7 @@ header:hover {
 }
 
 @media (max-width:768px) {
-    header {
-        padding: .8rem 1.5rem;
-        height: 80px;
-        transition: all .8s cubic-bezier(.4, 0, .2, 1)
-    }
-
-    header:hover {
-        height: 100px;
-        padding: 1.2rem 1.5rem;
-        border-radius: 0 0 20px 20px;
-        transition: all .3s cubic-bezier(.25, .46, .45, .94)
-    }
-}
-
-header nav ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none
-}
-
-header nav a {
-    font-weight: 500;
-    color: #374151;
-    transition: all .3s ease;
-    position: relative
-}
-
-header nav a[href="/home"] {
-    padding: .5rem 1rem;
-    border-radius: 12px;
-    background: rgba(99, 102, 241, .05);
-    border: 1px solid rgba(99, 102, 241, .1);
-    transition: all .3s cubic-bezier(.4, 0, .2, 1);
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    font-weight: 600
-}
-
-header nav a[href="/home"]:hover {
-    background: rgba(99, 102, 241, .12);
-    border-color: rgba(99, 102, 241, .25);
-    color: #6366f1;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, .15)
-}
-
-header nav a:hover {
-    color: #6366f1;
-    transform: translateY(-1px)
+    /* Header styles moved to combined-styles.css for centralization */
 }
 
 .mechanical-border {

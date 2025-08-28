@@ -170,7 +170,7 @@ header .logo {
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .5)) !important;
     background: linear-gradient(135deg, rgba(15, 52, 96, .85), rgba(99, 102, 241, .75)) !important;
     border: 3px solid rgba(15, 52, 96, .6) !important;
-    border-radius: 50% !important;
+    border-radius: 12px !important;
     padding: 12px !important;
     backdrop-filter: blur(15px) saturate(180%) !important;
     transition: all .3s ease !important;
@@ -183,6 +183,24 @@ header .logo:hover {
     background: linear-gradient(135deg, rgba(15, 52, 96, .9), rgba(99, 102, 241, .8)) !important;
     box-shadow: 0 16px 40px rgba(15, 52, 96, .5), inset 0 2px 0 rgba(255, 255, 255, .4), 0 0 0 2px rgba(99, 102, 241, .3) !important;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, .6)) !important;
+}
+
+/* Logo link styles */
+header a {
+    text-decoration: none !important;
+    outline: none !important;
+    display: inline-block !important;
+    border-radius: 12px !important;
+    transition: all .3s ease !important;
+}
+
+header a:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, .5) !important;
+    outline: none !important;
+}
+
+header a:hover .logo {
+    transform: scale(1.08) !important;
 }
 
 header nav {
@@ -1683,7 +1701,7 @@ header .logo {
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .5));
     background: linear-gradient(135deg, rgba(15, 52, 96, .85), rgba(99, 102, 241, .75));
     border: 3px solid rgba(15, 52, 96, .6);
-    border-radius: 50%;
+    border-radius: 12px;
     padding: 12px;
     backdrop-filter: blur(15px) saturate(180%);
     transition: all .3s ease;
@@ -1762,5 +1780,175 @@ header .logo:hover {
     .vr-distribucion {
         font-size: 1.8rem;
         letter-spacing: 1px;
+    }
+}
+
+/* =============================================================================
+   Hamburger Menu Styles
+   ============================================================================= */
+
+/* Mobile Menu Toggle Button - Optimizado para galería y landing */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 40px; /* Bajado para mejor centrado vertical */
+    right: 20px;
+    z-index: 10001;
+    background: linear-gradient(135deg, rgba(15, 52, 96, .9), rgba(99, 102, 241, .8));
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    width: 50px !important; /* Forzar ancho cuadrado */
+    height: 50px !important; /* Forzar alto cuadrado */
+    min-width: 50px !important; /* Evitar compresión */
+    min-height: 50px !important; /* Evitar compresión */
+    max-width: 50px !important; /* Evitar expansión */
+    max-height: 50px !important; /* Evitar expansión */
+    padding: 0 !important; /* Sin padding que deforme */
+    margin: 0 !important; /* Sin margin que deforme */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(15px) saturate(180%);
+    box-shadow: 0 8px 25px rgba(15, 52, 96, .4), inset 0 1px 0 rgba(255, 255, 255, .2);
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%); /* Centrado vertical perfecto */
+    flex-shrink: 0; /* Evitar que flex lo deforme */
+    flex-grow: 0; /* Evitar que flex lo expanda */
+    box-sizing: border-box !important; /* Asegurar box model consistente */
+    aspect-ratio: 1 / 1 !important; /* Forzar ratio cuadrado */
+}
+
+.mobile-menu-toggle:hover {
+    transform: translateY(-50%) scale(1.05); /* Mantener centrado y escalar */
+    background: linear-gradient(135deg, rgba(15, 52, 96, 1), rgba(99, 102, 241, .9));
+    box-shadow: 0 12px 35px rgba(15, 52, 96, .5), inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+
+.mobile-menu-toggle:active {
+    transform: translateY(-50%) scale(0.95); /* Mantener centrado y efecto pressed */
+    background: linear-gradient(135deg, rgba(15, 52, 96, 1), rgba(99, 102, 241, 1));
+}
+
+.mobile-menu-toggle i {
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle.active i {
+    transform: rotate(90deg);
+}
+
+/* Mobile Navigation Menu */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(15, 52, 96, .95), rgba(99, 102, 241, .9));
+    backdrop-filter: blur(20px) saturate(180%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav-content {
+    padding: 80px 30px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    margin-bottom: 20px;
+}
+
+.mobile-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.mobile-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive behavior - Estructura unificada para galería y landing */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex; /* Mostrar en mobile con flex para centrar ícono */
+    }
+    
+    /* Regla específica para galería para asegurar forma cuadrada */
+    body .mobile-menu-toggle,
+    header .mobile-menu-toggle,
+    .mobile-menu-toggle {
+        width: 50px !important;
+        height: 50px !important;
+        aspect-ratio: 1 / 1 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    .mobile-nav-overlay {
+        display: block;
+    }
+    
+    header nav {
+        display: none !important;
     }
 }

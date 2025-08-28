@@ -63,7 +63,7 @@ RECAPTCHA_SECRET_KEY="tu_secret_key"
 ```html
 <meta property="og:title" content="VR Distribución - Eventos únicos en Cancún">
 <meta property="og:description" content="25 años de experiencia creando momentos únicos">
-<meta property="og:image" content="/static/home/img/vr_logo-removebg-preview.png">
+<meta property="og:image" content="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png">
 <meta property="og:url" content="https://vrdistribucion.com/">
 <meta property="og:type" content="website">
 ```
