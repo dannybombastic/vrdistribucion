@@ -2575,6 +2575,8 @@ div.contact-info p:last-child,
     .hero-eyebrow {
         margin-top: 0.5rem !important;
         margin-bottom: 1.5rem !important;
+        justify-content: center !important;
+        padding: 0 1rem !important;
     }
     
     /* Hide hero eyebrow line in mobile */
@@ -2614,6 +2616,11 @@ div.contact-info p:last-child,
         font-size: 1rem !important;
         line-height: 1.4 !important;
         color: #6b7280 !important;
+        white-space: normal !important;
+        text-align: center !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
     }
     
     .feature-text {
@@ -2660,6 +2667,12 @@ div.contact-info p:last-child,
         display: none !important;
     }
     
+    .hero-eyebrow {
+        justify-content: center !important;
+        padding: 0 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
     /* EVEN BETTER READABILITY FOR VERY SMALL SCREENS */
     .hero-title {
         font-size: 2rem !important;
@@ -2674,6 +2687,17 @@ div.contact-info p:last-child,
         font-size: 1.05rem !important;
         line-height: 1.7 !important;
         padding: 0 0.2rem !important;
+    }
+    
+    .hero-eyebrow-text {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        white-space: normal !important;
+        text-align: center !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        padding: 0 0.5rem !important;
     }
     
     /* LIGHTBOX IMPROVEMENTS FOR VERY SMALL SCREENS */

@@ -1717,6 +1717,29 @@ textarea.error {
     padding: calc(var(--spacing-xl) + 140px) var(--spacing-sm) var(--spacing-xl) var(--spacing-sm);
   }
   
+  .gallery-hero h1 {
+    color: var(--primary-color);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+  
+  .gallery-hero .hero-description {
+    color: #374151;
+    opacity: 1;
+  }
+  
+  .gallery-hero .stat-number {
+    color: var(--accent-color);
+  }
+  
+  .gallery-hero .stat-label {
+    color: var(--primary-color);
+  }
+  
+  .gallery-hero p,
+  .gallery-hero span {
+    color: #374151;
+  }
+  
   .gallery-hero .hero-stats {
     gap: var(--spacing-lg);
   }
@@ -1724,8 +1747,8 @@ textarea.error {
   /* Navegación de galería en móvil */
   .gallery-nav {
     position: relative !important;
-    margin: 0 !important;
-    padding: var(--spacing-sm) 0 !important;
+    margin: var(--spacing-xl) 0 !important;
+    padding: var(--spacing-lg) 0 !important;
     z-index: 999 !important;
   }
   
@@ -1751,7 +1774,8 @@ textarea.error {
   }
   
   .gallery-section {
-    padding: var(--spacing-lg) var(--spacing-sm);
+    padding: var(--spacing-xl) var(--spacing-sm);
+    margin-top: var(--spacing-lg);
   }
   
   .masonry-grid {
@@ -1873,10 +1897,32 @@ textarea.error {
 @media (max-width: 480px) {
   .gallery-hero h1 {
     font-size: 2rem;
+    color: var(--primary-color);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+  
+  .gallery-hero .hero-description {
+    color: #374151;
+    opacity: 1;
   }
   
   .gallery-hero .stat-number {
     font-size: 2rem;
+    color: var(--accent-color);
+  }
+  
+  .gallery-hero .stat-label {
+    color: var(--primary-color);
+  }
+  
+  .gallery-hero p,
+  .gallery-hero span {
+    color: #374151;
+  }
+  
+  .gallery-nav {
+    margin: var(--spacing-xxl) 0 !important;
+    padding: var(--spacing-md) 0 !important;
   }
   
   .gallery-nav .nav-container {
@@ -1885,7 +1931,9 @@ textarea.error {
     gap: 0;
   }
   
-}
+  .gallery-section {
+    margin-top: var(--spacing-xl);
+  }
   
   .gallery-tab {
     min-width: 100px;
