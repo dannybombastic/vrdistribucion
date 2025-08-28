@@ -2587,6 +2587,64 @@ div.contact-info p:last-child,
         display: flex !important;
         z-index: 1001 !important;
     }
+    
+    /* IMPROVED TEXT READABILITY IN MOBILE */
+    .hero-title {
+        font-size: 2.2rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1.5rem !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .title-sub {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2rem !important;
+        color: #374151 !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    .hero-eyebrow-text {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        color: #6b7280 !important;
+    }
+    
+    .feature-text {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        color: #374151 !important;
+    }
+    
+    /* LIGHTBOX MOBILE FIXES */
+    .lightbox-info {
+        bottom: 25px !important;
+        left: 3% !important;
+        right: 3% !important;
+        padding: 15px !important;
+        max-width: 94% !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 12px !important;
+    }
+    
+    .lightbox-info h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 8px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .lightbox-info p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2600,5 +2658,39 @@ div.contact-info p:last-child,
     /* Ensure hero eyebrow line is hidden on very small screens too */
     .hero-eyebrow-line {
         display: none !important;
+    }
+    
+    /* EVEN BETTER READABILITY FOR VERY SMALL SCREENS */
+    .hero-title {
+        font-size: 2rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .title-sub {
+        font-size: 1.6rem !important;
+    }
+    
+    .hero-description {
+        font-size: 1.05rem !important;
+        line-height: 1.7 !important;
+        padding: 0 0.2rem !important;
+    }
+    
+    /* LIGHTBOX IMPROVEMENTS FOR VERY SMALL SCREENS */
+    .lightbox-info {
+        bottom: 30px !important;
+        left: 2% !important;
+        right: 2% !important;
+        padding: 12px !important;
+        max-width: 96% !important;
+    }
+    
+    .lightbox-info h3 {
+        font-size: 1rem !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .lightbox-info p {
+        font-size: 0.85rem !important;
     }
 }
