@@ -950,6 +950,9 @@ header nav a:hover {
 }
 
 .lightbox-content {
+  max-height: 100vh;
+  overflow: hidden;
+  overflow: visible !important;
   position: relative;
   text-align: center;
   display: flex;
@@ -959,20 +962,25 @@ header nav a:hover {
 
 /* Ensure buttons are positioned relative to the image container */
 .lightbox-image-container {
+  overflow: visible !important;
+  overflow: visible !important;
+  overflow: unset;
   position: relative;
   display: inline-block;
-  margin-bottom: 60px; /* Espacio reducido para el título */
-  width: 80vw;
-  height: 65vh;
+  margin-bottom: 16px;
+  max-width: 90vw;
+  max-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .lightbox-content img {
-  width: 80vw;
-  height: 65vh;
-  max-width: 80vw;
+  object-fit: contain;
+  overflow: unset;
+  width: 100%;
+  height: auto;
+  max-width: 90vw;
   max-height: 65vh;
   object-fit: contain;
   border-radius: var(--radius-lg);
@@ -993,8 +1001,8 @@ header nav a:hover {
 }
 
 .lightbox-info {
-  position: absolute;
-  bottom: 10px;
+  position: static;
+  margin-top: 8px;
   left: 5%;
   right: 5%;
   background: rgba(0, 0, 0, 1);
