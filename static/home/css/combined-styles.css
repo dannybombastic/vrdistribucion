@@ -852,6 +852,51 @@ button[type="submit"] {
     }
 }
 
+/* Fix for mobile viewport width issues */
+@media screen and (max-width: 768px) {
+    .hero,
+    .hero-container,
+    section[class*="hero"],
+    div[class*="hero"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    body, html {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+    }
+    
+    * {
+        box-sizing: border-box !important;
+    }
+    
+    /* Additional elements that might cause overflow */
+    section,
+    div,
+    .container,
+    .grid,
+    .hero-content,
+    .hero-visual {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Fix any element with 100vw that might cause horizontal scroll */
+    [style*="100vw"] {
+        width: 100% !important;
+    }
+    
+    /* Fix floating particles on mobile */
+    .floating-particles {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
 @media screen and (max-width:480px) {
     header .logo {
         height: 55px !important;
@@ -1225,7 +1270,7 @@ section:hover,
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    width: 100vw !important;
+    width: 100% !important;
     height: 100vh !important;
     z-index: -3 !important;
     pointer-events: none !important;
