@@ -1414,7 +1414,8 @@ body::after {
     text-align: right !important;
 }
 
-.message-bubble {
+.chat-widget-container .message-bubble,
+.chat-widget-container .message-content {
     display: inline-block !important;
     max-width: 80% !important;
     padding: 12px 16px !important;
@@ -1425,7 +1426,8 @@ body::after {
     position: relative !important;
 }
 
-.message.bot .message-bubble {
+.chat-widget-container .message.bot .message-bubble,
+.chat-widget-container .message.bot .message-content {
     background: rgba(255, 255, 255, 0.9) !important;
     color: var(--chat-text) !important;
     border-bottom-left-radius: 6px !important;
@@ -1434,7 +1436,8 @@ body::after {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
 }
 
-.message.user .message-bubble {
+.chat-widget-container .message.user .message-bubble,
+.chat-widget-container .message.user .message-content {
     background: var(--chat-button-bg) !important;
     color: white !important;
     border-bottom-right-radius: 6px !important;
@@ -1631,5 +1634,100 @@ body::after {
         font-size: 14px !important;
         width: 14px !important;
         height: 14px !important;
+    }
+}
+
+/* =============================================================================
+   LOGO STYLES - CENTRALIZED LOGO SYSTEM
+   Unified logo styles for all pages
+   ============================================================================= */
+
+/* Header Logo Styles */
+header .logo {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .5));
+    background: linear-gradient(135deg, rgba(15, 52, 96, .85), rgba(99, 102, 241, .75));
+    border: 3px solid rgba(15, 52, 96, .6);
+    border-radius: 50%;
+    padding: 12px;
+    backdrop-filter: blur(15px) saturate(180%);
+    transition: all .3s ease;
+    box-shadow: 0 12px 32px rgba(15, 52, 96, .4), inset 0 2px 0 rgba(255, 255, 255, .3), 0 0 0 1px rgba(255, 255, 255, .1);
+}
+
+header .logo:hover {
+    transform: scale(1.08);
+    border-color: rgba(15, 52, 96, .8);
+    background: linear-gradient(135deg, rgba(15, 52, 96, .9), rgba(99, 102, 241, .8));
+    box-shadow: 0 16px 40px rgba(15, 52, 96, .5), inset 0 2px 0 rgba(255, 255, 255, .4), 0 0 0 2px rgba(99, 102, 241, .3);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, .6));
+}
+
+/* VR Distribución Text Logo */
+.vr-distribucion {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color, #6366f1);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.vr-distribucion:hover {
+    color: var(--secondary-color, #ec4899);
+    text-decoration: none;
+}
+
+/* Hero Section Logo Styles */
+.hero-section .vr-distribucion {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color, #6366f1);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Responsive Logo Styles */
+@media (max-width: 768px) {
+    header .logo {
+        height: 60px;
+        width: 60px;
+        padding: 10px;
+    }
+    
+    .hero-section .vr-distribucion {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        padding: 0 15px;
+    }
+    
+    .vr-distribucion {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo {
+        height: 50px;
+        width: 50px;
+        padding: 8px;
+    }
+    
+    .hero-section .vr-distribucion {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+    
+    .vr-distribucion {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
     }
 }
