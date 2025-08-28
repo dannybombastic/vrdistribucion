@@ -3,7 +3,6 @@
 *.bak
 *.env
 .github/
-*.sh
 .env
 venv/
 __pycache__/

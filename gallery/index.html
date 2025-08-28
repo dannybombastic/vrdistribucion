@@ -119,13 +119,14 @@
 
   <!-- Performance Critical Resource Preloads -->
   <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/gallery.css" as="style" onload="this.rel='stylesheet'">
-  <!-- Combined Styles loaded last to have priority over gallery.css -->
+  <!-- Combined Styles loaded first -->
   <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css" as="style" onload="this.rel='stylesheet'">
+  <!-- Gallery CSS loaded last to have priority over combined styles -->
+  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/gallery.css" as="style" onload="this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/gallery.css">
     <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/gallery.css">
   </noscript>
 
   <!-- Performance Optimizations -->

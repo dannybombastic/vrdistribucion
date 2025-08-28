@@ -24,6 +24,10 @@
   float: none !important;
   clear: both !important;
   display: block !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
 }
 
 /* Ensure gallery sections and containers have normal flow */
@@ -278,8 +282,8 @@ header nav a:hover {
 
 .gallery-hero {
   padding: calc(var(--spacing-xxl) + 80px) var(--spacing-md) var(--spacing-xxl) var(--spacing-md) !important;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%) !important;
-  color: var(--primary-color) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%) !important;
+  color: #1a202c !important;
   text-align: center !important;
   position: relative !important;
   overflow: hidden !important;
@@ -288,6 +292,8 @@ header nav a:hover {
   float: none !important;
   clear: both !important;
   display: block !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 .gallery-hero::before {
@@ -329,17 +335,22 @@ header nav a:hover {
   float: none !important;
   clear: both !important;
   display: block !important;
-  color: var(--primary-color) !important;
+  color: #1a202c !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
 }
 
 .gallery-hero .hero-description {
   font-size: var(--font-size-large) !important;
   margin: 0 0 var(--spacing-xl) !important;
-  opacity: 0.8 !important;
+  opacity: 1 !important;
   max-width: 600px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  color: var(--primary-color) !important;
+  color: #2d3748 !important;
+  font-weight: 500 !important;
 }
 
 .gallery-hero .hero-stats {
@@ -357,19 +368,21 @@ header nav a:hover {
   display: block;
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--accent-light);
+  color: #c53030 !important;
   line-height: 1;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
 }
 
 .gallery-hero .stat-label {
   display: block;
   font-size: 0.875rem;
   opacity: 1;
-  color: var(--primary-light) !important;
+  color: #1a202c !important;
   margin-top: var(--spacing-xs);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-weight: 500;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
 }
 
 /* ==========================================================================
@@ -1715,29 +1728,38 @@ textarea.error {
 @media (max-width: 768px) {
   .gallery-hero {
     padding: calc(var(--spacing-xl) + 140px) var(--spacing-sm) var(--spacing-xl) var(--spacing-sm);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%) !important;
   }
   
   .gallery-hero h1 {
-    color: var(--primary-color);
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    color: #1a202c !important;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9) !important;
+    font-weight: 800 !important;
   }
   
   .gallery-hero .hero-description {
-    color: #374151;
-    opacity: 1;
+    color: #2d3748 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
   }
   
   .gallery-hero .stat-number {
-    color: var(--accent-color);
+    color: #d69e2e !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+    font-weight: 800 !important;
   }
   
   .gallery-hero .stat-label {
-    color: var(--primary-color);
+    color: #1a202c !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
   }
   
   .gallery-hero p,
   .gallery-hero span {
-    color: #374151;
+    color: #2d3748 !important;
+    font-weight: 500 !important;
   }
   
   .gallery-hero .hero-stats {
@@ -1895,29 +1917,41 @@ textarea.error {
 
 /* Small mobile styles */
 @media (max-width: 480px) {
+  .gallery-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%) !important;
+  }
+  
   .gallery-hero h1 {
     font-size: 2rem;
-    color: var(--primary-color);
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    color: #1a202c !important;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9) !important;
+    font-weight: 800 !important;
   }
   
   .gallery-hero .hero-description {
-    color: #374151;
-    opacity: 1;
+    color: #2d3748 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
   }
   
   .gallery-hero .stat-number {
     font-size: 2rem;
-    color: var(--accent-color);
+    color: #c53030 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+    font-weight: 800 !important;
   }
   
   .gallery-hero .stat-label {
-    color: var(--primary-color);
+    color: #1a202c !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
   }
   
   .gallery-hero p,
   .gallery-hero span {
-    color: #374151;
+    color: #2d3748 !important;
+    font-weight: 500 !important;
   }
   
   .gallery-nav {
