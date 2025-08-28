@@ -177,11 +177,11 @@ class GalleryManager {
         
         images.forEach((img, index) => {
             // Store the handler so we can remove it later
-            const clickHandler = (e) => this.openLightbox(e, index);
+            const clickHandler = (e) => this.openLightbox(index);
             const keydownHandler = (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    this.openLightbox(e, index);
+                    this.openLightbox(index);
                 }
             };
             
