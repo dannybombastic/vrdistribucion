@@ -50,6 +50,7 @@ class GalleryManager {
         this.setupTabNavigation();
         this.setDefaultGalleryForDevice();
         this.collectImages();
+        this.setupImageClickListeners(); // Setup after gallery is set
         
         // console.log('Gallery Manager initialized successfully');
     }
@@ -117,8 +118,8 @@ class GalleryManager {
      * Setup all event listeners
      */
     setupEventListeners() {
-        // Gallery image clicks
-        this.setupImageClickListeners();
+        // Gallery image clicks will be setup after gallery selection
+        // this.setupImageClickListeners();
         
         // Lightbox controls
         this.setupLightboxControls();
@@ -136,15 +137,32 @@ class GalleryManager {
      * Setup image click listeners for lightbox
      */
     setupImageClickListeners() {
-        const images = document.querySelectorAll('.gl-item');
+        // Remove existing listeners to avoid duplicates
+        this.removeImageClickListeners();
+        
+        // Only setup listeners for images in the active gallery
+        const activeSection = document.querySelector('.gallery-section.active');
+        if (!activeSection) return;
+        
+        const images = activeSection.querySelectorAll('.gl-item');
+        console.log(`Setting up click listeners for ${images.length} images in active gallery`);
+        
         images.forEach((img, index) => {
-            img.addEventListener('click', (e) => this.openLightbox(e, index));
-            img.addEventListener('keydown', (e) => {
+            // Store the handler so we can remove it later
+            const clickHandler = (e) => this.openLightbox(e, index);
+            const keydownHandler = (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     this.openLightbox(e, index);
                 }
-            });
+            };
+            
+            // Store handlers for later removal
+            img._clickHandler = clickHandler;
+            img._keydownHandler = keydownHandler;
+            
+            img.addEventListener('click', clickHandler);
+            img.addEventListener('keydown', keydownHandler);
             
             // Make images focusable
             img.setAttribute('tabindex', '0');
@@ -165,7 +183,24 @@ class GalleryManager {
             }
         });
         
-        // console.log(`Setup click listeners for ${images.length} images`);
+        console.log(`Setup click listeners for ${images.length} images`);
+    }
+
+    /**
+     * Remove image click listeners
+     */
+    removeImageClickListeners() {
+        const allImages = document.querySelectorAll('.gl-item');
+        allImages.forEach(img => {
+            if (img._clickHandler) {
+                img.removeEventListener('click', img._clickHandler);
+                delete img._clickHandler;
+            }
+            if (img._keydownHandler) {
+                img.removeEventListener('keydown', img._keydownHandler);
+                delete img._keydownHandler;
+            }
+        });
     }
 
     /**
@@ -336,6 +371,7 @@ class GalleryManager {
 
         this.currentGallery = galleryType;
         this.collectImages(); // Recollect images for the new gallery
+        this.setupImageClickListeners(); // Reconfigure click listeners for the new gallery
         
         // Announce change to screen readers
         this.announceGalleryChange(galleryType);
@@ -360,28 +396,48 @@ class GalleryManager {
      */
     collectImages() {
         const activeSection = document.querySelector('.gallery-section.active');
-        if (!activeSection) return;
+        if (!activeSection) {
+            console.warn('No active gallery section found');
+            this.images = [];
+            return;
+        }
 
-        this.images = Array.from(activeSection.querySelectorAll('.gl-item')).map((img, index) => ({
-            element: img,
-            src: img.src,
-            alt: img.alt,
-            title: img.dataset.title || `Proyecto ${index + 1}`,
-            category: img.dataset.category || 'VR Distribución',
-            index: index
-        }));
+        const imageElements = activeSection.querySelectorAll('.gl-item');
+        console.log(`Found ${imageElements.length} images in ${this.currentGallery} gallery`);
 
-        // console.log(`Collected ${this.images.length} images from ${this.currentGallery} gallery`);
+        this.images = Array.from(imageElements).map((img, index) => {
+            // Safety checks for image element
+            if (!img.src) {
+                console.warn(`Image at index ${index} has no src`);
+            }
+            
+            return {
+                element: img,
+                src: img.src || '',
+                alt: img.alt || 'Imagen de galería',
+                title: img.dataset.title || `Proyecto ${index + 1}`,
+                category: img.dataset.category || 'VR Distribución',
+                index: index
+            };
+        }).filter(imageData => imageData.src); // Filter out images without src
+
+        console.log(`Collected ${this.images.length} valid images from ${this.currentGallery} gallery`);
     }
 
     /**
      * Open lightbox with specified image
      */
     openLightbox(event, imageIndex) {
-        // console.log(`Opening lightbox for image ${imageIndex}`);
+        console.log(`Opening lightbox for image ${imageIndex}, total images: ${this.images.length}`);
         
         if (!this.lightboxOverlay || !this.images.length) {
             console.error('Lightbox not available or no images found');
+            return;
+        }
+
+        // Validate image index
+        if (imageIndex < 0 || imageIndex >= this.images.length) {
+            console.error(`Invalid image index: ${imageIndex}, valid range: 0-${this.images.length - 1}`);
             return;
         }
 
@@ -477,19 +533,26 @@ class GalleryManager {
 
         const imageData = this.images[this.currentImageIndex];
         
+        // Safety check for imageData
+        if (!imageData || !imageData.src) {
+            console.error('Invalid image data at index:', this.currentImageIndex);
+            this.announceToScreenReader('Error: datos de imagen no válidos');
+            return;
+        }
+        
         // Create new image to handle loading
         const newImg = new Image();
         newImg.onload = () => {
             this.lightboxImage.src = newImg.src;
-            this.lightboxImage.alt = imageData.alt;
+            this.lightboxImage.alt = imageData.alt || 'Imagen de galería';
             
             // Update info
             if (this.lightboxTitle) {
-                this.lightboxTitle.textContent = imageData.title;
+                this.lightboxTitle.textContent = imageData.title || 'Proyecto VR Distribución';
             }
             
             if (this.lightboxDescription) {
-                this.lightboxDescription.textContent = imageData.category;
+                this.lightboxDescription.textContent = imageData.category || 'VR Distribución';
             }
             
             if (this.lightboxCounter) {
