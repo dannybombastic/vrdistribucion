@@ -366,6 +366,53 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9) !important;
 }
 
+/* Hero Eyebrow Text Styles */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-eyebrow-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.hero-eyebrow .hero-eyebrow-line {
+  flex: 1 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #6366f1, #ec4899, transparent) !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  z-index: 10 !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .hero-eyebrow-text {
+    font-size: 0.75rem;
+  }
+  
+  .hero-eyebrow {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-eyebrow-line {
+    display: none;
+  }
+}
+
 /* Links Enhancement */
 a {
   color: #6366f1 !important;
