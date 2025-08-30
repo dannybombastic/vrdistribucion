@@ -1794,15 +1794,7 @@ textarea.error {
   .lightbox-next {
     display: none; /* Ocultar flechas en móvil */
   }
-  
-  .lightbox-prev {
-    left: -25px;
-  }
-  
-  .lightbox-next {
-    right: -25px;
-  }
-  
+
   .lightbox-close {
     top: 15px;
     right: 15px;
@@ -1810,6 +1802,7 @@ textarea.error {
     height: 50px;
     font-size: 1.2rem;
     touch-action: manipulation;
+    z-index: 150 !important;
     background: rgba(0, 0, 0, 0.8);
     border: 2px solid rgba(255, 255, 255, 0.4);
   }
@@ -1833,7 +1826,7 @@ textarea.error {
   /* Mensaje de deslizar para móvil */
   .lightbox-swipe-hint {
     display: block;
-    width: 100%;
+    width: 50%;
     position: fixed;
     top: 10vh;
     background: rgba(0, 0, 0, 0.85);
@@ -2252,7 +2245,7 @@ textarea.error {
   border-radius: 50% !important;
   font-size: 1.2rem !important;
   cursor: pointer !important;
-  z-index: 15 !important;
+  z-index: 150 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
