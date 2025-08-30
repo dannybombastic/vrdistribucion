@@ -940,36 +940,15 @@ header nav a:hover {
   }
 }
 
-.lightbox-container {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.lightbox-content {
-  max-height: 100vh;
-  overflow: hidden;
-  overflow: visible !important;
-  position: relative;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
+
 
 /* Ensure buttons are positioned relative to the image container */
 .lightbox-image-container {
-  overflow: visible !important;
-  overflow: visible !important;
-  overflow: unset;
   position: relative;
   display: inline-block;
-  margin-bottom: 16px;
   max-width: 90vw;
-  max-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -977,14 +956,12 @@ header nav a:hover {
 
 .lightbox-content img {
   object-fit: contain;
-  overflow: unset;
   width: 100%;
   height: auto;
   max-width: 90vw;
   max-height: 65vh;
   object-fit: contain;
   border-radius: var(--radius-lg);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   animation: lightboxImageIn 0.4s ease-out;
   display: block;
 }
@@ -1886,7 +1863,6 @@ textarea.error {
     left: 5%;
     right: 5%;
     padding: 10px;
-    min-width: unset;
     max-width: 90%;
   }
 
@@ -1895,22 +1871,21 @@ textarea.error {
     color: #ffffff !important;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 1) !important;
     line-height: 1.1;
-    margin: 0 0 3px 0;
   }
   
   /* Mensaje de deslizar para móvil */
   .lightbox-swipe-hint {
     display: block;
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    position: fixed;
+    top: 15vh;
     background: rgba(0, 0, 0, 0.85);
     color: white;
     padding: 6px 15px;
     border-radius: 20px;
     font-size: 0.75rem;
-    font-weight: 500;
+    text-align: center;
+
     z-index: 15;
     animation: fadeInOut 3s ease-in-out infinite;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -1923,16 +1898,11 @@ textarea.error {
     50% { opacity: 1; }
   }  /* Fixed size for consistent mobile lightbox */
   .lightbox-image-container {
-    width: 90vw;
-    height: 60vh;
+    width: 100%;
+    height: 40vh;
   }
   
-  .lightbox-content img {
-    width: 90vw;
-    height: 60vh;
-    max-width: 90vw;
-    max-height: 60vh;
-  }
+ 
   
   /* Touch feedback for mobile */
   .gallery-tab:active,
@@ -2254,10 +2224,6 @@ textarea.error {
   contain: layout style paint;
 }
 
-.lightbox-content img {
-  will-change: transform;
-  transform: translateZ(0);
-}
 
 /* ==========================================================================
    REDUCED MOTION SUPPORT
@@ -2373,19 +2339,18 @@ textarea.error {
 
 /* Información debajo de la imagen */
 .lightbox-info {
-  position: absolute !important;
-  bottom: -120px !important;
+  margin-top: 2vh;
   left: 0 !important;
   right: 0 !important;
   background: rgba(0, 0, 0, 0.9) !important;
-  color: white !important;
-  padding: 20px !important;
-  text-align: center !important;
-  border-radius: var(--radius-md) !important;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: var(--radius-md);
   backdrop-filter: blur(15px) !important;
   z-index: 5 !important;
   max-width: 90% !important;
-  margin: 0 auto !important;
+
 }
 
 /* Efectos hover */

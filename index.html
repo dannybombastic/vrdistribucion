@@ -292,12 +292,11 @@
     upgrade-insecure-requests;
     block-all-mixed-content
   ">
-
-  <!-- Landing Styles FIRST for base styles -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css" as="style" onload="this.rel='stylesheet'">
-  
   <!-- Combined Styles AFTER to override social media styles -->
   <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
+  <!-- Landing Styles FIRST for base styles -->
+  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css" as="style" onload="this.rel='stylesheet'"> 
+
   
   <!-- Performance Critical Resource Preloads -->
   <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.rel='stylesheet'">
@@ -317,18 +316,6 @@
 </head>
 <body class="landing-page">
   <!-- FLOATING PARTICLES -->
-  <div class="floating-particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-
   <!-- HEADER -->
   <header role="banner">
     <a href="/" aria-label="Ir a página principal">

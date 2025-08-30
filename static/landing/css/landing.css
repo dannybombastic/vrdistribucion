@@ -165,6 +165,17 @@ img {
     margin: 0 auto
 }
 
+.hero-eyebrow .hero-eyebrow-line {
+  flex: 1 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #6366f1, #ec4899, transparent) !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  z-index: 10 !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
 .hero-eyebrow {
     display: flex;
     align-items: center;
