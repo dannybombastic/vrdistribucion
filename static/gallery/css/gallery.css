@@ -272,16 +272,6 @@ header nav a:hover {
   50% { transform: translateY(-10px); }
 }
 
-.gallery-hero .hero-content {
-  position: relative !important;
-  z-index: 2 !important;
-  max-width: 800px !important;
-  margin: 0 auto !important;
-  transform: none !important;
-  float: none !important;
-  clear: both !important;
-  display: block !important;
-}
 
 .gallery-hero h1 {
   font-size: clamp(2rem, 5vw, 3.5rem) !important;

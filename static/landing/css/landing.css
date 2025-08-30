@@ -153,18 +153,6 @@ img {
     box-sizing: border-box
 }
 
-.hero-content {
-    animation: slideInLeft .8s ease-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    margin: 0 auto
-}
-
 .hero-eyebrow .hero-eyebrow-line {
   flex: 1 !important;
   height: 4px !important;
@@ -2318,10 +2306,7 @@ footer a:hover {
     }
     
     .hero-content {
-        justify-content: flex-start !important;
-        align-items: center !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
+           padding-top: 6vh;
     }
     
     .hero {
@@ -3326,7 +3311,10 @@ button:focus {
     .hero-eyebrow-text {
         padding-top: 1.5rem !important;
     }
-    
+    .hero-content {
+        padding-top: 10vh;
+    }
+
     .hero-title {
         font-size: 2rem;
         margin-top: 0 !important;
