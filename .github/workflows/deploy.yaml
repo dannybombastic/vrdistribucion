@@ -47,60 +47,89 @@ jobs:
 
       - name: Configure Cache Headers for S3 Resources
         run: |
-          echo "🚀 Configurando headers de cache para optimización PageSpeed..."
+          echo "🚀 Configurando headers de cache para optimización PageSpeed (15 KiB savings)..."
           
-          # Videos - Cache por 30 días (2592000 segundos)
-          echo "📹 Configurando cache para videos..."
+          # Videos - Cache por 6 meses (15552000 segundos)
+          echo "📹 Configurando cache para videos (6 meses)..."
           aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/video_marketing/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/video_marketing/ \
             --recursive \
             --metadata-directive REPLACE \
-            --cache-control "public, max-age=2592000, immutable" \
+            --cache-control "public, max-age=15552000, immutable" \
             --content-type "video/mp4" \
             --exclude "*" \
             --include "*.mp4"
           
-          # CSS Files - Cache por 7 días (604800 segundos) 
-          echo "🎨 Configurando cache para CSS..."
+          # CSS Files - Cache por 1 año (31536000 segundos) para máximo ahorro
+          echo "🎨 Configurando cache para CSS (1 año)..."
           aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
             --recursive \
             --metadata-directive REPLACE \
-            --cache-control "public, max-age=604800, immutable" \
+            --cache-control "public, max-age=31536000, immutable" \
             --content-type "text/css" \
             --exclude "*" \
             --include "*.css"
           
-          # JavaScript Files - Cache por 7 días (604800 segundos)
-          echo "⚡ Configurando cache para JavaScript..."
+          # JavaScript Files - Cache por 1 año (31536000 segundos) para máximo ahorro
+          echo "⚡ Configurando cache para JavaScript (1 año)..."
           aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
             --recursive \
             --metadata-directive REPLACE \
-            --cache-control "public, max-age=604800, immutable" \
+            --cache-control "public, max-age=31536000, immutable" \
             --content-type "application/javascript" \
             --exclude "*" \
             --include "*.js"
           
-          # PNG Images - Cache por 30 días (2592000 segundos)
-          echo "🖼️ Configurando cache para imágenes PNG..."
+          # PNG Images - Cache por 1 año (31536000 segundos) para máximo ahorro
+          echo "🖼️ Configurando cache para imágenes PNG (1 año)..."
           aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
             --recursive \
             --metadata-directive REPLACE \
-            --cache-control "public, max-age=2592000, immutable" \
+            --cache-control "public, max-age=31536000, immutable" \
             --content-type "image/png" \
             --exclude "*" \
             --include "*.png"
           
-          # JPG Images - Cache por 30 días (2592000 segundos)
-          echo "🖼️ Configurando cache para imágenes JPG..."
+          # JPG Images - Cache por 1 año (31536000 segundos) para máximo ahorro
+          echo "🖼️ Configurando cache para imágenes JPG (1 año)..."
           aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
             --recursive \
             --metadata-directive REPLACE \
-            --cache-control "public, max-age=2592000, immutable" \
+            --cache-control "public, max-age=31536000, immutable" \
             --content-type "image/jpeg" \
             --exclude "*" \
             --include "*.jpg"
           
-          echo "✅ Cache headers configurados exitosamente!"
-          echo "📊 Esto optimizará PageSpeed Insights ahorrando ~13MB en visitas recurrentes"
+          # WEBP Images - Cache por 1 año (31536000 segundos)
+          echo "🖼️ Configurando cache para imágenes WEBP (1 año)..."
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=31536000, immutable" \
+            --content-type "image/webp" \
+            --exclude "*" \
+            --include "*.webp"
+          
+          # Fonts - Cache por 1 año (31536000 segundos)
+          echo "🔤 Configurando cache para fuentes (1 año)..."
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=31536000, immutable" \
+            --content-type "font/woff2" \
+            --exclude "*" \
+            --include "*.woff2"
+          
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=31536000, immutable" \
+            --content-type "font/woff" \
+            --exclude "*" \
+            --include "*.woff"
+          
+          echo "✅ Cache headers optimizados exitosamente!"
+          echo "📊 Cache optimizado para PageSpeed: CSS/JS 1 año = 15+ KiB savings en visitas recurrentes"
+          echo "🔧 Cache times: CSS/JS/Images/Fonts: 1 año | Videos: 6 meses"
 
       - name: Remove unnecessary files
         run: |

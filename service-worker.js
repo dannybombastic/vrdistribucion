@@ -1,8 +1,10 @@
 // Service Worker para cache de recursos de VR Distribución
 // Mejora el rendimiento cacheando recursos de S3 localmente
+// Optimizado para PageSpeed Insights - 15+ KiB savings
 
-const CACHE_NAME = 'vr-distribucion-v1.2';
-const CACHE_EXPIRY_TIME = 7 * 24 * 60 * 60 * 1000; // 7 días en millisegundos
+const CACHE_NAME = 'vr-distribucion-v2.0';
+const CACHE_EXPIRY_TIME = 365 * 24 * 60 * 60 * 1000; // 1 año en millisegundos para máximo ahorro
+const VIDEO_CACHE_EXPIRY_TIME = 180 * 24 * 60 * 60 * 1000; // 6 meses para videos
 
 // Recursos críticos que siempre se cachean
 const CRITICAL_RESOURCES = [
@@ -115,9 +117,11 @@ async function cacheFirstStrategy(request) {
     const cachedResponse = await cache.match(request);
     
     if (cachedResponse) {
-      // Verificar si el cache no ha expirado
+      // Verificar si el cache no ha expirado (diferente tiempo para videos vs otros assets)
       const cacheTime = await getCacheTime(request.url);
-      if (cacheTime && (Date.now() - cacheTime < CACHE_EXPIRY_TIME)) {
+      const expiryTime = isVideoResource(request.url) ? VIDEO_CACHE_EXPIRY_TIME : CACHE_EXPIRY_TIME;
+      
+      if (cacheTime && (Date.now() - cacheTime < expiryTime)) {
         console.log('Service Worker: Sirviendo desde cache:', request.url);
         return cachedResponse;
       }
