@@ -1,43 +1,3 @@
-/* ==========================================================================
-   VR Distribución - Gallery Styles
-   Comprehensive CSS for three distinct gallery layouts:
-   1. Masonry Gallery with Featured Product
-   2. Hexagon Gallery 
-   3. Polaroid Gallery with vintage effects
-   ========================================================================== */
-
-/* ==========================================================================
-   CSS RESET & OVERRIDE FOR EXTERNAL STYLES
-   Neutralize conflicting external CSS from landing.css and other sources
-   ========================================================================== */
-
-/* Reset only for gallery elements to prevent floating and positioning conflicts */
-.gallery-hero *, .gallery-nav *, .gallery-section * {
-  box-sizing: border-box !important;
-}
-
-/* Override external CSS that causes floating elements - only for gallery headers */
-.gallery-hero h1, .gallery-hero h2, .gallery-hero h3, .gallery-hero h4, .gallery-hero h5, .gallery-hero h6 {
-  position: static !important;
-  z-index: auto !important;
-  transform: none !important;
-  float: none !important;
-  clear: both !important;
-  display: block !important;
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  -webkit-text-fill-color: initial !important;
-  background-clip: initial !important;
-}
-
-/* Ensure gallery sections and containers have normal flow */
-.gallery-hero, .gallery-nav, .gallery-section {
-  position: relative !important;
-  z-index: auto !important;
-  transform: none !important;
-  float: none !important;
-  clear: both !important;
-}
 
 /* Override body padding conflicts */
 body {
@@ -183,9 +143,6 @@ header nav a:hover {
   color: white;
 }
 
-/* Mobile Menu Toggle styles moved to combined-styles.css for centralization */
-
-/* Mobile Menu Toggle styles moved to combined-styles.css for centralization */
 
 /* Mobile Navigation */
 @media (max-width: 768px) {
@@ -995,7 +952,7 @@ header nav a:hover {
   margin: 0 auto;
 }
 
-.lightbox-info h3 {
+.lightbox-info h5 {
   margin: 0 0 4px 0;
   font-size: 1.1rem;
   font-weight: 700;
@@ -1866,7 +1823,7 @@ textarea.error {
     max-width: 90%;
   }
 
-  .lightbox-info h3 {
+  .lightbox-info h5 {
     font-size: 1rem;
     color: #ffffff !important;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 1) !important;
