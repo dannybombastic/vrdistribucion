@@ -1729,6 +1729,7 @@ body::after {
 
 /* Chat Messages */
 .chat-messages {
+    width: 100%;
     padding: 24px !important;
     flex: 1 !important;
     overflow-y: auto !important;
@@ -1950,26 +1951,27 @@ body::after {
 }
 
 /* Estilos de respaldo para mensajes del chat */
-.message-content {
-    display: inline-block !important;
-    max-width: 80% !important;
+.message.assistant .message-content {
+    display: inline-block ;
+    max-width: 100% !;
     padding: 12px 16px !important;
     border-radius: 18px !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-    word-wrap: break-word !important;
-    position: relative !important;
-    font-weight: 500 !important;
+    border: rgba(0, 0, 0, .08);
+    font-size: 18px !important;
+  
 }
 
-.message.bot .message-content {
-    background: rgba(255, 255, 255, 0.98) !important;
-    color: #000000 !important;
-    border-bottom-left-radius: 6px !important;
-    border: 2px solid rgba(99, 102, 241, 0.6) !important;
-    backdrop-filter: blur(10px) !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15) !important;
+
+.message-content {
+    display: inline-block ;
+    max-width: 100% !;
+    padding: 12px 16px !important;
+    border-radius: 18px !important;
+    border: rgba(0, 0, 0, .08);
+    font-size: 18px !important;
+  
 }
+
 
 .message.user .message-content {
     background: #6366f1 !important;
