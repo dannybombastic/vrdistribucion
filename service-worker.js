@@ -19,16 +19,13 @@ const CRITICAL_RESOURCES = [
 
 // Videos que se cachean con estrategia diferente
 const VIDEO_RESOURCES = [
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4', // Hero video - prioridad alta
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/cntro_de_mesa.mp4',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_decorativas.mp4',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones_white.mp4',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/rotulos_iluminados.mp4',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_con_cruz_cristiana.mp4'
 ];
-
-// Video del hero - máxima prioridad para cache
-const HERO_VIDEO = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4';
 
 // Instalación del Service Worker
 self.addEventListener('install', event => {
@@ -38,59 +35,18 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Service Worker: Cacheando recursos críticos...');
-        // Cachear recursos críticos primero
+        // Solo cachear recursos críticos durante la instalación
         return cache.addAll(CRITICAL_RESOURCES);
       })
-      .then(cache => {
-        // Pre-cachear el video del hero de forma asíncrona para mejorar LCP
-        console.log('Service Worker: Pre-cacheando video del hero...');
-        return preloadHeroVideo();
-      })
       .then(() => {
-        console.log('Service Worker: Recursos críticos y video del hero cacheados');
+        console.log('Service Worker: Recursos críticos cacheados');
         return self.skipWaiting();
       })
       .catch(error => {
         console.error('Service Worker: Error durante instalación:', error);
-        // Continuar aunque falle el video del hero
-        return self.skipWaiting();
       })
   );
 });
-
-// Pre-cargar video del hero para mejorar rendimiento
-async function preloadHeroVideo() {
-  try {
-    const cache = await caches.open(CACHE_NAME);
-    const request = new Request(HERO_VIDEO, {
-      method: 'GET',
-      headers: {
-        'Range': 'bytes=0-1048576' // Pre-cargar solo el primer MB para inicio rápido
-      }
-    });
-    
-    const response = await fetch(request);
-    if (response.ok) {
-      await cache.put(HERO_VIDEO, response);
-      await setCacheTime(HERO_VIDEO, Date.now());
-      console.log('Service Worker: Video del hero pre-cacheado exitosamente');
-      
-      // Notify main thread that hero video is cached
-      self.clients.matchAll().then(clients => {
-        clients.forEach(client => {
-          client.postMessage({
-            type: 'VIDEO_CACHED',
-            url: HERO_VIDEO,
-            isHero: true
-          });
-        });
-      });
-    }
-  } catch (error) {
-    console.log('Service Worker: No se pudo pre-cachear video del hero:', error);
-    // No fallar la instalación por esto
-  }
-}
 
 // Activación del Service Worker
 self.addEventListener('activate', event => {
@@ -191,19 +147,11 @@ async function cacheFirstStrategy(request) {
   }
 }
 
-// Estrategia Network First - Para videos con optimización especial para hero
+// Estrategia Network First - Para videos
 async function networkFirstStrategy(request) {
-  const isHeroVideo = request.url === HERO_VIDEO;
-  
   try {
     console.log('Service Worker: Intentando obtener video de red:', request.url);
-    
-    // Para el video del hero, usar timeout más corto para fallar rápido al cache
-    const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error('Network timeout')), isHeroVideo ? 3000 : 8000);
-    });
-    
-    const networkResponse = await Promise.race([fetch(request), timeoutPromise]);
+    const networkResponse = await fetch(request);
     
     if (networkResponse.ok) {
       // Cachear video exitosamente descargado
@@ -225,15 +173,6 @@ async function networkFirstStrategy(request) {
     if (cachedResponse) {
       console.log('Service Worker: Sirviendo video desde cache:', request.url);
       return cachedResponse;
-    }
-    
-    // Para video del hero, devolver una respuesta de error más informativa
-    if (isHeroVideo) {
-      console.error('Service Worker: Video del hero no disponible');
-      return new Response('Video del hero no disponible', { 
-        status: 503, 
-        statusText: 'Video Unavailable' 
-      });
     }
     
     throw error;
