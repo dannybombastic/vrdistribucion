@@ -79,6 +79,9 @@
   <link rel="dns-prefetch" href="https://www.google-analytics.com" />
   <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
 
+  <!-- Preload critical showdown module hint (no blocking) -->
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js" as="script" />
+
   <!-- Critical CSS inlined to prevent render blocking -->
   <style>
     /* Critical above-the-fold styles */
@@ -1355,11 +1358,163 @@
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js" defer></script>
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js" defer></script>
   
-  <!-- Showdown library - Must load before chat.js -->
-  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
-  
-  <!-- Chat JS - Now loads after Showdown is available -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js" defer></script>
+  <!-- Deferred loading of Showdown library for better LCP -->
+  <script>
+    // Load Showdown asynchronously with local fallback to prevent render blocking
+    function loadShowdown() {
+      return new Promise((resolve, reject) => {
+        if (window.showdown) {
+          resolve(window.showdown);
+          return;
+        }
+        
+        const script = document.createElement('script');
+        script.async = true;
+        
+        // Try CDN first, fallback to local
+        script.src = 'https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js';
+        
+        script.onload = () => {
+          console.log('✅ Showdown loaded from CDN');
+          resolve(window.showdown);
+        };
+        
+        script.onerror = () => {
+          console.warn('⚠️ CDN failed, loading local fallback');
+          // Remove failed script
+          script.remove();
+          
+          // Try local fallback
+          const fallbackScript = document.createElement('script');
+          fallbackScript.async = true;
+          fallbackScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js';
+          
+          fallbackScript.onload = () => {
+            console.log('✅ Showdown loaded from local fallback');
+            resolve(window.showdown);
+          };
+          
+          fallbackScript.onerror = () => {
+            console.error('❌ Both CDN and local showdown failed');
+            reject(new Error('Failed to load showdown'));
+          };
+          
+          document.head.appendChild(fallbackScript);
+        };
+        
+        document.head.appendChild(script);
+      });
+    }
+
+    // Initialize chat toggle functionality immediately (before showdown loads)
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatContainer = document.getElementById('chat-container');
+      const chatToggle = document.getElementById('chat-toggle');
+      const minimizeBtn = document.getElementById('minimize-btn');
+      const closeBtn = document.getElementById('close-btn');
+      
+      if (chatToggle && chatContainer) {
+        // Basic toggle functionality - works immediately
+        chatToggle.addEventListener('click', () => {
+          chatContainer.classList.toggle('collapsed');
+          if (chatContainer.classList.contains('collapsed')) {
+            chatToggle.style.display = 'block';
+          } else {
+            chatToggle.style.display = 'none';
+          }
+        });
+        
+        if (minimizeBtn) {
+          minimizeBtn.addEventListener('click', () => {
+            chatContainer.classList.add('collapsed');
+            chatToggle.style.display = 'block';
+          });
+        }
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            chatContainer.classList.add('collapsed');
+            chatToggle.style.display = 'block';
+          });
+        }
+        
+        // Show a loading message until full chat functionality is ready
+        const chatMessages = document.getElementById('chat-messages');
+        if (chatMessages && !window.chatInitialized) {
+          chatMessages.innerHTML = `
+            <div class="message assistant">
+              <div class="message-content">
+                <p>🔄 Cargando chat...</p>
+                <p>El sistema de chat se está inicializando. Por favor espera un momento.</p>
+              </div>
+            </div>
+          `;
+        }
+      }
+    });
+
+    // Load chat functionality after page load and when showdown is ready
+    window.addEventListener('load', function() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          loadShowdown().then(() => {
+            // Load chat.js only after showdown is ready
+            const chatScript = document.createElement('script');
+            chatScript.async = true;
+            chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
+            chatScript.onload = () => {
+              console.log('✅ Chat functionality loaded');
+              // Update chat messages to show it's ready
+              const chatMessages = document.getElementById('chat-messages');
+              if (chatMessages) {
+                chatMessages.innerHTML = `
+                  <div class="message assistant">
+                    <div class="message-content">
+                      <p>¡Hola! Soy el asistente virtual de VR Distribución.</p>
+                      <p>¿En qué puedo ayudarte con tu evento especial?</p>
+                    </div>
+                  </div>
+                `;
+              }
+            };
+            chatScript.onerror = () => console.error('❌ Chat script failed to load');
+            document.head.appendChild(chatScript);
+          }).catch(err => {
+            console.error('❌ Showdown loading failed:', err);
+            // Chat functionality will be disabled if showdown fails
+          });
+        });
+      } else {
+        // Fallback for browsers without requestIdleCallback
+        setTimeout(() => {
+          loadShowdown().then(() => {
+            const chatScript = document.createElement('script');
+            chatScript.async = true;
+            chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
+            chatScript.onload = () => {
+              console.log('✅ Chat functionality loaded');
+              // Update chat messages to show it's ready
+              const chatMessages = document.getElementById('chat-messages');
+              if (chatMessages) {
+                chatMessages.innerHTML = `
+                  <div class="message assistant">
+                    <div class="message-content">
+                      <p>¡Hola! Soy el asistente virtual de VR Distribución.</p>
+                      <p>¿En qué puedo ayudarte con tu evento especial?</p>
+                    </div>
+                  </div>
+                `;
+              }
+            };
+            chatScript.onerror = () => console.error('❌ Chat script failed to load');
+            document.head.appendChild(chatScript);
+          }).catch(err => {
+            console.error('❌ Showdown loading failed:', err);
+          });
+        }, 100);
+      }
+    });
+  </script>
 
   <!-- All scripts now loaded via requestIdleCallback for better performance -->
 

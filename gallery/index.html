@@ -1099,11 +1099,136 @@
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/js/gallery.js" defer></script>
 
+  <!-- Chat Dependencies - Optimized for performance -->
+  <script>
+    // Load Showdown asynchronously with local fallback to prevent render blocking
+    function loadShowdown() {
+      return new Promise((resolve, reject) => {
+        if (window.showdown) {
+          resolve(window.showdown);
+          return;
+        }
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js';
+        
+        script.onload = () => resolve(window.showdown);
+        script.onerror = () => {
+          // Try local fallback
+          const fallbackScript = document.createElement('script');
+          fallbackScript.async = true;
+          fallbackScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js';
+          fallbackScript.onload = () => resolve(window.showdown);
+          fallbackScript.onerror = reject;
+          script.remove();
+          document.head.appendChild(fallbackScript);
+        };
+        
+        document.head.appendChild(script);
+      });
+    }
 
+    // Initialize chat toggle functionality immediately (before showdown loads)
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatContainer = document.getElementById('chat-container');
+      const chatToggle = document.getElementById('chat-toggle');
+      const minimizeBtn = document.getElementById('minimize-btn');
+      const closeBtn = document.getElementById('close-btn');
+      
+      if (chatToggle && chatContainer) {
+        // Basic toggle functionality - works immediately
+        chatToggle.addEventListener('click', () => {
+          chatContainer.classList.toggle('collapsed');
+          if (chatContainer.classList.contains('collapsed')) {
+            chatToggle.style.display = 'block';
+          } else {
+            chatToggle.style.display = 'none';
+          }
+        });
+        
+        if (minimizeBtn) {
+          minimizeBtn.addEventListener('click', () => {
+            chatContainer.classList.add('collapsed');
+            chatToggle.style.display = 'block';
+          });
+        }
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            chatContainer.classList.add('collapsed');
+            chatToggle.style.display = 'block';
+          });
+        }
+        
+        // Show a loading message until full chat functionality is ready
+        const chatMessages = document.getElementById('chat-messages');
+        if (chatMessages && !window.chatInitialized) {
+          chatMessages.innerHTML = `
+            <div class="message assistant">
+              <div class="message-content">
+                <p>🔄 Cargando chat...</p>
+                <p>El sistema de chat se está inicializando. Por favor espera un momento.</p>
+              </div>
+            </div>
+          `;
+        }
+      }
+    });
 
-  <!-- Chat Dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
+    // Load chat after page is ready
+    window.addEventListener('load', function() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          loadShowdown().then(() => {
+            const chatScript = document.createElement('script');
+            chatScript.async = true;
+            chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
+            chatScript.onload = () => {
+              console.log('✅ Chat functionality loaded');
+              // Update chat messages to show it's ready
+              const chatMessages = document.getElementById('chat-messages');
+              if (chatMessages) {
+                chatMessages.innerHTML = `
+                  <div class="message assistant">
+                    <div class="message-content">
+                      <p>¡Hola! Soy el asistente virtual de VR Distribución.</p>
+                      <p>¿En qué puedo ayudarte con tu evento especial?</p>
+                    </div>
+                  </div>
+                `;
+              }
+            };
+            document.head.appendChild(chatScript);
+          }).catch(console.error);
+        });
+      } else {
+        setTimeout(() => {
+          loadShowdown().then(() => {
+            const chatScript = document.createElement('script');
+            chatScript.async = true;
+            chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
+            chatScript.onload = () => {
+              console.log('✅ Chat functionality loaded');
+              // Update chat messages to show it's ready
+              const chatMessages = document.getElementById('chat-messages');
+              if (chatMessages) {
+                chatMessages.innerHTML = `
+                  <div class="message assistant">
+                    <div class="message-content">
+                      <p>¡Hola! Soy el asistente virtual de VR Distribución.</p>
+                      <p>¿En qué puedo ayudarte con tu evento especial?</p>
+                    </div>
+                  </div>
+                `;
+              }
+            };
+            document.head.appendChild(chatScript);
+          }).catch(console.error);
+        }, 100);
+      }
+    });
+  </script>
 
   <!-- Mobile Menu Script -->
   <script>
