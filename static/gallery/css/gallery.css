@@ -1835,7 +1835,7 @@ textarea.error {
     display: block;
     width: 100%;
     position: fixed;
-    top: 15vh;
+    top: 10vh;
     background: rgba(0, 0, 0, 0.85);
     color: white;
     padding: 6px 15px;
