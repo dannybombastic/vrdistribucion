@@ -1354,6 +1354,11 @@
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js" defer></script>
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js" defer></script>
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js" defer></script>
+  
+  <!-- Showdown library - Must load before chat.js -->
+  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+  
+  <!-- Chat JS - Now loads after Showdown is available -->
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js" defer></script>
 
   <!-- All scripts now loaded via requestIdleCallback for better performance -->
@@ -1472,11 +1477,6 @@
           if (!window.ContactForm) {
             loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
           }
-          
-          // Load Showdown for chat (chat.js is now loaded with defer)
-          if (!window.showdown) {
-            loadScript('https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js');
-          }
 
           // Load Google Analytics only if not already loaded
           if (!window.gtag) {
@@ -1501,11 +1501,6 @@
           
           if (!window.ContactForm) {
             loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
-          }
-          
-          // Load Showdown for chat (chat.js is now loaded with defer)
-          if (!window.showdown) {
-            loadScript('https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js');
           }
 
           // Load Google Analytics only if not already loaded
