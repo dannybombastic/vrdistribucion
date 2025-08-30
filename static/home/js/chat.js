@@ -1,4 +1,10 @@
 
+// Prevent duplicate initialization
+if (window.chatInitialized) {
+    console.log('Chat already initialized');
+} else {
+window.chatInitialized = true;
+
 // generate uuid for sesion id
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -23,6 +29,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const chatMessages = document.getElementById('chat-messages');
+    
+    if (!chatToggle || !chatContainer) {
+        console.error('Chat elements not found');
+        return;
+    }
     const prod = "https://vrdistribucion.com/api/chat"
     const prodwww = "https://www.vrdistribucion.com/api/chat"
     const dev = "http://localhost:8000/api/chat"
@@ -202,3 +213,5 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.height = (this.scrollHeight) + 'px';
     });
 });
+
+} // Cerrar el else de la verificación de duplicados

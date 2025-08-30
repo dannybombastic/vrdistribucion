@@ -1,3 +1,8 @@
+// Prevent duplicate initialization
+if (window.ProfessionalAnimation) {
+    console.log('ProfessionalAnimation already loaded');
+} else {
+
 // Animación profesional con elementos geométricos y partículas sutiles
 class ProfessionalAnimation {
     constructor(canvasId) {
@@ -290,3 +295,5 @@ document.addEventListener('DOMContentLoaded', () => {
         new CounterAnimation();
     }, 100);
 });
+
+} // Cerrar el else de la verificación de duplicados

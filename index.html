@@ -1136,39 +1136,9 @@
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js" defer></script>
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js" defer></script>
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js" defer></script>
-  
-  <!-- Chat Widget Dependencies - Load after page load -->
-  <script>
-    window.addEventListener('load', function() {
-      // Load Showdown for chat
-      const showdownScript = document.createElement('script');
-      showdownScript.src = 'https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js';
-      showdownScript.onload = function() {
-        // Load chat script after Showdown is loaded
-        const chatScript = document.createElement('script');
-        chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
-        document.head.appendChild(chatScript);
-      };
-      document.head.appendChild(showdownScript);
-    });
-  </script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js" defer></script>
 
-  <!-- Google Analytics - Load asynchronously after page load -->
-  <script>
-    window.addEventListener('load', function() {
-      // Load Google Analytics after page is fully loaded
-      const gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
-      gaScript.onload = function() {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-DLSGS9C2TK');
-      };
-      document.head.appendChild(gaScript);
-    });
-  </script>
+  <!-- All scripts now loaded via requestIdleCallback for better performance -->
 
   <!-- Service Worker Registration - Cache optimization for S3 resources -->
   <script>
@@ -1249,61 +1219,90 @@
 
     // Load non-critical scripts after page load to improve LCP/FCP
     window.addEventListener('load', function() {
+      // Track loaded scripts to prevent duplicates
+      const loadedScripts = new Set();
+      
       // Defer loading of scripts with requestIdleCallback for better performance
       const loadScript = (src, callback) => {
+        if (loadedScripts.has(src)) {
+          console.log('Script already loaded:', src);
+          if (callback) callback();
+          return;
+        }
+        
         const script = document.createElement('script');
         script.async = true;
         script.src = src;
-        if (callback) script.onload = callback;
+        script.onload = function() {
+          loadedScripts.add(src);
+          if (callback) callback();
+        };
+        script.onerror = function() {
+          console.error('Failed to load script:', src);
+        };
         document.head.appendChild(script);
       };
 
       // Use requestIdleCallback for non-critical resource loading
       if ('requestIdleCallback' in window) {
         requestIdleCallback(() => {
-          // Load celebration script
-          loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js');
+          // Load scripts only if not already loaded
+          if (!window.ProfessionalAnimation) {
+            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js');
+          }
           
-          // Load contact form script
-          loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
+          if (!window.ContactForm) {
+            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
+          }
           
-          // Load Showdown and then chat script
-          loadScript('https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js', () => {
-            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js');
-          });
+          // Load Showdown for chat (chat.js is now loaded with defer)
+          if (!window.showdown) {
+            loadScript('https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js');
+          }
 
-          // Load Google Analytics
-          const gaScript = document.createElement('script');
-          gaScript.async = true;
-          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
-          gaScript.onload = function() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-DLSGS9C2TK');
-          };
-          document.head.appendChild(gaScript);
+          // Load Google Analytics only if not already loaded
+          if (!window.gtag) {
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
+            gaScript.onload = function() {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-DLSGS9C2TK');
+            };
+            document.head.appendChild(gaScript);
+          }
         });
       } else {
         // Fallback for browsers without requestIdleCallback
         setTimeout(() => {
-          loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js');
-          loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
-          loadScript('https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js', () => {
-            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js');
-          });
+          if (!window.ProfessionalAnimation) {
+            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js');
+          }
+          
+          if (!window.ContactForm) {
+            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
+          }
+          
+          // Load Showdown for chat (chat.js is now loaded with defer)
+          if (!window.showdown) {
+            loadScript('https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js');
+          }
 
-          // Load Google Analytics
-          const gaScript = document.createElement('script');
-          gaScript.async = true;
-          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
-          gaScript.onload = function() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-DLSGS9C2TK');
-          };
-          document.head.appendChild(gaScript);
+          // Load Google Analytics only if not already loaded
+          if (!window.gtag) {
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
+            gaScript.onload = function() {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-DLSGS9C2TK');
+            };
+            document.head.appendChild(gaScript);
+          }
         }, 100);
       }
     });
