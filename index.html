@@ -167,16 +167,16 @@
     </nav>
   </header>
 
-  <!-- Mobile Navigation Menu -->
-  <div class="mobile-nav-overlay"></div>
-  <div class="mobile-nav">
-    <div class="mobile-nav-content">
-      <ul>
-        <li><a href="/gallery">Galería</a></li>
-        <li><a href="/portafolio">Portafolio</a></li>
-        <li><a href="/cotizaciones">Cotizaciones</a></li>
-      </ul>
-    </div>
+  <!-- Hamburger Dropdown Menu (para todas las pantallas) -->
+  <div class="hamburger-dropdown" id="hamburger-dropdown">
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/gallery">Galería</a></li>
+      <li><a href="/portafolio">Portafolio</a></li>
+      <li><a href="/cotizaciones">Cotizaciones</a></li>
+      <li><a href="/aparador">Aparador</a></li>
+      <li><a href="/webdesigncancun">Web Design Cancún</a></li>
+    </ul>
   </div>
 
   <!-- HERO -->
@@ -1083,49 +1083,70 @@
   
   <!-- Critical JavaScript for immediate functionality -->
   <script>
-    // Mobile Menu Functionality - Inline for immediate execution
+    // Universal Hamburger Menu Functionality - Works on all screen sizes
     document.addEventListener('DOMContentLoaded', function() {
       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-      const mobileNav = document.querySelector('.mobile-nav');
-      const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+      const hamburgerDropdown = document.querySelector('.hamburger-dropdown');
+      const icon = mobileMenuToggle?.querySelector('i');
       
-      if (mobileMenuToggle && mobileNav && mobileNavOverlay) {
-        function toggleMenu() {
-          const isActive = mobileNav.classList.contains('active');
+      if (mobileMenuToggle && hamburgerDropdown && icon) {
+        function toggleHamburgerMenu() {
+          const isActive = hamburgerDropdown.classList.contains('active');
           if (isActive) {
-            closeMenu();
+            closeHamburgerMenu();
           } else {
-            openMenu();
+            openHamburgerMenu();
           }
         }
         
-        function openMenu() {
-          mobileNav.classList.add('active');
-          mobileNavOverlay.classList.add('active');
-          mobileMenuToggle.classList.add('active');
+        function openHamburgerMenu() {
+          hamburgerDropdown.classList.add('active');
+          icon.className = 'icon ion-md-close';
           mobileMenuToggle.setAttribute('aria-expanded', 'true');
-          document.body.style.overflow = 'hidden';
+          mobileMenuToggle.setAttribute('aria-label', 'Cerrar menú');
+          
+          // Prevent body scroll on mobile
+          if (window.innerWidth <= 768) {
+            document.body.style.overflow = 'hidden';
+          }
         }
         
-        function closeMenu() {
-          mobileNav.classList.remove('active');
-          mobileNavOverlay.classList.remove('active');
-          mobileMenuToggle.classList.remove('active');
+        function closeHamburgerMenu() {
+          hamburgerDropdown.classList.remove('active');
+          icon.className = 'icon ion-md-menu';
           mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          mobileMenuToggle.setAttribute('aria-label', 'Abrir menú');
+          
+          // Restore body scroll
           document.body.style.overflow = '';
         }
         
-        mobileMenuToggle.addEventListener('click', toggleMenu);
-        mobileNavOverlay.addEventListener('click', closeMenu);
-        
-        const mobileNavLinks = mobileNav.querySelectorAll('a');
-        mobileNavLinks.forEach(link => {
-          link.addEventListener('click', closeMenu);
+        // Toggle button click
+        mobileMenuToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleHamburgerMenu();
         });
         
+        // Close menu when clicking on navigation links
+        const hamburgerLinks = hamburgerDropdown.querySelectorAll('a');
+        hamburgerLinks.forEach(link => {
+          link.addEventListener('click', closeHamburgerMenu);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (hamburgerDropdown.classList.contains('active') && 
+              !mobileMenuToggle.contains(e.target) && 
+              !hamburgerDropdown.contains(e.target)) {
+            closeHamburgerMenu();
+          }
+        });
+        
+        // Handle escape key
         document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-            closeMenu();
+          if (e.key === 'Escape' && hamburgerDropdown.classList.contains('active')) {
+            closeHamburgerMenu();
           }
         });
       }
