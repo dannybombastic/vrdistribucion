@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-DLSGS9C2TK');
-  </script>
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -80,238 +71,49 @@
   
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://vrdistribucion.s3-accelerate.amazonaws.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
   
-  <!-- Ionicons for chat widget -->
-  <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+  <!-- Critical CSS - Load immediately for above-the-fold content -->
+  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
   
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://vrdistribucion.com",
-    "name": "VR Distribución",
-    "alternateName": "Virginia Ruiz Distribución",
-    "description": "Especialistas en invitaciones personalizadas, centros de mesa, velas aromáticas y decoraciones para eventos en Cancún. 25 años creando experiencias únicas para bodas, cumpleaños, bautizos y eventos corporativos.",
-    "image": "https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png",
-    "url": "https://vrdistribucion.com",
-    "telephone": "+52-998-236-1177",
-    "email": "vrdistribucion@gmail.com",
-    "priceRange": "$19-$39",
-    "paymentAccepted": "Cash, Credit Card, Debit Card",
-    "currenciesAccepted": "MXN",
-    "openingHours": "Mo-Sa 09:00-18:00",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Plaza Galerías Lat. Local 32, Av. Tulum Supermanzana 2, Bancos",
-      "addressLocality": "Cancún",
-      "addressRegion": "Quintana Roo",
-      "postalCode": "77500",
-      "addressCountry": "MX"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 21.16906117750304,
-      "longitude": -86.82813890415704
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Virginia Ruiz Rodríguez",
-      "jobTitle": "Diseñadora de Eventos y Asesora Gráfica"
-    },
-    "areaServed": [
-      {
-        "@type": "Place",
-        "name": "Cancún"
-      },
-      {
-        "@type": "Place", 
-        "name": "Quintana Roo"
-      },
-      {
-        "@type": "Place",
-        "name": "República Mexicana"
-      }
-    ],
-    "serviceType": [
-      "Invitaciones personalizadas",
-      "Centros de mesa",
-      "Decoraciones para eventos",
-      "Velas aromáticas",
-      "Recuerdos para eventos",
-      "Diseño gráfico",
-      "Papelería corporativa"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Servicios de Eventos",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Paquete Básico",
-            "description": "Invitaciones sencillas, decoración mínima, asesoría general"
-          },
-          "price": "19",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Paquete Completo",
-            "description": "Invitaciones personalizadas, centros de mesa estándar, velas y recuerdos básicos"
-          },
-          "price": "29",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Paquete Premium",
-            "description": "Invitaciones de lujo, centros de mesa elaborados, asesoría integral VIP"
-          },
-          "price": "39",
-          "priceCurrency": "USD"
-        }
-      ]
-    },
-    "sameAs": [
-      "https://www.instagram.com/vrcancunonline",
-      "https://www.facebook.com/share/15oBN2xkPS/",
-      "https://www.youtube.com/watch?v=doteMqP6eSc",
-      "https://wa.me/529982361177"
-    ],
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Julia Sakura"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "Gracias a Virginia, mis invitaciones de boda fueron espectaculares. Los centros de mesa y los detalles de velas encantaron a todos. ¡Súper recomendada!"
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "John Santana"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "Virginia entendió el concepto de mi evento corporativo y logró una decoración impecable. Las invitaciones con nuestro branding fueron un plus profesional."
-      }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "150"
-    }
-  }
-  </script>
-
-  <!-- WebSite Schema for Search -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "VR Distribución",
-    "url": "https://vrdistribucion.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://vrdistribucion.com/aparador/?search={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- FAQ Schema for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Qué servicios ofrece VR Distribución en Cancún?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ofrecemos invitaciones personalizadas, centros de mesa elegantes, velas aromáticas, decoraciones para eventos, recuerdos personalizados y servicios de diseño gráfico para bodas, cumpleaños, bautizos y eventos corporativos en Cancún y Quintana Roo."
-        }
-      },
-      {
-        "@type": "Question", 
-        "name": "¿Cuánto cuesta una invitación personalizada?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nuestros paquetes van desde $19 USD para invitaciones básicas hasta $39 USD para diseños premium VIP. El precio depende de la complejidad del diseño, materiales utilizados y cantidad solicitada."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Realizan envíos a toda la República Mexicana?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, atendemos eventos en Cancún, Playa del Carmen, Cozumel, Tulum y toda la zona de Quintana Roo. Tenemos 25 años de experiencia sirviendo a la región."
-        }
-      }
-    ]
-  }
-  </script>
+  <!-- Preload critical images (above-the-fold) -->
+  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" as="image" type="image/png">
+  
+  <!-- Preload critical scripts -->
+  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js" as="script">
+  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js" as="script">
+  
+  <!-- Non-critical CSS - Defer loading -->
+  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers without JS -->
+  <noscript>
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+  </noscript>
 
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
-    script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
-    script-src-attr 'unsafe-inline';
     style-src  'self' 'unsafe-inline' https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
-    style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
-    style-src-attr 'unsafe-inline';
     img-src    'self' data: https:;
     font-src   'self' https://fonts.gstatic.com https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com data:;
     connect-src 'self' http://127.0.0.1:8000 http://localhost:8000 https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
     frame-src  https://www.youtube.com https://www.youtube-nocookie.com;
-    child-src  https://www.youtube.com https://www.youtube-nocookie.com;
-    frame-ancestors 'self';
     media-src  'self' https://vrdistribucion.s3-accelerate.amazonaws.com;
     object-src 'none';
     base-uri   'self';
-    form-action 'self';
-    upgrade-insecure-requests;
-    block-all-mixed-content
+    form-action 'self'
   ">
-  <!-- Combined Styles AFTER to override social media styles -->
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
-  <!-- Landing Styles FIRST for base styles -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css" as="style" onload="this.rel='stylesheet'"> 
 
-  
-  <!-- Performance Critical Resource Preloads -->
-  <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css">
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
-  </noscript>
-
-  <!-- Performance Optimizations -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://vrdistribucion.s3-accelerate.amazonaws.com" />
-  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
 </head>
 <body class="landing-page">
@@ -688,7 +490,15 @@
     <h2 id="services-heading">Mis Servicios</h2>
     <div class="grid">
       <div class="card">
-        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4" alt="Invitaciones Personalizadas" autoplay muted loop></video>
+        <video 
+          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4" 
+          alt="Invitaciones Personalizadas" 
+          autoplay 
+          muted 
+          loop 
+          loading="lazy"
+          preload="metadata"
+          playsinline></video>
         <div class="card-content">
           <h3>Invitaciones Personalizadas Cancún</h3>
           <p>Diseños únicos a tu medida para bodas, quinceañeras, bautizos y eventos corporativos en Cancún. Papelería de la más alta calidad que refleja el estilo y tema de tu celebración especial.</p>
@@ -696,7 +506,15 @@
         </div>
       </div>
       <div class="card">
-        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/cntro_de_mesa.mp4" alt="Centros de Mesa" autoplay muted loop></video>
+        <video 
+          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/cntro_de_mesa.mp4" 
+          alt="Centros de Mesa" 
+          autoplay 
+          muted 
+          loop 
+          loading="lazy"
+          preload="metadata"
+          playsinline></video>
         <div class="card-content">
           <h3>Centros de Mesa y Arreglos Elegantes</h3>
           <p>Centros de mesa elegantes, temáticos y totalmente personalizados para bodas y eventos en Cancún. Diseños únicos que cautivarán a tus invitados desde el primer momento.</p>
@@ -704,7 +522,15 @@
         </div>
       </div>
       <div class="card">
-        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_decorativas.mp4" alt="Velas Decorativas" autoplay muted loop></video>
+        <video 
+          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_decorativas.mp4" 
+          alt="Velas Decorativas" 
+          autoplay 
+          muted 
+          loop 
+          loading="lazy"
+          preload="metadata"
+          playsinline></video>
         <div class="card-content">
           <h3>Velas y Detalles Decorativos</h3>
           <p>Velas aromáticas, recuerdos y accesorios cuidadosamente hechos para complementar la atmósfera de tu celebración. Recuerdos y souvenirs personalizados.</p>
@@ -712,7 +538,15 @@
         </div>
       </div>
       <div class="card">
-        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones_white.mp4" alt="Invitaciones Elegantes" autoplay muted loop></video>
+        <video 
+          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones_white.mp4" 
+          alt="Invitaciones Elegantes" 
+          autoplay 
+          muted 
+          loop 
+          loading="lazy"
+          preload="metadata"
+          playsinline></video>
         <div class="card-content">
           <h3>Invitaciones Elegantes</h3>
           <p>Invitaciones con acabados premium en tonos elegantes y diseños sofisticados. Perfectas para eventos exclusivos y celebraciones de alta gama.</p>
@@ -720,7 +554,15 @@
         </div>
       </div>
       <div class="card">
-        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/rotulos_iluminados.mp4" alt="Rótulos Iluminados" autoplay muted loop></video>
+        <video 
+          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/rotulos_iluminados.mp4" 
+          alt="Rótulos Iluminados" 
+          autoplay 
+          muted 
+          loop 
+          loading="lazy"
+          preload="metadata"
+          playsinline></video>
         <div class="card-content">
           <h3>Rótulos y Señalética Iluminada</h3>
           <p>Rótulos personalizados con iluminación LED para eventos, bodas y celebraciones. Diseños únicos que destacan y crean ambiente especial.</p>
@@ -728,7 +570,15 @@
         </div>
       </div>
       <div class="card">
-        <video src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_con_cruz_cristiana.mp4" alt="Velas Religiosas" autoplay muted loop></video>
+        <video 
+          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_con_cruz_cristiana.mp4" 
+          alt="Velas Religiosas" 
+          autoplay 
+          muted 
+          loop 
+          loading="lazy"
+          preload="metadata"
+          playsinline></video>
         <div class="card-content">
           <h3>Velas y Artículos Religiosos</h3>
           <p>Velas especiales para ceremonias religiosas, bautizos, primeras comuniones y eventos cristianos. Diseños respetuosos y significativos.</p>
@@ -841,7 +691,7 @@
     <h2 id="testimonials-heading">Testimonios</h2>
     <div class="testimonials-grid">
       <div class="testimonial">
-        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer1.jpg" alt="Julia Sakura" />
+        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer1.jpg" alt="Julia Sakura" loading="lazy" />
         <p>"Gracias a Virginia, mis invitaciones de boda fueron espectaculares. Los centros de mesa y los detalles de velas encantaron a todos. ¡Súper recomendada!"</p>
         <div>
           <strong>Julia Sakura</strong>
@@ -849,7 +699,7 @@
         </div>
       </div>
       <div class="testimonial">
-        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer2.jpg" alt="John Santana" />
+        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer2.jpg" alt="John Santana" loading="lazy" />
         <p>"Virginia entendió el concepto de mi evento corporativo y logró una decoración impecable. Las invitaciones con nuestro branding fueron un plus profesional."</p>
         <div>
           <strong>John Santana</strong>
@@ -989,10 +839,6 @@
     <a href="#">Términos de Servicio</a>
   </footer>
 
-  
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js"></script>
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
-
   <!-- Chat Widget -->
   <div id="chat-container" class="chat-container collapsed">
     <div class="chat-header">
@@ -1026,26 +872,203 @@
     <i class="icon ion-logo-whatsapp"></i>
   </button>
 
-  <!-- Chat Dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
+  <!-- Structured Data (JSON-LD) - Load at end for better performance -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://vrdistribucion.com",
+    "name": "VR Distribución",
+    "alternateName": "Virginia Ruiz Distribución",
+    "description": "Especialistas en invitaciones personalizadas, centros de mesa, velas aromáticas y decoraciones para eventos en Cancún. 25 años creando experiencias únicas para bodas, cumpleaños, bautizos y eventos corporativos.",
+    "image": "https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png",
+    "url": "https://vrdistribucion.com",
+    "telephone": "+52-998-236-1177",
+    "email": "vrdistribucion@gmail.com",
+    "priceRange": "$19-$39",
+    "paymentAccepted": "Cash, Credit Card, Debit Card",
+    "currenciesAccepted": "MXN",
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Plaza Galerías Lat. Local 32, Av. Tulum Supermanzana 2, Bancos",
+      "addressLocality": "Cancún",
+      "addressRegion": "Quintana Roo",
+      "postalCode": "77500",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 21.16906117750304,
+      "longitude": -86.82813890415704
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Virginia Ruiz Rodríguez",
+      "jobTitle": "Diseñadora de Eventos y Asesora Gráfica"
+    },
+    "areaServed": [
+      {
+        "@type": "Place",
+        "name": "Cancún"
+      },
+      {
+        "@type": "Place", 
+        "name": "Quintana Roo"
+      },
+      {
+        "@type": "Place",
+        "name": "República Mexicana"
+      }
+    ],
+    "serviceType": [
+      "Invitaciones personalizadas",
+      "Centros de mesa",
+      "Decoraciones para eventos",
+      "Velas aromáticas",
+      "Recuerdos para eventos",
+      "Diseño gráfico",
+      "Papelería corporativa"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Eventos",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paquete Básico",
+            "description": "Invitaciones sencillas, decoración mínima, asesoría general"
+          },
+          "price": "19",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paquete Completo",
+            "description": "Invitaciones personalizadas, centros de mesa estándar, velas y recuerdos básicos"
+          },
+          "price": "29",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paquete Premium",
+            "description": "Invitaciones de lujo, centros de mesa elaborados, asesoría integral VIP"
+          },
+          "price": "39",
+          "priceCurrency": "USD"
+        }
+      ]
+    },
+    "sameAs": [
+      "https://www.instagram.com/vrcancunonline",
+      "https://www.facebook.com/share/15oBN2xkPS/",
+      "https://www.youtube.com/watch?v=doteMqP6eSc",
+      "https://wa.me/529982361177"
+    ],
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Julia Sakura"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Gracias a Virginia, mis invitaciones de boda fueron espectaculares. Los centros de mesa y los detalles de velas encantaron a todos. ¡Súper recomendada!"
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "John Santana"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Virginia entendió el concepto de mi evento corporativo y logró una decoración impecable. Las invitaciones con nuestro branding fueron un plus profesional."
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "150"
+    }
+  }
+  </script>
 
-  <!-- Mobile Menu Script -->
+  <!-- WebSite Schema for Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "VR Distribución",
+    "url": "https://vrdistribucion.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vrdistribucion.com/aparador/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué servicios ofrece VR Distribución en Cancún?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ofrecemos invitaciones personalizadas, centros de mesa elegantes, velas aromáticas, decoraciones para eventos, recuerdos personalizados y servicios de diseño gráfico para bodas, cumpleaños, bautizos y eventos corporativos en Cancún y Quintana Roo."
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "¿Cuánto cuesta una invitación personalizada?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestros paquetes van desde $19 USD para invitaciones básicas hasta $39 USD para diseños premium VIP. El precio depende de la complejidad del diseño, materiales utilizados y cantidad solicitada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Realizan envíos a toda la República Mexicana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, atendemos eventos en Cancún, Playa del Carmen, Cozumel, Tulum y toda la zona de Quintana Roo. Tenemos 25 años de experiencia sirviendo a la región."
+        }
+      }
+    ]
+  }
+  </script>
+
+  
+  <!-- Critical JavaScript for immediate functionality -->
   <script>
-    // Mobile Menu Functionality
+    // Mobile Menu Functionality - Inline for immediate execution
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('Mobile menu script loaded');
       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
       const mobileNav = document.querySelector('.mobile-nav');
       const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
       
-      console.log('Elements found:', { mobileMenuToggle, mobileNav, mobileNavOverlay });
-      
       if (mobileMenuToggle && mobileNav && mobileNavOverlay) {
         function toggleMenu() {
-          console.log('Toggle menu called');
           const isActive = mobileNav.classList.contains('active');
-          
           if (isActive) {
             closeMenu();
           } else {
@@ -1054,7 +1077,6 @@
         }
         
         function openMenu() {
-          console.log('Opening menu');
           mobileNav.classList.add('active');
           mobileNavOverlay.classList.add('active');
           mobileMenuToggle.classList.add('active');
@@ -1070,19 +1092,14 @@
           document.body.style.overflow = '';
         }
         
-        // Toggle menu on button click
         mobileMenuToggle.addEventListener('click', toggleMenu);
-        
-        // Close menu on overlay click
         mobileNavOverlay.addEventListener('click', closeMenu);
         
-        // Close menu on link click
         const mobileNavLinks = mobileNav.querySelectorAll('a');
         mobileNavLinks.forEach(link => {
           link.addEventListener('click', closeMenu);
         });
         
-        // Close menu on escape key
         document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
             closeMenu();
@@ -1092,8 +1109,43 @@
     });
   </script>
 
-  <!-- Cookie Consent JS -->
+  <!-- Non-critical JavaScript - Defer loading -->
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js" defer></script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js" defer></script>
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js" defer></script>
+  
+  <!-- Chat Widget Dependencies - Load after page load -->
+  <script>
+    window.addEventListener('load', function() {
+      // Load Showdown for chat
+      const showdownScript = document.createElement('script');
+      showdownScript.src = 'https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js';
+      showdownScript.onload = function() {
+        // Load chat script after Showdown is loaded
+        const chatScript = document.createElement('script');
+        chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
+        document.head.appendChild(chatScript);
+      };
+      document.head.appendChild(showdownScript);
+    });
+  </script>
+
+  <!-- Google Analytics - Load asynchronously after page load -->
+  <script>
+    window.addEventListener('load', function() {
+      // Load Google Analytics after page is fully loaded
+      const gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
+      gaScript.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DLSGS9C2TK');
+      };
+      document.head.appendChild(gaScript);
+    });
+  </script>
 
 </body>
 </html>
