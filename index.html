@@ -94,7 +94,17 @@
     .header{padding:1rem 0;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
     .nav{display:flex;justify-content:space-between;align-items:center}
     .logo{font-size:1.5rem;font-weight:bold;color:#2c3e50}
-    .hero{padding:4rem 0;text-align:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff}
+    .hero{padding:4rem 0;text-align:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;contain:layout}
+    .hero-container{min-height:600px;display:flex;align-items:center;justify-content:center;width:100%;max-width:1200px;margin:0 auto;contain:layout}
+    .hero-content{width:100%;max-width:900px;text-align:center;contain:layout}
+    .hero-eyebrow{min-height:40px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
+    .hero-eyebrow-text{font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+    .hero-title{min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:2rem}
+    .title-main,.title-highlight,.title-sub{display:block;line-height:1.1}
+    .hero-description{min-height:80px;margin-bottom:3rem;font-size:1.2rem;line-height:1.6}
+    .hero-features{min-height:60px;display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:3rem}
+    .hero-ctas{min-height:60px;display:flex;gap:2rem;justify-content:center;margin-bottom:3rem}
+    .hero-social-proof{min-height:80px;display:flex;gap:2rem;justify-content:center}
     .hero h1{font-size:3rem;margin-bottom:1rem}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:2rem 0}
     .card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:transform 0.3s}
@@ -102,6 +112,9 @@
     .card video{width:100%;height:200px;object-fit:cover}
     .card-content{padding:1.5rem}
     @media (max-width:768px){
+      .hero{min-height:90vh}
+      .hero-container{min-height:500px}
+      .hero-title{min-height:150px}
       .hero h1{font-size:2rem}
       .grid{grid-template-columns:1fr}
       .container{padding:0 10px}
@@ -113,20 +126,13 @@
   <!-- Preload critical images (above-the-fold) -->
   <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" as="image" type="image/png">
   
+  <!-- Load critical CSS synchronously to prevent layout shifts -->
+  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
+  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css">
+  <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+  
   <!-- Preload critical fonts with font-display: swap -->
   <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/fonts/ionicons.woff2?v=4.5.9-1" as="font" type="font/woff2" crossorigin>
-  
-  <!-- Defer non-critical CSS -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers without JS -->
-  <noscript>
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
-  </noscript>
 
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
