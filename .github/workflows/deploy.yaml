@@ -20,6 +20,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWSS3AK }}
+          aws-secret-access-key: ${{ secrets.AWSS3SAK }}
+          aws-region: us-east-1
+          
       - name: copy into folder dependencies
         run: |
             echo $PWD
@@ -36,6 +44,63 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSS3SAK }}
           SOURCE_DIR: ${{ github.workspace }}/static
           DEST_DIR: vrdistribucion
+
+      - name: Configure Cache Headers for S3 Resources
+        run: |
+          echo "🚀 Configurando headers de cache para optimización PageSpeed..."
+          
+          # Videos - Cache por 30 días (2592000 segundos)
+          echo "📹 Configurando cache para videos..."
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/video_marketing/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/video_marketing/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=2592000, immutable" \
+            --content-type "video/mp4" \
+            --exclude "*" \
+            --include "*.mp4"
+          
+          # CSS Files - Cache por 7 días (604800 segundos) 
+          echo "🎨 Configurando cache para CSS..."
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=604800, immutable" \
+            --content-type "text/css" \
+            --exclude "*" \
+            --include "*.css"
+          
+          # JavaScript Files - Cache por 7 días (604800 segundos)
+          echo "⚡ Configurando cache para JavaScript..."
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=604800, immutable" \
+            --content-type "application/javascript" \
+            --exclude "*" \
+            --include "*.js"
+          
+          # PNG Images - Cache por 30 días (2592000 segundos)
+          echo "🖼️ Configurando cache para imágenes PNG..."
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=2592000, immutable" \
+            --content-type "image/png" \
+            --exclude "*" \
+            --include "*.png"
+          
+          # JPG Images - Cache por 30 días (2592000 segundos)
+          echo "🖼️ Configurando cache para imágenes JPG..."
+          aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ s3://${{ secrets.AWS_S3_BUCKET }}/vrdistribucion/ \
+            --recursive \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=2592000, immutable" \
+            --content-type "image/jpeg" \
+            --exclude "*" \
+            --include "*.jpg"
+          
+          echo "✅ Cache headers configurados exitosamente!"
+          echo "📊 Esto optimizará PageSpeed Insights ahorrando ~13MB en visitas recurrentes"
 
       - name: Remove unnecessary files
         run: |

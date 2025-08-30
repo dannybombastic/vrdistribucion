@@ -497,7 +497,6 @@
           muted 
           loop 
           loading="lazy"
-          preload="metadata"
           playsinline></video>
         <div class="card-content">
           <h3>Invitaciones Personalizadas Cancún</h3>
@@ -513,7 +512,6 @@
           muted 
           loop 
           loading="lazy"
-          preload="metadata"
           playsinline></video>
         <div class="card-content">
           <h3>Centros de Mesa y Arreglos Elegantes</h3>
@@ -529,7 +527,6 @@
           muted 
           loop 
           loading="lazy"
-          preload="metadata"
           playsinline></video>
         <div class="card-content">
           <h3>Velas y Detalles Decorativos</h3>
@@ -545,7 +542,6 @@
           muted 
           loop 
           loading="lazy"
-          preload="metadata"
           playsinline></video>
         <div class="card-content">
           <h3>Invitaciones Elegantes</h3>
@@ -561,7 +557,6 @@
           muted 
           loop 
           loading="lazy"
-          preload="metadata"
           playsinline></video>
         <div class="card-content">
           <h3>Rótulos y Señalética Iluminada</h3>
@@ -577,7 +572,6 @@
           muted 
           loop 
           loading="lazy"
-          preload="metadata"
           playsinline></video>
         <div class="card-content">
           <h3>Velas y Artículos Religiosos</h3>
@@ -1144,6 +1138,84 @@
         gtag('config', 'G-DLSGS9C2TK');
       };
       document.head.appendChild(gaScript);
+    });
+  </script>
+
+  <!-- Service Worker Registration - Cache optimization for S3 resources -->
+  <script>
+    // Register Service Worker for aggressive caching of S3 resources
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js', {
+          scope: '/'
+        })
+        .then(function(registration) {
+          console.log('✅ Service Worker registrado exitosamente:', registration.scope);
+          
+          // Check for updates every 24 hours
+          setInterval(() => {
+            registration.update();
+          }, 24 * 60 * 60 * 1000);
+          
+        })
+        .catch(function(error) {
+          console.log('❌ Error registrando Service Worker:', error);
+        });
+      });
+
+      // Listen for Service Worker updates
+      navigator.serviceWorker.addEventListener('controllerchange', function() {
+        window.location.reload();
+      });
+    }
+
+    // Video optimization - Load videos only when in viewport
+    document.addEventListener('DOMContentLoaded', function() {
+      const videos = document.querySelectorAll('video[src*="video_marketing"]');
+      
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          
+          if (entry.isIntersecting) {
+            // Video is in viewport - start loading if not already loaded
+            if (video.readyState === 0) {
+              video.load();
+            }
+            
+            // Play video when it comes into view
+            video.play().catch(e => {
+              console.log('Video autoplay prevented:', e);
+            });
+          } else {
+            // Video is out of viewport - pause to save bandwidth
+            video.pause();
+          }
+        });
+      }, {
+        threshold: 0.1, // Start loading when 10% visible
+        rootMargin: '50px' // Start loading 50px before entering viewport
+      });
+
+      // Observe all videos
+      videos.forEach(video => {
+        videoObserver.observe(video);
+        
+        // Optimize video loading
+        video.preload = 'none'; // Don't preload videos initially
+        video.setAttribute('x-webkit-airplay', 'allow');
+        video.setAttribute('webkit-playsinline', 'true');
+        
+        // Load video poster/thumbnail if available
+        if (!video.poster) {
+          video.style.backgroundColor = '#f0f0f0';
+        }
+      });
+
+      // Preload only the first video for better UX
+      if (videos.length > 0) {
+        videos[0].preload = 'metadata';
+      }
     });
   </script>
 
