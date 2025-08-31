@@ -1472,6 +1472,56 @@
           });
         });
       }
+
+      // Chat functionality - Inicialización robusta
+      function initializeChat() {
+        const chatContainer = document.getElementById('chat-container');
+        const chatToggle = document.getElementById('chat-toggle');
+        
+        if (!chatContainer || !chatToggle) {
+          console.log('❌ Chat elements not found');
+          return;
+        }
+
+        // Toggle del chat
+        chatToggle.addEventListener('click', function() {
+          console.log('🔄 Chat toggle clicked');
+          chatContainer.classList.toggle('collapsed');
+          
+          if (chatContainer.classList.contains('collapsed')) {
+            chatToggle.style.display = 'block';
+            console.log('✅ Chat collapsed');
+          } else {
+            chatToggle.style.display = 'none';
+            console.log('✅ Chat opened');
+          }
+        });
+
+        // Botones de control del chat
+        const minimizeBtn = document.getElementById('minimize-btn');
+        const closeBtn = document.getElementById('close-btn');
+        
+        if (minimizeBtn) {
+          minimizeBtn.addEventListener('click', function() {
+            chatContainer.classList.add('collapsed');
+            chatToggle.style.display = 'block';
+            console.log('✅ Chat minimized');
+          });
+        }
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function() {
+            chatContainer.classList.add('collapsed');
+            chatToggle.style.display = 'block';
+            console.log('✅ Chat closed');
+          });
+        }
+
+        console.log('✅ Chat basic functionality initialized');
+      }
+
+      // Inicializar chat inmediatamente
+      initializeChat();
     });
   </script>
   
