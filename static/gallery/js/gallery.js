@@ -1,1 +1,704 @@
-class GalleryManager{constructor(){this.currentGallery="masonry",this.currentImageIndex=0,this.images=[],this.isLightboxOpen=!1,this.focusedElementBeforeLightbox=null,this.container=document.querySelector("main")||document.body,this.lightboxOverlay=null,this.lightboxImage=null,this.lightboxTitle=null,this.lightboxDescription=null,this.lightboxCounter=null,this.galleryTabs=null,this.gallerySections=null,this.init()}init(){document.body.style.overflow="",document.documentElement.style.overflow="",this.container&&("loading"===document.readyState?document.addEventListener("DOMContentLoaded",(()=>this.setup())):this.setup())}setup(){document.body.style.overflow="",document.documentElement.style.overflow="",this.cacheDOMElements(),this.createLightboxHTML(),this.setupEventListeners(),this.setupTabNavigation(),this.setDefaultGalleryForDevice(),this.collectImages(),this.setupImageClickListeners(),setTimeout((()=>{document.body.style.overflow="",document.documentElement.style.overflow=""}),100)}setDefaultGalleryForDevice(){this.switchGallery("masonry")}isMobileDevice(){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||"ontouchstart"in window||navigator.maxTouchPoints>0||navigator.msMaxTouchPoints>0}cacheDOMElements(){this.galleryTabs=document.querySelectorAll(".gallery-tab"),this.gallerySections=document.querySelectorAll(".gallery-section")}createLightboxHTML(){this.lightboxOverlay=document.getElementById("lightbox-overlay"),this.lightboxOverlay&&(this.lightboxImage=document.getElementById("lightbox-image"),this.lightboxTitle=document.getElementById("lightbox-title"),this.lightboxDescription=document.getElementById("lightbox-description"),this.lightboxCounter=document.getElementById("lightbox-counter"))}setupEventListeners(){this.setupLightboxControls(),this.setupKeyboardNavigation(),window.addEventListener("resize",(()=>this.handleResize()))}setupImageClickListeners(){this.removeImageClickListeners();const e=document.querySelector(".gallery-section.active");if(!e)return;e.querySelectorAll(".gl-item").forEach(((e,t)=>{const i=e=>this.openLightbox(t),s=e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),this.openLightbox(t))};e._clickHandler=i,e._keydownHandler=s,e.addEventListener("click",i),e.addEventListener("keydown",s),e.setAttribute("tabindex","0"),e.setAttribute("role","button"),e.setAttribute("aria-label",`Ver imagen: ${e.dataset.title||"Proyecto VR Distribución"}`),e.complete?e.classList.add("loaded"):(e.addEventListener("load",(()=>{e.classList.add("loaded")})),e.addEventListener("error",(()=>{e.classList.add("error")})))}))}removeImageClickListeners(){document.querySelectorAll(".gl-item").forEach((e=>{e._clickHandler&&(e.removeEventListener("click",e._clickHandler),delete e._clickHandler),e._keydownHandler&&(e.removeEventListener("keydown",e._keydownHandler),delete e._keydownHandler)}))}setupLightboxControls(){if(!this.lightboxOverlay)return;const e=this.lightboxOverlay.querySelector(".lightbox-close");e&&e.addEventListener("click",(()=>this.closeLightbox()));const t=this.lightboxOverlay.querySelector(".lightbox-prev"),i=this.lightboxOverlay.querySelector(".lightbox-next");t&&t.addEventListener("click",(()=>this.navigateImage(-1))),i&&i.addEventListener("click",(()=>this.navigateImage(1))),this.lightboxOverlay.addEventListener("click",(e=>{e.target===this.lightboxOverlay&&this.closeLightbox()})),this.setupTouchGestures()}setupTouchGestures(){if(!this.lightboxOverlay)return;let e=0,t=0,i=0,s=0;this.lightboxOverlay.addEventListener("touchstart",(i=>{if(!this.isLightboxOpen)return;const s=i.touches[0];e=s.clientX,t=s.clientY}),{passive:!0}),this.lightboxOverlay.addEventListener("touchend",(n=>{if(!this.isLightboxOpen)return;const o=n.changedTouches[0];i=o.clientX,s=o.clientY,this.handleSwipeGesture(e,t,i,s)}),{passive:!0})}handleSwipeGesture(e,t,i,s){const n=i-e,o=s-t;Math.abs(n)>50&&Math.abs(o)<100?n>0?this.navigateImage(-1):this.navigateImage(1):Math.abs(o)>50&&Math.abs(n)<100&&o>0&&this.closeLightbox()}setupKeyboardNavigation(){document.addEventListener("keydown",(e=>{if(this.isLightboxOpen)switch(e.key){case"Escape":e.preventDefault(),this.closeLightbox();break;case"ArrowLeft":e.preventDefault(),this.navigateImage(-1);break;case"ArrowRight":e.preventDefault(),this.navigateImage(1);break;case"Home":e.preventDefault(),this.navigateToImage(0);break;case"End":e.preventDefault(),this.navigateToImage(this.images.length-1);break}}))}setupTabNavigation(){this.galleryTabs.forEach((e=>{e.addEventListener("click",(()=>{this.switchGallery(e.dataset.gallery)})),e.addEventListener("keydown",(t=>{"Enter"!==t.key&&" "!==t.key||(t.preventDefault(),this.switchGallery(e.dataset.gallery))}))}))}switchGallery(e){this.galleryTabs.forEach((t=>{const i=t.dataset.gallery===e;t.classList.toggle("active",i),t.setAttribute("aria-selected",i)})),this.gallerySections.forEach((t=>{const i=t.id===`${e}-gallery`;t.classList.toggle("active",i)})),this.currentGallery=e,this.collectImages(),this.setupImageClickListeners(),this.announceGalleryChange(e)}announceGalleryChange(e){const t={masonry:"Mostrando galería de proyectos destacados con diseño masonry",hexagon:"Mostrando galería hexagonal de proyectos",polaroid:"Mostrando galería estilo polaroid de proyectos"}[e]||"Galería cambiada";this.announceToScreenReader(t)}collectImages(){const e=document.querySelector(".gallery-section.active");if(!e)return void(this.images=[]);const t=e.querySelectorAll(".gl-item");this.images=Array.from(t).map(((e,t)=>(e.src,{element:e,src:e.src||"",alt:e.alt||"Imagen de galería",title:e.dataset.title||`Proyecto ${t+1}`,category:e.dataset.category||"VR Distribución",index:t}))).filter((e=>e.src))}setBodyScroll(e=!0){e?(document.body.style.overflow="",document.documentElement.style.overflow=""):this.isLightboxOpen&&(document.body.style.overflow="hidden")}openLightbox(e){this.images&&0!==this.images.length&&(this.focusedElementBeforeLightbox=document.activeElement,this.currentImageIndex=e,this.isLightboxOpen=!0,this.setBodyScroll(!1),this.lightboxOverlay.classList.add("active"),this.lightboxOverlay.setAttribute("aria-hidden","false"),this.loadLightboxImage())}closeLightbox(){this.isLightboxOpen&&(this.isLightboxOpen=!1,this.setBodyScroll(!0),this.lightboxOverlay.classList.remove("active"),this.lightboxOverlay.setAttribute("aria-hidden","true"),this.focusedElementBeforeLightbox&&(this.focusedElementBeforeLightbox.focus(),this.focusedElementBeforeLightbox=null),this.announceToScreenReader("Galería de imágenes cerrada"))}navigateImage(e){if(!this.isLightboxOpen||!this.images.length)return;const t=this.currentImageIndex+e;t<0?this.navigateToImage(this.images.length-1):t>=this.images.length?this.navigateToImage(0):this.navigateToImage(t)}navigateToImage(e){if(e<0||e>=this.images.length)return;this.currentImageIndex=e,this.loadLightboxImage();const t=this.images[e];this.announceToScreenReader(`Imagen ${e+1} de ${this.images.length}: ${t.title}`)}loadLightboxImage(){if(!this.lightboxImage||!this.images.length)return;const e=this.images[this.currentImageIndex];if(!e||!e.src)return void this.announceToScreenReader("Error: datos de imagen no válidos");const t=new Image;t.onload=()=>{this.lightboxImage.src=t.src,this.lightboxImage.alt=e.alt||"Imagen de galería",this.lightboxTitle&&(this.lightboxTitle.textContent=e.title||"Proyecto VR Distribución"),this.lightboxDescription&&(this.lightboxDescription.textContent=e.category||"VR Distribución"),this.lightboxCounter&&(this.lightboxCounter.textContent=`${this.currentImageIndex+1} de ${this.images.length}`)},t.onerror=()=>{this.announceToScreenReader("Error al cargar la imagen")},t.src=e.src}handleResize(){clearTimeout(this.resizeTimeout),this.resizeTimeout=setTimeout((()=>{this.isLightboxOpen,this.checkGalleryForScreenSize()}),250)}checkGalleryForScreenSize(){this.isMobileDevice(),window.innerWidth}announceToScreenReader(e){let t=document.getElementById("gallery-announcer");t||(t=document.createElement("div"),t.id="gallery-announcer",t.setAttribute("aria-live","polite"),t.setAttribute("aria-atomic","true"),t.style.position="absolute",t.style.left="-10000px",t.style.width="1px",t.style.height="1px",t.style.overflow="hidden",document.body.appendChild(t)),t.textContent="",setTimeout((()=>{t.textContent=e}),100)}getStats(){return{currentGallery:this.currentGallery,totalImages:this.images.length,currentImageIndex:this.currentImageIndex,isLightboxOpen:this.isLightboxOpen}}}class GalleryAnimations{constructor(){this.observers=[],this.init()}init(){this.setupIntersectionObserver(),this.setupScrollAnimations()}setupIntersectionObserver(){if(!("IntersectionObserver"in window))return;const e=new IntersectionObserver((t=>{t.forEach((t=>{t.isIntersecting&&(t.target.classList.add("animate-in"),e.unobserve(t.target))}))}),{root:null,rootMargin:"0px 0px -100px 0px",threshold:.1}),t=()=>{document.querySelectorAll(".masonry-item, .hexagon-item, .polaroid-item").forEach((t=>{t.classList.contains("animate-in")||e.observe(t)}))};"loading"===document.readyState?document.addEventListener("DOMContentLoaded",t):t(),this.observers.push(e)}setupScrollAnimations(){let e=!1;const t=()=>{const t=window.pageYOffset,i=window.innerHeight,s=document.querySelector(".gallery-hero");if(s){const e=s.getBoundingClientRect();if(e.bottom>0&&e.top<i){const e=t*.5;s.style.transform=`translateY(${e}px)`}}e=!1};window.addEventListener("scroll",(()=>{e||(window.requestAnimationFrame(t),e=!0)}),{passive:!0})}destroy(){this.observers.forEach((e=>e.disconnect())),this.observers=[]}}class GalleryPerformance{constructor(){this.metrics={imagesLoaded:0,totalImages:0,loadStartTime:performance.now()},this.init()}init(){this.setupImageLoadTracking(),this.setupPerformanceObserver()}setupImageLoadTracking(){const e=document.querySelectorAll(".gl-item");this.metrics.totalImages=e.length,e.forEach((e=>{e.complete?this.metrics.imagesLoaded++:(e.addEventListener("load",(()=>{this.metrics.imagesLoaded++,this.checkLoadComplete()})),e.addEventListener("error",(()=>{})))})),this.checkLoadComplete()}setupPerformanceObserver(){if("PerformanceObserver"in window)try{new PerformanceObserver((e=>{e.getEntries().forEach((e=>{e.entryType,e.entryType}))})).observe({entryTypes:["largest-contentful-paint","layout-shift"]})}catch(e){}}checkLoadComplete(){if(this.metrics.imagesLoaded>=this.metrics.totalImages){performance.now(),this.metrics.loadStartTime}}getMetrics(){return{...this.metrics,loadTime:performance.now()-this.metrics.loadStartTime}}}class MobileMenuManager{constructor(){this.mobileToggle=null,this.hamburgerDropdown=null,this.nav=null,this.icon=null,this.isInitialized=!1,this.init()}init(){"loading"===document.readyState?document.addEventListener("DOMContentLoaded",(()=>this.setup())):this.setup()}setup(){this.mobileToggle=document.querySelector(".mobile-menu-toggle"),this.hamburgerDropdown=document.querySelector(".hamburger-dropdown"),this.nav=document.querySelector("header nav"),this.icon=this.mobileToggle?.querySelector("i"),this.mobileToggle&&this.hamburgerDropdown&&this.icon&&(this.setupEventListeners(),this.isInitialized=!0)}setupEventListeners(){this.mobileToggle.addEventListener("click",(e=>this.handleToggleClick(e))),this.setupNavLinkListeners(),this.setupOutsideClickListener(),document.addEventListener("keydown",(e=>{"Escape"===e.key&&this.isMenuOpen()&&this.closeMenu()}))}handleToggleClick(e){e.preventDefault(),e.stopPropagation();this.isMenuOpen()?this.closeMenu():this.openMenu()}openMenu(){this.hamburgerDropdown.classList.add("active"),this.icon.className="icon ion-md-close",this.mobileToggle.setAttribute("aria-expanded","true"),this.mobileToggle.setAttribute("aria-label","Cerrar menú"),window.innerWidth<=768&&(document.body.style.overflow="hidden")}closeMenu(){this.hamburgerDropdown.classList.remove("active"),this.icon.className="icon ion-md-menu",this.mobileToggle.setAttribute("aria-expanded","false"),this.mobileToggle.setAttribute("aria-label","Abrir menú"),document.body.style.overflow=""}setupNavLinkListeners(){this.hamburgerDropdown.querySelectorAll("a").forEach((e=>{e.addEventListener("click",(()=>{this.closeMenu()}))}))}setupOutsideClickListener(){document.addEventListener("click",(e=>{!this.isMenuOpen()||this.mobileToggle.contains(e.target)||this.hamburgerDropdown.contains(e.target)||this.closeMenu()}))}isMenuOpen(){return this.hamburgerDropdown?.classList.contains("active")||!1}getState(){return{isInitialized:this.isInitialized,isMenuOpen:this.isMenuOpen(),hasElements:!!(this.mobileToggle&&this.hamburgerDropdown&&this.icon)}}}document.addEventListener("DOMContentLoaded",(()=>{window.galleryManager=new GalleryManager,window.mobileMenuManager=new MobileMenuManager,window.matchMedia("(prefers-reduced-motion: reduce)").matches||(window.galleryAnimations=new GalleryAnimations),window.galleryPerformance=new GalleryPerformance})),window.GalleryManager=GalleryManager,window.GalleryAnimations=GalleryAnimations,window.GalleryPerformance=GalleryPerformance,window.MobileMenuManager=MobileMenuManager;
+/**
+ * Material Design 3 Gallery Manager
+ * Adaptado del JavaScript original para mantener compatibilidad con clases existentes
+ * Mantiene la misma funcionalidad pero con componentes MD3
+ */
+
+class GalleryManagerMD3 {
+  constructor() {
+    this.currentGallery = 'masonry';
+    this.currentImageIndex = 0;
+    this.images = [];
+    this.isLightboxOpen = false;
+    this.focusedElementBeforeLightbox = null;
+    this.container = document.querySelector('main') || document.body;
+    
+    // DOM Elements
+    this.lightboxOverlay = null;
+    this.lightboxImage = null;
+    this.lightboxTitle = null;
+    this.lightboxDescription = null;
+    this.lightboxCounter = null;
+    this.galleryTabs = null;
+    this.gallerySections = null;
+    
+    this.init();
+  }
+
+  init() {
+    // Reset body scroll
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    
+    if (!this.container) return;
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.setup());
+    } else {
+      this.setup();
+    }
+  }
+
+  setup() {
+    // Reset body scroll
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    
+    this.cacheDOMElements();
+    this.createLightboxHTML();
+    this.setupEventListeners();
+    this.setupTabNavigation();
+    this.setDefaultGalleryForDevice();
+    this.collectImages();
+    this.setupImageClickListeners();
+    this.setupBackToTop();
+    
+    // Ensure body scroll is reset after setup
+    setTimeout(() => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }, 100);
+  }
+
+  setDefaultGalleryForDevice() {
+    // Always start with masonry gallery
+    this.switchGallery('masonry');
+  }
+
+  isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+           'ontouchstart' in window ||
+           navigator.maxTouchPoints > 0 ||
+           navigator.msMaxTouchPoints > 0;
+  }
+
+  cacheDOMElements() {
+    this.galleryTabs = document.querySelectorAll('.gallery-tab');
+    this.gallerySections = document.querySelectorAll('.gallery-section');
+  }
+
+  createLightboxHTML() {
+    this.lightboxOverlay = document.getElementById('lightbox-overlay');
+    if (this.lightboxOverlay) {
+      this.lightboxImage = document.getElementById('lightbox-image');
+      this.lightboxTitle = document.getElementById('lightbox-title');
+      this.lightboxDescription = document.getElementById('lightbox-description');
+      this.lightboxCounter = document.getElementById('lightbox-counter');
+    }
+  }
+
+  setupEventListeners() {
+    this.setupLightboxControls();
+    this.setupKeyboardNavigation();
+    window.addEventListener('resize', () => this.handleResize());
+  }
+
+  setupImageClickListeners() {
+    // Remove existing listeners
+    this.removeImageClickListeners();
+    
+    const activeSection = document.querySelector('.gallery-section.active');
+    if (!activeSection) return;
+
+    const images = activeSection.querySelectorAll('.gl-item');
+    images.forEach((img, index) => {
+      const clickHandler = (e) => this.openLightbox(index);
+      const keydownHandler = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.openLightbox(index);
+        }
+      };
+
+      // Store handlers for removal later
+      img._clickHandler = clickHandler;
+      img._keydownHandler = keydownHandler;
+
+      img.addEventListener('click', clickHandler);
+      img.addEventListener('keydown', keydownHandler);
+      
+      // Accessibility
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', `Ver imagen: ${img.dataset.title || 'Proyecto VR Distribución'}`);
+      
+      // Loading states
+      if (img.complete) {
+        img.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => {
+          img.classList.add('loaded');
+        });
+        img.addEventListener('error', () => {
+          img.classList.add('error');
+        });
+      }
+    });
+  }
+
+  removeImageClickListeners() {
+    document.querySelectorAll('.gl-item').forEach(img => {
+      if (img._clickHandler) {
+        img.removeEventListener('click', img._clickHandler);
+        delete img._clickHandler;
+      }
+      if (img._keydownHandler) {
+        img.removeEventListener('keydown', img._keydownHandler);
+        delete img._keydownHandler;
+      }
+    });
+  }
+
+  setupLightboxControls() {
+    if (!this.lightboxOverlay) return;
+
+    // Close button
+    const closeBtn = this.lightboxOverlay.querySelector('.md-lightbox__close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => this.closeLightbox());
+    }
+
+    // Navigation buttons
+    const prevBtn = this.lightboxOverlay.querySelector('.md-lightbox__prev');
+    const nextBtn = this.lightboxOverlay.querySelector('.md-lightbox__next');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => this.navigateImage(-1));
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => this.navigateImage(1));
+    }
+
+    // Click outside to close
+    this.lightboxOverlay.addEventListener('click', (e) => {
+      if (e.target === this.lightboxOverlay) {
+        this.closeLightbox();
+      }
+    });
+
+    this.setupTouchGestures();
+  }
+
+  setupTouchGestures() {
+    if (!this.lightboxOverlay) return;
+
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+
+    this.lightboxOverlay.addEventListener('touchstart', (e) => {
+      if (!this.isLightboxOpen) return;
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+    }, { passive: true });
+
+    this.lightboxOverlay.addEventListener('touchend', (e) => {
+      if (!this.isLightboxOpen) return;
+      const touch = e.changedTouches[0];
+      endX = touch.clientX;
+      endY = touch.clientY;
+      this.handleSwipeGesture(startX, startY, endX, endY);
+    }, { passive: true });
+  }
+
+  handleSwipeGesture(startX, startY, endX, endY) {
+    const deltaX = endX - startX;
+    const deltaY = endY - startY;
+
+    // Horizontal swipe
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaY) < 100) {
+      if (deltaX > 0) {
+        this.navigateImage(-1); // Swipe right = previous
+      } else {
+        this.navigateImage(1); // Swipe left = next
+      }
+    }
+    // Vertical swipe down to close
+    else if (Math.abs(deltaY) > 50 && Math.abs(deltaX) < 100 && deltaY > 0) {
+      this.closeLightbox();
+    }
+  }
+
+  setupKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+      if (!this.isLightboxOpen) return;
+
+      switch (e.key) {
+        case 'Escape':
+          e.preventDefault();
+          this.closeLightbox();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          this.navigateImage(-1);
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          this.navigateImage(1);
+          break;
+        case 'Home':
+          e.preventDefault();
+          this.navigateToImage(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          this.navigateToImage(this.images.length - 1);
+          break;
+      }
+    });
+  }
+
+  setupTabNavigation() {
+    this.galleryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        this.switchGallery(tab.dataset.gallery);
+      });
+
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.switchGallery(tab.dataset.gallery);
+        }
+      });
+    });
+  }
+
+  switchGallery(galleryType) {
+    // Update tabs
+    this.galleryTabs.forEach(tab => {
+      const isActive = tab.dataset.gallery === galleryType;
+      tab.classList.toggle('md-tab--active', isActive);
+      tab.setAttribute('aria-selected', isActive);
+    });
+
+    // Update sections
+    this.gallerySections.forEach(section => {
+      const isActive = section.id === `${galleryType}-gallery`;
+      section.classList.toggle('active', isActive);
+    });
+
+    this.currentGallery = galleryType;
+    this.collectImages();
+    this.setupImageClickListeners();
+    this.announceGalleryChange(galleryType);
+  }
+
+  announceGalleryChange(galleryType) {
+    const messages = {
+      'masonry': 'Mostrando galería de proyectos destacados con diseño masonry',
+      'hexagon': 'Mostrando galería hexagonal de proyectos',
+      'polaroid': 'Mostrando galería estilo polaroid de proyectos'
+    };
+    
+    const message = messages[galleryType] || 'Galería cambiada';
+    this.announceToScreenReader(message);
+  }
+
+  collectImages() {
+    const activeSection = document.querySelector('.gallery-section.active');
+    if (!activeSection) {
+      this.images = [];
+      return;
+    }
+
+    const imageElements = activeSection.querySelectorAll('.gl-item');
+    this.images = Array.from(imageElements).map((img, index) => {
+      return {
+        element: img,
+        src: img.src || '',
+        alt: img.alt || 'Imagen de galería',
+        title: img.dataset.title || `Proyecto ${index + 1}`,
+        category: img.dataset.category || 'VR Distribución',
+        index: index
+      };
+    }).filter(img => img.src);
+  }
+
+  setBodyScroll(enable = true) {
+    if (enable) {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    } else if (this.isLightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  openLightbox(index) {
+    if (!this.images || this.images.length === 0) return;
+
+    this.focusedElementBeforeLightbox = document.activeElement;
+    this.currentImageIndex = index;
+    this.isLightboxOpen = true;
+    
+    this.setBodyScroll(false);
+    this.lightboxOverlay.classList.add('active');
+    this.lightboxOverlay.setAttribute('aria-hidden', 'false');
+    
+    this.loadLightboxImage();
+  }
+
+  closeLightbox() {
+    if (!this.isLightboxOpen) return;
+
+    this.isLightboxOpen = false;
+    this.setBodyScroll(true);
+    this.lightboxOverlay.classList.remove('active');
+    this.lightboxOverlay.setAttribute('aria-hidden', 'true');
+
+    // Restore focus
+    if (this.focusedElementBeforeLightbox) {
+      this.focusedElementBeforeLightbox.focus();
+      this.focusedElementBeforeLightbox = null;
+    }
+
+    this.announceToScreenReader('Galería de imágenes cerrada');
+  }
+
+  navigateImage(direction) {
+    if (!this.isLightboxOpen || !this.images.length) return;
+
+    const newIndex = this.currentImageIndex + direction;
+    
+    if (newIndex < 0) {
+      this.navigateToImage(this.images.length - 1);
+    } else if (newIndex >= this.images.length) {
+      this.navigateToImage(0);
+    } else {
+      this.navigateToImage(newIndex);
+    }
+  }
+
+  navigateToImage(index) {
+    if (index < 0 || index >= this.images.length) return;
+
+    this.currentImageIndex = index;
+    this.loadLightboxImage();
+
+    const image = this.images[index];
+    this.announceToScreenReader(`Imagen ${index + 1} de ${this.images.length}: ${image.title}`);
+  }
+
+  loadLightboxImage() {
+    if (!this.lightboxImage || !this.images.length) return;
+
+    const imageData = this.images[this.currentImageIndex];
+    if (!imageData || !imageData.src) {
+      this.announceToScreenReader('Error: datos de imagen no válidos');
+      return;
+    }
+
+    // Preload image
+    const img = new Image();
+    img.onload = () => {
+      this.lightboxImage.src = img.src;
+      this.lightboxImage.alt = imageData.alt || 'Imagen de galería';
+      
+      if (this.lightboxTitle) {
+        this.lightboxTitle.textContent = imageData.title || 'Proyecto VR Distribución';
+      }
+      
+      if (this.lightboxDescription) {
+        this.lightboxDescription.textContent = imageData.category || 'VR Distribución';
+      }
+      
+      if (this.lightboxCounter) {
+        this.lightboxCounter.textContent = `${this.currentImageIndex + 1} de ${this.images.length}`;
+      }
+    };
+    
+    img.onerror = () => {
+      this.announceToScreenReader('Error al cargar la imagen');
+    };
+    
+    img.src = imageData.src;
+  }
+
+  setupBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+    if (!backToTopBtn) return;
+
+    // Show/hide based on scroll position
+    const toggleBackToTop = () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    };
+
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+
+    // Smooth scroll to top
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  handleResize() {
+    clearTimeout(this.resizeTimeout);
+    this.resizeTimeout = setTimeout(() => {
+      if (this.isLightboxOpen) {
+        // Handle lightbox resize if needed
+      }
+      this.checkGalleryForScreenSize();
+    }, 250);
+  }
+
+  checkGalleryForScreenSize() {
+    const isMobile = this.isMobileDevice();
+    const screenWidth = window.innerWidth;
+    
+    // Additional responsive logic can be added here
+  }
+
+  announceToScreenReader(message) {
+    let announcer = document.getElementById('gallery-announcer');
+    if (!announcer) {
+      announcer = document.createElement('div');
+      announcer.id = 'gallery-announcer';
+      announcer.setAttribute('aria-live', 'polite');
+      announcer.setAttribute('aria-atomic', 'true');
+      announcer.style.position = 'absolute';
+      announcer.style.left = '-10000px';
+      announcer.style.width = '1px';
+      announcer.style.height = '1px';
+      announcer.style.overflow = 'hidden';
+      document.body.appendChild(announcer);
+    }
+
+    announcer.textContent = '';
+    setTimeout(() => {
+      announcer.textContent = message;
+    }, 100);
+  }
+
+  getStats() {
+    return {
+      currentGallery: this.currentGallery,
+      totalImages: this.images.length,
+      currentImageIndex: this.currentImageIndex,
+      isLightboxOpen: this.isLightboxOpen
+    };
+  }
+}
+
+/**
+ * Gallery Animations for Material Design 3
+ */
+class GalleryAnimationsMD3 {
+  constructor() {
+    this.observers = [];
+    this.init();
+  }
+
+  init() {
+    this.setupIntersectionObserver();
+    this.setupScrollAnimations();
+  }
+
+  setupIntersectionObserver() {
+    if (!('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -100px 0px',
+      threshold: 0.1
+    });
+
+    const observeElements = () => {
+      const elements = document.querySelectorAll('.md-masonry-item, .md-hexagon-item, .md-polaroid-item');
+      elements.forEach(element => {
+        if (!element.classList.contains('animate-in')) {
+          observer.observe(element);
+        }
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', observeElements);
+    } else {
+      observeElements();
+    }
+
+    this.observers.push(observer);
+  }
+
+  setupScrollAnimations() {
+    let ticking = false;
+
+    const updateAnimations = () => {
+      const scrollY = window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      
+      // Parallax effect for hero
+      const hero = document.querySelector('.md-gallery-hero');
+      if (hero) {
+        const heroRect = hero.getBoundingClientRect();
+        if (heroRect.bottom > 0 && heroRect.top < windowHeight) {
+          const parallaxSpeed = scrollY * 0.5;
+          hero.style.transform = `translateY(${parallaxSpeed}px)`;
+        }
+      }
+
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateAnimations);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  destroy() {
+    this.observers.forEach(observer => observer.disconnect());
+    this.observers = [];
+  }
+}
+
+/**
+ * Mobile Menu Manager for MD3 Gallery
+ * Reutiliza la lógica del mobile menu pero con clases MD3
+ */
+class MobileMenuManagerMD3 {
+  constructor() {
+    this.mobileToggle = null;
+    this.hamburgerDropdown = null;
+    this.nav = null;
+    this.icon = null;
+    this.isInitialized = false;
+    this.init();
+  }
+
+  init() {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.setup());
+    } else {
+      this.setup();
+    }
+  }
+
+  setup() {
+    this.mobileToggle = document.querySelector('.mobile-menu-toggle');
+    this.hamburgerDropdown = document.querySelector('.hamburger-dropdown');
+    this.nav = document.querySelector('header nav');
+    this.icon = this.mobileToggle?.querySelector('.material-icons');
+
+    if (this.mobileToggle && this.hamburgerDropdown && this.icon) {
+      this.setupEventListeners();
+      this.isInitialized = true;
+    }
+  }
+
+  setupEventListeners() {
+    this.mobileToggle.addEventListener('click', (e) => this.handleToggleClick(e));
+    this.setupNavLinkListeners();
+    this.setupOutsideClickListener();
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isMenuOpen()) {
+        this.closeMenu();
+      }
+    });
+  }
+
+  handleToggleClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (this.isMenuOpen()) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
+  }
+
+  openMenu() {
+    this.hamburgerDropdown.classList.add('active');
+    this.icon.textContent = 'close';
+    this.mobileToggle.setAttribute('aria-expanded', 'true');
+    this.mobileToggle.setAttribute('aria-label', 'Cerrar menú');
+    
+    // Prevent scrolling on mobile
+    if (window.innerWidth <= 768) {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeMenu() {
+    this.hamburgerDropdown.classList.remove('active');
+    this.icon.textContent = 'menu';
+    this.mobileToggle.setAttribute('aria-expanded', 'false');
+    this.mobileToggle.setAttribute('aria-label', 'Abrir menú');
+    
+    // Restore scrolling
+    document.body.style.overflow = '';
+  }
+
+  setupNavLinkListeners() {
+    this.hamburgerDropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        this.closeMenu();
+      });
+    });
+  }
+
+  setupOutsideClickListener() {
+    document.addEventListener('click', (e) => {
+      if (!this.isMenuOpen()) return;
+      
+      if (!this.mobileToggle.contains(e.target) && 
+          !this.hamburgerDropdown.contains(e.target)) {
+        this.closeMenu();
+      }
+    });
+  }
+
+  isMenuOpen() {
+    return this.hamburgerDropdown?.classList.contains('active') || false;
+  }
+
+  getState() {
+    return {
+      isInitialized: this.isInitialized,
+      isMenuOpen: this.isMenuOpen(),
+      hasElements: !!(this.mobileToggle && this.hamburgerDropdown && this.icon)
+    };
+  }
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('🎨 Inicializando VR Distribución Galería MD3');
+  
+  // Initialize main gallery manager
+  window.galleryManagerMD3 = new GalleryManagerMD3();
+  
+  // Initialize mobile menu
+  window.mobileMenuManagerMD3 = new MobileMenuManagerMD3();
+  
+  // Initialize animations if motion is not reduced
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.galleryAnimationsMD3 = new GalleryAnimationsMD3();
+  }
+  
+  console.log('✅ VR Distribución Galería MD3 inicializada correctamente');
+});
+
+// Export classes for potential external use
+window.GalleryManagerMD3 = GalleryManagerMD3;
+window.GalleryAnimationsMD3 = GalleryAnimationsMD3;
+window.MobileMenuManagerMD3 = MobileMenuManagerMD3;
