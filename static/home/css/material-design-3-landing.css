@@ -1181,6 +1181,13 @@ body {
     var(--md-sys-color-surface-container-lowest) 0%, 
     var(--md-sys-color-surface-container-low) 100%);
   position: relative;
+  overflow-x: hidden; /* Previene scroll horizontal */
+}
+
+@media (max-width: 767px) {
+  .md-contact {
+    padding: var(--md-space-xxl) 0;
+  }
 }
 
 .md-contact::before {
@@ -1220,6 +1227,16 @@ body {
   grid-template-columns: 1fr;
   gap: var(--md-space-xxxl);
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+  .md-contact__content {
+    gap: var(--md-space-xl);
+    padding: 0 var(--md-space-xs);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1241,6 +1258,17 @@ body {
     0 2px 8px rgba(0, 0, 0, 0.08),
     0 1px 4px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .md-contact-card {
+    position: static;
+    padding: var(--md-space-lg);
+    margin: 0;
+  }
 }
 
 .md-contact-card:hover {
@@ -1269,6 +1297,8 @@ body {
 /* Contact Methods */
 .md-contact-methods {
   margin-bottom: var(--md-space-xl);
+  width: 100%;
+  max-width: 100%;
 }
 
 .md-contact-method {
@@ -1277,6 +1307,10 @@ body {
   gap: var(--md-space-md);
   padding: var(--md-space-md);
   margin-bottom: var(--md-space-sm);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0; /* Permite que el contenido se contraiga */
   background: var(--md-sys-color-surface);
   border: 1px solid var(--md-sys-color-outline-variant);
   border-radius: var(--md-radius-md);
@@ -1306,6 +1340,14 @@ body {
 
 .md-contact-method__content {
   flex: 1;
+  min-width: 0; /* Permite que el texto se trunque si es necesario */
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .md-contact-method__content {
+    max-width: calc(100% - 120px); /* Espacio para icono y flecha */
+  }
 }
 
 .md-contact-method__title {
@@ -1313,12 +1355,22 @@ body {
   font-weight: 500;
   color: var(--md-sys-color-on-surface);
   margin: 0 0 var(--md-space-xs) 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 767px) {
+  .md-contact-method__title {
+    font-size: var(--md-type-title-small);
+  }
 }
 
 .md-contact-method__value {
   font-size: var(--md-type-body-medium);
   color: var(--md-sys-color-on-surface-variant);
   margin: 0 0 var(--md-space-xs) 0;
+  word-break: break-word;
 }
 
 .md-contact-method__status {
@@ -1376,6 +1428,16 @@ body {
   box-shadow: 
     0 3px 12px rgba(0, 0, 0, 0.1),
     0 1px 6px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .md-form {
+    margin: 0;
+    border-radius: var(--md-radius-md);
+  }
 }
 
 /* Prevent browser default validation styles */
@@ -1440,6 +1502,15 @@ body {
   padding: var(--md-space-xl);
   display: block;
   background: var(--md-sys-color-surface);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .md-form__content {
+    padding: var(--md-space-lg);
+  }
 }
 
 .md-form__section {
@@ -1525,6 +1596,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
 }
 
 .md-textfield__input {
@@ -1540,6 +1613,16 @@ body {
   line-height: 1.5;
   transition: all 0.2s ease;
   outline: none;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .md-textfield__input {
+    font-size: var(--md-type-body-medium);
+    min-height: 48px;
+    padding: 12px;
+  }
 }
 
 .md-textfield__input:focus {
@@ -1618,6 +1701,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
 }
 
 .md-select__input {
@@ -1634,6 +1719,16 @@ body {
   transition: all 0.2s ease;
   outline: none;
   appearance: none;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .md-select__input {
+    font-size: var(--md-type-body-medium);
+    min-height: 48px;
+    padding: 12px 40px 12px 12px;
+  }
 }
 
 .md-select__input:focus {

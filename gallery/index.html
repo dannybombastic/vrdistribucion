@@ -149,6 +149,42 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
+
+    /* Mobile Navigation Control */
+    .md-nav-mobile {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .md-nav-mobile {
+        display: none !important;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .md-nav-desktop {
+        display: none !important;
+      }
+    }
+
+    /* Header Layout Fix */
+    .md-header__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    /* Mobile Menu Button Positioning */
+    .mobile-menu-toggle {
+      margin-left: auto;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu-toggle {
+        display: none !important;
+      }
+    }
   </style>
   
   <!-- Gallery MCP Styles -->
