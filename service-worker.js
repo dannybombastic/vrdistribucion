@@ -6,15 +6,23 @@ const CACHE_NAME = 'vr-distribucion-v2.0';
 const CACHE_EXPIRY_TIME = 365 * 24 * 60 * 60 * 1000; // 1 año en millisegundos para máximo ahorro
 const VIDEO_CACHE_EXPIRY_TIME = 180 * 24 * 60 * 60 * 1000; // 6 meses para videos
 
-// Recursos críticos que siempre se cachean
+// Resources críticos para caché prioritario
 const CRITICAL_RESOURCES = [
+  // Cookie consent resources
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js',
+  // Main page CSS resources
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-components.css',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css',
+  // Main page JS resources
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/chat.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js'
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/material-design-3-landing.js',
 ];
 
 // Videos que se cachean con estrategia diferente
