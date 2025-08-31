@@ -1,0 +1,1539 @@
+/* Material Design 3 Gallery CSS */
+/* Reutiliza las variables y componentes básicos del MD3 */
+
+/* ========================================
+   GALLERY SPECIFIC STYLES
+======================================== */
+
+/* Gallery Hero Section */
+.md-gallery-hero {
+  background: linear-gradient(
+    135deg,
+    var(--md-sys-color-primary-container) 0%,
+    var(--md-sys-color-secondary-container) 50%,
+    var(--md-sys-color-tertiary-container) 100%
+  );
+  padding: 88px 0 64px;
+  margin-top: 64px;
+}
+
+.md-hero__stats {
+  display: flex;
+  gap: var(--md-space-xl);
+  margin-top: var(--md-space-lg);
+  flex-wrap: wrap;
+}
+
+.md-stat-item {
+  text-align: center;
+}
+
+.md-stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+  line-height: 1;
+}
+
+.md-stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: var(--md-space-xs);
+}
+
+/* Gallery Navigation */
+.md-gallery-nav {
+  background: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding: var(--md-space-md) 0;
+}
+
+/* Material Design 3 Tabs Enhanced */
+.md-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.md-tabs__header {
+  display: flex;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface);
+}
+
+.md-tabs--full-width .md-tabs__header {
+  width: 100%;
+}
+
+.md-tabs--full-width .md-tab {
+  flex: 1;
+}
+
+/* Tab buttons */
+.md-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  position: relative;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  outline: none;
+  min-height: 48px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.md-tab:hover:not(.md-tab--disabled) {
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface);
+}
+
+.md-tab:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: -2px;
+}
+
+.md-tab--active {
+  color: var(--md-sys-color-primary);
+}
+
+.md-tab__icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.md-tab__label {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+/* Tab indicator */
+.md-tab__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--md-sys-color-primary);
+  transform: scaleX(0);
+  transition: transform 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.md-tab--active .md-tab__indicator {
+  transform: scaleX(1);
+}
+
+/* Gallery Sections */
+.gallery-section {
+  display: none;
+  padding: var(--md-space-2xl) 0;
+}
+
+.gallery-section.active {
+  display: block;
+}
+
+/* ========================================
+   MASONRY GALLERY
+======================================== */
+
+.md-masonry-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.md-masonry-hero {
+  margin-bottom: var(--md-space-2xl);
+}
+
+.md-hero-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.md-hero-card .md-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.md-card__overlay {
+  position: absolute;
+  top: var(--md-space-md);
+  left: var(--md-space-md);
+  z-index: 1;
+}
+
+.md-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--md-space-lg);
+  align-items: start;
+  padding: 0;
+}
+
+@media (max-width: 767px) {
+  .md-masonry-grid {
+    grid-template-columns: 1fr;
+    gap: var(--md-space-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .md-masonry-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--md-space-xl);
+  }
+}
+
+@media (min-width: 1400px) {
+  .md-masonry-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.md-masonry-item {
+  break-inside: avoid;
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+/* Variaciones de altura para efecto masonry más natural */
+.md-masonry-item:nth-child(3n+1) .md-card__media {
+  aspect-ratio: 3/4; /* Más alto */
+}
+
+.md-masonry-item:nth-child(3n+2) .md-card__media {
+  aspect-ratio: 4/3; /* Más ancho */
+}
+
+.md-masonry-item:nth-child(3n+3) .md-card__media {
+  aspect-ratio: 1; /* Cuadrado */
+}
+
+.md-masonry-item--tall .md-card__media {
+  aspect-ratio: 3/5 !important; /* Extra alto para destacar */
+}
+
+.md-masonry-item--wide .md-card__media {
+  aspect-ratio: 5/3 !important; /* Extra ancho para destacar */
+}
+
+/* ========================================
+   HEXAGON GALLERY
+======================================== */
+
+.md-hexagon-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--md-space-2xl) 0;
+}
+
+.md-hexagon-grid {
+  position: relative;
+  display: grid;
+  gap: 20px;
+}
+
+.md-hexagon-item {
+  position: relative;
+}
+
+.md-hexagon {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  transition: all 300ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  cursor: pointer;
+}
+
+.md-hexagon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.md-hexagon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Hexagon positioning */
+.md-hexagon-item--center {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.md-hexagon-item--ring-1 {
+  /* Ring 1 items are positioned around the center */
+  position: relative;
+}
+
+/* ========================================
+   POLAROID GALLERY
+======================================== */
+
+.md-polaroid-container {
+  padding: var(--md-space-2xl) 0;
+}
+
+.md-polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--md-space-xl);
+  justify-items: center;
+}
+
+.md-polaroid-item {
+  transform: rotate(var(--rotation, 0deg));
+  transition: all 300ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  animation: fadeInRotate 600ms cubic-bezier(0.2, 0.0, 0, 1.0) forwards;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+}
+
+.md-polaroid {
+  background: var(--md-sys-color-surface);
+  padding: 16px 16px 60px 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.md-polaroid:hover {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.md-polaroid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+}
+
+.md-polaroid__caption {
+  text-align: center;
+  margin-top: var(--md-space-sm);
+}
+
+.md-polaroid__caption p {
+  margin: 0;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  font-size: 14px;
+}
+
+.md-polaroid__caption small {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 12px;
+}
+
+@keyframes fadeInRotate {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   MATERIAL DESIGN 3 CARDS
+======================================== */
+
+.md-card {
+  background: var(--md-sys-color-surface);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  position: relative;
+}
+
+.md-card--elevated {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.md-card--elevated:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.md-card--outlined {
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.md-card--outlined:hover {
+  border-color: var(--md-sys-color-outline);
+  transform: translateY(-2px);
+}
+
+.md-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.md-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 300ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  cursor: pointer;
+}
+
+.md-card:hover .md-card__image {
+  transform: scale(1.05);
+}
+
+.md-card__content {
+  padding: var(--md-space-md);
+}
+
+.md-card__header {
+  margin-bottom: var(--md-space-sm);
+}
+
+.md-card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.4;
+}
+
+.md-card__subtitle {
+  margin: var(--md-space-xs) 0 0 0;
+  font-size: 0.875rem;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.4;
+}
+
+/* ========================================
+   MATERIAL DESIGN 3 CHIPS
+======================================== */
+
+.md-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.md-chip--elevated {
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================
+   LIGHTBOX (Material Design 3)
+======================================== */
+
+.md-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  backdrop-filter: blur(4px);
+}
+
+.md-lightbox-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.md-lightbox-container {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: var(--md-sys-color-surface);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.md-lightbox__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.md-lightbox__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.md-lightbox__image-container {
+  position: relative;
+  flex: 1;
+}
+
+.md-lightbox__image {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  object-position: center;
+}
+
+.md-lightbox__prev,
+.md-lightbox__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.md-lightbox__prev {
+  left: 16px;
+}
+
+.md-lightbox__next {
+  right: 16px;
+}
+
+.md-lightbox__swipe-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.md-lightbox__info {
+  padding: var(--md-space-md);
+  background: var(--md-sys-color-surface);
+}
+
+.md-lightbox__title {
+  margin: 0 0 var(--md-space-xs) 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+}
+
+.md-lightbox__description {
+  margin: 0 0 var(--md-space-xs) 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.875rem;
+}
+
+.md-lightbox__counter {
+  font-size: 0.75rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* ========================================
+   MATERIAL DESIGN 3 CARDS
+======================================== */
+
+
+
+/* ========================================
+   BUTTONS (Material Design 3)
+======================================== */
+
+.md-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 24px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  position: relative;
+  overflow: hidden;
+}
+
+.md-button--filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.md-button--filled:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.md-button--text {
+  background-color: transparent;
+  color: var(--md-sys-color-primary);
+}
+
+.md-button--text:hover {
+  background-color: var(--md-sys-color-primary-container);
+}
+
+.md-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.md-icon-button:hover {
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface);
+}
+
+/* ========================================
+   FAB (Floating Action Button)
+======================================== */
+
+.md-fab {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 56px;
+  border: none;
+  border-radius: 16px;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.md-fab--back-to-top {
+  bottom: 24px;
+  right: 24px;
+}
+
+.md-fab--back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.md-fab:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.16), 0 4px 20px rgba(0, 0, 0, 0.14);
+  transform: translateY(-2px);
+}
+
+.md-fab__icon {
+  font-size: 24px;
+}
+
+
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 768px) {
+  .md-tab {
+    padding: 12px 16px;
+  }
+  
+  .md-tab__icon {
+    font-size: 20px;
+  }
+  
+  .md-tab__label {
+    font-size: 11px;
+  }
+  
+  .md-masonry-grid {
+    grid-template-columns: 1fr;
+    gap: var(--md-space-md);
+  }
+  
+  .md-polaroid-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .md-lightbox__swipe-hint {
+    display: flex;
+  }
+  
+  .md-lightbox__prev,
+  .md-lightbox__next {
+    display: none;
+  }
+  
+  .md-contact__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   ANIMATIONS & INTERACTIONS
+======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-section {
+  animation: fadeIn 300ms cubic-bezier(0.2, 0.0, 0, 1.0) forwards;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .md-lightbox-overlay {
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Print styles */
+@media print {
+  .md-fab,
+  .md-lightbox-overlay,
+  .chat-container,
+  .chat-toggle {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   CONTACT SECTION STYLES (from MD3 principal)
+======================================== */
+
+.md-contact {
+  padding: var(--md-space-xxxl) 0;
+  background: var(--md-sys-color-surface);
+}
+
+.md-contact__header {
+  text-align: center;
+  margin-bottom: var(--md-space-xxxl);
+}
+
+.md-contact__title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 var(--md-space-md) 0;
+}
+
+.md-contact__subtitle {
+  font-size: var(--md-type-body-large);
+  color: var(--md-sys-color-on-surface-variant);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.md-contact__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--md-space-xxxl);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .md-contact__content {
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--md-space-xxxl);
+  }
+}
+
+.md-contact__quick {
+  display: flex;
+  gap: var(--md-space-lg);
+  justify-content: center;
+  margin-bottom: var(--md-space-2xl);
+  flex-wrap: wrap;
+}
+
+.md-contact__quick-item {
+  text-align: center;
+}
+
+.md-contact__quick-description {
+  margin-top: var(--md-space-xs);
+  font-size: 0.875rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-contact__form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   MATERIAL DESIGN 3 FORM COMPONENTS (from MD3 principal)
+   ========================================================================== */
+
+.md-form {
+  background: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-radius-lg);
+  overflow: hidden;
+}
+
+/* Prevent browser default validation styles */
+.md-textfield__input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.md-textfield__input:invalid {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Override invalid styles for empty fields with placeholder */
+.md-textfield__input:invalid:placeholder-shown {
+  border-color: var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface);
+}
+
+.md-textfield__input:invalid:placeholder-shown + .md-textfield__label {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-form__header {
+  padding: var(--md-space-xl);
+  background: linear-gradient(
+    135deg,
+    var(--md-sys-color-primary-container) 0%,
+    var(--md-sys-color-secondary-container) 100%
+  );
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.md-form__title {
+  font-size: var(--md-type-headline-small);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 var(--md-space-sm) 0;
+}
+
+.md-form__subtitle {
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0;
+}
+
+.md-form__content {
+  padding: var(--md-space-xl);
+}
+
+.md-form__section {
+  margin-bottom: var(--md-space-xl);
+}
+
+.md-form__section:last-child {
+  margin-bottom: 0;
+}
+
+.md-form__section-title {
+  font-size: var(--md-type-title-medium);
+  font-weight: 500;
+  color: var(--md-sys-color-primary);
+  margin: 0 0 var(--md-space-lg) 0;
+  padding-bottom: var(--md-space-sm);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.md-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--md-space-lg);
+}
+
+@media (min-width: 768px) {
+  .md-form__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.md-form__field {
+  margin-bottom: var(--md-space-lg);
+}
+
+/* Text Fields */
+.md-textfield {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.md-textfield__input {
+  width: 100%;
+  min-height: 56px;
+  padding: 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-radius-xs);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+  font-size: var(--md-type-body-large);
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.md-textfield__input:focus {
+  border-color: var(--md-sys-color-primary);
+  border-width: 2px;
+  padding: 15px; /* Compensate for thicker border */
+}
+
+.md-textfield__input:focus + .md-textfield__label,
+.md-textfield__input:not(:placeholder-shown) + .md-textfield__label,
+.md-textfield__input:valid + .md-textfield__label {
+  transform: translateY(-28px) scale(0.75);
+  color: var(--md-sys-color-primary);
+  background: var(--md-sys-color-surface);
+  padding: 0 4px;
+}
+
+.md-textfield__input:invalid:not(:focus):not(:placeholder-shown) + .md-textfield__label {
+  color: var(--md-sys-color-error);
+}
+
+.md-textfield__input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--md-sys-color-error);
+}
+
+.md-textfield__label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-type-body-large);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  transform-origin: left center;
+  z-index: 1;
+}
+
+.md-textfield--textarea .md-textfield__input {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.md-textfield--textarea .md-textfield__label {
+  top: 16px;
+}
+
+.md-textfield__supporting-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--md-space-xs);
+  min-height: 16px;
+}
+
+.md-textfield__helper {
+  font-size: var(--md-type-body-small);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-textfield__error {
+  font-size: var(--md-type-body-small);
+  color: var(--md-sys-color-error);
+  display: none;
+}
+
+.md-textfield__input:invalid:not(:focus):not(:placeholder-shown) ~ .md-textfield__supporting-text .md-textfield__error {
+  display: block;
+}
+
+.md-textfield__input:invalid:not(:focus):not(:placeholder-shown) ~ .md-textfield__supporting-text .md-textfield__helper {
+  display: none;
+}
+
+/* Select Fields */
+.md-select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.md-select__input {
+  width: 100%;
+  min-height: 56px;
+  padding: 16px 48px 16px 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-radius-xs);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+  font-size: var(--md-type-body-large);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  appearance: none;
+}
+
+.md-select__input:focus {
+  border-color: var(--md-sys-color-primary);
+  border-width: 2px;
+  padding: 15px 47px 15px 15px;
+}
+
+.md-select__input:focus + .md-select__label,
+.md-select__input:not([value=""]) + .md-select__label,
+.md-select__input:valid + .md-select__label {
+  transform: translateY(-28px) scale(0.75);
+  color: var(--md-sys-color-primary);
+  background: var(--md-sys-color-surface);
+  padding: 0 4px;
+}
+
+.md-select__label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-type-body-large);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  transform-origin: left center;
+  z-index: 1;
+}
+
+.md-select__dropdown-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: var(--md-sys-color-on-surface-variant);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.md-select__input:focus ~ .md-select__dropdown-icon {
+  transform: rotate(180deg);
+  color: var(--md-sys-color-primary);
+}
+
+.md-select__supporting-text {
+  margin-top: var(--md-space-xs);
+  min-height: 16px;
+  font-size: var(--md-type-body-small);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Checkboxes */
+.md-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-space-md);
+}
+
+.md-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--md-space-md);
+  cursor: pointer;
+  position: relative;
+}
+
+.md-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.md-checkbox__background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--md-sys-color-outline);
+  border-radius: var(--md-radius-xs);
+  background: var(--md-sys-color-surface);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.md-checkbox__input:checked + .md-checkbox__background {
+  background: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+}
+
+.md-checkbox__checkmark {
+  color: var(--md-sys-color-on-primary);
+  font-size: 16px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+.md-checkbox__input:checked + .md-checkbox__background .md-checkbox__checkmark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.md-checkbox__label {
+  font-size: var(--md-type-body-medium);
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.5;
+}
+
+.md-checkbox:hover .md-checkbox__background {
+  background: var(--md-sys-color-primary-container);
+}
+
+/* Form Actions */
+.md-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--md-space-md);
+  padding: var(--md-space-xl);
+  background: var(--md-sys-color-surface-variant);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+@media (max-width: 600px) {
+  .md-form__actions {
+    flex-direction: column-reverse;
+  }
+  
+  .md-form__actions .md-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Form Field States */
+.md-textfield__input--error {
+  border-color: var(--md-sys-color-error) !important;
+  border-width: 2px;
+  padding: 15px;
+}
+
+.md-textfield__input--error + .md-textfield__label {
+  color: var(--md-sys-color-error) !important;
+}
+
+.md-textfield--focused .md-textfield__input {
+  border-color: var(--md-sys-color-primary);
+  border-width: 2px;
+  padding: 15px;
+}
+
+.md-textfield--focused .md-textfield__label {
+  color: var(--md-sys-color-primary);
+}
+
+/* Form Error and Success Messages */
+.md-form__error {
+  display: none;
+  margin-top: var(--md-space-xs);
+  font-size: var(--md-type-body-small);
+  color: var(--md-sys-color-error);
+}
+
+.md-form__success {
+  display: none;
+  margin-top: var(--md-space-xs);
+  font-size: var(--md-type-body-small);
+  color: var(--md-sys-color-primary);
+}
+
+/* ==========================================================================
+   FOOTER SECTION (from MD3 principal)
+   ========================================================================== */
+
+.md-footer {
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  margin-top: auto;
+}
+
+.md-footer__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--md-space-xxxl);
+  padding: var(--md-space-xxxl) 0;
+}
+
+@media (min-width: 768px) {
+  .md-footer__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .md-footer__content {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  }
+}
+
+.md-footer__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.md-footer__section--primary {
+  max-width: 400px;
+}
+
+/* Footer Logo */
+.md-footer__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--md-space-md);
+  margin-bottom: var(--md-space-lg);
+}
+
+.md-footer__logo-img {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--md-radius-sm);
+}
+
+.md-footer__company-name {
+  font-size: var(--md-type-title-large);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+}
+
+.md-footer__tagline {
+  font-size: var(--md-type-body-small);
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0;
+}
+
+.md-footer__description {
+  line-height: 1.6;
+  margin-bottom: var(--md-space-xl);
+}
+
+/* Social Media */
+.md-footer__social {
+  margin-top: auto;
+}
+
+.md-footer__social-title {
+  font-size: var(--md-type-title-small);
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 var(--md-space-md) 0;
+}
+
+.md-footer__social-links {
+  display: flex;
+  gap: var(--md-space-sm);
+}
+
+.md-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.md-social-link:hover {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--md-elevation-2);
+}
+
+.md-social-link .material-icons {
+  font-size: 20px;
+}
+
+/* Footer Sections */
+.md-footer__section-title {
+  font-size: var(--md-type-title-medium);
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 var(--md-space-lg) 0;
+}
+
+.md-footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-space-sm);
+}
+
+.md-footer__link {
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  font-size: var(--md-type-body-medium);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.md-footer__link:hover {
+  color: var(--md-sys-color-primary);
+}
+
+/* Footer Contact */
+.md-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-space-lg);
+}
+
+.md-footer__contact-item {
+  display: flex;
+  gap: var(--md-space-md);
+  align-items: flex-start;
+}
+
+.md-footer__contact-item .material-icons {
+  color: var(--md-sys-color-primary);
+  font-size: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.md-footer__contact-content strong {
+  display: block;
+  color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+  margin-bottom: var(--md-space-xs);
+}
+
+.md-footer__contact-content p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Footer Bottom */
+.md-footer__bottom {
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  padding: var(--md-space-xl) 0;
+  position: relative;
+}
+
+.md-footer__bottom-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-space-lg);
+}
+
+@media (min-width: 768px) {
+  .md-footer__bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.md-footer__copyright p {
+  margin: 0;
+  font-size: var(--md-type-body-small);
+}
+
+.md-footer__tech {
+  color: var(--md-sys-color-outline) !important;
+  font-size: var(--md-type-label-small) !important;
+}
+
+.md-footer__legal {
+  display: flex;
+  align-items: center;
+  gap: var(--md-space-sm);
+  flex-wrap: wrap;
+}
+
+.md-footer__legal-link {
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  font-size: var(--md-type-body-small);
+  transition: color 0.2s ease;
+}
+
+.md-footer__legal-link:hover {
+  color: var(--md-sys-color-primary);
+}
+
+.md-footer__separator {
+  color: var(--md-sys-color-outline);
+}
+
+/* Back to Top FAB */
+.md-fab {
+  position: fixed;
+  bottom: var(--md-space-xl);
+  right: var(--md-space-xl);
+  width: 56px;
+  height: 56px;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  border-radius: var(--md-radius-md);
+  box-shadow: var(--md-elevation-3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.md-fab.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.md-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--md-elevation-4);
+}
+
+.md-fab .material-icons {
+  font-size: 24px;
+}
+
+.md-fab--back-to-top {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .md-contact__content {
+    grid-template-columns: 1fr;
+  }
+  
+  .md-form__row {
+    grid-template-columns: 1fr;
+    gap: var(--md-space-md);
+  }
+
+  .md-fab {
+    bottom: calc(var(--md-space-xl) + 70px);
+    right: var(--md-space-md);
+    width: 48px;
+    height: 48px;
+  }
+  
+  .md-fab .material-icons {
+    font-size: 20px;
+  }
+  
+  .md-footer__content {
+    padding: var(--md-space-xl) 0;
+  }
+  
+  .md-footer__section {
+    text-align: center;
+  }
+  
+  .md-footer__section--primary {
+    max-width: none;
+  }
+  
+  .md-footer__logo {
+    justify-content: center;
+  }
+  
+  .md-footer__contact {
+    align-items: center;
+  }
+  
+  .md-footer__contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--md-space-sm);
+  }
+  
+  .md-footer__contact-item .material-icons {
+    margin-top: 0;
+  }
+  
+  .md-footer__social-links {
+    justify-content: center;
+  }
+  
+  .md-footer__legal {
+    justify-content: center;
+  }
+}

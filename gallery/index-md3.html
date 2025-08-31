@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-DLSGS9C2TK');
+  </script>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Galería de Proyectos MD3 - VR Distribución | Invitaciones y Decoraciones Personalizadas</title>
+  <meta name="description" content="Explora nuestra galería de invitaciones personalizadas, centros de mesa y decoraciones para eventos en Cancún. 25 años creando momentos únicos para bodas, quinceañeras y celebraciones especiales." />
+  <meta name="keywords" content="galería invitaciones Cancún, portafolio centros de mesa, decoraciones bodas Quintana Roo, ejemplos invitaciones personalizadas, Virginia Ruiz trabajos, VR Distribución proyectos, galería eventos Cancún" />
+  <meta name="author" content="Virginia Ruiz Rodríguez - VR Distribución" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Galería de Proyectos MD3 - VR Distribución Cancún" />
+  <meta property="og:description" content="Descubre nuestro portafolio de invitaciones personalizadas, centros de mesa y decoraciones únicas. 25 años creando eventos memorables en Cancún." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vrdistribucion.com/gallery" />
+  <meta property="og:image" content="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Galería VR Distribución MD3 - Proyectos Únicos" />
+  <meta name="twitter:description" content="Explora nuestra colección de invitaciones y decoraciones personalizadas para eventos en Cancún." />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://vrdistribucion.com/gallery" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
+
+  <!-- Material Design 3 Theme and Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Material Design 3 Theme CSS -->
+  <link rel="stylesheet" href="../static/home/css/material-design-3-theme.css">
+  
+  <!-- Critical CSS -->
+  <style>
+    /* Material Design 3 Critical Styles */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+      color: var(--md-sys-color-on-background);
+      background-color: var(--md-sys-color-background);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Critical Layout */
+    .md-layout {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Main Content Area */
+    .md-main {
+      flex: 1;
+    }
+
+    .md-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    @media (min-width: 768px) {
+      .md-container {
+        padding: 0 24px;
+      }
+    }
+
+    /* Critical Header */
+    .md-header {
+      background: var(--md-sys-color-surface);
+      border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .md-header__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .md-logo {
+      height: 40px;
+      width: auto;
+    }
+
+    /* Critical Hero */
+    .md-hero {
+      background: linear-gradient(
+        135deg,
+        var(--md-sys-color-primary-container) 0%,
+        var(--md-sys-color-secondary-container) 50%,
+        var(--md-sys-color-tertiary-container) 100%
+      );
+      padding: 88px 0 64px;
+      margin-top: 64px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Loading indicator */
+    .md-loading {
+      opacity: 0;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+  
+  <!-- Gallery MCP MD3 Styles -->
+  <link rel="stylesheet" href="../static/gallery/css/gallery-mcp-md3.css">
+  <link rel="stylesheet" href="../static/home/css/material-design-3-enhancements.css">
+  <link rel="stylesheet" href="../static/home/css/material-design-3-landing.css">
+  <link rel="stylesheet" href="../static/home/css/chat-widget.css">
+</head>
+
+<body class="md-layout">
+  <!-- HEADER (reutilizando del MD3) -->
+  <header class="md-header" role="banner">
+    <div class="md-container">
+      <div class="md-header__content">
+        <a href="/" aria-label="Ir a página principal">
+          <img src="../static/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-logo" />
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="md-nav-desktop" role="navigation" aria-label="Navegación principal">
+          <div class="md-nav__list">
+            <a href="/" class="md-button md-button--text">Inicio</a>
+            <a href="/gallery" class="md-button md-button--text">Galería</a>
+            <a href="/portafolio" class="md-button md-button--text">Portafolio</a>
+            <a href="/#paquetes" class="md-button md-button--text">Paquetes</a>
+            <a href="/cotizaciones" class="md-button md-button--filled">Cotizaciones</a>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="md-nav-mobile md-icon-button mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false" type="button">
+          <span class="material-icons">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="md-nav-drawer hamburger-dropdown" id="hamburger-dropdown">
+      <div class="md-nav-drawer__content">
+        <a href="/" class="md-nav-drawer__item">Inicio</a>
+        <a href="/gallery" class="md-nav-drawer__item">Galería</a>
+        <a href="/portafolio" class="md-nav-drawer__item">Portafolio</a>
+        <a href="/#paquetes" class="md-nav-drawer__item">Paquetes</a>
+        <a href="/cotizaciones" class="md-nav-drawer__item">Cotizaciones</a>
+        <a href="/aparador" class="md-nav-drawer__item">Aparador</a>
+        <a href="/webdesigncancun" class="md-nav-drawer__item">Web Design Cancún</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="md-gallery-header" id="hero" role="banner">
+    <div class="md-container">
+      <div class="md-hero__content md-loading">
+        <h1 class="md-gallery-header__title">Galería de <span class="md-text-gradient">Proyectos</span></h1>
+        <p class="md-gallery-header__subtitle">
+          Descubre nuestra colección de <strong>invitaciones personalizadas</strong>, 
+          <strong>centros de mesa elegantes</strong> y <strong>decoraciones únicas</strong> 
+          que hemos creado para eventos memorables en Cancún y Quintana Roo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="md-main">
+    <!-- GALLERY NAVIGATION TABS -->
+    <section class="md-gallery-tabs" aria-label="Navegación de galería">
+      <div class="md-container">
+        <!-- Tabs will be rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- GALLERY CONTENT -->
+    <section class="md-gallery-content" aria-label="Contenido de la galería">
+      <div class="md-container">
+        <!-- Gallery grid will be rendered by JavaScript -->
+        <div class="md-gallery-loading">
+          <span class="material-icons">hourglass_empty</span>
+          Cargando galería...
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="md-contact" id="contacto" aria-labelledby="contact-title">
+      <div class="md-container">
+        <div class="md-contact__header">
+          <h2 id="contact-title" class="md-contact__title">¿Te Gustó Algún Proyecto?</h2>
+          <p class="md-contact__subtitle">Cuéntanos sobre tu evento y diseñemos algo único juntos</p>
+        </div>
+
+        <div class="md-contact__content">
+          <!-- Contact Info -->
+          <div class="md-contact__info">
+            <div class="md-contact-card">
+              <div class="md-contact-card__header">
+                <h3 class="md-contact-card__title">Información de Contacto</h3>
+                <p class="md-contact-card__subtitle">Múltiples formas de comunicarnos</p>
+              </div>
+              
+              <div class="md-contact-methods">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/529981234567" class="md-contact-method" target="_blank" rel="noopener">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">chat</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">WhatsApp</h4>
+                    <p class="md-contact-method__value">+52 998 123 4567</p>
+                    <span class="md-contact-method__status">
+                      <span class="md-status-dot md-status-dot--online"></span>
+                      En línea ahora
+                    </span>
+                  </div>
+                  <span class="material-icons md-contact-method__arrow">arrow_forward</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:contacto@vrdistribucion.com" class="md-contact-method">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">email</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">Email</h4>
+                    <p class="md-contact-method__value">contacto@vrdistribucion.com</p>
+                    <span class="md-contact-method__status">Respuesta en 24h</span>
+                  </div>
+                  <span class="material-icons md-contact-method__arrow">arrow_forward</span>
+                </a>
+
+                <!-- Teléfono -->
+                <a href="tel:+529981234567" class="md-contact-method">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">phone</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">Teléfono</h4>
+                    <p class="md-contact-method__value">+52 998 123 4567</p>
+                    <span class="md-contact-method__status">Lun - Sáb: 9:00 - 18:00</span>
+                  </div>
+                  <span class="material-icons md-contact-method__arrow">arrow_forward</span>
+                </a>
+
+                <!-- Ubicación -->
+                <div class="md-contact-method">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">location_on</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">Ubicación</h4>
+                    <p class="md-contact-method__value">Cancún, Quintana Roo</p>
+                    <span class="md-contact-method__status">Servicio a domicilio</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Actions -->
+              <div class="md-contact-actions">
+                <button class="md-button md-button--filled" onclick="openWhatsApp()">
+                  <span class="material-icons">chat</span>
+                  Chatear ahora
+                </button>
+                <button class="md-button md-button--outlined" onclick="scrollToForm()">
+                  <span class="material-icons">edit</span>
+                  Enviar mensaje
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="md-contact__form">
+            <div id="contact">
+              <form class="md-form" novalidate>
+                <div class="md-form__header">
+                  <h3 class="md-form__title">Envíanos un mensaje</h3>
+                  <p class="md-form__subtitle">Completa el formulario y nos pondremos en contacto contigo pronto</p>
+                </div>
+
+                <!-- Success and Error Messages -->
+                <div id="form-success-message" class="success-message" style="display: none;"></div>
+                <div id="form-general-error" class="general-error" style="display: none;"></div>
+
+                <div class="md-form__content">
+                  <!-- Personal Information -->
+                  <div class="md-form__section">
+                    <h4 class="md-form__section-title">Información Personal</h4>
+                    
+                    <div class="md-form__row">
+                      <div class="md-form__field">
+                        <div class="md-textfield">
+                          <input 
+                            type="text" 
+                            id="contact-name" 
+                            name="nombre" 
+                            class="md-textfield__input" 
+                            required
+                            placeholder=" "
+                            autocomplete="given-name"
+                          />
+                          <label for="contact-name" class="md-textfield__label">Nombre *</label>
+                          <div class="md-textfield__supporting-text">
+                            <span class="md-textfield__error error-message" id="name-error"></span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="md-form__field">
+                        <div class="md-textfield">
+                          <input 
+                            type="email" 
+                            id="contact-email" 
+                            name="email" 
+                            class="md-textfield__input" 
+                            required
+                            placeholder=" "
+                            autocomplete="email"
+                          />
+                          <label for="contact-email" class="md-textfield__label">Email *</label>
+                          <div class="md-textfield__supporting-text">
+                            <span class="md-textfield__helper">Usaremos este email para contactarte</span>
+                            <span class="md-textfield__error error-message" id="email-error"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="md-form__row">
+                      <div class="md-form__field">
+                        <div class="md-textfield">
+                          <input 
+                            type="tel" 
+                            id="contact-phone" 
+                            name="telefono" 
+                            class="md-textfield__input" 
+                            autocomplete="tel"
+                            placeholder=" "
+                          />
+                          <label for="contact-phone" class="md-textfield__label">Teléfono</label>
+                          <div class="md-textfield__supporting-text">
+                            <span class="md-textfield__helper">Opcional - Para contacto directo</span>
+                            <span class="md-textfield__error error-message" id="phone-error"></span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="md-form__field">
+                        <div class="md-select">
+                          <select id="tipoServicio" name="tipoServicio" class="md-select__input">
+                            <option value="" disabled selected></option>
+                            <option value="invitaciones">Invitaciones Personalizadas</option>
+                            <option value="centros-mesa">Centros de Mesa</option>
+                            <option value="velas">Velas Aromáticas</option>
+                            <option value="recuerdos">Recuerdos Personalizados</option>
+                            <option value="diseno-grafico">Diseño Gráfico</option>
+                            <option value="consultoria">Consultoría de Eventos</option>
+                            <option value="otro">Otro servicio</option>
+                          </select>
+                          <label for="tipoServicio" class="md-select__label">Tipo de Evento</label>
+                          <span class="material-icons md-select__dropdown-icon">expand_more</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Project Information -->
+                  <div class="md-form__section">
+                    <h4 class="md-form__section-title">Información del Proyecto</h4>
+
+                    <div class="md-form__field">
+                      <div class="md-textfield md-textfield--textarea">
+                        <textarea 
+                          id="contact-message" 
+                          name="mensaje" 
+                          class="md-textfield__input" 
+                          rows="4" 
+                          required
+                          placeholder=" "
+                        ></textarea>
+                        <label for="contact-message" class="md-textfield__label">Cuéntanos sobre tu proyecto *</label>
+                        <div class="md-textfield__supporting-text">
+                          <span class="md-textfield__helper">Describe tu visión, ideas, colores preferidos, etc.</span>
+                          <span class="md-textfield__error error-message" id="message-error"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Preferences -->
+                  <div class="md-form__section">
+                    <h4 class="md-form__section-title">Preferencias</h4>
+                    
+                    <div class="md-form__field">
+                      <div class="md-checkbox-group">
+                        <label class="md-checkbox">
+                          <input type="checkbox" id="newsletter" name="preferencias[]" value="newsletter" class="md-checkbox__input">
+                          <div class="md-checkbox__background">
+                            <span class="material-icons md-checkbox__checkmark">check</span>
+                          </div>
+                          <span class="md-checkbox__label">Recibir newsletter con inspiración y ofertas</span>
+                        </label>
+                        
+                        <label class="md-checkbox">
+                          <input type="checkbox" id="whatsapp-updates" name="preferencias[]" value="whatsapp" class="md-checkbox__input">
+                          <div class="md-checkbox__background">
+                            <span class="material-icons md-checkbox__checkmark">check</span>
+                          </div>
+                          <span class="md-checkbox__label">Recibir actualizaciones por WhatsApp</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="md-form__actions">
+                  <button type="button" class="md-button md-button--outlined" onclick="resetForm()">
+                    <span class="material-icons">refresh</span>
+                    Limpiar formulario
+                  </button>
+                  <button type="submit" class="md-button md-button--filled">
+                    <span class="material-icons">send</span>
+                    Enviar mensaje
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="md-footer" role="contentinfo">
+    <div class="md-container">
+      <!-- Footer Main Content -->
+      <div class="md-footer__content">
+        <!-- Company Info -->
+        <div class="md-footer__section md-footer__section--primary">
+          <div class="md-footer__logo">
+            <img src="../static/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-footer__logo-img" />
+            <div class="md-footer__logo-text">
+              <h3 class="md-footer__company-name">VR Distribución</h3>
+              <p class="md-footer__tagline">Virginia Ruiz • Diseño y Creatividad</p>
+            </div>
+          </div>
+          <p class="md-footer__description">
+            Desde 1999, especializados en crear invitaciones personalizadas, centros de mesa y decoraciones únicas para bodas y eventos especiales en Cancún y Quintana Roo.
+          </p>
+          
+          <!-- Social Media -->
+          <div class="md-footer__social">
+            <h4 class="md-footer__social-title">Síguenos</h4>
+            <div class="md-footer__social-links">
+              <a href="https://wa.me/529981234567" class="md-social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+                <span class="material-icons">chat</span>
+              </a>
+              <a href="mailto:contacto@vrdistribucion.com" class="md-social-link" aria-label="Email">
+                <span class="material-icons">email</span>
+              </a>
+              <a href="tel:+529981234567" class="md-social-link" aria-label="Teléfono">
+                <span class="material-icons">phone</span>
+              </a>
+              <a href="https://www.facebook.com/vrdistribucion" class="md-social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                <span class="material-icons">facebook</span>
+              </a>
+              <a href="https://www.instagram.com/vrdistribucion" class="md-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                <span class="material-icons">camera_alt</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="md-footer__section">
+          <h4 class="md-footer__section-title">Servicios</h4>
+          <nav class="md-footer__nav" aria-label="Servicios">
+            <a href="/#servicios" class="md-footer__link">Invitaciones Personalizadas</a>
+            <a href="/#servicios" class="md-footer__link">Centros de Mesa</a>
+            <a href="/#servicios" class="md-footer__link">Velas Aromáticas</a>
+            <a href="/#servicios" class="md-footer__link">Recuerdos Personalizados</a>
+            <a href="/#servicios" class="md-footer__link">Diseño Gráfico</a>
+            <a href="/#servicios" class="md-footer__link">Consultoría de Eventos</a>
+          </nav>
+        </div>
+
+        <!-- Company -->
+        <div class="md-footer__section">
+          <h4 class="md-footer__section-title">Empresa</h4>
+          <nav class="md-footer__nav" aria-label="Empresa">
+            <a href="/#caracteristicas" class="md-footer__link">Sobre Nosotros</a>
+            <a href="/gallery" class="md-footer__link">Galería</a>
+            <a href="/portafolio" class="md-footer__link">Portafolio</a>
+            <a href="/#testimonios" class="md-footer__link">Testimonios</a>
+            <a href="/cotizaciones" class="md-footer__link">Cotizaciones</a>
+            <a href="/aparador" class="md-footer__link">Aparador</a>
+          </nav>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="md-footer__section">
+          <h4 class="md-footer__section-title">Contacto</h4>
+          <div class="md-footer__contact">
+            <div class="md-footer__contact-item">
+              <span class="material-icons">location_on</span>
+              <div class="md-footer__contact-content">
+                <strong>Ubicación</strong>
+                <p>Cancún, Quintana Roo<br>Servicio a domicilio</p>
+              </div>
+            </div>
+            
+            <div class="md-footer__contact-item">
+              <span class="material-icons">schedule</span>
+              <div class="md-footer__contact-content">
+                <strong>Horarios</strong>
+                <p>Lun - Sáb: 9:00 - 18:00<br>Dom: Con cita previa</p>
+              </div>
+            </div>
+            
+            <div class="md-footer__contact-item">
+              <span class="material-icons">chat</span>
+              <div class="md-footer__contact-content">
+                <strong>WhatsApp</strong>
+                <p>+52 998 123 4567<br>Respuesta inmediata</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="md-footer__bottom">
+        <div class="md-footer__bottom-content">
+          <div class="md-footer__copyright">
+            <p>&copy; 2024 VR Distribución - Virginia Ruiz. Todos los derechos reservados.</p>
+            <p class="md-footer__tech">Powered by Material Design 3 • Desarrollado con ❤️ en Cancún</p>
+          </div>
+          
+          <div class="md-footer__legal">
+            <a href="/cookie-consent/Politica_de_Privacidad_VR_Distribucion.html" class="md-footer__legal-link">Política de Privacidad</a>
+            <span class="md-footer__separator">•</span>
+            <a href="#" class="md-footer__legal-link">Términos de Servicio</a>
+            <span class="md-footer__separator">•</span>
+            <a href="/sitemap.xml" class="md-footer__legal-link">Sitemap</a>
+          </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <button class="md-fab md-fab--back-to-top" id="backToTop" aria-label="Volver al inicio" title="Volver al inicio">
+          <span class="material-icons">keyboard_arrow_up</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX OVERLAY -->
+  <div id="lightbox-overlay" class="md-lightbox-overlay" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-describedby="lightbox-description">
+    <div class="md-lightbox-container">
+      <button class="md-lightbox__close md-icon-button" aria-label="Cerrar galería" title="Cerrar (Esc)">
+        <span class="material-icons">close</span>
+      </button>
+      
+      <div class="md-lightbox__content">
+        <div class="md-lightbox__image-container">
+          <img id="lightbox-image" class="md-lightbox__image" src="" alt="" />
+          
+          <button class="md-lightbox__prev md-icon-button" aria-label="Imagen anterior" title="Anterior (←)">
+            <span class="material-icons">arrow_back</span>
+          </button>
+          
+          <button class="md-lightbox__next md-icon-button" aria-label="Imagen siguiente" title="Siguiente (→)">
+            <span class="material-icons">arrow_forward</span>
+          </button>
+          
+          <!-- Mensaje de deslizar solo visible en móvil -->
+          <div class="md-lightbox__swipe-hint">
+            <span class="material-icons">swipe</span>
+            Deslizar para navegar
+          </div>
+        </div>
+        
+        <div class="md-lightbox__info">
+          <h5 id="lightbox-title" class="md-lightbox__title"></h5>
+          <p id="lightbox-description" class="md-lightbox__description"></p>
+          <span id="lightbox-counter" class="md-lightbox__counter"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Widget (mantener estructura original) -->
+  <div id="chat-container" class="chat-container collapsed">
+    <div class="chat-header">
+      <button id="close-btn" class="control-btn" aria-label="Cerrar chat" title="Cerrar chat">
+        <span class="material-icons">close</span>
+      </button>
+      <span class="chat-title">VR Distribución</span>
+      <div class="chat-controls">
+        <button id="minimize-btn" class="control-btn" aria-label="Minimizar chat" title="Minimizar chat">
+          <span class="material-icons">remove</span>
+        </button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="message assistant">
+        <div class="message-content">
+          <p>¡Hola! Veo que estás explorando nuestra galería MD3.</p>
+          <p>¿Algún proyecto te inspiró? ¿En qué puedo ayudarte con tu evento?</p>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input-container">
+      <textarea id="chat-input" placeholder="¿Qué estilo te gustó más?..." rows="1"></textarea>
+      <button id="send-btn" class="send-btn">
+        <span class="material-icons">send</span>
+      </button>
+    </div>
+  </div>
+
+  <button id="chat-toggle" class="chat-toggle" aria-label="Abrir chat" title="Abrir chat">
+    <span class="material-icons">chat</span>
+  </button>
+
+  <!-- Back to Top FAB -->
+  <button class="md-fab md-fab--primary md-fab--medium md-fab--back-to-top" type="button" role="button" id="backToTop" aria-label="Volver al inicio" title="Volver al inicio">
+    <span class="md-fab__icon material-icons">keyboard_arrow_up</span>
+  </button>
+
+  <!-- Critical JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🎨 VR Distribución Galería MD3 cargada');
+      
+      // Aplicar animación de carga
+      setTimeout(() => {
+        document.querySelectorAll('.md-loading').forEach(el => {
+          el.style.opacity = '1';
+        });
+      }, 100);
+
+      // Mobile menu functionality (mantener compatibilidad)
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const hamburgerDropdown = document.querySelector('.hamburger-dropdown');
+      
+      if (mobileMenuToggle && hamburgerDropdown) {
+        function toggleMenu() {
+          const isActive = hamburgerDropdown.classList.contains('active');
+          hamburgerDropdown.classList.toggle('active');
+          
+          if (isActive) {
+            mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          } else {
+            mobileMenuToggle.querySelector('.material-icons').textContent = 'close';
+            mobileMenuToggle.setAttribute('aria-expanded', 'true');
+          }
+        }
+        
+        mobileMenuToggle.addEventListener('click', toggleMenu);
+        
+        // Cerrar al hacer clic en enlaces
+        hamburgerDropdown.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            hamburgerDropdown.classList.remove('active');
+            mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Back to Top Button
+      const backToTopBtn = document.getElementById('backToTop');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+
+        // Show/hide based on scroll position
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) {
+            backToTopBtn.style.opacity = '1';
+            backToTopBtn.style.transform = 'scale(1)';
+          } else {
+            backToTopBtn.style.opacity = '0';
+            backToTopBtn.style.transform = 'scale(0.8)';
+          }
+        });
+      }
+    });
+
+    // Reset Form Function (global scope for onclick attribute)
+    function resetForm() {
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.reset();
+        
+        // Clear any error messages
+        const errorElements = form.querySelectorAll('.md-form__error');
+        errorElements.forEach(error => {
+          error.textContent = '';
+          error.style.display = 'none';
+        });
+        
+        // Clear success message
+        const successElement = form.querySelector('.md-form__success');
+        if (successElement) {
+          successElement.textContent = '';
+          successElement.style.display = 'none';
+        }
+        
+        // Reset field states
+        const textfields = form.querySelectorAll('.md-textfield');
+        textfields.forEach(field => {
+          field.classList.remove('md-textfield--error', 'md-textfield--focused');
+        });
+        
+        console.log('Formulario reseteado');
+      }
+    }
+  </script>
+  
+  <!-- Showdown for Markdown support -->
+  <script src="../static/vendor/showdown.min.js"></script>
+  
+  <!-- Chat functionality -->
+  <script src="../static/home/js/chat.js"></script>
+  
+  <!-- Contact Form JavaScript -->
+  <script src="../static/landing/js/contactForm.js"></script>
+  
+  <!-- Gallery MCP MD3 JavaScript -->
+  <script src="../static/gallery/js/gallery-mcp-md3.js"></script>
+</body>
+</html>
