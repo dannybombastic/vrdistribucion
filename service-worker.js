@@ -43,11 +43,27 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Service Worker: Cacheando recursos críticos...');
-        // Solo cachear recursos críticos durante la instalación
-        return cache.addAll(CRITICAL_RESOURCES);
+        
+        // Intentar cachear recursos individualmente para mejor debugging
+        const cachePromises = CRITICAL_RESOURCES.map(async (resource) => {
+          try {
+            console.log(`Service Worker: Intentando cachear ${resource}`);
+            const response = await fetch(resource);
+            if (response.ok) {
+              await cache.put(resource, response);
+              console.log(`Service Worker: ✓ Cacheado ${resource}`);
+            } else {
+              console.warn(`Service Worker: ⚠️ Error HTTP ${response.status} para ${resource}`);
+            }
+          } catch (error) {
+            console.error(`Service Worker: ❌ Error al cachear ${resource}:`, error.message);
+          }
+        });
+        
+        return Promise.allSettled(cachePromises);
       })
       .then(() => {
-        console.log('Service Worker: Recursos críticos cacheados');
+        console.log('Service Worker: Proceso de cache completado');
         return self.skipWaiting();
       })
       .catch(error => {
