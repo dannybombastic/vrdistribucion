@@ -554,9 +554,9 @@
                 </div>
               </div>
               <div class="md-service-card__actions">
-                <button class="md-button md-button--filled" onclick="scrollToSection('#contacto')">
+                <a href="#contacto" class="md-button md-button--filled">
                   Solicitar Cotización
-                </button>
+                </a>
                 <a href="/gallery" class="md-button md-button--outlined">Ver Galería</a>
               </div>
             </div>
@@ -609,9 +609,9 @@
                 </div>
               </div>
               <div class="md-service-card__actions">
-                <button class="md-button md-button--outlined" onclick="scrollToSection('#contacto')">
+                <a href="#contacto" class="md-button md-button--outlined">
                   Consultar
-                </button>
+                </a>
               </div>
             </div>
           </article>
@@ -663,9 +663,9 @@
                 </div>
               </div>
               <div class="md-service-card__actions">
-                <button class="md-button md-button--outlined" onclick="scrollToSection('#contacto')">
+                <a href="#contacto" class="md-button md-button--outlined">
                   Consultar
-                </button>
+                </a>
               </div>
             </div>
           </article>
@@ -688,9 +688,9 @@
                 <span class="md-highlight">Variados</span>
               </div>
               <div class="md-service-card__actions">
-                <button class="md-button md-button--outlined" onclick="scrollToSection('#contacto')">
+                <a href="#contacto" class="md-button md-button--outlined">
                   Consultar
-                </button>
+                </a>
               </div>
             </div>
           </article>
@@ -724,9 +724,9 @@
                 <span class="md-highlight">Impacto</span>
               </div>
              <div class="md-service-card__actions">
-                <button class="md-button md-button--outlined" onclick="scrollToSection('#contacto')">
+                <a href="#contacto" class="md-button md-button--outlined">
                   Consultar
-                </button>
+                </a>
               </div>
             </div>
           </article>
@@ -749,9 +749,9 @@
                 <span class="md-highlight">Éxito</span>
               </div>
               <div class="md-service-card__actions">
-                <button class="md-button md-button--outlined" onclick="scrollToSection('#contacto')">
+                <a href="#contacto" class="md-button md-button--outlined">
                   Consultar
-                </button>
+                </a>
               </div>
             </div>
           </article>
@@ -767,10 +767,10 @@
               </p>
             </div>
             <div class="md-cta-card__actions">
-              <button class="md-button md-button--filled md-button--large" onclick="scrollToSection('#contacto')">
+              <a href="#contacto" class="md-button md-button--filled md-button--large">
                 <span class="material-icons">message</span>
                 Hablemos de tu proyecto
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -989,10 +989,10 @@
                   <span class="material-icons">chat</span>
                   Chatear ahora
                 </button>
-                <button class="md-button md-button--outlined" onclick="scrollToForm()">
+                <a href="#contact" class="md-button md-button--outlined">
                   <span class="material-icons">edit</span>
                   Enviar mensaje
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -1000,7 +1000,7 @@
           <!-- Contact Form -->
           <div class="md-contact__form">
             <div id="contact">
-              <form class="md-form" novalidate>
+              <form id="contact-form" class="md-form" novalidate>
                 <div class="md-form__header">
                   <h3 class="md-form__title">Envíanos un mensaje</h3>
                   <p class="md-form__subtitle">Completa el formulario y nos pondremos en contacto contigo pronto</p>
@@ -1120,7 +1120,7 @@
 
                 <!-- Form Actions -->
                 <div class="md-form__actions">
-                  <button type="button" class="md-button md-button--outlined" onclick="resetForm()">
+                  <button id="reset-form-button" type="button" class="md-button md-button--outlined" onclick="resetForm()">
                     <span class="material-icons">refresh</span>
                     Limpiar formulario
                   </button>
@@ -1320,12 +1320,12 @@
         <div class="md-footer__section">
           <h4 class="md-footer__section-title">Servicios</h4>
           <nav class="md-footer__nav" aria-label="Servicios">
-            <a href="#servicios" class="md-footer__link" onclick="scrollToSection('#servicios')">Invitaciones Personalizadas</a>
-            <a href="#servicios" class="md-footer__link" onclick="scrollToSection('#servicios')">Centros de Mesa</a>
-            <a href="#servicios" class="md-footer__link" onclick="scrollToSection('#servicios')">Velas Aromáticas</a>
-            <a href="#servicios" class="md-footer__link" onclick="scrollToSection('#servicios')">Recuerdos Personalizados</a>
-            <a href="#servicios" class="md-footer__link" onclick="scrollToSection('#servicios')">Diseño Gráfico</a>
-            <a href="#servicios" class="md-footer__link" onclick="scrollToSection('#servicios')">Consultoría de Eventos</a>
+            <a href="#servicios" class="md-footer__link">Invitaciones Personalizadas</a>
+            <a href="#servicios" class="md-footer__link">Centros de Mesa</a>
+            <a href="#servicios" class="md-footer__link">Velas Aromáticas</a>
+            <a href="#servicios" class="md-footer__link">Recuerdos Personalizados</a>
+            <a href="#servicios" class="md-footer__link">Diseño Gráfico</a>
+            <a href="#servicios" class="md-footer__link">Consultoría de Eventos</a>
           </nav>
         </div>
 
@@ -1333,10 +1333,10 @@
         <div class="md-footer__section">
           <h4 class="md-footer__section-title">Empresa</h4>
           <nav class="md-footer__nav" aria-label="Empresa">
-            <a href="#caracteristicas" class="md-footer__link" onclick="scrollToSection('#caracteristicas')">Sobre Nosotros</a>
+            <a href="#caracteristicas" class="md-footer__link">Sobre Nosotros</a>
             <a href="/gallery" class="md-footer__link">Galería</a>
             <a href="/portafolio" class="md-footer__link">Portafolio</a>
-            <a href="#testimonios" class="md-footer__link" onclick="scrollToSection('#testimonios')">Testimonios</a>
+            <a href="#testimonios" class="md-footer__link">Testimonios</a>
             <a href="/cotizaciones" class="md-footer__link">Cotizaciones</a>
             <a href="/aparador" class="md-footer__link">Aparador</a>
           </nav>
@@ -1524,6 +1524,9 @@
       initializeChat();
     });
   </script>
+  
+  <!-- Critical utility functions first -->
+  <script  async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js"></script>
   
   <!-- Non-critical JavaScript - Async loading -->
   <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js"></script>

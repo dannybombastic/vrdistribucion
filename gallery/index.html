@@ -306,7 +306,7 @@
     </section>
 
     <!-- GALLERY CONTENT -->
-    <section class="md-gallery-content" aria-label="Contenido de la galería">
+    <section class="md-gallery-content" id="gallery" aria-label="Contenido de la galería">
       <div class="md-container">
         <!-- Gallery grid will be rendered by JavaScript -->
         <div class="md-gallery-loading">
@@ -739,38 +739,24 @@
         });
       }
 
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            console.log('🎯 Scrolling to:', this.getAttribute('href'));
+          }
+        });
+      });
+
 
     });
 
-    // Reset Form Function (global scope for onclick attribute)
-    function resetForm() {
-      const form = document.getElementById('contact-form');
-      if (form) {
-        form.reset();
-        
-        // Clear any error messages
-        const errorElements = form.querySelectorAll('.md-form__error');
-        errorElements.forEach(error => {
-          error.textContent = '';
-          error.style.display = 'none';
-        });
-        
-        // Clear success message
-        const successElement = form.querySelector('.md-form__success');
-        if (successElement) {
-          successElement.textContent = '';
-          successElement.style.display = 'none';
-        }
-        
-        // Reset field states
-        const textfields = form.querySelectorAll('.md-textfield');
-        textfields.forEach(field => {
-          field.classList.remove('md-textfield--error', 'md-textfield--focused');
-        });
-        
-        console.log('Formulario reseteado');
-      }
-    }
   </script>
   
   <!-- Showdown for Markdown support -->
@@ -787,6 +773,8 @@
   
   <!-- Chat functionality -->
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
+
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js"></script>
   
   <!-- Contact Form JavaScript -->
   <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
