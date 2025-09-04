@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK"></script>
+  <!-- Google Analytics - Optimized Loading -->
   <script>
+    // Optimized Google Analytics loading to prevent forced reflows
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-DLSGS9C2TK');
+    function gtag(){dataLayer.push(arguments);}
+    
+    // Defer analytics initialization until after critical path
+    function initializeGoogleAnalytics() {
+      gtag('js', new Date());
+      gtag('config', 'G-DLSGS9C2TK', {
+        // Performance optimizations
+        send_page_view: false,
+        transport_type: 'beacon',
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+      
+      // Send page view after DOM is ready
+      gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href
+      });
+    }
+    
+    // Load Google Analytics script asynchronously after page load
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
+        script.onload = initializeGoogleAnalytics;
+        document.head.appendChild(script);
+      }, 1000); // Delay 1 second after page load
+    });
   </script>
   
   <meta charset="UTF-8" />
@@ -698,49 +726,60 @@
 
 
 
-  <!-- Critical JavaScript -->
+  <!-- Critical JavaScript - Optimized for Performance -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       console.log('🎨 VR Distribución Galería cargada');
       
-      // Aplicar animación de carga
-      setTimeout(() => {
-        document.querySelectorAll('.md-loading').forEach(el => {
+      // Batch DOM operations to prevent forced reflows
+      requestAnimationFrame(() => {
+        // Aplicar animación de carga en un solo frame
+        const loadingElements = document.querySelectorAll('.md-loading');
+        loadingElements.forEach(el => {
           el.style.opacity = '1';
         });
-      }, 100);
+      });
 
-      // Mobile menu functionality (mantener compatibilidad)
+      // Mobile menu functionality - Optimized
       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
       const hamburgerDropdown = document.querySelector('.hamburger-dropdown');
       
       if (mobileMenuToggle && hamburgerDropdown) {
         function toggleMenu() {
+          // Read phase - get current state without triggering reflow
           const isActive = hamburgerDropdown.classList.contains('active');
-          hamburgerDropdown.classList.toggle('active');
           
-          if (isActive) {
-            mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
-          } else {
-            mobileMenuToggle.querySelector('.material-icons').textContent = 'close';
-            mobileMenuToggle.setAttribute('aria-expanded', 'true');
-          }
+          // Write phase - batch all DOM writes
+          requestAnimationFrame(() => {
+            hamburgerDropdown.classList.toggle('active');
+            
+            if (isActive) {
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+              mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            } else {
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'close';
+              mobileMenuToggle.setAttribute('aria-expanded', 'true');
+            }
+          });
         }
         
-        mobileMenuToggle.addEventListener('click', toggleMenu);
+        // Passive event listeners to improve scroll performance
+        mobileMenuToggle.addEventListener('click', toggleMenu, { passive: true });
         
-        // Cerrar al hacer clic en enlaces
+        // Cerrar al hacer clic en enlaces - Optimized
         hamburgerDropdown.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => {
-            hamburgerDropdown.classList.remove('active');
-            mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
-          });
+            // Batch DOM updates
+            requestAnimationFrame(() => {
+              hamburgerDropdown.classList.remove('active');
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+              mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            });
+          }, { passive: true });
         });
       }
 
-      // Smooth scroll for anchor links
+      // Smooth scroll for anchor links - Optimized
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();

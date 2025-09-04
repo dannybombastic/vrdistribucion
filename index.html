@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK"></script>
+  <!-- Google Analytics - Optimized Loading -->
   <script>
+    // Optimized Google Analytics loading to prevent forced reflows
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-DLSGS9C2TK');
+    function gtag(){dataLayer.push(arguments);}
+    
+    // Defer analytics initialization until after critical path
+    function initializeGoogleAnalytics() {
+      gtag('js', new Date());
+      gtag('config', 'G-DLSGS9C2TK', {
+        // Performance optimizations
+        send_page_view: false,
+        transport_type: 'beacon',
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+      
+      // Send page view after DOM is ready
+      gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href
+      });
+    }
+    
+    // Load Google Analytics script asynchronously after page load
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
+        script.onload = initializeGoogleAnalytics;
+        document.head.appendChild(script);
+      }, 1000); // Delay 1 second after page load
+    });
   </script>
   
   <meta charset="UTF-8" />
@@ -1432,49 +1460,60 @@
     <span class="material-icons">chat</span>
   </button>
 
-  <!-- Critical JavaScript -->
+  <!-- Critical JavaScript - Optimized for Performance -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       console.log('🎨 VR Distribución Material Design 3 - Etapa 1 cargada');
       
-      // Aplicar animación de carga
-      setTimeout(() => {
-        document.querySelectorAll('.md-loading').forEach(el => {
+      // Batch DOM operations to prevent forced reflows
+      requestAnimationFrame(() => {
+        // Aplicar animación de carga en un solo frame
+        const loadingElements = document.querySelectorAll('.md-loading');
+        loadingElements.forEach(el => {
           el.style.opacity = '1';
         });
-      }, 100);
+      });
 
-      // Mobile menu functionality (mantener compatibilidad)
+      // Mobile menu functionality - Optimized
       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
       const hamburgerDropdown = document.querySelector('.hamburger-dropdown');
       
       if (mobileMenuToggle && hamburgerDropdown) {
         function toggleMenu() {
+          // Read phase - get current state without triggering reflow
           const isActive = hamburgerDropdown.classList.contains('active');
-          if (isActive) {
-            hamburgerDropdown.classList.remove('active');
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
-          } else {
-            hamburgerDropdown.classList.add('active');
-            mobileMenuToggle.setAttribute('aria-expanded', 'true');
-            mobileMenuToggle.querySelector('.material-icons').textContent = 'close';
-          }
+          
+          // Write phase - batch all DOM writes
+          requestAnimationFrame(() => {
+            if (isActive) {
+              hamburgerDropdown.classList.remove('active');
+              mobileMenuToggle.setAttribute('aria-expanded', 'false');
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+            } else {
+              hamburgerDropdown.classList.add('active');
+              mobileMenuToggle.setAttribute('aria-expanded', 'true');
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'close';
+            }
+          });
         }
         
-        mobileMenuToggle.addEventListener('click', toggleMenu);
+        // Passive event listeners to improve scroll performance
+        mobileMenuToggle.addEventListener('click', toggleMenu, { passive: true });
         
-        // Cerrar al hacer clic en enlaces
+        // Cerrar al hacer clic en enlaces - Optimized
         hamburgerDropdown.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => {
-            hamburgerDropdown.classList.remove('active');
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
-          });
+            // Batch DOM updates
+            requestAnimationFrame(() => {
+              hamburgerDropdown.classList.remove('active');
+              mobileMenuToggle.setAttribute('aria-expanded', 'false');
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+            });
+          }, { passive: true });
         });
       }
 
-      // Chat functionality - Inicialización robusta
+      // Chat functionality - Optimized initialization
       function initializeChat() {
         const chatContainer = document.getElementById('chat-container');
         const chatToggle = document.getElementById('chat-toggle');
@@ -1484,38 +1523,44 @@
           return;
         }
 
-        // Toggle del chat
+        // Optimized toggle with requestAnimationFrame
+        function toggleChat() {
+          requestAnimationFrame(() => {
+            const isCollapsed = chatContainer.classList.contains('collapsed');
+            chatContainer.classList.toggle('collapsed');
+            chatToggle.style.display = isCollapsed ? 'none' : 'block';
+            console.log(isCollapsed ? '✅ Chat opened' : '✅ Chat collapsed');
+          });
+        }
+
+        // Toggle del chat - Use optimized function
         chatToggle.addEventListener('click', function() {
           console.log('🔄 Chat toggle clicked');
-          chatContainer.classList.toggle('collapsed');
-          
-          if (chatContainer.classList.contains('collapsed')) {
-            chatToggle.style.display = 'block';
-            console.log('✅ Chat collapsed');
-          } else {
-            chatToggle.style.display = 'none';
-            console.log('✅ Chat opened');
-          }
-        });
+          toggleChat();
+        }, { passive: true });
 
-        // Botones de control del chat
+        // Botones de control del chat - Optimized
         const minimizeBtn = document.getElementById('minimize-btn');
         const closeBtn = document.getElementById('close-btn');
         
         if (minimizeBtn) {
           minimizeBtn.addEventListener('click', function() {
-            chatContainer.classList.add('collapsed');
-            chatToggle.style.display = 'block';
-            console.log('✅ Chat minimized');
-          });
+            requestAnimationFrame(() => {
+              chatContainer.classList.add('collapsed');
+              chatToggle.style.display = 'block';
+              console.log('✅ Chat minimized');
+            });
+          }, { passive: true });
         }
         
         if (closeBtn) {
           closeBtn.addEventListener('click', function() {
-            chatContainer.classList.add('collapsed');
-            chatToggle.style.display = 'block';
-            console.log('✅ Chat closed');
-          });
+            requestAnimationFrame(() => {
+              chatContainer.classList.add('collapsed');
+              chatToggle.style.display = 'block';
+              console.log('✅ Chat closed');
+            });
+          }, { passive: true });
         }
 
         console.log('✅ Chat basic functionality initialized');
