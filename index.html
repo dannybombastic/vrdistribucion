@@ -252,24 +252,68 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
 
-  <!-- Material Design 3 Theme and Fonts - Optimized Loading -->
+  <!-- Critical Resource Hints for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://vrdistribucion.s3-accelerate.amazonaws.com">
   
-  <!-- Critical CSS - Material Design 3 Theme (inline) -->
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css">
+  <!-- Preload Critical Fonts -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxK.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/robotoflex/v9/NaNnepOXO_NexZs0b5QrzlOHb8wCikXpYqmZsWI-__OGfttPZktqc2VdZ80KvCLZaPcSBZtOx2MdKjFrREmMKNeE.woff2" as="font" type="font/woff2" crossorigin>
   
-  <!-- Fonts with font-display optimization -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <!-- Load Material Icons Asynchronously -->
+  <script>
+    // Load Material Icons font asynchronously
+    window.addEventListener('load', function() {
+      const materialIconsLink = document.createElement('link');
+      materialIconsLink.rel = 'stylesheet';
+      materialIconsLink.href = 'https://fonts.googleapis.com/icon?family=Material+Icons&display=swap';
+      document.head.appendChild(materialIconsLink);
+    });
+  </script>
   
-  <!-- Non-critical CSS - Preload and defer -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- Load Google Fonts Asynchronously with Critical Font Display -->
+  <script>
+    // Critical font loading strategy
+    const fontLoader = document.createElement('link');
+    fontLoader.rel = 'stylesheet';
+    fontLoader.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap';
+    fontLoader.media = 'print';
+    fontLoader.onload = function() { this.media = 'all'; };
+    document.head.appendChild(fontLoader);
+  </script>
   
-  <!-- Fallback for browsers that don't support preload -->
+  <!-- Load Non-Critical CSS Asynchronously -->
+  <script>
+    // Asynchronous CSS loading function
+    function loadCSS(href, before, media) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.media = media || 'all';
+      if (before) {
+        before.parentNode.insertBefore(link, before);
+      } else {
+        document.head.appendChild(link);
+      }
+      return link;
+    }
+    
+    // Load non-critical stylesheets after page load
+    window.addEventListener('load', function() {
+      // Material Design CSS files
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css');
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css');
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css');
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css');
+    });
+  </script>
+  
+  <!-- Fallback for browsers without JavaScript -->
   <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css">
     <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css">
     <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css">
     <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css">
@@ -277,8 +321,363 @@
   
   <!-- Critical CSS - Above-the-fold optimized for LCP -->
   <style>
-    /* Material Design 3 Critical Variables */
-    :root{ --md-sys-color-primary: #257cbc; --md-sys-color-on-primary: #ffffff; --md-sys-color-primary-container: #cee5ff; --md-sys-color-on-primary-container: #001d33; --md-sys-color-surface: #fcfcff; --md-sys-color-on-surface: #1a1c1e; --md-sys-color-surface-variant: #dee3eb; --md-sys-color-on-surface-variant: #42474e; --md-sys-color-outline: #72777f; --md-sys-color-outline-variant: #c2c7cf; --md-sys-color-background: #fcfcff; --md-sys-color-on-background: #1a1c1e; --md-type-headline-large: 400 2rem/2.5rem 'Roboto', sans-serif; --md-type-headline-medium: 400 1.75rem/2.25rem 'Roboto', sans-serif; --md-type-body-large: 400 1rem/1.5rem 'Roboto', sans-serif; --md-space-xs: 4px; --md-space-sm: 8px; --md-space-md: 12px; --md-space-lg: 16px; --md-space-xl: 24px; --md-space-xxl: 32px; --md-space-xxxl: 48px; --md-radius-xs: 4px; --md-radius-sm: 8px; --md-radius-md: 12px; --md-radius-lg: 16px;} *, *::before, *::after{ box-sizing: border-box;} html, body{ margin: 0; padding: 0; overflow-x: hidden;} body{ font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.5; color: var(--md-sys-color-on-background); background-color: var(--md-sys-color-background); font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;} .md-layout{ display: flex; flex-direction: column; min-height: 100vh;} .md-main{ flex: 1;} .md-container{ max-width: 1200px; margin: 0 auto; padding: 0 16px;} @media (min-width: 768px){ .md-container{ padding: 0 24px;}} .md-header{ background: var(--md-sys-color-surface); border-bottom: 1px solid var(--md-sys-color-outline-variant); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 64px; display: flex; align-items: center; backdrop-filter: blur(8px);} .md-header__content{ display: flex; align-items: center; justify-content: space-between; width: 100%;} .md-logo{ height: 40px; width: auto;} .md-hero{ background: linear-gradient( 135deg, var(--md-sys-color-primary-container) 0%, var(--md-sys-color-surface-variant) 100% ); padding: 88px 0 64px; margin-top: 64px; display: flex; align-items: center;} .md-hero__content{ display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;} @media (min-width: 968px){ .md-hero__content{ grid-template-columns: 1fr 1fr; gap: 48px;}} .md-hero__text h1{ font-family: 'Roboto Flex', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; color: var(--md-sys-color-on-surface); margin: 0 0 16px 0;} .md-hero__text p{ font-size: 1.125rem; color: var(--md-sys-color-on-surface-variant); margin: 0 0 24px 0; line-height: 1.6;} .md-button{ display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 24px; border-radius: 20px; border: none; outline: none; font-family: inherit; font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer; transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0); position: relative; overflow: hidden;} .md-button--filled{ background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary);} .md-button--outlined{ background-color: transparent; color: var(--md-sys-color-primary); border: 1px solid var(--md-sys-color-outline);} .md-button--filled:hover{ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);} .md-button--outlined:hover{ background-color: var(--md-sys-color-primary-container); border-color: var(--md-sys-color-primary);} .md-nav-mobile{ display: block;} @media (min-width: 768px){ .md-nav-mobile{ display: none !important;}} @media (max-width: 767px){ .md-nav-desktop{ display: none !important;}} .mobile-menu-toggle{ margin-left: auto;} @media (min-width: 768px){ .mobile-menu-toggle{ display: none !important;}} .md-icon-button{ display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: none; border-radius: 50%; background: transparent; color: var(--md-sys-color-on-surface); cursor: pointer; transition: background-color 200ms;} .md-loading{ opacity: 0; animation: fadeIn 0.3s ease forwards;} @keyframes fadeIn{ to{ opacity: 1;}}
+    /* Material Design 3 Critical Variables - Expanded */
+    :root{ 
+      --md-sys-color-primary: #257cbc; 
+      --md-sys-color-on-primary: #ffffff; 
+      --md-sys-color-primary-container: #cee5ff; 
+      --md-sys-color-on-primary-container: #001d33; 
+      --md-sys-color-secondary: #525F7A; 
+      --md-sys-color-on-secondary: #ffffff; 
+      --md-sys-color-secondary-container: #D5E3FF; 
+      --md-sys-color-on-secondary-container: #0E1B37; 
+      --md-sys-color-tertiary: #6B5B90; 
+      --md-sys-color-on-tertiary: #ffffff; 
+      --md-sys-color-tertiary-container: #F2DAFF; 
+      --md-sys-color-on-tertiary-container: #260E44; 
+      --md-sys-color-surface: #fcfcff; 
+      --md-sys-color-on-surface: #1a1c1e; 
+      --md-sys-color-surface-variant: #dee3eb; 
+      --md-sys-color-on-surface-variant: #42474e; 
+      --md-sys-color-surface-container-lowest: #ffffff; 
+      --md-sys-color-surface-container-low: #f6f6fa; 
+      --md-sys-color-surface-container: #f0f0f4; 
+      --md-sys-color-outline: #72777f; 
+      --md-sys-color-outline-variant: #c2c7cf; 
+      --md-sys-color-background: #fcfcff; 
+      --md-sys-color-on-background: #1a1c1e; 
+      --md-sys-color-error: #ba1a1a;
+      --md-sys-color-on-error: #ffffff;
+      --md-sys-color-error-container: #ffdad6;
+      --md-sys-color-on-error-container: #410002;
+      --md-type-headline-large: 400 2rem/2.5rem 'Roboto', sans-serif; 
+      --md-type-headline-medium: 400 1.75rem/2.25rem 'Roboto', sans-serif; 
+      --md-type-headline-small: 400 1.5rem/2rem 'Roboto', sans-serif; 
+      --md-type-title-large: 400 1.375rem/1.75rem 'Roboto', sans-serif; 
+      --md-type-title-medium: 500 1rem/1.5rem 'Roboto', sans-serif; 
+      --md-type-body-large: 400 1rem/1.5rem 'Roboto', sans-serif; 
+      --md-type-body-medium: 400 0.875rem/1.25rem 'Roboto', sans-serif; 
+      --md-type-label-large: 500 0.875rem/1.25rem 'Roboto', sans-serif; 
+      --md-type-label-medium: 500 0.75rem/1rem 'Roboto', sans-serif; 
+      --md-space-xs: 4px; 
+      --md-space-sm: 8px; 
+      --md-space-md: 12px; 
+      --md-space-lg: 16px; 
+      --md-space-xl: 24px; 
+      --md-space-xxl: 32px; 
+      --md-space-xxxl: 48px; 
+      --md-radius-xs: 4px; 
+      --md-radius-sm: 8px; 
+      --md-radius-md: 12px; 
+      --md-radius-lg: 16px;
+      --md-radius-xl: 20px;
+      --md-elevation-1:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+      --md-elevation-2:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);
+      --md-elevation-3:0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
+    }
+    
+    /* Critical Reset and Base Styles */
+    *, *::before, *::after{ box-sizing: border-box; }
+    html, body{ margin: 0; padding: 0; overflow-x: hidden; }
+    body{ 
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif; 
+      line-height: 1.5; 
+      color: var(--md-sys-color-on-background); 
+      background-color: var(--md-sys-color-background); 
+      font-size: 16px; 
+      -webkit-font-smoothing: antialiased; 
+      -moz-osx-font-smoothing: grayscale; 
+    }
+    
+    /* Critical Layout Components */
+    .md-layout{ display: flex; flex-direction: column; min-height: 100vh; }
+    .md-main{ flex: 1; }
+    .md-container{ max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 768px){ .md-container{ padding: 0 24px; }}
+    
+    /* Critical Header Styles */
+    .md-header{ 
+      background: rgba(252,252,255,.95); 
+      backdrop-filter: blur(8px); 
+      border-bottom: 1px solid var(--md-sys-color-outline-variant); 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      z-index: 1000; 
+      height: 64px; 
+      display: flex; 
+      align-items: center; 
+      transition: all .3s ease;
+    }
+    .md-header__content{ display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .md-logo{ 
+      height: 40px; 
+      width: auto; 
+      transition: all .2s ease;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: linear-gradient(135deg,var(--md-sys-color-primary),var(--md-sys-color-secondary));
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.1));
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    
+    /* Critical Navigation Styles */
+    .md-nav-desktop{ display: block; }
+    @media (max-width: 767px){ .md-nav-desktop{ display: none !important; }}
+    .md-nav__list{ display: flex; align-items: center; gap: var(--md-space-sm); }
+    .md-nav-mobile{ display: block; }
+    @media (min-width: 768px){ .md-nav-mobile{ display: none !important; }}
+    .mobile-menu-toggle{ margin-left: auto; }
+    @media (min-width: 768px){ .mobile-menu-toggle{ display: none !important; }}
+    
+    /* Critical Button Styles */
+    .md-button{ 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+      min-height: 40px; 
+      padding: 0 24px; 
+      border-radius: 20px; 
+      border: none; 
+      outline: none; 
+      font-family: inherit; 
+      font-size: 14px; 
+      font-weight: 500; 
+      text-decoration: none; 
+      cursor: pointer; 
+      transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0); 
+      position: relative; 
+      overflow: hidden; 
+      white-space: nowrap;
+    }
+    .md-button--large{ min-height: 48px; padding: 0 var(--md-space-xl); font-size: var(--md-type-body-large); }
+    .md-button--filled{ background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); }
+    .md-button--outlined{ background-color: transparent; color: var(--md-sys-color-primary); border: 1px solid var(--md-sys-color-outline); }
+    .md-button--text{ background-color: transparent; color: var(--md-sys-color-primary); padding: 0 var(--md-space-md); }
+    .md-button--filled:hover{ box-shadow: var(--md-elevation-2); transform: translateY(-1px); }
+    .md-button--outlined:hover{ background-color: var(--md-sys-color-primary-container); border-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary-container); }
+    .md-button--text:hover{ background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+    
+    /* Critical Icon Button Styles */
+    .md-icon-button{ 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      width: 48px; 
+      height: 48px; 
+      border: none; 
+      border-radius: 50%; 
+      background: transparent; 
+      color: var(--md-sys-color-on-surface); 
+      cursor: pointer; 
+      transition: all .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .md-icon-button:hover{ background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+    
+    /* Critical Mobile Navigation */
+    .md-nav-drawer{ 
+      position: fixed; 
+      top: 64px; 
+      right: -100%; 
+      width: 280px; 
+      height: calc(100vh - 64px); 
+      background: var(--md-sys-color-surface); 
+      border-left: 1px solid var(--md-sys-color-outline-variant); 
+      box-shadow: var(--md-elevation-3); 
+      transition: right .3s cubic-bezier(.25,.8,.25,1); 
+      z-index: 999; 
+      overflow-y: auto; 
+    }
+    .md-nav-drawer.active{ right: 0; }
+    .md-nav-drawer__content{ padding: var(--md-space-lg); }
+    .md-nav-drawer__item{ 
+      display: block; 
+      padding: var(--md-space-md) var(--md-space-lg); 
+      color: var(--md-sys-color-on-surface); 
+      text-decoration: none; 
+      border-radius: var(--md-radius-lg); 
+      transition: all .2s ease; 
+      margin-bottom: var(--md-space-xs); 
+    }
+    .md-nav-drawer__item:hover{ background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+    
+    /* Critical Hero Section */
+    .md-hero{ 
+      background: linear-gradient(135deg, var(--md-sys-color-primary-container) 0%, var(--md-sys-color-secondary-container) 50%, var(--md-sys-color-tertiary-container) 100%); 
+      padding: calc(64px + var(--md-space-xxxl)) 0 var(--md-space-xxxl); 
+      display: flex; 
+      align-items: center; 
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .md-hero::before{ 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0; 
+      background: radial-gradient(circle at 20% 80%, rgba(255,255,255,.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,.1) 0%, transparent 50%); 
+      pointer-events: none; 
+    }
+    .md-hero__content{ 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: var(--md-space-xxxl); 
+      align-items: center; 
+      position: relative;
+      z-index: 1;
+    }
+    @media (min-width: 968px){ .md-hero__content{ grid-template-columns: 1fr 1fr; gap: var(--md-space-xxxl); }}
+    
+    /* Critical Typography */
+    .md-hero__text h1{ 
+      font-family: 'Roboto Flex', sans-serif; 
+      font-size: clamp(2rem, 4vw, 3.5rem); 
+      font-weight: 700; 
+      line-height: 1.1; 
+      color: var(--md-sys-color-on-surface); 
+      margin: 0 0 var(--md-space-lg) 0; 
+    }
+    .md-text-gradient{ 
+      background: linear-gradient(45deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,.1)); 
+    }
+    .md-hero__subtitle{ 
+      font-size: clamp(1rem, 2vw, 1.125rem); 
+      color: var(--md-sys-color-on-surface-variant); 
+      margin: 0 0 var(--md-space-xl) 0; 
+      line-height: 1.6; 
+    }
+    
+    /* Critical Features and Actions */
+    .md-hero__features{ display: flex; flex-wrap: wrap; gap: var(--md-space-sm); margin: 0 0 var(--md-space-xl) 0; }
+    .md-chip{ 
+      display: inline-flex; 
+      align-items: center; 
+      gap: var(--md-space-xs); 
+      padding: var(--md-space-sm) var(--md-space-md); 
+      background: var(--md-sys-color-surface); 
+      color: var(--md-sys-color-on-surface); 
+      border-radius: var(--md-radius-sm); 
+      box-shadow: var(--md-elevation-1); 
+      font-size: var(--md-type-label-medium); 
+      font-weight: 500; 
+      transition: all .2s ease; 
+    }
+    .md-chip:hover{ transform: translateY(-2px); box-shadow: var(--md-elevation-2); }
+    .md-chip__icon{ font-size: 16px; color: var(--md-sys-color-primary); }
+    .md-chip__text{ white-space: nowrap; }
+    
+    .md-hero__actions{ display: flex; flex-wrap: wrap; gap: var(--md-space-md); margin: 0 0 var(--md-space-xl) 0; }
+    @media (max-width: 600px){ 
+      .md-hero__actions{ flex-direction: column; }
+      .md-hero__actions .md-button{ width: 100%; justify-content: center; }
+    }
+    
+    /* Critical Proof Metrics */
+    .md-hero__proof{ 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+      gap: var(--md-space-lg); 
+      padding: var(--md-space-lg) 0; 
+      border-top: 1px solid var(--md-sys-color-outline-variant); 
+    }
+    .md-proof-metric{ text-align: center; }
+    .md-proof-metric__number{ 
+      font-size: var(--md-type-headline-medium); 
+      font-weight: 700; 
+      color: var(--md-sys-color-primary); 
+      line-height: 1; 
+    }
+    .md-proof-metric__label{ 
+      font-size: var(--md-type-body-small); 
+      color: var(--md-sys-color-on-surface-variant); 
+      margin-top: var(--md-space-xs); 
+    }
+    
+    /* Critical Visual Elements */
+    .md-hero__visual{ display: flex; justify-content: center; align-items: center; position: relative; }
+    .md-hero__card{ 
+      background: var(--md-sys-color-surface); 
+      border-radius: var(--md-radius-lg); 
+      box-shadow: var(--md-elevation-3); 
+      padding: var(--md-space-xl); 
+      max-width: 400px; 
+      width: 100%; 
+      position: relative; 
+      overflow: hidden; 
+      transform: perspective(1000px) rotateY(-5deg) rotateX(5deg); 
+      transition: transform .3s ease; 
+    }
+    .md-hero__card:hover{ transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+    .md-hero__card::before{ 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 4px; 
+      background: linear-gradient(90deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); 
+    }
+    
+    /* Critical Loading Animation */
+    .md-loading{ opacity: 0; animation: fadeIn 0.3s ease forwards; }
+    @keyframes fadeIn{ to{ opacity: 1; }}
+    
+    /* Critical Material Icons Fallback */
+    .material-icons{ 
+      font-family: 'Material Icons', sans-serif; 
+      font-weight: normal; 
+      font-style: normal; 
+      font-size: 24px; 
+      line-height: 1; 
+      letter-spacing: normal; 
+      text-transform: none; 
+      display: inline-block; 
+      white-space: nowrap; 
+      word-wrap: normal; 
+      direction: ltr; 
+      -webkit-font-feature-settings: 'liga'; 
+      font-feature-settings: 'liga'; 
+      -webkit-font-smoothing: antialiased; 
+    }
+    
+    /* Critical Mobile Optimizations */
+    @media (max-width: 600px){ 
+      .md-hero{ 
+        padding: calc(64px + var(--md-space-xl)) 0 var(--md-space-xl); 
+        text-align: center; 
+      }
+      .md-hero__content{ gap: var(--md-space-xl); }
+      .md-hero__visual{ order: -1; }
+      .md-hero__card{ transform: none; max-width: 300px; }
+      .md-proof-metric__number{ font-size: var(--md-type-headline-small); }
+    }
+    
+    /* Critical Performance Optimization */
+    .md-service-card, .md-feature-card, .md-testimonial-card{ will-change: transform; }
+    .md-button:hover, .md-icon-button:hover{ will-change: transform, background-color; }
+    
+    /* Critical Accessibility */
+    *:focus-visible{ outline: 2px solid var(--md-sys-color-primary); outline-offset: 2px; border-radius: 2px; }
+    
+    /* Critical Print Styles */
+    @media print{ 
+      .md-header, .md-nav-drawer, .md-floating-elements{ display: none !important; }
+      .md-hero{ padding: 20px 0 !important; background: none !important; min-height: auto !important; }
+      .md-button{ border: 1px solid #000 !important; background: none !important; color: #000 !important; }
+      .md-container{ max-width: none !important; padding: 0 !important; }
+      body{ font-size: 12pt !important; line-height: 1.4 !important; }
+    }
   </style>
 </head>
 
