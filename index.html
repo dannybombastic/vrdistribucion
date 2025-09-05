@@ -1,1088 +1,2012 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Analytics - Optimized Loading -->
+  <script>
+    // Optimized Google Analytics loading to prevent forced reflows
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
+    // Defer analytics initialization until after critical path
+    function initializeGoogleAnalytics() {
+      gtag('js', new Date());
+      gtag('config', 'G-DLSGS9C2TK', {
+        // Performance optimizations
+        send_page_view: false,
+        transport_type: 'beacon',
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+      
+      // Send page view after DOM is ready
+      gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href
+      });
+    }
+    
+    // Load Google Analytics script asynchronously after page load
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
+        script.onload = initializeGoogleAnalytics;
+        document.head.appendChild(script);
+      }, 1000); // Delay 1 second after page load
+    });
+  </script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO Meta Tags -->
-  <title>VR Distribución - Invitaciones Personalizadas y Eventos Únicos en Cancún | Virginia Ruiz</title>
-  <meta name="description" content="VR Distribución - Virginia Ruiz. 25 años de experiencia en diseño gráfico, invitaciones personalizadas, centros de mesa y decoración para bodas y eventos en Cancún. Especialistas en celebraciones únicas." />
-  <meta name="keywords" content="invitaciones personalizadas Cancún, centros de mesa Quintana Roo, decoraciones bodas Cancún, velas aromáticas eventos, recuerdos personalizados, papelería eventos, diseño gráfico Cancún, Virginia Ruiz, VR Distribución, eventos corporativos, cumpleaños, bautizos, quinceañeras Cancún, impresión digital, serigrafía, sublimación, grabado láser, Riviera Maya, Plaza del Carmen, Cozumel, Tulum" />
+  <!-- SEO Meta Tags Optimizados -->
+  <title>VR Distribución Cancún | Invitaciones Personalizadas, Centros de Mesa y Decoraciones para Eventos</title>
+  <meta name="description" content="VR Distribución en Cancún ofrece invitaciones personalizadas, centros de mesa elegantes, velas aromáticas y decoraciones únicas para bodas, cumpleaños, bautizos y eventos corporativos. 25 años de experiencia creando momentos inolvidables en Quintana Roo." />
+  <meta name="keywords" content="invitaciones personalizadas Cancún, centros de mesa Quintana Roo, decoraciones bodas Cancún, velas aromáticas eventos, recuerdos personalizados, papelería eventos, diseño gráfico Cancún, Virginia Ruiz, VR Distribución, eventos corporativos, cumpleaños, bautizos, quinceañeras Cancún" />
   <meta name="author" content="Virginia Ruiz Rodríguez - VR Distribución" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="language" content="es-MX" />
-  <meta name="geo.region" content="MX-QR" />
-  <meta name="geo.placename" content="Cancún, Quintana Roo, México" />
-  <meta name="geo.position" content="21.16906117750304;-86.82813890415704" />
-  <meta name="ICBM" content="21.16906117750304, -86.82813890415704" />
   
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="VR Distribución - Invitaciones Personalizadas y Eventos Únicos en Cancún" />
-  <meta property="og:description" content="Creamos eventos únicos en Cancún. 25 años de experiencia. Especialistas en bodas y celebraciones. Invitaciones personalizadas, centros de mesa y decoración." />
-  <meta property="og:type" content="business.business" />
-  <meta property="og:url" content="https://vrdistribucion.com" />
-  <meta property="og:image" content="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="VR Distribución - Logo Virginia Ruiz" />
-  <meta property="og:site_name" content="VR Distribución" />
-  <meta property="og:locale" content="es_MX" />
-  
-  <!-- Enhanced Business Meta Data -->
-  <meta property="business:contact_data:phone_number" content="+52 998 236 1177" />
-  <meta property="business:contact_data:email" content="vr.distribucion@gmail.com" />
-  
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VR Distribución - Invitaciones Personalizadas Cancún" />
-  <meta name="twitter:description" content="25 años de experiencia en diseño gráfico y eventos. Especialistas en bodas y celebraciones en Cancún." />
-  <meta name="twitter:image" content="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
-  <meta name="twitter:image:alt" content="VR Distribución - Virginia Ruiz" />
-  
-  <!-- Business/Local SEO -->
-  <meta name="business:contact_data:street_address" content="Plaza Galerías Lat. Local 32, Av. Tulum Supermanzana 2, Bancos" />
-  <meta name="business:contact_data:locality" content="Cancún" />
-  <meta name="business:contact_data:region" content="Quintana Roo" />
-  <meta name="business:contact_data:postal_code" content="77500" />
-  <meta name="business:contact_data:country_name" content="México" />
-  <meta name="business:contact_data:phone_number" content="+52 998 236 1177" />
-  <meta name="business:contact_data:email" content="vr.distribucion@gmail.com" />
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://vrdistribucion.com" />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" />
-  <link rel="apple-touch-icon" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" />
-  
-  <!-- Enhanced Favicons -->
-  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/favicon-16x16.png" />
-  
-  <!-- Mobile Web App Configuration -->
-  <meta name="apple-mobile-web-app-title" content="VR Invitaciones">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#2c3e50">
-  <meta name="msapplication-TileColor" content="#2c3e50">
-  <meta name="format-detection" content="telephone=no">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://vrdistribucion.s3-accelerate.amazonaws.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://unpkg.com" />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-  <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
-
-  <!-- Preload critical showdown module hint (no blocking) -->
-  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js" as="script" />
-
-  <!-- Critical CSS inlined to prevent render blocking -->
-  <style>
-    /* Critical above-the-fold styles */
-    *,*::before,*::after{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;line-height:1.6;color:#333;background:#fff}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    h1,h2,h3{margin:0 0 1rem;font-weight:600;line-height:1.2}
-    h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.5rem}
-    p{margin:0 0 1rem}
-    a{color:#007bff;text-decoration:none}a:hover{text-decoration:underline}
-    .btn{display:inline-block;padding:0.75rem 1.5rem;background:#007bff;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:1rem;transition:background 0.3s}
-    .btn:hover{background:#0056b3}
-    .header{padding:1rem 0;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
-    .nav{display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:1.5rem;font-weight:bold;color:#2c3e50}
-    .hero{padding:4rem 0;text-align:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;contain:layout}
-    .hero-container{min-height:600px;display:flex;align-items:center;justify-content:center;width:100%;max-width:1200px;margin:0 auto;contain:layout}
-    .hero-content{width:100%;max-width:900px;text-align:center;contain:layout}
-    .hero-eyebrow{min-height:40px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;contain:paint}
-    .hero-eyebrow-text{font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
-    .hero-title{min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:2rem;contain:paint}
-    .title-main,.title-highlight,.title-sub{display:block;line-height:1.1}
-    .hero-description{min-height:80px;margin-bottom:3rem;font-size:1.2rem;line-height:1.6;contain:paint}
-    .hero-features{min-height:60px;display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:3rem}
-    .hero-ctas{min-height:60px;display:flex;gap:2rem;justify-content:center;margin-bottom:3rem}
-    .hero-social-proof{min-height:80px;display:flex;gap:2rem;justify-content:center}
-    .hero-text-container{contain:content}
-    .hero h1{font-size:3rem;margin-bottom:1rem}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:2rem 0}
-    .card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:transform 0.3s}
-    .card:hover{transform:translateY(-4px)}
-    .card video{width:100%;height:200px;object-fit:cover}
-    .card-content{padding:1.5rem}
-
-    /* CLS Fix for Hamburger Menu */
-    .hamburger-dropdown{position:fixed;top:80px;right:-100%;width:250px;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);z-index:1000;transition:right .3s ease-in-out;will-change:right}
-    .hamburger-dropdown.active{right:0}
-    .hamburger-dropdown ul{list-style:none;margin:0;padding:1rem 0}
-    .hamburger-dropdown a{display:block;padding:1rem 2rem;color:#333;text-decoration:none;font-weight:500}
-
-    @media (max-width:768px){
-      .hero{min-height:90vh}
-      .hero-container{min-height:500px}
-      .hero-title{min-height:150px}
-      .hero h1{font-size:2rem}
-      .grid{grid-template-columns:1fr}
-      .container{padding:0 10px}
- 
-    }
-    /* Font optimization for ionicons */
-    .ion{font-display:swap}
-  </style>
-  
-  <!-- Preload critical images (above-the-fold) -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" as="image" type="image/png">
-  
-  <!-- Critical CSS Inline -->
-  <style>
-    /* Critical Above-the-fold CSS */
-    body {
-      position: relative !important;
-      overflow-x: hidden !important;
-      background: #f8fafc !important;
-      font-family: "Helvetica Neue", Arial, sans-serif !important;
-      line-height: 1.6 !important;
-      margin: 0;
-      padding: 0;
-      padding-top: 80px !important;
-    }
-    
-    /* Critical Header Styles */
-    header {
-      background: rgba(255, 255, 255, 1) !important;
-      backdrop-filter: blur(10px) !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-      width: 100% !important;
-      padding: 1rem 2rem !important;
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      z-index: 1000 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-    }
-    
-    /* Critical Hero Container Layout */
-    .hero {
-      position: relative;
-      padding: 0;
-      background: transparent;
-      overflow: hidden;
-      min-height: 100vh;
-      height: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      box-sizing: border-box;
-    }
-    
-    .hero-container {
-      width: 100vw;
-      min-height: 100vh;
-      max-width: none;
-      margin: 0;
-      padding: 8rem 4vw 4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      box-sizing: border-box;
-    }
-    
-    /* Critical Typography */
-    .hero-title {
-      font-size: 5rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 2rem;
-      color: #1f2937;
-      text-align: center;
-      width: 100%;
-      max-width: 900px;
-    }
-    
-    .title-main {
-      display: block;
-      color: #1f2937;
-    }
-    
-    .title-sub {
-      display: block;
-      font-size: 3.8rem;
-      color: #4b5563;
-      font-weight: 600;
-    }
-    
-    /* Critical Mobile Styles */
-    @media (max-width: 768px) {
-      body {
-        padding-top: 70px !important;
-      }
-      
-      .hero-container {
-        padding: calc(80px + 2.5rem) 4vw 2rem !important;
-        justify-content: flex-start !important;
-      }
-      
-      .hero-title {
-        font-size: 2.5rem;
-        margin-top: 0 !important;
-        margin-bottom: 1.2rem !important;
-        line-height: 1.2 !important;
-      }
-      
-      .title-sub {
-        font-size: 2rem;
-      }
-    }
-    
-    @media (max-width: 400px) {
-      .hero-container {
-        padding-top: calc(80px + 2rem) !important;
-        padding-left: 4vw !important;
-        padding-right: 4vw !important;
-      }
-      
-      .hero-title {
-        font-size: 2rem;
-        line-height: 1.4 !important;
-      }
-      
-      .title-sub {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
-  
-  <!-- Preload and async load non-critical CSS -->
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers without JS -->
-  <noscript>
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css">
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
-  </noscript>
-  
-  <!-- Preload critical fonts with font-display: swap -->
-  <link rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/fonts/ionicons.woff2?v=4.5.9-1" as="font" type="font/woff2" crossorigin>
-
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
-    style-src  'self' 'unsafe-inline' https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com;
-    img-src    'self' data: https:;
-    font-src   'self' https://fonts.gstatic.com https://fonts.googleapis.com https://vrdistribucion.s3-accelerate.amazonaws.com https://unpkg.com data:;
-    connect-src 'self' http://127.0.0.1:8000 http://localhost:8000 https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
-    frame-src  https://www.youtube.com https://www.youtube-nocookie.com;
-    media-src  'self' https://vrdistribucion.s3-accelerate.amazonaws.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://www.googletagmanager.com 
+      https://www.google-analytics.com 
+      https://vrdistribucion.s3-accelerate.amazonaws.com 
+      https://wa.me 
+      data:;
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://vrdistribucion.s3-accelerate.amazonaws.com;
+    font-src 'self' 
+      https://fonts.gstatic.com 
+      https://vrdistribucion.s3-accelerate.amazonaws.com 
+      data:;
+    img-src 'self' 
+      https://vrdistribucion.s3-accelerate.amazonaws.com 
+      https://www.google-analytics.com 
+      https://www.googletagmanager.com 
+      data: 
+      blob:;
+    media-src 'self' 
+      https://vrdistribucion.s3-accelerate.amazonaws.com 
+      blob:;
+    connect-src 'self' 
+      https://www.google-analytics.com 
+      https://www.googletagmanager.com 
+      https://region1.google-analytics.com 
+      https://analytics.google.com 
+      https://vrdistribucion.s3-accelerate.amazonaws.com 
+      https://api.whatsapp.com 
+      https://wa.me 
+      wss://wa.me;
+    frame-src 'self' 
+      https://www.google.com 
+      https://www.youtube.com 
+      https://player.vimeo.com;
     object-src 'none';
-    base-uri   'self';
-    form-action 'self'
+    base-uri 'self';
+    form-action 'self' 
+      https://vrdistribucion.s3-accelerate.amazonaws.com 
+      https://wa.me;
+    upgrade-insecure-requests;
+    block-all-mixed-content;
   ">
-
-  <!-- CSS Loading Polyfill for Cross-browser Compatibility -->
-  <script>
-    /*! loadCSS: load a CSS file asynchronously. [c]2017 @scottjehl, Filament Group, Inc. Licensed MIT */
-    (function(w){
-      "use strict";
-      var loadCSS = function( href, before, media ){
-        var doc = w.document;
-        var ss = doc.createElement( "link" );
-        var ref;
-        if( before ){
-          ref = before;
-        } else {
-          var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
-          ref = refs[ refs.length - 1];
-        }
-        var sheets = doc.styleSheets;
-        if( media ){
-          ss.setAttribute( "media", media );
-        }
-        ss.rel = "stylesheet";
-        ss.href = href;
-        ss.setAttribute( "data-loadcss", true );
-        ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
-        var onloadcssdefined = function( cb ){
-          var resolvedHref = ss.href;
-          var i = sheets.length;
-          while( i-- ){
-            if( sheets[ i ].href === resolvedHref ){
-              return cb();
-            }
-          }
-          setTimeout(function() {
-            onloadcssdefined( cb );
-          }, 10 );
-        };
-        function onload(){
-          if( ss.addEventListener ){
-            ss.removeEventListener( "load", onload );
-          }
-          ss.media = media || "all";
-        }
-        if( ss.addEventListener ){
-          ss.addEventListener( "load", onload );
-        }
-        ss.onloadcssdefined = onloadcssdefined;
-        onloadcssdefined( onload );
-        return ss;
-      };
-      if( typeof exports !== "undefined" ){
-        exports.loadCSS = loadCSS;
-      } else {
-        w.loadCSS = loadCSS;
+  
+  <!-- Permissions Policy (Feature Policy) -->
+  <meta http-equiv="Permissions-Policy" content="
+    camera=(),
+    microphone=(),
+    geolocation=(self),
+    payment=(),
+    usb=(),
+    accelerometer=(),
+    gyroscope=(),
+    magnetometer=(),
+    fullscreen=(self),
+    autoplay=(self)
+  ">
+  
+  <!-- Referrer Policy -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- Open Graph Meta Tags Mejorados -->
+  <meta property="og:type" content="business.business" />
+  <meta property="og:title" content="VR Distribución Cancún | Invitaciones Personalizadas y Decoraciones para Eventos" />
+  <meta property="og:description" content="Especialistas en invitaciones personalizadas, centros de mesa y decoraciones únicas para eventos en Cancún. 25 años de experiencia creando momentos inolvidables." />
+  <meta property="og:url" content="https://vrdistribucion.com" />
+  <meta property="og:image" content="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="business:contact_data:street_address" content="Plaza Galerias Lat. Av. Tulum Supermanzana 2" />
+  <meta property="business:contact_data:locality" content="Cancún" />
+  <meta property="business:contact_data:region" content="Quintana Roo" />
+  <meta property="business:contact_data:postal_code" content="77500" />
+  <meta property="business:contact_data:country_name" content="México" />
+  
+  <!-- Twitter Card Meta Tags Mejorados -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VR Distribución Cancún | Invitaciones y Decoraciones para Eventos" />
+  <meta name="twitter:description" content="Especialistas en invitaciones personalizadas, centros de mesa y decoraciones únicas para eventos en Cancún." />
+  <meta name="twitter:image" content="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
+  
+  <!-- Favicons Mejorados -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="VR Invitaciones">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/favicons/favicon-16x16.png" />
+  <link rel="canonical" href="https://vrdistribucion.com">
+  
+  
+  <!-- Schema.org Structured Data Mejorado -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "VR Distribución",
+    "alternateName": "Virginia Ruiz Distribución",
+    "description": "Especialistas en invitaciones personalizadas, centros de mesa, velas aromáticas y decoraciones para eventos en Cancún. 25 años creando experiencias únicas para bodas, cumpleaños, bautizos y eventos corporativos.",
+    "image": "https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png",
+    "url": "https://vrdistribucion.com",
+    "telephone": "+52-998-236-1177",
+    "email": "vrdistribucion@gmail.com",
+    "priceRange": "$19-$39",
+    "paymentAccepted": "Cash, Credit Card, Debit Card",
+    "currenciesAccepted": "MXN",
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "founder": {
+      "@type": "Person",
+      "name": "Virginia Ruiz Rodríguez",
+      "jobTitle": "Fundadora y Diseñadora Principal"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Plaza Galerias Lat. Av. Tulum Supermanzana 2, Bancos",
+      "addressLocality": "Cancún",
+      "addressRegion": "Quintana Roo",
+      "postalCode": "77500",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "21.1619",
+      "longitude": "-86.8515"
+    },
+    "areaServed": [
+      {
+        "@type": "Place",
+        "name": "Cancún"
+      },
+      {
+        "@type": "Place", 
+        "name": "Quintana Roo"
+      },
+      {
+        "@type": "Place",
+        "name": "Riviera Maya"
       }
-    }( typeof global !== "undefined" ? global : this ));
+    ],
+    "serviceType": [
+      "Invitaciones personalizadas",
+      "Centros de mesa",
+      "Decoraciones para eventos",
+      "Velas aromáticas",
+      "Recuerdos para eventos",
+      "Diseño gráfico",
+      "Papelería corporativa"
+    ],
+    "sameAs": [
+      "https://wa.me/5219982361177",
+      "https://www.facebook.com/vrdistribucion",
+      "https://www.instagram.com/vrdistribucion"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Eventos",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paquete Básico",
+            "description": "Invitaciones sencillas y decoración mínima"
+          },
+          "price": "19",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paquete Completo",
+            "description": "Invitaciones personalizadas, centros de mesa y velas"
+          },
+          "price": "29",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Paquete Premium",
+            "description": "Servicio integral VIP con diseño exclusivo"
+          },
+          "price": "39",
+          "priceCurrency": "USD"
+        }
+      ]
+    }
+  }
   </script>
+  
+  <!-- Performance & Security -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//vrdistribucion.s3-accelerate.amazonaws.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+  <base href="/">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
 
-
+  <!-- Critical Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://vrdistribucion.s3-accelerate.amazonaws.com">
+  
+  <!-- Preload Critical Fonts -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxK.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/robotoflex/v9/NaNnepOXO_NexZs0b5QrzlOHb8wCikXpYqmZsWI-__OGfttPZktqc2VdZ80KvCLZaPcSBZtOx2MdKjFrREmMKNeE.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Load Material Icons Asynchronously -->
+  <script>
+    // Load Material Icons font asynchronously
+    window.addEventListener('load', function() {
+      const materialIconsLink = document.createElement('link');
+      materialIconsLink.rel = 'stylesheet';
+      materialIconsLink.href = 'https://fonts.googleapis.com/icon?family=Material+Icons&display=swap';
+      document.head.appendChild(materialIconsLink);
+    });
+  </script>
+  
+  <!-- Load Google Fonts Asynchronously with Critical Font Display -->
+  <script>
+    // Critical font loading strategy
+    const fontLoader = document.createElement('link');
+    fontLoader.rel = 'stylesheet';
+    fontLoader.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap';
+    fontLoader.media = 'print';
+    fontLoader.onload = function() { this.media = 'all'; };
+    document.head.appendChild(fontLoader);
+  </script>
+  
+  <!-- Load Non-Critical CSS Asynchronously -->
+  <script>
+    // Asynchronous CSS loading function
+    function loadCSS(href, before, media) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.media = media || 'all';
+      if (before) {
+        before.parentNode.insertBefore(link, before);
+      } else {
+        document.head.appendChild(link);
+      }
+      return link;
+    }
+    
+    // Load non-critical stylesheets after page load
+    window.addEventListener('load', function() {
+      // Material Design CSS files
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css');
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css');
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css');
+      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css');
+    });
+  </script>
+  
+  <!-- Fallback for browsers without JavaScript -->
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css">
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css">
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css">
+    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css">
+  </noscript>
+  
+  <!-- Critical CSS - Above-the-fold optimized for LCP -->
+  <style>
+    /* Material Design 3 Critical Variables - Expanded */
+    :root{ 
+      --md-sys-color-primary: #257cbc; 
+      --md-sys-color-on-primary: #ffffff; 
+      --md-sys-color-primary-container: #cee5ff; 
+      --md-sys-color-on-primary-container: #001d33; 
+      --md-sys-color-secondary: #525F7A; 
+      --md-sys-color-on-secondary: #ffffff; 
+      --md-sys-color-secondary-container: #D5E3FF; 
+      --md-sys-color-on-secondary-container: #0E1B37; 
+      --md-sys-color-tertiary: #6B5B90; 
+      --md-sys-color-on-tertiary: #ffffff; 
+      --md-sys-color-tertiary-container: #F2DAFF; 
+      --md-sys-color-on-tertiary-container: #260E44; 
+      --md-sys-color-surface: #fcfcff; 
+      --md-sys-color-on-surface: #1a1c1e; 
+      --md-sys-color-surface-variant: #dee3eb; 
+      --md-sys-color-on-surface-variant: #42474e; 
+      --md-sys-color-surface-container-lowest: #ffffff; 
+      --md-sys-color-surface-container-low: #f6f6fa; 
+      --md-sys-color-surface-container: #f0f0f4; 
+      --md-sys-color-outline: #72777f; 
+      --md-sys-color-outline-variant: #c2c7cf; 
+      --md-sys-color-background: #fcfcff; 
+      --md-sys-color-on-background: #1a1c1e; 
+      --md-sys-color-error: #ba1a1a;
+      --md-sys-color-on-error: #ffffff;
+      --md-sys-color-error-container: #ffdad6;
+      --md-sys-color-on-error-container: #410002;
+      --md-type-headline-large: 400 2rem/2.5rem 'Roboto', sans-serif; 
+      --md-type-headline-medium: 400 1.75rem/2.25rem 'Roboto', sans-serif; 
+      --md-type-headline-small: 400 1.5rem/2rem 'Roboto', sans-serif; 
+      --md-type-title-large: 400 1.375rem/1.75rem 'Roboto', sans-serif; 
+      --md-type-title-medium: 500 1rem/1.5rem 'Roboto', sans-serif; 
+      --md-type-body-large: 400 1rem/1.5rem 'Roboto', sans-serif; 
+      --md-type-body-medium: 400 0.875rem/1.25rem 'Roboto', sans-serif; 
+      --md-type-label-large: 500 0.875rem/1.25rem 'Roboto', sans-serif; 
+      --md-type-label-medium: 500 0.75rem/1rem 'Roboto', sans-serif; 
+      --md-space-xs: 4px; 
+      --md-space-sm: 8px; 
+      --md-space-md: 12px; 
+      --md-space-lg: 16px; 
+      --md-space-xl: 24px; 
+      --md-space-xxl: 32px; 
+      --md-space-xxxl: 48px; 
+      --md-radius-xs: 4px; 
+      --md-radius-sm: 8px; 
+      --md-radius-md: 12px; 
+      --md-radius-lg: 16px;
+      --md-radius-xl: 20px;
+      --md-elevation-1:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+      --md-elevation-2:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);
+      --md-elevation-3:0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
+    }
+    
+    /* Critical Reset and Base Styles */
+    *, *::before, *::after{ box-sizing: border-box; }
+    html, body{ margin: 0; padding: 0; overflow-x: hidden; }
+    body{ 
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif; 
+      line-height: 1.5; 
+      color: var(--md-sys-color-on-background); 
+      background-color: var(--md-sys-color-background); 
+      font-size: 16px; 
+      -webkit-font-smoothing: antialiased; 
+      -moz-osx-font-smoothing: grayscale; 
+    }
+    
+    /* Critical Layout Components */
+    .md-layout{ display: flex; flex-direction: column; min-height: 100vh; }
+    .md-main{ flex: 1; }
+    /* Critical Container Layout - Anti-Layout-Shift */
+    .md-container{ 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 0 16px;
+      /* Prevent layout shift during content load */
+      min-height: 1px;
+      box-sizing: border-box;
+    }
+    @media (min-width: 768px){ 
+      .md-container{ padding: 0 24px; }
+    }
+    
+    /* Critical Header Styles */
+    .md-header{ 
+      background: rgba(252,252,255,.95); 
+      backdrop-filter: blur(8px); 
+      border-bottom: 1px solid var(--md-sys-color-outline-variant); 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      z-index: 1000; 
+      height: 64px; 
+      display: flex; 
+      align-items: center; 
+      transition: all .3s ease;
+    }
+    .md-header__content{ display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .md-logo{ 
+      height: 40px; 
+      width: auto; 
+      transition: all .2s ease;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: linear-gradient(135deg,var(--md-sys-color-primary),var(--md-sys-color-secondary));
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.1));
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    
+    /* Critical Navigation Styles */
+    .md-nav-desktop{ display: block; }
+    @media (max-width: 767px){ .md-nav-desktop{ display: none !important; }}
+    .md-nav__list{ display: flex; align-items: center; gap: var(--md-space-sm); }
+    .md-nav-mobile{ display: block; }
+    @media (min-width: 768px){ .md-nav-mobile{ display: none !important; }}
+    .mobile-menu-toggle{ margin-left: auto; }
+    @media (min-width: 768px){ .mobile-menu-toggle{ display: none !important; }}
+    
+    /* Critical Button Styles */
+    .md-button{ 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+      min-height: 40px; 
+      padding: 0 24px; 
+      border-radius: 20px; 
+      border: none; 
+      outline: none; 
+      font-family: inherit; 
+      font-size: 14px; 
+      font-weight: 500; 
+      text-decoration: none; 
+      cursor: pointer; 
+      transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0); 
+      position: relative; 
+      overflow: hidden; 
+      white-space: nowrap;
+    }
+    .md-button--large{ min-height: 48px; padding: 0 var(--md-space-xl); font-size: var(--md-type-body-large); }
+    .md-button--filled{ background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); }
+    .md-button--outlined{ background-color: transparent; color: var(--md-sys-color-primary); border: 1px solid var(--md-sys-color-outline); }
+    .md-button--text{ background-color: transparent; color: var(--md-sys-color-primary); padding: 0 var(--md-space-md); }
+    .md-button--filled:hover{ box-shadow: var(--md-elevation-2); transform: translateY(-1px); }
+    .md-button--outlined:hover{ background-color: var(--md-sys-color-primary-container); border-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary-container); }
+    .md-button--text:hover{ background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+    
+    /* Critical Icon Button Styles */
+    .md-icon-button{ 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      width: 48px; 
+      height: 48px; 
+      border: none; 
+      border-radius: 50%; 
+      background: transparent; 
+      color: var(--md-sys-color-on-surface); 
+      cursor: pointer; 
+      transition: all .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .md-icon-button:hover{ background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+    
+    /* Critical Mobile Navigation */
+    .md-nav-drawer{ 
+      position: fixed; 
+      top: 64px; 
+      right: -100%; 
+      width: 280px; 
+      height: calc(100vh - 64px); 
+      background: var(--md-sys-color-surface); 
+      border-left: 1px solid var(--md-sys-color-outline-variant); 
+      box-shadow: var(--md-elevation-3); 
+      transition: right .3s cubic-bezier(.25,.8,.25,1); 
+      z-index: 999; 
+      overflow-y: auto; 
+    }
+    .md-nav-drawer.active{ right: 0; }
+    .md-nav-drawer__content{ padding: var(--md-space-lg); }
+    .md-nav-drawer__item{ 
+      display: block; 
+      padding: var(--md-space-md) var(--md-space-lg); 
+      color: var(--md-sys-color-on-surface); 
+      text-decoration: none; 
+      border-radius: var(--md-radius-lg); 
+      transition: all .2s ease; 
+      margin-bottom: var(--md-space-xs); 
+    }
+    .md-nav-drawer__item:hover{ background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+    
+    /* Critical Hero Section */
+    .md-hero{ 
+      background: linear-gradient(135deg, var(--md-sys-color-primary-container) 0%, var(--md-sys-color-secondary-container) 50%, var(--md-sys-color-tertiary-container) 100%); 
+      padding: calc(64px + var(--md-space-xxxl)) 0 var(--md-space-xxxl); 
+      display: flex; 
+      align-items: center; 
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .md-hero::before{ 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0; 
+      background: radial-gradient(circle at 20% 80%, rgba(255,255,255,.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,.1) 0%, transparent 50%); 
+      pointer-events: none; 
+    }
+    .md-hero__content{ 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: var(--md-space-xxxl); 
+      align-items: center; 
+      position: relative;
+      z-index: 1;
+    }
+    @media (min-width: 968px){ .md-hero__content{ grid-template-columns: 1fr 1fr; gap: var(--md-space-xxxl); }}
+    
+    /* Critical Typography - Anti-Layout-Shift */
+    .md-hero__text h1{ 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Flex', sans-serif; 
+      font-size: clamp(2rem, 4vw, 3.5rem); 
+      font-weight: 700; 
+      line-height: 1.1; 
+      color: var(--md-sys-color-on-surface); 
+      margin: 0 0 var(--md-space-lg) 0;
+      /* Prevent layout shift during font loading */
+      min-height: 3rem;
+      font-display: swap;
+      text-rendering: optimizeLegibility;
+    }
+    .md-text-gradient{ 
+      background: linear-gradient(45deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,.1));
+      /* Prevent layout shift */
+      display: inline-block;
+      vertical-align: baseline;
+    }
+    .md-hero__subtitle{ 
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-display: swap; 
+      color: var(--md-sys-color-on-surface-variant); 
+      margin: 0 0 var(--md-space-xl) 0; 
+      line-height: 1.6; 
+    }
+    
+    /* Critical Features and Actions - Anti-Layout-Shift */
+    .md-hero__features{ 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--md-space-sm); 
+      margin: 0 0 var(--md-space-xl) 0;
+      /* Reserve space to prevent layout shift */
+      min-height: 48px;
+    }
+    .md-chip{ 
+      display: inline-flex; 
+      align-items: center; 
+      gap: var(--md-space-xs); 
+      padding: var(--md-space-sm) var(--md-space-md); 
+      background: var(--md-sys-color-surface); 
+      color: var(--md-sys-color-on-surface); 
+      border-radius: var(--md-radius-sm); 
+      box-shadow: var(--md-elevation-1); 
+      font-size: var(--md-type-label-medium); 
+      font-weight: 500; 
+      transition: all .2s ease;
+      /* Prevent layout shift from font loading */
+      height: 40px;
+      min-width: 120px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .md-chip:hover{ transform: translateY(-2px); box-shadow: var(--md-elevation-2); }
+    .md-chip__icon{ 
+      font-size: 16px; 
+      color: var(--md-sys-color-primary);
+      /* Prevent icon layout shift */
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      flex-shrink: 0;
+      /* Fallback for Material Icons not loaded */
+      font-family: 'Material Icons', monospace;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: 'liga';
+    }
+    .md-chip__text{ 
+      white-space: nowrap;
+      /* Prevent text layout shift */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .md-hero__actions{ 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--md-space-md); 
+      margin: 0 0 var(--md-space-xl) 0;
+      /* Reserve space to prevent layout shift */
+      min-height: 48px;
+    }
+    @media (max-width: 600px){ 
+      .md-hero__actions{ flex-direction: column; }
+      .md-hero__actions .md-button{ width: 100%; justify-content: center; }
+    }
+    
+    /* Critical Buttons - Anti-Layout-Shift */
+    .md-button {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      /* Reserve consistent dimensions */
+      min-height: 40px;
+      min-width: 120px;
+      box-sizing: border-box;
+      text-align: center;
+      font-display: swap;
+    }
+    
+    /* Critical Proof Metrics - Anti-Layout-Shift */
+    .md-hero__proof{ 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+      gap: var(--md-space-lg); 
+      padding: var(--md-space-lg) 0; 
+      border-top: 1px solid var(--md-sys-color-outline-variant);
+      /* Reserve minimum height to prevent layout shift */
+      min-height: 80px;
+    }
+    .md-proof-metric{ 
+      text-align: center;
+      /* Reserve space for metric content */
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .md-proof-metric__number{ 
+      font-size: var(--md-type-headline-medium); 
+      font-weight: 700; 
+      color: var(--md-sys-color-primary); 
+      line-height: 1;
+      /* Prevent layout shift during font loading */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Flex', sans-serif;
+      font-display: swap;
+      min-height: 1.5rem;
+    }
+    .md-proof-metric__label{ 
+      font-size: var(--md-type-body-small); 
+      color: var(--md-sys-color-on-surface-variant); 
+      margin-top: var(--md-space-xs);
+      /* Prevent layout shift */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-display: swap;
+    }
+    
+    /* Critical Visual Elements */
+    .md-hero__visual{ display: flex; justify-content: center; align-items: center; position: relative; }
+    .md-hero__card{ 
+      background: var(--md-sys-color-surface); 
+      border-radius: var(--md-radius-lg); 
+      box-shadow: var(--md-elevation-3); 
+      padding: var(--md-space-xl); 
+      max-width: 400px; 
+      width: 100%; 
+      position: relative; 
+      overflow: hidden; 
+      transform: perspective(1000px) rotateY(-5deg) rotateX(5deg); 
+      transition: transform .3s ease; 
+    }
+    .md-hero__card:hover{ transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+    .md-hero__card::before{ 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 4px; 
+      background: linear-gradient(90deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); 
+    }
+    
+    /* Critical Loading Animation */
+    .md-loading{ opacity: 0; animation: fadeIn 0.3s ease forwards; }
+    @keyframes fadeIn{ to{ opacity: 1; }}
+    
+    /* Critical Material Icons Fallback - Anti-Layout-Shift */
+    .material-icons{ 
+      font-family: 'Material Icons', monospace; 
+      font-weight: normal; 
+      font-style: normal; 
+      font-size: 24px; 
+      line-height: 1; 
+      letter-spacing: normal; 
+      text-transform: none; 
+      display: inline-block; 
+      white-space: nowrap; 
+      word-wrap: normal; 
+      direction: ltr; 
+      -webkit-font-feature-settings: 'liga'; 
+      font-feature-settings: 'liga'; 
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      /* Reserve space to prevent layout shift */
+      width: 1em;
+      height: 1em;
+      overflow: hidden;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+    
+    /* Fallback content for Material Icons before they load */
+    .material-icons:empty:before {
+      content: '◼';
+      opacity: 0.1;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    /* Critical Mobile Optimizations */
+    @media (max-width: 600px){ 
+      .md-hero{ 
+        padding: calc(64px + var(--md-space-xl)) 0 var(--md-space-xl); 
+        text-align: center; 
+      }
+      .md-hero__content{ gap: var(--md-space-xl); }
+      .md-hero__visual{ order: -1; }
+      .md-hero__card{ transform: none; max-width: 300px; }
+      .md-proof-metric__number{ font-size: var(--md-type-headline-small); }
+    }
+    
+    /* Critical Performance Optimization */
+    .md-service-card, .md-feature-card, .md-testimonial-card{ will-change: transform; }
+    .md-button:hover, .md-icon-button:hover{ will-change: transform, background-color; }
+    
+    /* Critical CTA Card - Anti-Layout-Shift */
+    .md-services__cta {
+      width: 100%;
+      margin-top: var(--md-space-xl);
+    }
+    
+    .md-cta-card {
+      background: var(--md-sys-color-surface);
+      border-radius: var(--md-radius-lg);
+      padding: var(--md-space-xl);
+      text-align: center;
+      box-shadow: var(--md-elevation-1);
+      border: 1px solid var(--md-sys-color-outline-variant);
+    }
+    
+    .md-cta-card__content {
+      margin-bottom: var(--md-space-lg);
+    }
+    
+    .md-cta-card__title {
+      font-size: var(--md-type-headline-small);
+      font-weight: 600;
+      color: var(--md-sys-color-on-surface);
+      margin: 0 0 var(--md-space-md) 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Flex', sans-serif;
+    }
+    
+    .md-cta-card__description {
+      font-size: var(--md-type-body-medium);
+      color: var(--md-sys-color-on-surface-variant);
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .md-cta-card__actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Prevent layout shift on mobile */
+      min-height: 48px;
+    }
+    
+    /* Mobile optimization for CTA button */
+    @media (max-width: 600px) {
+      .md-cta-card {
+        padding: var(--md-space-lg);
+        margin: 0 var(--md-space-sm);
+      }
+      
+      .md-cta-card__actions {
+        /* Full center alignment on mobile */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .md-cta-card__actions .md-button {
+        /* Full width and perfect centering */
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+    
+    /* Critical Accessibility */
+    *:focus-visible{ outline: 2px solid var(--md-sys-color-primary); outline-offset: 2px; border-radius: 2px; }
+    
+    /* Critical Print Styles */
+    @media print{ 
+      .md-header, .md-nav-drawer, .md-floating-elements{ display: none !important; }
+      .md-hero{ padding: 20px 0 !important; background: none !important; min-height: auto !important; }
+      .md-button{ border: 1px solid #000 !important; background: none !important; color: #000 !important; }
+      .md-container{ max-width: none !important; padding: 0 !important; }
+      body{ font-size: 12pt !important; line-height: 1.4 !important; }
+    }
+  </style>
 </head>
-<body class="landing-page">
-  <!-- FLOATING PARTICLES -->
+
+<body class="md-layout">
   <!-- HEADER -->
-  <header role="banner">
-    <a href="/" aria-label="Ir a página principal">
-      <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png" alt="VR Distribución" class="logo" />
-    </a>
-    
-    <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-      <i class="icon ion-md-menu"></i>
-    </button>
-    
-    <nav role="navigation" aria-label="Navegación principal">
-      <ul>
-        <li><a href="/gallery">Galería</a></li>
-        <li><a href="/portafolio">Portafolio</a></li>
-        <li><a href="/cotizaciones">Cotizaciones</a></li>
-      </ul>
-    </nav>
+  <header class="md-header" role="banner">
+    <div class="md-container">
+      <div class="md-header__content">
+        <a href="/" aria-label="Ir a página principal">
+          <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-logo" />
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="md-nav-desktop" role="navigation" aria-label="Navegación principal">
+          <div class="md-nav__list">
+            <a href="/gallery" class="md-button md-button--text">Galería</a>
+            <a href="/portafolio" class="md-button md-button--text">Portafolio</a>
+            <a href="#paquetes" class="md-button md-button--text">Paquetes</a>
+            <a href="/cotizaciones" class="md-button md-button--filled">Cotizaciones</a>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="md-nav-mobile md-icon-button mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false" type="button">
+          <span class="material-icons">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="md-nav-drawer hamburger-dropdown" id="hamburger-dropdown">
+      <div class="md-nav-drawer__content">
+        <a href="/" class="md-nav-drawer__item">Inicio</a>
+        <a href="/gallery" class="md-nav-drawer__item">Galería</a>
+        <a href="/portafolio" class="md-nav-drawer__item">Portafolio</a>
+        <a href="#paquetes" class="md-nav-drawer__item">Paquetes</a>
+        <a href="/cotizaciones" class="md-nav-drawer__item">Cotizaciones</a>
+        <a href="/aparador" class="md-nav-drawer__item">Aparador</a>
+        <a href="/webdesigncancun" class="md-nav-drawer__item">Web Design Cancún</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Hamburger Dropdown Menu (para todas las pantallas) -->
-  <div class="hamburger-dropdown" id="hamburger-dropdown">
-    <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/gallery">Galería</a></li>
-      <li><a href="/portafolio">Portafolio</a></li>
-      <li><a href="/cotizaciones">Cotizaciones</a></li>
-      <li><a href="/aparador">Aparador</a></li>
-      <li><a href="/webdesigncancun">Web Design Cancún</a></li>
-    </ul>
-  </div>
-
-  <!-- HERO -->
-  <section class="hero" id="hero" role="main">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-text-container">
-          <div class="hero-eyebrow">
-            <span class="hero-eyebrow-text">Virginia Ruiz • 25 Años Creando Momentos Únicos</span>
-            <div class="hero-eyebrow-line"></div>
-          </div>
-          
-          <h1 class="hero-title">
-            <span class="title-main">Diseñamos</span>
-            <span class="title-highlight">Experiencias</span>
-            <span class="title-sub">que Perduran en el Corazón</span>
+  <!-- HERO SECTION -->
+  <section class="md-hero" id="hero" role="main">
+    <div class="md-container">
+      <div class="md-hero__content md-loading">
+        <div class="md-hero__text">
+          <h1>
+            Diseñamos <span class="md-text-gradient">Experiencias</span> que Perduran en el Corazón
           </h1>
-          
-          <p class="hero-description">
-            Cada invitación, cada detalle y cada momento que creamos cuenta una historia única. Transformamos tus ideas en 
-            <strong>recuerdos tangibles</strong> que tus invitados atesorarán para siempre. Desde <strong>bodas de ensueño</strong> 
-            hasta <strong>celebraciones íntimas</strong>, hacemos que cada evento sea extraordinario.
+          <p class="md-hero__subtitle">
+            Cada invitación, cada detalle y cada momento que creamos cuenta una historia única. 
+            Transformamos tus ideas en <strong>recuerdos tangibles</strong> que tus invitados 
+            atesorarán para siempre.
           </p>
+          
+          <!-- Features Pills -->
+          <div class="md-hero__features">
+            <div class="md-chip">
+              <span class="material-icons md-chip__icon">palette</span>
+              <span class="md-chip__text">Diseño 100% Personalizado</span>
+            </div>
+            <div class="md-chip">
+              <span class="material-icons md-chip__icon">flash_on</span>
+              <span class="md-chip__text">Entrega Express</span>
+            </div>
+            <div class="md-chip">
+              <span class="material-icons md-chip__icon">star</span>
+              <span class="md-chip__text">Calidad Premium</span>
+            </div>
+            <div class="md-chip">
+              <span class="material-icons md-chip__icon">local_shipping</span>
+              <span class="md-chip__text">Envíos Nacionales</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="md-hero__actions">
+            <a href="/cotizaciones" class="md-button md-button--filled md-button--large">
+              <span class="material-icons">create</span>
+              Crear mi Invitación
+            </a>
+            <a href="https://wa.me/5219982361177" class="md-button md-button--outlined md-button--large" target="_blank">
+              <span class="material-icons">chat</span>
+              Asesoría Gratuita
+            </a>
+          </div>
+
+          <!-- Social Proof -->
+          <div class="md-hero__proof">
+            <div class="md-proof-metric">
+              <div class="md-proof-metric__number">1500+</div>
+              <div class="md-proof-metric__label">Eventos Únicos</div>
+            </div>
+            <div class="md-proof-metric">
+              <div class="md-proof-metric__number">99%</div>
+              <div class="md-proof-metric__label">Satisfacción</div>
+            </div>
+            <div class="md-proof-metric">
+              <div class="md-proof-metric__number">25</div>
+              <div class="md-proof-metric__label">Años de Pasión</div>
+            </div>
+          </div>
         </div>
-        
-        <div class="hero-features">
-          <div class="feature-item">
-            <div class="feature-icon">🎨</div>
-            <span class="feature-text">Diseño 100% Personalizado</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">⚡</div>
-            <span class="feature-text">Entrega Express</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">🌟</div>
-            <span class="feature-text">Calidad Premium</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">🚚</div>
-            <span class="feature-text">Envíos a toda la República</span>
-          </div>
-        </div>
-        
-        <div class="hero-ctas">
-          <a href="/cotizaciones" class="cta-primary">
-            <span class="cta-text">Crear mi Invitación</span>
-            <div class="cta-arrow">✨</div>
-          </a>
-          <a href="https://wa.me/5219982361177" class="cta-secondary" target="_blank">
-            <div class="whatsapp-icon">💬</div>
-            <span>Asesoría Gratuita</span>
-          </a>
-        </div>
-        
-        <div class="hero-social-proof">
-          <div class="social-proof-item">
-            <div class="social-proof-number">1500+</div>
-            <div class="social-proof-label">Eventos Únicos</div>
-          </div>
-          <div class="social-proof-item">
-            <div class="social-proof-number">99%</div>
-            <div class="social-proof-label">Satisfacción</div>
-          </div>
-          <div class="social-proof-item">
-            <div class="social-proof-number">25</div>
-            <div class="social-proof-label">Años de Pasión</div>
+
+        <div class="md-hero__visual">
+          <div class="md-hero__card">
+            <div class="md-hero__card-content">
+              <div class="md-invitation-preview">
+                <div class="md-invitation-preview__header">
+                  <div class="md-invitation-preview__logo"></div>
+                  <div class="md-invitation-preview__text">
+                    <div class="md-line md-line--title"></div>
+                    <div class="md-line md-line--subtitle"></div>
+                  </div>
+                </div>
+                <div class="md-invitation-preview__body">
+                  <div class="md-line md-line--long"></div>
+                  <div class="md-line md-line--medium"></div>
+                  <div class="md-line md-line--short"></div>
+                </div>
+                <div class="md-invitation-preview__details">
+                  <div class="md-detail-item">
+                    <span class="material-icons">event</span>
+                    <div class="md-line md-line--detail"></div>
+                  </div>
+                  <div class="md-detail-item">
+                    <span class="material-icons">place</span>
+                    <div class="md-line md-line--detail"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Floating elements -->
+            <div class="md-floating-elements">
+              <div class="md-floating-element md-floating-element--1">✨</div>
+              <div class="md-floating-element md-floating-element--2">💖</div>
+              <div class="md-floating-element md-floating-element--3">🎨</div>
+              <div class="md-floating-element md-floating-element--4">🌟</div>
+            </div>
           </div>
         </div>
       </div>
-      
-      <div class="hero-visual">
-        <div class="visual-card">
-          <div class="card-shimmer"></div>
-          <div class="card-content">
-            <div class="sample-invitation">
-              <div class="invitation-header"></div>
-              <div class="invitation-lines">
-                <div class="line long"></div>
-                <div class="line medium"></div>
-                <div class="line short"></div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="md-main">
+    <!-- FEATURES SECTION -->
+    <section class="md-features" id="caracteristicas" aria-labelledby="features-title">
+      <div class="md-container">
+        <div class="md-features__header">
+          <h2 id="features-title" class="md-features__title">¿Por qué elegir VR Distribución?</h2>
+          <p class="md-features__subtitle">25 años de experiencia creando momentos únicos e inolvidables</p>
+        </div>
+        
+        <div class="md-features__grid">
+          <!-- Feature 1: Experiencia -->
+          <div class="md-feature-card">
+            <div class="md-feature-card__icon">
+              <span class="material-icons">workspace_premium</span>
+            </div>
+            <div class="md-feature-card__content">
+              <h3 class="md-feature-card__title">25+ Años de Experiencia</h3>
+              <p class="md-feature-card__description">
+                Desde 1999, hemos perfeccionado el arte de crear invitaciones y decoraciones únicas para cada ocasión especial.
+              </p>
+              <div class="md-feature-card__stats">
+                <div class="md-stat">
+                  <span class="md-stat__number">2500+</span>
+                  <span class="md-stat__label">Eventos realizados</span>
+                </div>
               </div>
-              <div class="invitation-details">
-                <div class="detail-item"></div>
-                <div class="detail-item"></div>
+            </div>
+          </div>
+
+          <!-- Feature 2: Personalización -->
+          <div class="md-feature-card">
+            <div class="md-feature-card__icon">
+              <span class="material-icons">palette</span>
+            </div>
+            <div class="md-feature-card__content">
+              <h3 class="md-feature-card__title">100% Personalizado</h3>
+              <p class="md-feature-card__description">
+                Cada diseño es único y creado especialmente para ti. Trabajamos contigo para capturar la esencia de tu evento.
+              </p>
+              <div class="md-feature-card__tags">
+                <span class="md-tag">Diseño único</span>
+                <span class="md-tag">Consultoría</span>
+                <span class="md-tag">A medida</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 3: Calidad -->
+          <div class="md-feature-card">
+            <div class="md-feature-card__icon">
+              <span class="material-icons">verified</span>
+            </div>
+            <div class="md-feature-card__content">
+              <h3 class="md-feature-card__title">Calidad Premium</h3>
+              <p class="md-feature-card__description">
+                Utilizamos materiales de primera calidad y técnicas de impresión profesional para resultados excepcionales.
+              </p>
+              <div class="md-feature-card__badges">
+                <div class="md-badge">
+                  <span class="material-icons">eco</span>
+                  <span>Eco-friendly</span>
+                </div>
+                <div class="md-badge">
+                  <span class="material-icons">star</span>
+                  <span>Garantía</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 4: Servicio Integral -->
+          <div class="md-feature-card">
+            <div class="md-feature-card__icon">
+              <span class="material-icons">support_agent</span>
+            </div>
+            <div class="md-feature-card__content">
+              <h3 class="md-feature-card__title">Servicio Integral</h3>
+              <p class="md-feature-card__description">
+                Te acompañamos en todo el proceso, desde la idea inicial hasta la entrega final de tu evento.
+              </p>
+              <div class="md-feature-card__process">
+                <div class="md-process-step">
+                  <span class="md-process-step__number">1</span>
+                  <span class="md-process-step__text">Consulta</span>
+                </div>
+                <div class="md-process-step">
+                  <span class="md-process-step__number">2</span>
+                  <span class="md-process-step__text">Diseño</span>
+                </div>
+                <div class="md-process-step">
+                  <span class="md-process-step__number">3</span>
+                  <span class="md-process-step__text">Entrega</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="floating-elements">
-          <div class="float-element element-1">🌟</div>
-          <div class="float-element element-2">💖</div>
-          <div class="float-element element-3">✨</div>
-          <div class="float-element element-4">🎨</div>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about" role="region" aria-labelledby="about-heading">
-    <h2 id="about-heading">Acerca de Mí</h2>
-    <p>
-      <strong>Soy Virginia Ruiz</strong> - Diseñadora en Comunicación Visual México.
-    </p>
-    <p>
-      Con más de dos décadas de experiencia en el diseño gráfico, he dedicado mi 
-      carrera a transformar ideas en soluciones visuales de impacto. Mi trayectoria comenzó 
-      en los talleres y máquinas de impresión, donde perfeccioné mi conocimiento en 
-      medios y sistemas de impresión en formatos pequeño, mediano y gran formato.
-    </p>
-    <p>
-      En los últimos 5 años, he expandido mi catálogo de servicios hacia el diseño 
-      social, especializándome en la creación de invitaciones personalizadas y detalles 
-      únicos para eventos. Mi pasión es convertir cada ocasión especial en un recuerdo 
-      inolvidable, abarcando desde bodas y bautizos hasta cumpleaños, aniversarios y 
-      eventos corporativos.
-    </p>
-    <p><strong>Misión:</strong> Superar las expectativas de cada cliente con productos y servicios que combinen diseño, funcionalidad y estilo.</p>
-  </section>
-
-  <!-- ELIGE TU CAMINO -->
-  <section id="caminos" class="caminos-section" role="region" aria-labelledby="caminos-heading">
-    <div class="container">
-      <h2 id="caminos-heading">Elige tu Camino</h2>
-      <p class="section-subtitle">Tres formas de hacer tu evento memorable</p>
-      
-      <div class="caminos-grid">
-        <div class="camino-card mechanical-border">
-          <div class="camino-icon">📝</div>
-          <h3>Invitaciones Impresas</h3>
-          <p>Tipos de papel premium, acabados láser, foil y letterpress. Sets completos para tu evento.</p>
-          <ul class="camino-features">
-            <li>Corte láser de precisión</li>
-            <li>Acabados foil y letterpress</li>
-            <li>Papeles premium importados</li>
-            <li>Sobres personalizados</li>
-          </ul>
-          <a href="#portfolio" class="cta-camino">Ver Estilos</a>
+    <!-- SERVICES SECTION -->
+    <section class="md-services" id="servicios" aria-labelledby="services-title">
+      <div class="md-container">
+        <div class="md-services__header">
+          <h2 id="services-title" class="md-services__title">Nuestros Servicios</h2>
+          <p class="md-services__subtitle">Especializados en crear experiencias memorables para cada ocasión</p>
         </div>
 
-        <div class="camino-card mechanical-border">
-          <div class="camino-icon">💌</div>
-          <h3>Invitaciones Digitales</h3>
-          <p>RSVP inteligente, mapas interactivos, contador de días y lista de regalos integrada.</p>
-          <ul class="camino-features">
-            <li>RSVP con confirmación automática</li>
-            <li>Mapas y ubicaciones</li>
-            <li>Contador regresivo</li>
-            <li>Lista de regalos</li>
-          </ul>
-          <a href="#portfolio" class="cta-camino">Explorar Sets</a>
-        </div>
-
-        <div class="camino-card mechanical-border">
-          <div class="camino-icon">🕯️</div>
-          <h3>Decoración & Recuerdos</h3>
-          <p>Centros de mesa únicos, velas personalizadas con láser y souvenirs memorables.</p>
-          <ul class="camino-features">
-            <li>Centros de mesa premium</li>
-            <li>Velas con grabado láser</li>
-            <li>Souvenirs personalizados</li>
-            <li>Señalética de evento</li>
-          </ul>
-          <a href="#portfolio" class="cta-camino">Descubrir Velas Personalizadas</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KEY BENEFIT CHUNK -->
-  <section class="key-benefits-section" role="region" aria-labelledby="benefits-heading">
-    <div class="benefits-container">
-      <h2 id="benefits-heading">¿Por qué elegir VR Distribución?</h2>
-      <div class="benefits-content">
-        <ul class="benefits-list">
-          <li>
-            <strong>25+ años de experiencia</strong> en diseño e impresión especializada
-          </li>
-          <li>
-            <strong>Taller propio con tecnología láser</strong> para acabados únicos y precisos
-          </li>
-          <li>
-            <strong>Envíos seguros</strong> en toda la península de Yucatán y Quintana Roo
-          </li>
-        </ul>
-        <div class="benefits-cta">
-          <a href="/cotizaciones" class="cta-benefits">Solicitar Cotización Gratuita</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Paquetes por Evento -->
-  <section id="paquetes" class="paquetes-section" role="region" aria-labelledby="paquetes-heading">
-    <h2 id="paquetes-heading">Paquetes por Evento</h2>
-    <div class="paquetes-grid">
-      <!-- Paquete Básico -->
-      <div class="paquete-card">
-        <div class="paquete-header">
-          <h3>Básico</h3>
-          <div class="precio">
-            <div class="precio-amount">$4,500</div>
-            <p class="precio-subtitle">MXN</p>
-          </div>
-        </div>
-        <div class="paquete-content">
-          <div class="paquete-ideal">
-            <strong>Ideal para:</strong> Celebraciones íntimas (hasta 30 invitados) - XV años, bautizos, baby shower
-          </div>
-          <ul class="paquete-incluye">
-            <li>30 invitaciones impresas de lujo</li>
-            <li>Diseño personalizado</li>
-            <li>Papel premium de 300g</li>
-            <li>Sobre incluido</li>
-            <li>1 revisión de diseño</li>
-            <li>Entrega en 5-7 días</li>
-          </ul>
-          <a href="/cotizaciones" class="cta-paquete">Cotizar Paquete Básico</a>
-        </div>
-      </div>
-
-      <!-- Paquete Completo -->
-      <div class="paquete-card featured">
-        <div class="paquete-badge">MÁS POPULAR</div>
-        <div class="paquete-header">
-          <h3>Completo</h3>
-          <div class="precio">
-            <div class="precio-amount">$8,900</div>
-            <p class="precio-subtitle">MXN</p>
-          </div>
-        </div>
-        <div class="paquete-content">
-          <div class="paquete-ideal">
-            <strong>Ideal para:</strong> Bodas, XV años y eventos medianos (hasta 100 invitados)
-          </div>
-          <ul class="paquete-incluye">
-            <li>100 invitaciones impresas de lujo</li>
-            <li>Diseño 100% personalizado</li>
-            <li>Papel premium de 300g con textura</li>
-            <li>Sobre personalizado con foil</li>
-            <li>50 marcalibros de cortesía</li>
-            <li>30 etiquetas para mesa</li>
-            <li>Menú de mesa (5 piezas)</li>
-            <li>3 revisiones de diseño</li>
-            <li>Invitación digital de cortesía</li>
-            <li>Entrega en 7-10 días</li>
-          </ul>
-          <a href="#" class="cta-paquete featured">Seleccionar Completo</a>
-        </div>
-      </div>
-
-      <!-- Paquete Premium -->
-      <div class="paquete-card">
-        <div class="paquete-header">
-          <h3>Premium</h3>
-          <div class="precio">
-            <div class="precio-amount">$15,500</div>
-            <p class="precio-subtitle">MXN</p>
-          </div>
-        </div>
-        <div class="paquete-content">
-          <div class="paquete-ideal">
-            <strong>Ideal para:</strong> Bodas, XV años y celebraciones exclusivas (hasta 200 invitados)
-          </div>
-          <ul class="paquete-incluye">
-            <li>200 invitaciones de lujo premium</li>
-            <li>Diseño exclusivo con técnicas especiales</li>
-            <li>Papel de algodón de 400g</li>
-            <li>Sobre con foil dorado/plateado</li>
-            <li>100 marcalibros premium</li>
-            <li>60 etiquetas para mesa</li>
-            <li>15 menús de mesa</li>
-            <li>25 números de mesa</li>
-            <li>Welcome sign personalizado</li>
-            <li>Kit de recuerdos (50 piezas)</li>
-            <li>Invitación digital animada</li>
-            <li>Revisiones ilimitadas</li>
-            <li>Consultoría de diseño incluida</li>
-            <li>Entrega exprés 5-7 días</li>
-          </ul>
-          <a href="#" class="cta-paquete">Seleccionar Premium</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paquetes-footer">
-      <p>¿Necesitas algo diferente? Creamos cotizaciones personalizadas para cada evento</p>
-      <a href="/cotizaciones" class="cta-secondary">Solicitar Cotización Personalizada</a>
-    </div>
-  </section>
-
-  <!-- EXPERIENCIA PROFESIONAL - ANIMACIÓN INTERACTIVA -->
-  <section class="experience-section" role="region" aria-labelledby="experience-heading">
-    <div class="experience-container">
-      <canvas id="professionalCanvas" class="professional-canvas"></canvas>
-      <div class="experience-overlay">
-        <div class="experience-content">
-          <h2 id="experience-heading">Experiencia que Transforma Ideas</h2>
-          <p class="experience-subtitle">Diseño profesional respaldado por décadas de excelencia</p>
-          <div class="experience-grid">
-            <div class="experience-metric" data-animate="25">
-              <div class="metric-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+        <div class="md-services__grid">
+          <!-- Service 1: Invitaciones -->
+          <article class="md-service-card md-service-card--featured">
+            <div class="md-service-card__media">
+              <div class="md-service-card__video">
+                <video 
+                  autoplay 
+                  muted 
+                  loop 
+                  playsinline
+                  class="md-service-video"
+                >
+                  <source src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4" type="video/mp4">
+                  <div class="md-service-card__image">
+                    <span class="material-icons">mail</span>
+                  </div>
+                </video>
               </div>
-              <span class="metric-number">25+</span>
-              <span class="metric-label">Años de Experiencia</span>
-            </div>
-            <div class="experience-metric" data-animate="1500">
-              <div class="metric-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 11H7v9a2 2 0 002 2h8a2 2 0 002-2v-9h-2m-1 0V6a2 2 0 00-2-2h-4a2 2 0 00-2 2v5m5 2v4h2v-4m-7 0v4h2v-4m1-5h2v3h-2z"/>
-                </svg>
+              <div class="md-service-card__badge">
+                <span class="material-icons">star</span>
+                <span>Más Popular</span>
               </div>
-              <span class="metric-number">1500+</span>
-              <span class="metric-label">Proyectos Realizados</span>
             </div>
-            <div class="experience-metric" data-animate="98">
-              <div class="metric-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
+            <div class="md-service-card__content">
+              <h3 class="md-service-card__title">Invitaciones Personalizadas</h3>
+              <p class="md-service-card__description">
+                Diseños únicos para bodas, XV años, bautizos, baby showers y todo tipo de celebraciones.
+              </p>
+              <div class="md-service-card__features">
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Diseño personalizado</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Impresión de calidad</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Múltiples formatos</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Entrega rápida</span>
+                </div>
               </div>
-              <span class="metric-number">98%</span>
-              <span class="metric-label">Satisfacción Cliente</span>
+              <div class="md-service-card__actions">
+                <a href="#contacto" class="md-button md-button--filled">
+                  Solicitar Cotización
+                </a>
+                <a href="/gallery" class="md-button md-button--outlined">Ver Galería</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 2: Centros de Mesa -->
+          <article class="md-service-card">
+            <div class="md-service-card__media">
+              <div class="md-service-card__video">
+                <video 
+                  autoplay 
+                  muted 
+                  loop 
+                  playsinline
+                  class="md-service-video"
+                >
+                  <source src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/cntro_de_mesa.mp4" type="video/mp4">
+                  <div class="md-service-card__image">
+                    <span class="material-icons">local_florist</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+            <div class="md-service-card__content">
+              <h3 class="md-service-card__title">Centros de Mesa</h3>
+              <p class="md-service-card__description">
+                Decoraciones elegantes que complementan perfectamente tu evento y temática.
+              </p>
+              <div class="md-service-card__highlights">
+                <span class="md-highlight">Temáticos</span>
+                <span class="md-highlight">Elegantes</span>
+                <span class="md-highlight">Personalizados</span>
+              </div>
+                            <div class="md-service-card__features">
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Diseño personalizado</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Impresión de calidad</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Múltiples formatos</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Entrega rápida</span>
+                </div>
+              </div>
+              <div class="md-service-card__actions">
+                <a href="#contacto" class="md-button md-button--outlined">
+                  Consultar
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 3: Velas Aromáticas -->
+          <article class="md-service-card">
+            <div class="md-service-card__media">
+              <div class="md-service-card__video">
+                <video 
+                  autoplay 
+                  muted 
+                  loop 
+                  playsinline
+                  class="md-service-video"
+                >
+                  <source src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_decorativas.mp4" type="video/mp4">
+                  <div class="md-service-card__image">
+                    <span class="material-icons">candle</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+            <div class="md-service-card__content">
+              <h3 class="md-service-card__title">Velas Aromáticas</h3>
+              <p class="md-service-card__description">
+                Velas personalizadas con aromas únicos para crear el ambiente perfecto.
+              </p>
+              <div class="md-service-card__highlights">
+                <span class="md-highlight">Aromas únicos</span>
+                <span class="md-highlight">Larga duración</span>
+                <span class="md-highlight">Personalizadas</span>
+              </div>
+                            <div class="md-service-card__features">
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Diseño personalizado</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Impresión de calidad</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Múltiples formatos</span>
+                </div>
+                <div class="md-feature-item">
+                  <span class="material-icons">check_circle</span>
+                  <span>Entrega rápida</span>
+                </div>
+              </div>
+              <div class="md-service-card__actions">
+                <a href="#contacto" class="md-button md-button--outlined">
+                  Consultar
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 4: Recuerdos -->
+          <article class="md-service-card">
+            <div class="md-service-card__media">
+              <div class="md-service-card__image">
+                <span class="material-icons">card_giftcard</span>
+              </div>
+            </div>
+            <div class="md-service-card__content">
+              <h3 class="md-service-card__title">Recuerdos Personalizados</h3>
+              <p class="md-service-card__description">
+                Detalles únicos que tus invitados atesorarán como recuerdo de tu evento especial.
+              </p>
+              <div class="md-service-card__highlights">
+                <span class="md-highlight">Únicos</span>
+                <span class="md-highlight">Memorables</span>
+                <span class="md-highlight">Variados</span>
+              </div>
+              <div class="md-service-card__actions">
+                <a href="#contacto" class="md-button md-button--outlined">
+                  Consultar
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 5: Diseño Gráfico -->
+          <article class="md-service-card">
+            <div class="md-service-card__media">
+              <div class="md-service-card__video">
+                <video 
+                  autoplay 
+                  muted 
+                  loop 
+                  playsinline
+                  class="md-service-video"
+                >
+                  <source src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/rotulos_iluminados.mp4" type="video/mp4">z
+                  <div class="md-service-card__image">
+                    <span class="material-icons">design_services</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+            <div class="md-service-card__content">
+              <h3 class="md-service-card__title">Diseño Gráfico</h3>
+              <p class="md-service-card__description">
+                Logotipos, material promocional y diseños corporativos que reflejan tu identidad.
+              </p>
+              <div class="md-service-card__highlights">
+                <span class="md-highlight">Profesional</span>
+                <span class="md-highlight">Creativo</span>
+                <span class="md-highlight">Impacto</span>
+              </div>
+             <div class="md-service-card__actions">
+                <a href="#contacto" class="md-button md-button--outlined">
+                  Consultar
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Service 6: Consultoría -->
+          <article class="md-service-card">
+            <div class="md-service-card__media">
+              <div class="md-service-card__image">
+                <span class="material-icons">psychology</span>
+              </div>
+            </div>
+            <div class="md-service-card__content">
+              <h3 class="md-service-card__title">Consultoría de Eventos</h3>
+              <p class="md-service-card__description">
+                Te ayudamos a planificar cada detalle para que tu evento sea perfecto e inolvidable.
+              </p>
+              <div class="md-service-card__highlights">
+                <span class="md-highlight">Experiencia</span>
+                <span class="md-highlight">Planificación</span>
+                <span class="md-highlight">Éxito</span>
+              </div>
+              <div class="md-service-card__actions">
+                <a href="#contacto" class="md-button md-button--outlined">
+                  Consultar
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="md-services__cta">
+          <div class="md-cta-card">
+            <div class="md-cta-card__content">
+              <h3 class="md-cta-card__title">¿Necesitas algo específico?</h3>
+              <p class="md-cta-card__description">
+                Cada evento es único. Cuéntanos tu idea y crearemos algo especial para ti.
+              </p>
+            </div>
+            <div class="md-cta-card__actions">
+              <a href="#contacto" class="md-button md-button--filled md-button--large">
+                <span class="material-icons">message</span>
+                Hablemos de tu proyecto
+              </a>
             </div>
           </div>
-          <div class="experience-cta">
-            <a href="/cotizaciones" class="cta-professional">Iniciar mi Proyecto</a>
-            <a href="/aparador" class="cta-secondary">Ver Portafolio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAQUETES SECTION -->
+    <section class="md-packages" id="paquetes" aria-labelledby="packages-title">
+      <div class="md-container">
+        <div class="md-packages__header">
+          <h2 id="packages-title" class="md-packages__title">Paquetes por Evento</h2>
+          <p class="md-packages__subtitle">Elige el paquete perfecto para tu celebración especial</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Paquete Básico -->
+          <div class="pricing-card">
+            <div class="pricing-card__header">
+              <div class="pricing-card__plan">Básico</div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__currency">$</span>
+                <span class="pricing-card__amount">4,500</span>
+                <span class="pricing-card__period">MXN</span>
+              </div>
+              <div class="pricing-card__description">
+                Perfecto para eventos íntimos hasta 30 invitados
+              </div>
+            </div>
+            
+            <div class="pricing-card__features">
+              <div class="feature-group">
+                <h4 class="feature-group__title">Incluye:</h4>
+                <ul class="feature-list">
+                  <li class="feature-item">30 invitaciones de lujo</li>
+                  <li class="feature-item">Diseño personalizado</li>
+                  <li class="feature-item">Papel premium 300g</li>
+                  <li class="feature-item">Sobre incluido</li>
+                  <li class="feature-item">1 revisión de diseño</li>
+                  <li class="feature-item">Entrega 5-7 días</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="pricing-card__footer">
+              <button class="pricing-btn pricing-btn--outline">
+                <span>Cotizar Básico</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Paquete Completo -->
+          <div class="pricing-card pricing-card--featured">
+            <div class="pricing-card__badge">
+              <span>MÁS POPULAR</span>
+            </div>
+            <div class="pricing-card__header">
+              <div class="pricing-card__plan">Completo</div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__currency">$</span>
+                <span class="pricing-card__amount">8,900</span>
+                <span class="pricing-card__period">MXN</span>
+              </div>
+              <div class="pricing-card__description">
+                Ideal para bodas y eventos hasta 100 invitados
+              </div>
+            </div>
+            
+            <div class="pricing-card__features">
+              <div class="feature-group">
+                <h4 class="feature-group__title">Incluye:</h4>
+                <ul class="feature-list">
+                  <li class="feature-item">100 invitaciones de lujo</li>
+                  <li class="feature-item">Diseño 100% personalizado</li>
+                  <li class="feature-item">Papel premium con textura</li>
+                  <li class="feature-item">Sobre personalizado con foil</li>
+                  <li class="feature-item">50 marcalibros + 30 etiquetas</li>
+                  <li class="feature-item">Menú de mesa (5 piezas)</li>
+                  <li class="feature-item">3 revisiones + invitación digital</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="pricing-card__footer">
+              <button class="pricing-btn pricing-btn--filled">
+                <span>Seleccionar Completo</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Paquete Premium -->
+          <div class="pricing-card">
+            <div class="pricing-card__header">
+              <div class="pricing-card__plan">Premium</div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__currency">$</span>
+                <span class="pricing-card__amount">15,500</span>
+                <span class="pricing-card__period">MXN</span>
+              </div>
+              <div class="pricing-card__description">
+                Celebraciones exclusivas hasta 200 invitados
+              </div>
+            </div>
+            
+            <div class="pricing-card__features">
+              <div class="feature-group">
+                <h4 class="feature-group__title">Incluye:</h4>
+                <ul class="feature-list">
+                  <li class="feature-item">200 invitaciones premium</li>
+                  <li class="feature-item">Diseño exclusivo especial</li>
+                  <li class="feature-item">Papel algodón 400g</li>
+                  <li class="feature-item">Sobre foil dorado/plateado</li>
+                  <li class="feature-item">Kit completo de mesa</li>
+                  <li class="feature-item">Welcome sign + recuerdos</li>
+                  <li class="feature-item">Invitación digital animada</li>
+                  <li class="feature-item">Revisiones ilimitadas</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="pricing-card__footer">
+              <button class="pricing-btn pricing-btn--outline">
+                <span>Seleccionar Premium</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="md-packages__footer">
+          <div class="footer-content">
+            <h3>¿Necesitas algo diferente?</h3>
+            <p>Creamos cotizaciones personalizadas para cada evento especial</p>
+            <button class="pricing-btn pricing-btn--filled">
+              <span>Cotización Personalizada</span>
+            </button>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-    <!-- SERVICES / PRODUCTS -->
-  <section id="services" role="region" aria-labelledby="services-heading">
-    <h2 id="services-heading">Mis Servicios</h2>
-    <div class="grid">
-      <div class="card">
-        <video 
-          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4" 
-          alt="Invitaciones Personalizadas" 
-          autoplay 
-          muted 
-          loop 
-          loading="lazy"
-          playsinline></video>
-        <div class="card-content">
-          <h3>Invitaciones Personalizadas Cancún</h3>
-          <p>Diseños únicos a tu medida para bodas, quinceañeras, bautizos y eventos corporativos en Cancún. Papelería de la más alta calidad que refleja el estilo y tema de tu celebración especial.</p>
-          <a href="/cotizaciones">Solicitar Cotización</a>
+    <!-- CONTACT SECTION -->
+    <section class="md-contact" id="contacto" aria-labelledby="contact-title">
+      <div class="md-container">
+        <div class="md-contact__header">
+          <h2 id="contact-title" class="md-contact__title">Hablemos de tu proyecto</h2>
+          <p class="md-contact__subtitle">Estamos aquí para hacer realidad tus ideas. Cuéntanos qué tienes en mente y te ayudaremos a crear algo único.</p>
         </div>
-      </div>
-      <div class="card">
-        <video 
-          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/cntro_de_mesa.mp4" 
-          alt="Centros de Mesa" 
-          autoplay 
-          muted 
-          loop 
-          loading="lazy"
-          playsinline></video>
-        <div class="card-content">
-          <h3>Centros de Mesa y Arreglos Elegantes</h3>
-          <p>Centros de mesa elegantes, temáticos y totalmente personalizados para bodas y eventos en Cancún. Diseños únicos que cautivarán a tus invitados desde el primer momento.</p>
-          <a href="/cotizaciones">Ver Más</a>
-        </div>
-      </div>
-      <div class="card">
-        <video 
-          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_decorativas.mp4" 
-          alt="Velas Decorativas" 
-          autoplay 
-          muted 
-          loop 
-          loading="lazy"
-          playsinline></video>
-        <div class="card-content">
-          <h3>Velas y Detalles Decorativos</h3>
-          <p>Velas aromáticas, recuerdos y accesorios cuidadosamente hechos para complementar la atmósfera de tu celebración. Recuerdos y souvenirs personalizados.</p>
-          <a href="/cotizaciones">Conocer Más</a>
-        </div>
-      </div>
-      <div class="card">
-        <video 
-          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones_white.mp4" 
-          alt="Invitaciones Elegantes" 
-          autoplay 
-          muted 
-          loop 
-          loading="lazy"
-          playsinline></video>
-        <div class="card-content">
-          <h3>Invitaciones Elegantes</h3>
-          <p>Invitaciones con acabados premium en tonos elegantes y diseños sofisticados. Perfectas para eventos exclusivos y celebraciones de alta gama.</p>
-          <a href="/cotizaciones">Consultar</a>
-        </div>
-      </div>
-      <div class="card">
-        <video 
-          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/rotulos_iluminados.mp4" 
-          alt="Rótulos Iluminados" 
-          autoplay 
-          muted 
-          loop 
-          loading="lazy"
-          playsinline></video>
-        <div class="card-content">
-          <h3>Rótulos y Señalética Iluminada</h3>
-          <p>Rótulos personalizados con iluminación LED para eventos, bodas y celebraciones. Diseños únicos que destacan y crean ambiente especial.</p>
-          <a href="/cotizaciones">Ver Portfolio</a>
-        </div>
-      </div>
-      <div class="card">
-        <video 
-          src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_con_cruz_cristiana.mp4" 
-          alt="Velas Religiosas" 
-          autoplay 
-          muted 
-          loop 
-          loading="lazy"
-          playsinline></video>
-        <div class="card-content">
-          <h3>Velas y Artículos Religiosos</h3>
-          <p>Velas especiales para ceremonias religiosas, bautizos, primeras comuniones y eventos cristianos. Diseños respetuosos y significativos.</p>
-          <a href="/cotizaciones">Cotizar</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- METRICS/KPI BAND -->
-  <section class="metrics-section" role="region" aria-labelledby="metrics-heading">
-    <div class="metrics-container">
-      <h2 id="metrics-heading" class="sr-only">Estadísticas de rendimiento</h2>
-      <div class="metrics-grid">
-        <div class="metric-item">
-          <div class="metric-number">500+</div>
-          <div class="metric-label">Eventos realizados</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-number">25</div>
-          <div class="metric-label">Años de experiencia</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-number">98%</div>
-          <div class="metric-label">Clientes satisfechos</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-number">7</div>
-          <div class="metric-label">Días entrega promedio</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="md-contact__content">
+          <!-- Contact Info -->
+          <div class="md-contact__info">
+            <div class="md-contact-card">
+              <div class="md-contact-card__header">
+                <h3 class="md-contact-card__title">Información de Contacto</h3>
+                <p class="md-contact-card__subtitle">Múltiples formas de comunicarnos</p>
+              </div>
+              
+              <div class="md-contact-methods">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5299982361177" class="md-contact-method" target="_blank" rel="noopener">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">chat</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">WhatsApp</h4>
+                    <p class="md-contact-method__value">+52 998 236 1177</p>
+                    <span class="md-contact-method__status">
+                      <span class="md-status-dot md-status-dot--online"></span>
+                      En línea ahora
+                    </span>
+                  </div>
+                  <span class="material-icons md-contact-method__arrow">arrow_forward</span>
+                </a>
 
-  <!-- PRICING -->
-  <section id="pricing" role="region" aria-labelledby="pricing-heading">
-    <h2 id="pricing-heading">Elige un Paquete</h2>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Básico</h3>
-        <div class="price">$19</div>
-        <div class="period">/mes</div>
-        <ul>
-          <li>Invitaciones sencillas</li>
-          <li>Decoración mínima</li>
-          <li>Asesoría general</li>
-          <li>Atención personalizada</li>
-          <li>Soporte 24/7</li>
-        </ul>
-        <button class="cta-button" onclick="window.location.href='#contact'">Contratar Básico</button>
-      </div>
-      <div class="pricing-card featured">
-        <h3>Completo</h3>
-        <div class="price">$29</div>
-        <div class="period">/mes</div>
-        <ul>
-          <li>Invitaciones personalizadas</li>
-          <li>Centros de mesa estándar</li>
-          <li>Velas y recuerdos básicos</li>
-          <li>Diseño temático</li>
-          <li>Soporte 24/7</li>
-        </ul>
-        <button class="cta-button" onclick="window.location.href='#contact'">Contratar Completo</button>
-      </div>
-      <div class="pricing-card">
-        <h3>Premium</h3>
-        <div class="price">$39</div>
-        <div class="period">/mes</div>
-        <ul>
-          <li>Invitaciones de lujo</li>
-          <li>Centros de mesa elaborados</li>
-          <li>Velas, recuerdos y detalles premium</li>
-          <li>Asesoría integral y diseño VIP</li>
-          <li>Soporte 24/7</li>
-        </ul>
-        <button class="cta-button" onclick="window.location.href='#contact'">Contratar Premium</button>
-      </div>
-    </div>
-  </section>
+                <!-- Email -->
+                <a href="mailto:vrdistribucion@gmail.com" class="md-contact-method">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">email</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">Email</h4>
+                    <p class="md-contact-method__value">vrdistribucion@gmail.com</p>
+                    <span class="md-contact-method__status">Respuesta en 24h</span>
+                  </div>
+                  <span class="material-icons md-contact-method__arrow">arrow_forward</span>
+                </a>
 
-  <!-- CLIENT LOGO STRIP -->
-  <section class="clients-section" role="region" aria-labelledby="clients-heading">
-    <div class="clients-container">
-      <h2 id="clients-heading">Eventos que hemos hecho realidad</h2>
-      <div class="clients-strip">
-        <div class="client-category">
-          <span class="client-type">Bodas de destino</span>
-        </div>
-        <div class="client-category">
-          <span class="client-type">XV Años temáticos</span>
-        </div>
-        <div class="client-category">
-          <span class="client-type">Eventos corporativos</span>
-        </div>
-        <div class="client-category">
-          <span class="client-type">Baby showers</span>
-        </div>
-        <div class="client-category">
-          <span class="client-type">Bautizos elegantes</span>
-        </div>
-        <div class="client-category">
-          <span class="client-type">Aniversarios</span>
-        </div>
-      </div>
-    </div>
-  </section>
+                <!-- Teléfono -->
+                <a href="tel:+529982361177" class="md-contact-method">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">phone</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">Teléfono</h4>
+                    <p class="md-contact-method__value">+52 998 236 1177</p>
+                    <span class="md-contact-method__status">Lun - Sáb: 9:00 - 18:00</span>
+                  </div>
+                  <span class="material-icons md-contact-method__arrow">arrow_forward</span>
+                </a>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" role="region" aria-labelledby="testimonials-heading">
-    <h2 id="testimonials-heading">Testimonios</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer1.jpg" alt="Julia Sakura" loading="lazy" />
-        <p>"Gracias a Virginia, mis invitaciones de boda fueron espectaculares. Los centros de mesa y los detalles de velas encantaron a todos. ¡Súper recomendada!"</p>
-        <div>
-          <strong>Julia Sakura</strong>
-          <small>Cliente Satisfecho</small>
-        </div>
-      </div>
-      <div class="testimonial">
-        <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/customer2.jpg" alt="John Santana" loading="lazy" />
-        <p>"Virginia entendió el concepto de mi evento corporativo y logró una decoración impecable. Las invitaciones con nuestro branding fueron un plus profesional."</p>
-        <div>
-          <strong>John Santana</strong>
-          <small>Organizador de Eventos</small>
-        </div>
-      </div>
-    </div>
-  </section>
+                <!-- Ubicación -->
+                <a href="https://share.google/ZQx1eVM25teHLE0Ww" class="md-contact-method" target="_blank" rel="noopener">
+                  <div class="md-contact-method__icon">
+                    <span class="material-icons">location_on</span>
+                  </div>
+                  <div class="md-contact-method__content">
+                    <h4 class="md-contact-method__title">Ubicación</h4>
+                    <p class="md-contact-method__value">Plaza Galerias Lat. Av. Tulum Supermanzana 2, Bancos, 77500 Cancún, Q.R.</p>
+                    <span class="md-contact-method__status">Servicio a domicilio</span>
+                  </div>
+                  <span class="material-icons md-contact-method__arrow">arrow_forward</span>
+                </a>
+              </div>
 
-  <!-- CONTACT -->
-  <section id="contact" role="region" aria-labelledby="contact-heading">
-    <h2 id="contact-heading">Contáctanos</h2>
-    <div class="contact-wrap">
-      <form role="form" aria-labelledby="contact-form-heading" novalidate>
-        <h3 id="contact-form-heading" class="sr-only">Formulario de contacto</h3>
+              <!-- Quick Actions -->
+              <div class="md-contact-actions">
+                <button class="md-button md-button--filled"">
+                  <span class="material-icons">chat</span>
+                  Chatear ahora
+                </button>
+                <a href="#contact" class="md-button md-button--outlined">
+                  <span class="material-icons">edit</span>
+                  Enviar mensaje
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="md-contact__form">
+            <div id="contact">
+              <form id="contact-form" class="md-form" novalidate>
+                <div class="md-form__header">
+                  <h3 class="md-form__title">Envíanos un mensaje</h3>
+                  <p class="md-form__subtitle">Completa el formulario y nos pondremos en contacto contigo pronto</p>
+                </div>
+
+                <!-- Success and Error Messages -->
+                <div id="form-success-message" class="success-message" style="display: none;"></div>
+                <div id="form-general-error" class="general-error" style="display: none;"></div>
+
+                <div class="md-form__content">
+                  <!-- Personal Information -->
+                  <div class="md-form__section">
+                    <h4 class="md-form__section-title">Información Personal</h4>
+                    
+                    <div class="md-form__row">
+                      <div class="md-form__field">
+                        <div class="md-textfield">
+                          <input 
+                            type="text" 
+                            id="contact-name" 
+                            name="nombre" 
+                            class="md-textfield__input" 
+                            required
+                            placeholder=" "
+                            autocomplete="given-name"
+                          />
+                          <label for="contact-name" class="md-textfield__label">Nombre *</label>
+                          <div class="md-textfield__supporting-text">
+                            <span class="md-textfield__error error-message" id="name-error"></span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="md-form__field">
+                        <div class="md-textfield">
+                          <input 
+                            type="email" 
+                            id="contact-email" 
+                            name="email" 
+                            class="md-textfield__input" 
+                            required
+                            placeholder=" "
+                            autocomplete="email"
+                          />
+                          <label for="contact-email" class="md-textfield__label">Email *</label>
+                          <div class="md-textfield__supporting-text">
+                            <span class="md-textfield__helper">Usaremos este email para contactarte</span>
+                            <span class="md-textfield__error error-message" id="email-error"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="md-form__row">
+                      <div class="md-form__field">
+                        <div class="md-textfield">
+                          <input 
+                            type="tel" 
+                            id="contact-phone" 
+                            name="telefono" 
+                            class="md-textfield__input" 
+                            autocomplete="tel"
+                            placeholder=" "
+                          />
+                          <label for="contact-phone" class="md-textfield__label">Teléfono</label>
+                          <div class="md-textfield__supporting-text">
+                            <span class="md-textfield__helper">Opcional - Para contacto directo</span>
+                            <span class="md-textfield__error error-message" id="phone-error"></span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="md-form__field">
+                        <div class="md-select">
+                          <select id="tipoServicio" name="tipoServicio" class="md-select__input">
+                            <option value="" disabled selected></option>
+                            <option value="invitaciones">Invitaciones Personalizadas</option>
+                            <option value="centros-mesa">Centros de Mesa</option>
+                            <option value="velas">Velas Aromáticas</option>
+                            <option value="recuerdos">Recuerdos Personalizados</option>
+                            <option value="diseno-grafico">Diseño Gráfico</option>
+                            <option value="consultoria">Consultoría de Eventos</option>
+                            <option value="otro">Otro servicio</option>
+                          </select>
+                          <label for="tipoServicio" class="md-select__label">Tipo de Evento</label>
+                          <span class="material-icons md-select__dropdown-icon">expand_more</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Project Information -->
+                  <div class="md-form__section">
+                    <h4 class="md-form__section-title">Información del Proyecto</h4>
+
+                    <div class="md-form__row md-form__row--single">
+                      <div class="md-form__field">
+                        <div class="md-textfield md-textfield--textarea">
+                          <textarea 
+                            id="contact-message" 
+                            name="mensaje" 
+                            class="md-textfield__input" 
+                            rows="4" 
+                            required
+                            placeholder=" "
+                          ></textarea>
+                          <label for="contact-message" class="md-textfield__label">Cuéntanos sobre tu proyecto *</label>
+                          <div class="md-textfield__supporting-text">
+                            <span class="md-textfield__helper">Describe tu visión, ideas, colores preferidos, etc.</span>
+                            <span class="md-textfield__error error-message" id="message-error"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="md-form__actions">
+                  <button id="reset-form-button" type="button" class="md-button md-button--outlined" onclick="resetForm()">
+                    <span class="material-icons">refresh</span>
+                    Limpiar formulario
+                  </button>
+                  <button type="submit" class="md-button md-button--filled">
+                    <span class="material-icons">send</span>
+                    Enviar mensaje
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="md-testimonials" id="testimonios" aria-labelledby="testimonials-title">
+    <div class="md-container">
+      <div class="md-testimonials__header">
+        <h2 id="testimonials-title" class="md-testimonials__title">Lo que dicen nuestros clientes</h2>
+        <p class="md-testimonials__subtitle">25 años creando momentos únicos e inolvidables</p>
+      </div>
+
+      <div class="md-testimonials__grid">
+        <!-- Testimonio 1 -->
+        <article class="md-testimonial-card">
+          <div class="md-testimonial-card__content">
+            <div class="md-testimonial-card__quote">
+              <span class="material-icons">format_quote</span>
+            </div>
+            <p class="md-testimonial-card__text">
+              "Virginia hizo de nuestra boda algo mágico. Las invitaciones fueron perfectas y los centros de mesa superaron nuestras expectativas. Su atención al detalle es extraordinaria."
+            </p>
+            <div class="md-testimonial-card__rating">
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+            </div>
+          </div>
+          <div class="md-testimonial-card__author">
+            <div class="md-testimonial-card__avatar">
+              <span class="material-icons">person</span>
+            </div>
+            <div class="md-testimonial-card__info">
+              <h4 class="md-testimonial-card__name">María & Carlos</h4>
+              <p class="md-testimonial-card__role">Boda • Diciembre 2023</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Testimonio 2 -->
+        <article class="md-testimonial-card">
+          <div class="md-testimonial-card__content">
+            <div class="md-testimonial-card__quote">
+              <span class="material-icons">format_quote</span>
+            </div>
+            <p class="md-testimonial-card__text">
+              "Los XV años de mi hija fueron perfectos gracias a VR Distribución. Desde las invitaciones hasta los recuerdos, todo tuvo un toque especial y único."
+            </p>
+            <div class="md-testimonial-card__rating">
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+            </div>
+          </div>
+          <div class="md-testimonial-card__author">
+            <div class="md-testimonial-card__avatar">
+              <span class="material-icons">person</span>
+            </div>
+            <div class="md-testimonial-card__info">
+              <h4 class="md-testimonial-card__name">Ana Rodríguez</h4>
+              <p class="md-testimonial-card__role">XV Años • Julio 2023</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Testimonio 3 -->
+        <article class="md-testimonial-card">
+          <div class="md-testimonial-card__content">
+            <div class="md-testimonial-card__quote">
+              <span class="material-icons">format_quote</span>
+            </div>
+            <p class="md-testimonial-card__text">
+              "Excelente servicio y creatividad. Virginia entendió perfectamente nuestra visión para el bautizo y creó algo hermoso. La recomendamos al 100%."
+            </p>
+            <div class="md-testimonial-card__rating">
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+              <span class="material-icons">star</span>
+            </div>
+          </div>
+          <div class="md-testimonial-card__author">
+            <div class="md-testimonial-card__avatar">
+              <span class="material-icons">person</span>
+            </div>
+            <div class="md-testimonial-card__info">
+              <h4 class="md-testimonial-card__name">Roberto & Sofía</h4>
+              <p class="md-testimonial-card__role">Bautizo • Marzo 2024</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="md-trust-indicators">
+        <div class="md-trust-indicator">
+          <div class="md-trust-indicator__icon">
+            <span class="material-icons">verified</span>
+          </div>
+          <div class="md-trust-indicator__content">
+            <h4 class="md-trust-indicator__title">25+ Años</h4>
+            <p class="md-trust-indicator__description">De experiencia</p>
+          </div>
+        </div>
         
-        <div class="form-row">
-          <div class="form-group">
-            <label for="contact-name">Nombre completo *</label>
-            <input 
-              type="text" 
-              id="contact-name" 
-              name="name" 
-              required 
-              aria-required="true"
-              aria-describedby="name-error"
-            />
-            <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+        <div class="md-trust-indicator">
+          <div class="md-trust-indicator__icon">
+            <span class="material-icons">groups</span>
           </div>
-
-          <div class="form-group">
-            <label for="contact-email">Correo electrónico *</label>
-            <input 
-              type="email" 
-              id="contact-email" 
-              name="email" 
-              required 
-              aria-required="true"
-              aria-describedby="email-error"
-            />
-            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="contact-phone">Teléfono</label>
-            <input 
-              type="tel" 
-              id="contact-phone" 
-              name="phone" 
-              placeholder="999 123 4567"
-              maxlength="20"
-              aria-describedby="phone-error"
-            />
-            <div id="phone-error" class="error-message" role="alert" aria-live="polite"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="contact-event">Tipo de evento</label>
-            <select 
-              id="contact-event" 
-              name="event-type"
-              aria-describedby="event-error"
-            >
-              <option value="">Selecciona tu evento</option>
-              <option value="boda">Boda</option>
-              <option value="cumpleanos">Cumpleaños</option>
-              <option value="bautizo">Bautizo</option>
-              <option value="quinceanera">Quinceañera</option>
-              <option value="corporativo">Evento Corporativo</option>
-              <option value="otro">Otro</option>
-            </select>
-            <div id="event-error" class="error-message" role="alert" aria-live="polite"></div>
-          </div>
-        </div>
-
-        <div class="form-group form-full-width">
-          <label for="contact-message">Cuéntame sobre tu evento o proyecto *</label>
-          <textarea 
-            id="contact-message" 
-            name="message" 
-            required 
-            aria-required="true"
-            aria-describedby="message-error"
-          ></textarea>
-          <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
-        </div>
-
-        <div id="form-general-error" class="error-message general-error" role="alert" aria-live="polite"></div>
-        <div id="form-success-message" class="success-message" role="alert" aria-live="polite"></div>
-
-        <button type="submit" aria-describedby="submit-help">Enviar Mensaje</button>
-        <div id="submit-help" class="sr-only">El formulario se enviará cuando todos los campos requeridos estén completos</div>
-      </form>
-      
-      <div class="contact-info" role="complementary" aria-labelledby="contact-info-heading">
-        <h3 id="contact-info-heading">Virginia Ruiz</h3>
-        <p><strong>Diseñadora en Comunicación Visual México</strong></p>
-        <p><strong>Tel:</strong> <a href="tel:+529982361177">+52 998 236 1177</a></p>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/529982361177?text=Hola%2C%20estoy%20interesado%20en%20tus%20servicios">+52 998 236 1177</a></p>
-        <p><strong>Email:</strong> <a href="mailto:vr.distribucion@gmail.com">vr.distribucion@gmail.com</a></p>
-        <p><strong>Ubicación:</strong> Plaza Galerías Lat. Local 32, Av. Tulum, Cancún, Q.R., México</p>
-        <p><strong>Años de experiencia:</strong> 25 años</p>
-        
-        <!-- Social Media Links -->
-        <div class="social-media-section">
-          <h4>Síguenos en nuestras redes sociales</h4>
-          <div class="social-icons-container">
-            <a href="https://www.instagram.com/vrcancunonline?igsh=MTFrcjdybGsyNzV4aw==" target="_blank" rel="noopener noreferrer" aria-label="Seguir en Instagram" title="Instagram" class="social-icon instagram">
-              <i class="icon ion-logo-instagram" aria-hidden="true"></i>
-              <span class="social-tooltip">Instagram</span>
-            </a>
-            <a href="https://www.facebook.com/share/15oBN2xkPS/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Seguir en Facebook" title="Facebook" class="social-icon facebook">
-              <i class="icon ion-logo-facebook" aria-hidden="true"></i>
-              <span class="social-tooltip">Facebook</span>
-            </a>
-            <a href="https://www.youtube.com/watch?v=doteMqP6eSc" target="_blank" rel="noopener noreferrer" aria-label="Ver en YouTube" title="YouTube" class="social-icon youtube">
-              <i class="icon ion-logo-youtube" aria-hidden="true"></i>
-              <span class="social-tooltip">YouTube</span>
-            </a>
-            <a href="https://wa.me/5219982361177?text=Hola%2C%20estoy%20interesado%20en%20tus%20servicios" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" title="WhatsApp" class="social-icon whatsapp">
-              <i class="icon ion-logo-whatsapp" aria-hidden="true"></i>
-              <span class="social-tooltip">WhatsApp</span>
-            </a>
+          <div class="md-trust-indicator__content">
+            <h4 class="md-trust-indicator__title">2500+</h4>
+            <p class="md-trust-indicator__description">Eventos realizados</p>
           </div>
         </div>
         
+        <div class="md-trust-indicator">
+          <div class="md-trust-indicator__icon">
+            <span class="material-icons">star_rate</span>
+          </div>
+          <div class="md-trust-indicator__content">
+            <h4 class="md-trust-indicator__title">5.0</h4>
+            <p class="md-trust-indicator__description">Calificación promedio</p>
+          </div>
+        </div>
+        
+        <div class="md-trust-indicator">
+          <div class="md-trust-indicator__icon">
+            <span class="material-icons">schedule</span>
+          </div>
+          <div class="md-trust-indicator__content">
+            <h4 class="md-trust-indicator__title">24h</h4>
+            <p class="md-trust-indicator__description">Tiempo de respuesta</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer role="contentinfo">
-    &copy; 2024 VR Distribución - Virginia Ruiz.
-    <a href="/cookie-consent/Politica_de_Privacidad_VR_Distribucion.html">Política de Privacidad</a> |
-    <a href="#">Términos de Servicio</a>
+  <footer class="md-footer" role="contentinfo">
+    <div class="md-container">
+      <!-- Footer Main Content -->
+      <div class="md-footer__content">
+        <!-- Company Info -->
+        <div class="md-footer__section md-footer__section--primary">
+          <div class="md-footer__logo">
+            <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-footer__logo-img" />
+            <div class="md-footer__logo-text">
+              <h3 class="md-footer__company-name">VR Distribución</h3>
+              <p class="md-footer__tagline">Virginia Ruiz • Diseño y Creatividad</p>
+            </div>
+          </div>
+          <p class="md-footer__description">
+            Desde 1999, especializados en crear invitaciones personalizadas, centros de mesa y decoraciones únicas para bodas y eventos especiales en Cancún y Quintana Roo.
+          </p>
+          
+          <!-- Social Media -->
+          <div class="md-footer__social">
+            <h4 class="md-footer__social-title">Síguenos</h4>
+            <div class="md-footer__social-links">
+              <a href="https://wa.me/529982361177" class="md-social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+                <span class="material-icons">chat</span>
+              </a>
+              <a href="mailto:vrdistribucion@gmail.com" class="md-social-link" aria-label="Email">
+                <span class="material-icons">email</span>
+              </a>
+              <a href="tel:+529982361177" class="md-social-link" aria-label="Teléfono">
+                <span class="material-icons">phone</span>
+              </a>
+              <a href="https://www.facebook.com/vrdistribucion" class="md-social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                <span class="material-icons">facebook</span>
+              </a>
+              <a href="https://www.instagram.com/vrdistribucion" class="md-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                <span class="material-icons">camera_alt</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="md-footer__section">
+          <h4 class="md-footer__section-title">Servicios</h4>
+          <nav class="md-footer__nav" aria-label="Servicios">
+            <a href="#servicios" class="md-footer__link">Invitaciones Personalizadas</a>
+            <a href="#servicios" class="md-footer__link">Centros de Mesa</a>
+            <a href="#servicios" class="md-footer__link">Velas Aromáticas</a>
+            <a href="#servicios" class="md-footer__link">Recuerdos Personalizados</a>
+            <a href="#servicios" class="md-footer__link">Diseño Gráfico</a>
+            <a href="#servicios" class="md-footer__link">Consultoría de Eventos</a>
+          </nav>
+        </div>
+
+        <!-- Company -->
+        <div class="md-footer__section">
+          <h4 class="md-footer__section-title">Empresa</h4>
+          <nav class="md-footer__nav" aria-label="Empresa">
+            <a href="#caracteristicas" class="md-footer__link">Sobre Nosotros</a>
+            <a href="/gallery" class="md-footer__link">Galería</a>
+            <a href="/portafolio" class="md-footer__link">Portafolio</a>
+            <a href="#testimonios" class="md-footer__link">Testimonios</a>
+            <a href="/cotizaciones" class="md-footer__link">Cotizaciones</a>
+            <a href="/aparador" class="md-footer__link">Aparador</a>
+          </nav>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="md-footer__section">
+          <h4 class="md-footer__section-title">Contacto</h4>
+          <div class="md-footer__contact">
+            <div class="md-footer__contact-item">
+              <span class="material-icons">location_on</span>
+              <div class="md-footer__contact-content">
+                <strong>Ubicación</strong>
+                <p>Plaza Galerias Lat. Av. Tulum Supermanzana 2, Bancos<br>77500 Cancún, Q.R., México</p>
+              </div>
+            </div>
+            
+            <div class="md-footer__contact-item">
+              <span class="material-icons">schedule</span>
+              <div class="md-footer__contact-content">
+                <strong>Horarios</strong>
+                <p>Lun - Sáb: 9:00 - 18:00<br>Dom: Con cita previa</p>
+              </div>
+            </div>
+            
+            <div class="md-footer__contact-item">
+              <span class="material-icons">chat</span>
+              <div class="md-footer__contact-content">
+                <strong>WhatsApp</strong>
+                <p>+52 998 236 1177<br>Respuesta inmediata</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="md-footer__bottom">
+        <div class="md-footer__bottom-content">
+          <div class="md-footer__copyright">
+            <p>&copy; 2024 VR Distribución - Virginia Ruiz. Todos los derechos reservados.</p>
+            <p class="md-footer__tech">Powered by Material Design 3 • Desarrollado con ❤️ en Cancún</p>
+          </div>
+          
+          <div class="md-footer__legal">
+            <a href="/cookie-consent/Politica_de_Privacidad_VR_Distribucion.html" class="md-footer__legal-link">Política de Privacidad</a>
+            <span class="md-footer__separator">•</span>
+            <a href="#" class="md-footer__legal-link">Términos de Servicio</a>
+            <span class="md-footer__separator">•</span>
+            <a href="/sitemap.xml" class="md-footer__legal-link">Sitemap</a>
+          </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <button class="md-fab md-fab--back-to-top" id="backToTop" aria-label="Volver al inicio" title="Volver al inicio">
+          <span class="material-icons">keyboard_arrow_up</span>
+        </button>
+      </div>
+    </div>
   </footer>
 
-  <!-- Chat Widget -->
+  <!-- Chat Widget (Mantener estructura original) -->
   <div id="chat-container" class="chat-container collapsed">
     <div class="chat-header">
       <button id="close-btn" class="control-btn" aria-label="Cerrar chat" title="Cerrar chat">
-        <i class="icon ion-md-close"></i>
+        <span class="material-icons">close</span>
       </button>
       <span class="chat-title">VR Distribución</span>
       <div class="chat-controls">
         <button id="minimize-btn" class="control-btn" aria-label="Minimizar chat" title="Minimizar chat">
-          <i class="icon ion-md-remove"></i>
+          <span class="material-icons">remove</span>
         </button>
       </div>
     </div>
@@ -1097,595 +2021,133 @@
     <div class="chat-input-container">
       <textarea id="chat-input" placeholder="Escribe tu mensaje aquí..." rows="1"></textarea>
       <button id="send-btn" class="send-btn">
-        <i class="icon ion-md-send"></i>
+        <span class="material-icons">send</span>
       </button>
     </div>
   </div>
 
   <button id="chat-toggle" class="chat-toggle" aria-label="Abrir chat" title="Abrir chat">
-    <i class="icon ion-logo-whatsapp"></i>
+    <span class="material-icons">chat</span>
   </button>
 
-  <!-- Structured Data (JSON-LD) - Load at end for better performance -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://vrdistribucion.com",
-    "name": "VR Distribución",
-    "alternateName": "Virginia Ruiz Distribución",
-    "description": "Especialistas en invitaciones personalizadas, centros de mesa, velas aromáticas y decoraciones para eventos en Cancún. 25 años creando experiencias únicas para bodas, cumpleaños, bautizos y eventos corporativos.",
-    "image": "https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png",
-    "url": "https://vrdistribucion.com",
-    "telephone": "+52-998-236-1177",
-    "email": "vrdistribucion@gmail.com",
-    "priceRange": "$19-$39",
-    "paymentAccepted": "Cash, Credit Card, Debit Card",
-    "currenciesAccepted": "MXN",
-    "openingHours": "Mo-Sa 09:00-18:00",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Plaza Galerías Lat. Local 32, Av. Tulum Supermanzana 2, Bancos",
-      "addressLocality": "Cancún",
-      "addressRegion": "Quintana Roo",
-      "postalCode": "77500",
-      "addressCountry": "MX"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 21.16906117750304,
-      "longitude": -86.82813890415704
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Virginia Ruiz Rodríguez",
-      "jobTitle": "Diseñadora de Eventos y Asesora Gráfica"
-    },
-    "areaServed": [
-      {
-        "@type": "Place",
-        "name": "Cancún"
-      },
-      {
-        "@type": "Place", 
-        "name": "Quintana Roo"
-      },
-      {
-        "@type": "Place",
-        "name": "República Mexicana"
-      }
-    ],
-    "serviceType": [
-      "Invitaciones personalizadas",
-      "Centros de mesa",
-      "Decoraciones para eventos",
-      "Velas aromáticas",
-      "Recuerdos para eventos",
-      "Diseño gráfico",
-      "Papelería corporativa"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Servicios de Eventos",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Paquete Básico",
-            "description": "Invitaciones sencillas, decoración mínima, asesoría general"
-          },
-          "price": "19",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Paquete Completo",
-            "description": "Invitaciones personalizadas, centros de mesa estándar, velas y recuerdos básicos"
-          },
-          "price": "29",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Paquete Premium",
-            "description": "Invitaciones de lujo, centros de mesa elaborados, asesoría integral VIP"
-          },
-          "price": "39",
-          "priceCurrency": "USD"
-        }
-      ]
-    },
-    "sameAs": [
-      "https://www.instagram.com/vrcancunonline",
-      "https://www.facebook.com/share/15oBN2xkPS/",
-      "https://www.youtube.com/watch?v=doteMqP6eSc",
-      "https://wa.me/529982361177"
-    ],
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Julia Sakura"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "Gracias a Virginia, mis invitaciones de boda fueron espectaculares. Los centros de mesa y los detalles de velas encantaron a todos. ¡Súper recomendada!"
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "John Santana"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "Virginia entendió el concepto de mi evento corporativo y logró una decoración impecable. Las invitaciones con nuestro branding fueron un plus profesional."
-      }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "150"
-    }
-  }
-  </script>
-
-  <!-- WebSite Schema for Search -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "VR Distribución",
-    "url": "https://vrdistribucion.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://vrdistribucion.com/aparador/?search={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- FAQ Schema for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Qué servicios ofrece VR Distribución en Cancún?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ofrecemos invitaciones personalizadas, centros de mesa elegantes, velas aromáticas, decoraciones para eventos, recuerdos personalizados y servicios de diseño gráfico para bodas, cumpleaños, bautizos y eventos corporativos en Cancún y Quintana Roo."
-        }
-      },
-      {
-        "@type": "Question", 
-        "name": "¿Cuánto cuesta una invitación personalizada?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nuestros paquetes van desde $19 USD para invitaciones básicas hasta $39 USD para diseños premium VIP. El precio depende de la complejidad del diseño, materiales utilizados y cantidad solicitada."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Realizan envíos a toda la República Mexicana?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, atendemos eventos en Cancún, Playa del Carmen, Cozumel, Tulum y toda la zona de Quintana Roo. Tenemos 25 años de experiencia sirviendo a la región."
-        }
-      }
-    ]
-  }
-  </script>
-
-  
-  <!-- Critical JavaScript for immediate functionality -->
+  <!-- Critical JavaScript - Optimized for Performance -->
   <script>
-    // Universal Hamburger Menu Functionality - Works on all screen sizes
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('🎨 VR Distribución Material Design 3 - Etapa 1 cargada');
+      
+      // Batch DOM operations to prevent forced reflows
+      requestAnimationFrame(() => {
+        // Aplicar animación de carga en un solo frame
+        const loadingElements = document.querySelectorAll('.md-loading');
+        loadingElements.forEach(el => {
+          el.style.opacity = '1';
+        });
+      });
+
+      // Mobile menu functionality - Optimized
       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
       const hamburgerDropdown = document.querySelector('.hamburger-dropdown');
-      const icon = mobileMenuToggle?.querySelector('i');
       
-      if (mobileMenuToggle && hamburgerDropdown && icon) {
-        function toggleHamburgerMenu() {
+      if (mobileMenuToggle && hamburgerDropdown) {
+        function toggleMenu() {
+          // Read phase - get current state without triggering reflow
           const isActive = hamburgerDropdown.classList.contains('active');
-          if (isActive) {
-            closeHamburgerMenu();
-          } else {
-            openHamburgerMenu();
-          }
-        }
-        
-        function openHamburgerMenu() {
-          hamburgerDropdown.classList.add('active');
-          icon.className = 'icon ion-md-close';
-          mobileMenuToggle.setAttribute('aria-expanded', 'true');
-          mobileMenuToggle.setAttribute('aria-label', 'Cerrar menú');
           
-          // Prevent body scroll on mobile
-          if (window.innerWidth <= 768) {
-            document.body.style.overflow = 'hidden';
-          }
+          // Write phase - batch all DOM writes
+          requestAnimationFrame(() => {
+            if (isActive) {
+              hamburgerDropdown.classList.remove('active');
+              mobileMenuToggle.setAttribute('aria-expanded', 'false');
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+            } else {
+              hamburgerDropdown.classList.add('active');
+              mobileMenuToggle.setAttribute('aria-expanded', 'true');
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'close';
+            }
+          });
         }
         
-        function closeHamburgerMenu() {
-          hamburgerDropdown.classList.remove('active');
-          icon.className = 'icon ion-md-menu';
-          mobileMenuToggle.setAttribute('aria-expanded', 'false');
-          mobileMenuToggle.setAttribute('aria-label', 'Abrir menú');
-          
-          // Restore body scroll
-          document.body.style.overflow = '';
-        }
+        // Passive event listeners to improve scroll performance
+        mobileMenuToggle.addEventListener('click', toggleMenu, { passive: true });
         
-        // Toggle button click
-        mobileMenuToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleHamburgerMenu();
-        });
-        
-        // Close menu when clicking on navigation links
-        const hamburgerLinks = hamburgerDropdown.querySelectorAll('a');
-        hamburgerLinks.forEach(link => {
-          link.addEventListener('click', closeHamburgerMenu);
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-          if (hamburgerDropdown.classList.contains('active') && 
-              !mobileMenuToggle.contains(e.target) && 
-              !hamburgerDropdown.contains(e.target)) {
-            closeHamburgerMenu();
-          }
-        });
-        
-        // Handle escape key
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && hamburgerDropdown.classList.contains('active')) {
-            closeHamburgerMenu();
-          }
+        // Cerrar al hacer clic en enlaces - Optimized
+        hamburgerDropdown.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            // Batch DOM updates
+            requestAnimationFrame(() => {
+              hamburgerDropdown.classList.remove('active');
+              mobileMenuToggle.setAttribute('aria-expanded', 'false');
+              mobileMenuToggle.querySelector('.material-icons').textContent = 'menu';
+            });
+          }, { passive: true });
         });
       }
-    });
-  </script>
 
-  <!-- Non-critical JavaScript - Defer loading -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js" defer></script>
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js" defer></script>
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js" defer></script>
-  
-  <!-- Deferred loading of Showdown library for better LCP -->
-  <script>
-    // Load Showdown asynchronously with local fallback to prevent render blocking
-    function loadShowdown() {
-      return new Promise((resolve, reject) => {
-        if (window.showdown) {
-          resolve(window.showdown);
+      // Chat functionality - Optimized initialization
+      function initializeChat() {
+        const chatContainer = document.getElementById('chat-container');
+        const chatToggle = document.getElementById('chat-toggle');
+        
+        if (!chatContainer || !chatToggle) {
+          console.log('❌ Chat elements not found');
           return;
         }
-        
-        const script = document.createElement('script');
-        script.async = true;
-        
-        // Try CDN first, fallback to local
-        script.src = 'https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js';
-        
-        script.onload = () => {
-          console.log('✅ Showdown loaded from CDN');
-          resolve(window.showdown);
-        };
-        
-        script.onerror = () => {
-          console.warn('⚠️ CDN failed, loading local fallback');
-          // Remove failed script
-          script.remove();
-          
-          // Try local fallback
-          const fallbackScript = document.createElement('script');
-          fallbackScript.async = true;
-          fallbackScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js';
-          
-          fallbackScript.onload = () => {
-            console.log('✅ Showdown loaded from local fallback');
-            resolve(window.showdown);
-          };
-          
-          fallbackScript.onerror = () => {
-            console.error('❌ Both CDN and local showdown failed');
-            reject(new Error('Failed to load showdown'));
-          };
-          
-          document.head.appendChild(fallbackScript);
-        };
-        
-        document.head.appendChild(script);
-      });
-    }
 
-    // Initialize chat toggle functionality immediately (before showdown loads)
-    document.addEventListener('DOMContentLoaded', function() {
-      const chatContainer = document.getElementById('chat-container');
-      const chatToggle = document.getElementById('chat-toggle');
-      const minimizeBtn = document.getElementById('minimize-btn');
-      const closeBtn = document.getElementById('close-btn');
-      
-      if (chatToggle && chatContainer) {
-        // Basic toggle functionality - works immediately
-        chatToggle.addEventListener('click', () => {
-          chatContainer.classList.toggle('collapsed');
-          if (chatContainer.classList.contains('collapsed')) {
-            chatToggle.style.display = 'block';
-          } else {
-            chatToggle.style.display = 'none';
-          }
-        });
+        // Optimized toggle with requestAnimationFrame
+        function toggleChat() {
+          requestAnimationFrame(() => {
+            const isCollapsed = chatContainer.classList.contains('collapsed');
+            chatContainer.classList.toggle('collapsed');
+            chatToggle.style.display = isCollapsed ? 'none' : 'block';
+            console.log(isCollapsed ? '✅ Chat opened' : '✅ Chat collapsed');
+          });
+        }
+
+        // Toggle del chat - Use optimized function
+        chatToggle.addEventListener('click', function() {
+          console.log('🔄 Chat toggle clicked');
+          toggleChat();
+        }, { passive: true });
+
+        // Botones de control del chat - Optimized
+        const minimizeBtn = document.getElementById('minimize-btn');
+        const closeBtn = document.getElementById('close-btn');
         
         if (minimizeBtn) {
-          minimizeBtn.addEventListener('click', () => {
-            chatContainer.classList.add('collapsed');
-            chatToggle.style.display = 'block';
-          });
+          minimizeBtn.addEventListener('click', function() {
+            requestAnimationFrame(() => {
+              chatContainer.classList.add('collapsed');
+              chatToggle.style.display = 'block';
+              console.log('✅ Chat minimized');
+            });
+          }, { passive: true });
         }
         
         if (closeBtn) {
-          closeBtn.addEventListener('click', () => {
-            chatContainer.classList.add('collapsed');
-            chatToggle.style.display = 'block';
-          });
-        }
-        
-        // Show a loading message until full chat functionality is ready
-        const chatMessages = document.getElementById('chat-messages');
-        if (chatMessages && !window.chatInitialized) {
-          chatMessages.innerHTML = `
-            <div class="message assistant">
-              <div class="message-content">
-                <p>🔄 Cargando chat...</p>
-                <p>El sistema de chat se está inicializando. Por favor espera un momento.</p>
-              </div>
-            </div>
-          `;
-        }
-      }
-    });
-
-    // Load chat functionality after page load and when showdown is ready
-    window.addEventListener('load', function() {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          loadShowdown().then(() => {
-            // Load chat.js only after showdown is ready
-            const chatScript = document.createElement('script');
-            chatScript.async = true;
-            chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
-            chatScript.onload = () => {
-              console.log('✅ Chat functionality loaded');
-              // Update chat messages to show it's ready
-              const chatMessages = document.getElementById('chat-messages');
-              if (chatMessages) {
-                chatMessages.innerHTML = `
-                  <div class="message assistant">
-                    <div class="message-content">
-                      <p>¡Hola! Soy el asistente virtual de VR Distribución.</p>
-                      <p>¿En qué puedo ayudarte con tu evento especial?</p>
-                    </div>
-                  </div>
-                `;
-              }
-            };
-            chatScript.onerror = () => console.error('❌ Chat script failed to load');
-            document.head.appendChild(chatScript);
-          }).catch(err => {
-            console.error('❌ Showdown loading failed:', err);
-            // Chat functionality will be disabled if showdown fails
-          });
-        });
-      } else {
-        // Fallback for browsers without requestIdleCallback
-        setTimeout(() => {
-          loadShowdown().then(() => {
-            const chatScript = document.createElement('script');
-            chatScript.async = true;
-            chatScript.src = 'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js';
-            chatScript.onload = () => {
-              console.log('✅ Chat functionality loaded');
-              // Update chat messages to show it's ready
-              const chatMessages = document.getElementById('chat-messages');
-              if (chatMessages) {
-                chatMessages.innerHTML = `
-                  <div class="message assistant">
-                    <div class="message-content">
-                      <p>¡Hola! Soy el asistente virtual de VR Distribución.</p>
-                      <p>¿En qué puedo ayudarte con tu evento especial?</p>
-                    </div>
-                  </div>
-                `;
-              }
-            };
-            chatScript.onerror = () => console.error('❌ Chat script failed to load');
-            document.head.appendChild(chatScript);
-          }).catch(err => {
-            console.error('❌ Showdown loading failed:', err);
-          });
-        }, 100);
-      }
-    });
-  </script>
-
-  <!-- All scripts now loaded via requestIdleCallback for better performance -->
-
-  <!-- Service Worker Registration - Cache optimization for S3 resources -->
-  <script>
-    // Register Service Worker for aggressive caching of S3 resources
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/service-worker.js', {
-          scope: '/'
-        })
-        .then(function(registration) {
-          console.log('✅ Service Worker registrado exitosamente:', registration.scope);
-          
-          // Check for updates every 24 hours
-          setInterval(() => {
-            registration.update();
-          }, 24 * 60 * 60 * 1000);
-          
-        })
-        .catch(function(error) {
-          console.log('❌ Error registrando Service Worker:', error);
-        });
-      });
-
-      // Listen for Service Worker updates
-      navigator.serviceWorker.addEventListener('controllerchange', function() {
-        window.location.reload();
-      });
-    }
-
-    // Video optimization - Load videos only when in viewport
-    document.addEventListener('DOMContentLoaded', function() {
-      const videos = document.querySelectorAll('video[src*="video_marketing"]');
-      
-      const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const video = entry.target;
-          
-          if (entry.isIntersecting) {
-            // Video is in viewport - start loading if not already loaded
-            if (video.readyState === 0) {
-              video.load();
-            }
-            
-            // Play video when it comes into view
-            video.play().catch(e => {
-              console.log('Video autoplay prevented:', e);
+          closeBtn.addEventListener('click', function() {
+            requestAnimationFrame(() => {
+              chatContainer.classList.add('collapsed');
+              chatToggle.style.display = 'block';
+              console.log('✅ Chat closed');
             });
-          } else {
-            // Video is out of viewport - pause to save bandwidth
-            video.pause();
-          }
-        });
-      }, {
-        threshold: 0.1, // Start loading when 10% visible
-        rootMargin: '50px' // Start loading 50px before entering viewport
-      });
-
-      // Observe all videos
-      videos.forEach(video => {
-        videoObserver.observe(video);
-        
-        // Optimize video loading
-        video.preload = 'none'; // Don't preload videos initially
-        video.setAttribute('x-webkit-airplay', 'allow');
-        video.setAttribute('webkit-playsinline', 'true');
-        
-        // Load video poster/thumbnail if available
-        if (!video.poster) {
-          video.style.backgroundColor = '#f0f0f0';
+          }, { passive: true });
         }
-      });
 
-      // Preload only the first video for better UX
-      if (videos.length > 0) {
-        videos[0].preload = 'metadata';
+        console.log('✅ Chat basic functionality initialized');
       }
-    });
 
-    // Load non-critical scripts after page load to improve LCP/FCP
-    window.addEventListener('load', function() {
-      // Track loaded scripts to prevent duplicates
-      const loadedScripts = new Set();
-      
-      // Defer loading of scripts with requestIdleCallback for better performance
-      const loadScript = (src, callback) => {
-        if (loadedScripts.has(src)) {
-          console.log('Script already loaded:', src);
-          if (callback) callback();
-          return;
-        }
-        
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = src;
-        script.onload = function() {
-          loadedScripts.add(src);
-          if (callback) callback();
-        };
-        script.onerror = function() {
-          console.error('Failed to load script:', src);
-        };
-        document.head.appendChild(script);
-      };
-
-      // Use requestIdleCallback for non-critical resource loading
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          // Load scripts only if not already loaded
-          if (!window.ProfessionalAnimation) {
-            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js');
-          }
-          
-          if (!window.ContactForm) {
-            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
-          }
-
-          // Load Google Analytics only if not already loaded
-          if (!window.gtag) {
-            const gaScript = document.createElement('script');
-            gaScript.async = true;
-            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
-            gaScript.onload = function() {
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-DLSGS9C2TK');
-            };
-            document.head.appendChild(gaScript);
-          }
-        });
-      } else {
-        // Fallback for browsers without requestIdleCallback
-        setTimeout(() => {
-          if (!window.ProfessionalAnimation) {
-            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js');
-          }
-          
-          if (!window.ContactForm) {
-            loadScript('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js');
-          }
-
-          // Load Google Analytics only if not already loaded
-          if (!window.gtag) {
-            const gaScript = document.createElement('script');
-            gaScript.async = true;
-            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLSGS9C2TK';
-            gaScript.onload = function() {
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-DLSGS9C2TK');
-            };
-            document.head.appendChild(gaScript);
-          }
-        }, 100);
-      }
+      // Inicializar chat inmediatamente
+      initializeChat();
     });
   </script>
-
+  
+  <!-- Critical utility functions first -->
+  <script  async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js"></script>
+  
+  <!-- Non-critical JavaScript - Async loading -->
+  <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js"></script>
+  <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
+  <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
+  <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/material-design-3-landing.js"></script>
 </body>
 </html>

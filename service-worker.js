@@ -1,20 +1,40 @@
 // Service Worker para cache de recursos de VR Distribución
-// Mejora el rendimiento cacheando recursos de S3 localmente
-// Optimizado para PageSpeed Insights - 15+ KiB savings
+// Optimizado para eliminar recursos bloqueantes y mejorar LCP
+// Versión 3.0 - Performance Optimizations
 
-const CACHE_NAME = 'vr-distribucion-v2.0';
-const CACHE_EXPIRY_TIME = 365 * 24 * 60 * 60 * 1000; // 1 año en millisegundos para máximo ahorro
+const CACHE_NAME = 'vr-distribucion-v3.0-performance';
+const CACHE_EXPIRY_TIME = 365 * 24 * 60 * 60 * 1000; // 1 año para recursos estáticos
 const VIDEO_CACHE_EXPIRY_TIME = 180 * 24 * 60 * 60 * 1000; // 6 meses para videos
+const FONT_CACHE_EXPIRY_TIME = 365 * 24 * 60 * 60 * 1000; // 1 año para fuentes
 
-// Recursos críticos que siempre se cachean
+// Resources críticos para caché agresivo
 const CRITICAL_RESOURCES = [
+  // Critical CSS files - Now loaded asynchronously
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-components.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/combined-styles.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/css/landing.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/img/logo.png',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/celebration.js',
+  
+  // JavaScript resources
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js',
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/chat.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js'
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/material-design-3-landing.js',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js',
+  
+  // Cookie consent resources
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.css',
+  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js',
+];
+
+// Fuentes críticas que se precargan
+const FONT_RESOURCES = [
+  'https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxK.woff2',
+  'https://fonts.gstatic.com/s/robotoflex/v9/NaNnepOXO_NexZs0b5QrzlOHb8wCikXpYqmZsWI-__OGfttPZktqc2VdZ80KvCLZaPcSBZtOx2MdKjFrREmMKNeE.woff2',
+  'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap',
+  'https://fonts.googleapis.com/icon?family=Material+Icons&display=swap'
 ];
 
 // Videos que se cachean con estrategia diferente
@@ -27,82 +47,120 @@ const VIDEO_RESOURCES = [
   'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_con_cruz_cristiana.mp4'
 ];
 
-// Instalación del Service Worker
+// Instalación del Service Worker - Optimizada para performance
 self.addEventListener('install', event => {
-  console.log('Service Worker: Instalando...');
+  console.log('🚀 Service Worker v3.0: Instalando con optimizaciones de performance...');
   
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Service Worker: Cacheando recursos críticos...');
-        // Solo cachear recursos críticos durante la instalación
-        return cache.addAll(CRITICAL_RESOURCES);
+    Promise.all([
+      // Cache crítico de CSS/JS
+      caches.open(CACHE_NAME).then(cache => {
+        console.log('📦 Service Worker: Cacheando recursos críticos CSS/JS...');
+        return Promise.allSettled(
+          CRITICAL_RESOURCES.map(async (resource) => {
+            try {
+              const response = await fetch(resource, { 
+                mode: 'cors',
+                cache: 'force-cache' // Usar cache agresivo
+              });
+              if (response.ok) {
+                await cache.put(resource, response);
+                console.log(`✅ Cacheado: ${resource.split('/').pop()}`);
+              }
+            } catch (error) {
+              console.warn(`⚠️ No se pudo cachear: ${resource} - ${error.message}`);
+            }
+          })
+        );
+      }),
+      
+      // Cache de fuentes con estrategia separada
+      caches.open(CACHE_NAME + '-fonts').then(cache => {
+        console.log('🔤 Service Worker: Cacheando fuentes...');
+        return Promise.allSettled(
+          FONT_RESOURCES.map(async (font) => {
+            try {
+              const response = await fetch(font, { 
+                mode: 'cors',
+                cache: 'force-cache'
+              });
+              if (response.ok) {
+                await cache.put(font, response);
+                console.log(`✅ Fuente cacheada: ${font.split('/').pop()}`);
+              }
+            } catch (error) {
+              console.warn(`⚠️ No se pudo cachear fuente: ${font} - ${error.message}`);
+            }
+          })
+        );
       })
-      .then(() => {
-        console.log('Service Worker: Recursos críticos cacheados');
-        return self.skipWaiting();
-      })
-      .catch(error => {
-        console.error('Service Worker: Error durante instalación:', error);
-      })
+    ]).then(() => {
+      console.log('🎯 Service Worker: Instalación completada - Performance optimizada');
+      return self.skipWaiting();
+    })
   );
 });
 
 // Activación del Service Worker
 self.addEventListener('activate', event => {
-  console.log('Service Worker: Activando...');
+  console.log('⚡ Service Worker v3.0: Activando...');
   
   event.waitUntil(
     caches.keys()
       .then(cacheNames => {
         return Promise.all(
           cacheNames
-            .filter(cacheName => cacheName !== CACHE_NAME)
+            .filter(cacheName => 
+              !cacheName.startsWith('vr-distribucion-v3.0') && 
+              cacheName.includes('vr-distribucion')
+            )
             .map(cacheName => {
-              console.log('Service Worker: Eliminando cache antiguo:', cacheName);
+              console.log('🗑️ Service Worker: Eliminando cache antiguo:', cacheName);
               return caches.delete(cacheName);
             })
         );
       })
       .then(() => {
-        console.log('Service Worker: Activado y listo');
+        console.log('✅ Service Worker v3.0: Activado y optimizado para performance');
         return self.clients.claim();
       })
   );
 });
 
-// Interceptar peticiones de red
+// Interceptar peticiones de red - Optimizado para LCP
 self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
   
-  // Solo procesar recursos de nuestro dominio S3
-  if (url.hostname !== 'vrdistribucion.s3-accelerate.amazonaws.com') {
-    return;
+  // Estrategias optimizadas según el tipo de recurso
+  if (isGoogleFont(request.url)) {
+    event.respondWith(fontCacheStrategy(request));
   }
-  
-  // Estrategia: Cache First para recursos estáticos
-  if (isStaticResource(request.url)) {
-    event.respondWith(cacheFirstStrategy(request));
+  else if (isS3StaticResource(request.url)) {
+    event.respondWith(aggressiveCacheStrategy(request));
   }
-  // Estrategia: Network First para videos (con cache de respaldo)
   else if (isVideoResource(request.url)) {
-    event.respondWith(networkFirstStrategy(request));
+    event.respondWith(videoOptimizedStrategy(request));
   }
-  // Red normal para otros recursos
   else {
+    // Dejar pasar otros recursos sin interceptar
     return;
   }
 });
 
-// Verificar si es un recurso estático (CSS, JS, imágenes)
-function isStaticResource(url) {
-  return CRITICAL_RESOURCES.includes(url) || 
-         url.includes('.css') || 
-         url.includes('.js') || 
-         url.includes('.png') || 
-         url.includes('.jpg') || 
-         url.includes('.svg');
+// Verificar si es fuente de Google
+function isGoogleFont(url) {
+  return url.includes('fonts.googleapis.com') || 
+         url.includes('fonts.gstatic.com') ||
+         FONT_RESOURCES.includes(url);
+}
+
+// Verificar si es un recurso estático de S3
+function isS3StaticResource(url) {
+  return url.includes('vrdistribucion.s3-accelerate.amazonaws.com') && 
+         (url.includes('.css') || url.includes('.js') || 
+          url.includes('.png') || url.includes('.jpg') || 
+          url.includes('.svg') || url.includes('.webp'));
 }
 
 // Verificar si es un recurso de video
@@ -110,25 +168,67 @@ function isVideoResource(url) {
   return VIDEO_RESOURCES.includes(url) || url.includes('.mp4');
 }
 
-// Estrategia Cache First - Para recursos estáticos
-async function cacheFirstStrategy(request) {
+// Estrategia de cache agresivo para fuentes
+async function fontCacheStrategy(request) {
+  try {
+    const cache = await caches.open(CACHE_NAME + '-fonts');
+    const cachedResponse = await cache.match(request);
+    
+    if (cachedResponse) {
+      console.log('🔤 Fuente servida desde cache:', request.url.split('/').pop());
+      return cachedResponse;
+    }
+    
+    console.log('🔤 Descargando fuente:', request.url.split('/').pop());
+    const networkResponse = await fetch(request, { 
+      mode: 'cors',
+      cache: 'force-cache'
+    });
+    
+    if (networkResponse.ok) {
+      const responseClone = networkResponse.clone();
+      await cache.put(request, responseClone);
+    }
+    
+    return networkResponse;
+    
+  } catch (error) {
+    console.error('❌ Error en fontCacheStrategy:', error);
+    const cache = await caches.open(CACHE_NAME + '-fonts');
+    return await cache.match(request) || new Response('Fuente no disponible', { status: 404 });
+  }
+}
+
+// Estrategia de cache agresivo para recursos estáticos
+async function aggressiveCacheStrategy(request) {
   try {
     const cache = await caches.open(CACHE_NAME);
     const cachedResponse = await cache.match(request);
     
     if (cachedResponse) {
-      // Verificar si el cache no ha expirado (diferente tiempo para videos vs otros assets)
-      const cacheTime = await getCacheTime(request.url);
-      const expiryTime = isVideoResource(request.url) ? VIDEO_CACHE_EXPIRY_TIME : CACHE_EXPIRY_TIME;
+      console.log('📦 Recurso servido desde cache:', request.url.split('/').pop());
       
-      if (cacheTime && (Date.now() - cacheTime < expiryTime)) {
-        console.log('Service Worker: Sirviendo desde cache:', request.url);
-        return cachedResponse;
-      }
+      // Verificar expiración en background sin bloquear
+      setTimeout(async () => {
+        const cacheTime = await getCacheTime(request.url);
+        if (cacheTime && (Date.now() - cacheTime > CACHE_EXPIRY_TIME)) {
+          try {
+            const networkResponse = await fetch(request);
+            if (networkResponse.ok) {
+              await cache.put(request, networkResponse.clone());
+              await setCacheTime(request.url, Date.now());
+              console.log('🔄 Recurso actualizado en background:', request.url.split('/').pop());
+            }
+          } catch (error) {
+            console.log('⚠️ Error actualizando en background:', error.message);
+          }
+        }
+      }, 100);
+      
+      return cachedResponse;
     }
     
-    // Si no está en cache o expiró, obtener de la red
-    console.log('Service Worker: Obteniendo de red y cacheando:', request.url);
+    console.log('📦 Descargando y cacheando:', request.url.split('/').pop());
     const networkResponse = await fetch(request);
     
     if (networkResponse.ok) {
@@ -140,38 +240,48 @@ async function cacheFirstStrategy(request) {
     return networkResponse;
     
   } catch (error) {
-    console.error('Service Worker: Error en cacheFirstStrategy:', error);
-    // Intentar servir desde cache como último recurso
+    console.error('❌ Error en aggressiveCacheStrategy:', error);
     const cache = await caches.open(CACHE_NAME);
     return await cache.match(request) || new Response('Recurso no disponible', { status: 404 });
   }
 }
 
-// Estrategia Network First - Para videos
-async function networkFirstStrategy(request) {
+// Estrategia optimizada para videos
+async function videoOptimizedStrategy(request) {
   try {
-    console.log('Service Worker: Intentando obtener video de red:', request.url);
+    const cache = await caches.open(CACHE_NAME + '-videos');
+    const cachedResponse = await cache.match(request);
+    
+    if (cachedResponse) {
+      console.log('🎥 Video servido desde cache:', request.url.split('/').pop());
+      return cachedResponse;
+    }
+    
+    // Para videos, priorizar red pero con cache de respaldo
+    console.log('🎥 Descargando video:', request.url.split('/').pop());
     const networkResponse = await fetch(request);
     
     if (networkResponse.ok) {
-      // Cachear video exitosamente descargado
-      const cache = await caches.open(CACHE_NAME);
-      const responseClone = networkResponse.clone();
-      await cache.put(request, responseClone);
-      await setCacheTime(request.url, Date.now());
-      console.log('Service Worker: Video cacheado:', request.url);
+      // Solo cachear videos pequeños o en WiFi
+      if (navigator.connection && 
+          (navigator.connection.effectiveType === '4g' || 
+           navigator.connection.type === 'wifi')) {
+        const responseClone = networkResponse.clone();
+        cache.put(request, responseClone);
+        setCacheTime(request.url, Date.now());
+        console.log('🎥 Video cacheado:', request.url.split('/').pop());
+      }
     }
     
     return networkResponse;
     
   } catch (error) {
-    console.log('Service Worker: Red falló, intentando cache para video:', request.url);
-    // Si la red falla, intentar servir desde cache
-    const cache = await caches.open(CACHE_NAME);
+    console.log('🎥 Red falló, intentando cache para video:', error.message);
+    const cache = await caches.open(CACHE_NAME + '-videos');
     const cachedResponse = await cache.match(request);
     
     if (cachedResponse) {
-      console.log('Service Worker: Sirviendo video desde cache:', request.url);
+      console.log('🎥 Video de respaldo servido desde cache:', request.url.split('/').pop());
       return cachedResponse;
     }
     
@@ -179,7 +289,7 @@ async function networkFirstStrategy(request) {
   }
 }
 
-// Funciones de utilidad para manejar timestamps de cache
+// Funciones de utilidad optimizadas
 async function setCacheTime(url, timestamp) {
   try {
     const cache = await caches.open(CACHE_NAME + '-timestamps');
@@ -203,16 +313,46 @@ async function getCacheTime(url) {
   return null;
 }
 
-// Limpiar cache periódicamente
+// Limpiar cache mejorado
 self.addEventListener('message', event => {
   if (event.data && event.data.type === 'CLEAR_CACHE') {
     caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map(cacheName => caches.delete(cacheName))
+        cacheNames
+          .filter(name => name.includes('vr-distribucion'))
+          .map(cacheName => caches.delete(cacheName))
       );
     }).then(() => {
-      console.log('Service Worker: Cache limpiado manualmente');
+      console.log('🧹 Service Worker: Cache limpiado completamente');
+      event.ports[0].postMessage({success: true});
+    });
+  }
+  
+  if (event.data && event.data.type === 'FORCE_UPDATE') {
+    // Forzar actualización de todos los recursos
+    Promise.all([
+      updateCacheResources(CRITICAL_RESOURCES, CACHE_NAME),
+      updateCacheResources(FONT_RESOURCES, CACHE_NAME + '-fonts'),
+      updateCacheResources(VIDEO_RESOURCES, CACHE_NAME + '-videos')
+    ]).then(() => {
+      console.log('🔄 Cache forzadamente actualizado');
       event.ports[0].postMessage({success: true});
     });
   }
 });
+
+async function updateCacheResources(resources, cacheName) {
+  const cache = await caches.open(cacheName);
+  return Promise.allSettled(
+    resources.map(async (resource) => {
+      try {
+        const response = await fetch(resource, { cache: 'reload' });
+        if (response.ok) {
+          await cache.put(resource, response);
+        }
+      } catch (error) {
+        console.error(`Error actualizando ${resource}:`, error);
+      }
+    })
+  );
+}
