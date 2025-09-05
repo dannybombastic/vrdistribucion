@@ -392,8 +392,18 @@
     /* Critical Layout Components */
     .md-layout{ display: flex; flex-direction: column; min-height: 100vh; }
     .md-main{ flex: 1; }
-    .md-container{ max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-    @media (min-width: 768px){ .md-container{ padding: 0 24px; }}
+    /* Critical Container Layout - Anti-Layout-Shift */
+    .md-container{ 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 0 16px;
+      /* Prevent layout shift during content load */
+      min-height: 1px;
+      box-sizing: border-box;
+    }
+    @media (min-width: 768px){ 
+      .md-container{ padding: 0 24px; }
+    }
     
     /* Critical Header Styles */
     .md-header{ 
@@ -535,31 +545,47 @@
     }
     @media (min-width: 968px){ .md-hero__content{ grid-template-columns: 1fr 1fr; gap: var(--md-space-xxxl); }}
     
-    /* Critical Typography */
+    /* Critical Typography - Anti-Layout-Shift */
     .md-hero__text h1{ 
-      font-family: 'Roboto Flex', sans-serif; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Flex', sans-serif; 
       font-size: clamp(2rem, 4vw, 3.5rem); 
       font-weight: 700; 
       line-height: 1.1; 
       color: var(--md-sys-color-on-surface); 
-      margin: 0 0 var(--md-space-lg) 0; 
+      margin: 0 0 var(--md-space-lg) 0;
+      /* Prevent layout shift during font loading */
+      min-height: 3rem;
+      font-display: swap;
+      text-rendering: optimizeLegibility;
     }
     .md-text-gradient{ 
       background: linear-gradient(45deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); 
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
       background-clip: text; 
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,.1)); 
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,.1));
+      /* Prevent layout shift */
+      display: inline-block;
+      vertical-align: baseline;
     }
     .md-hero__subtitle{ 
-      font-size: clamp(1rem, 2vw, 1.125rem); 
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-display: swap; 
       color: var(--md-sys-color-on-surface-variant); 
       margin: 0 0 var(--md-space-xl) 0; 
       line-height: 1.6; 
     }
     
-    /* Critical Features and Actions */
-    .md-hero__features{ display: flex; flex-wrap: wrap; gap: var(--md-space-sm); margin: 0 0 var(--md-space-xl) 0; }
+    /* Critical Features and Actions - Anti-Layout-Shift */
+    .md-hero__features{ 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--md-space-sm); 
+      margin: 0 0 var(--md-space-xl) 0;
+      /* Reserve space to prevent layout shift */
+      min-height: 48px;
+    }
     .md-chip{ 
       display: inline-flex; 
       align-items: center; 
@@ -571,37 +597,99 @@
       box-shadow: var(--md-elevation-1); 
       font-size: var(--md-type-label-medium); 
       font-weight: 500; 
-      transition: all .2s ease; 
+      transition: all .2s ease;
+      /* Prevent layout shift from font loading */
+      height: 40px;
+      min-width: 120px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     .md-chip:hover{ transform: translateY(-2px); box-shadow: var(--md-elevation-2); }
-    .md-chip__icon{ font-size: 16px; color: var(--md-sys-color-primary); }
-    .md-chip__text{ white-space: nowrap; }
+    .md-chip__icon{ 
+      font-size: 16px; 
+      color: var(--md-sys-color-primary);
+      /* Prevent icon layout shift */
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      flex-shrink: 0;
+      /* Fallback for Material Icons not loaded */
+      font-family: 'Material Icons', monospace;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: 'liga';
+    }
+    .md-chip__text{ 
+      white-space: nowrap;
+      /* Prevent text layout shift */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
     
-    .md-hero__actions{ display: flex; flex-wrap: wrap; gap: var(--md-space-md); margin: 0 0 var(--md-space-xl) 0; }
+    .md-hero__actions{ 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--md-space-md); 
+      margin: 0 0 var(--md-space-xl) 0;
+      /* Reserve space to prevent layout shift */
+      min-height: 48px;
+    }
     @media (max-width: 600px){ 
       .md-hero__actions{ flex-direction: column; }
       .md-hero__actions .md-button{ width: 100%; justify-content: center; }
     }
     
-    /* Critical Proof Metrics */
+    /* Critical Buttons - Anti-Layout-Shift */
+    .md-button {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      /* Reserve consistent dimensions */
+      min-height: 40px;
+      min-width: 120px;
+      box-sizing: border-box;
+      text-align: center;
+      font-display: swap;
+    }
+    
+    /* Critical Proof Metrics - Anti-Layout-Shift */
     .md-hero__proof{ 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
       gap: var(--md-space-lg); 
       padding: var(--md-space-lg) 0; 
-      border-top: 1px solid var(--md-sys-color-outline-variant); 
+      border-top: 1px solid var(--md-sys-color-outline-variant);
+      /* Reserve minimum height to prevent layout shift */
+      min-height: 80px;
     }
-    .md-proof-metric{ text-align: center; }
+    .md-proof-metric{ 
+      text-align: center;
+      /* Reserve space for metric content */
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .md-proof-metric__number{ 
       font-size: var(--md-type-headline-medium); 
       font-weight: 700; 
       color: var(--md-sys-color-primary); 
-      line-height: 1; 
+      line-height: 1;
+      /* Prevent layout shift during font loading */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Flex', sans-serif;
+      font-display: swap;
+      min-height: 1.5rem;
     }
     .md-proof-metric__label{ 
       font-size: var(--md-type-body-small); 
       color: var(--md-sys-color-on-surface-variant); 
-      margin-top: var(--md-space-xs); 
+      margin-top: var(--md-space-xs);
+      /* Prevent layout shift */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-display: swap;
     }
     
     /* Critical Visual Elements */
@@ -633,9 +721,9 @@
     .md-loading{ opacity: 0; animation: fadeIn 0.3s ease forwards; }
     @keyframes fadeIn{ to{ opacity: 1; }}
     
-    /* Critical Material Icons Fallback */
+    /* Critical Material Icons Fallback - Anti-Layout-Shift */
     .material-icons{ 
-      font-family: 'Material Icons', sans-serif; 
+      font-family: 'Material Icons', monospace; 
       font-weight: normal; 
       font-style: normal; 
       font-size: 24px; 
@@ -648,7 +736,22 @@
       direction: ltr; 
       -webkit-font-feature-settings: 'liga'; 
       font-feature-settings: 'liga'; 
-      -webkit-font-smoothing: antialiased; 
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      /* Reserve space to prevent layout shift */
+      width: 1em;
+      height: 1em;
+      overflow: hidden;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+    
+    /* Fallback content for Material Icons before they load */
+    .material-icons:empty:before {
+      content: '◼';
+      opacity: 0.1;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     
     /* Critical Mobile Optimizations */
@@ -666,6 +769,74 @@
     /* Critical Performance Optimization */
     .md-service-card, .md-feature-card, .md-testimonial-card{ will-change: transform; }
     .md-button:hover, .md-icon-button:hover{ will-change: transform, background-color; }
+    
+    /* Critical CTA Card - Anti-Layout-Shift */
+    .md-services__cta {
+      width: 100%;
+      margin-top: var(--md-space-xl);
+    }
+    
+    .md-cta-card {
+      background: var(--md-sys-color-surface);
+      border-radius: var(--md-radius-lg);
+      padding: var(--md-space-xl);
+      text-align: center;
+      box-shadow: var(--md-elevation-1);
+      border: 1px solid var(--md-sys-color-outline-variant);
+    }
+    
+    .md-cta-card__content {
+      margin-bottom: var(--md-space-lg);
+    }
+    
+    .md-cta-card__title {
+      font-size: var(--md-type-headline-small);
+      font-weight: 600;
+      color: var(--md-sys-color-on-surface);
+      margin: 0 0 var(--md-space-md) 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Flex', sans-serif;
+    }
+    
+    .md-cta-card__description {
+      font-size: var(--md-type-body-medium);
+      color: var(--md-sys-color-on-surface-variant);
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .md-cta-card__actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Prevent layout shift on mobile */
+      min-height: 48px;
+    }
+    
+    /* Mobile optimization for CTA button */
+    @media (max-width: 600px) {
+      .md-cta-card {
+        padding: var(--md-space-lg);
+        margin: 0 var(--md-space-sm);
+      }
+      
+      .md-cta-card__actions {
+        /* Full center alignment on mobile */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .md-cta-card__actions .md-button {
+        /* Full width and perfect centering */
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
     
     /* Critical Accessibility */
     *:focus-visible{ outline: 2px solid var(--md-sys-color-primary); outline-offset: 2px; border-radius: 2px; }
