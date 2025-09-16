@@ -2083,70 +2083,15 @@
         });
       }
 
-      // Chat functionality - Optimized initialization
-      function initializeChat() {
-        const chatContainer = document.getElementById('chat-container');
-        const chatToggle = document.getElementById('chat-toggle');
-        
-        if (!chatContainer || !chatToggle) {
-          console.log('❌ Chat elements not found');
-          return;
-        }
-
-        // Optimized toggle with requestAnimationFrame
-        function toggleChat() {
-          requestAnimationFrame(() => {
-            const isCollapsed = chatContainer.classList.contains('collapsed');
-            chatContainer.classList.toggle('collapsed');
-            chatToggle.style.display = isCollapsed ? 'none' : 'block';
-            console.log(isCollapsed ? '✅ Chat opened' : '✅ Chat collapsed');
-          });
-        }
-
-        // Toggle del chat - Use optimized function
-        chatToggle.addEventListener('click', function() {
-          console.log('🔄 Chat toggle clicked');
-          toggleChat();
-        }, { passive: true });
-
-        // Botones de control del chat - Optimized
-        const minimizeBtn = document.getElementById('minimize-btn');
-        const closeBtn = document.getElementById('close-btn');
-        
-        if (minimizeBtn) {
-          minimizeBtn.addEventListener('click', function() {
-            requestAnimationFrame(() => {
-              chatContainer.classList.add('collapsed');
-              chatToggle.style.display = 'block';
-              console.log('✅ Chat minimized');
-            });
-          }, { passive: true });
-        }
-        
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function() {
-            requestAnimationFrame(() => {
-              chatContainer.classList.add('collapsed');
-              chatToggle.style.display = 'block';
-              console.log('✅ Chat closed');
-            });
-          }, { passive: true });
-        }
-
-        console.log('✅ Chat basic functionality initialized');
-      }
-
-      // Inicializar chat inmediatamente
-      initializeChat();
     });
   </script>
   
-  <!-- Critical utility functions first -->
-  <script  async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js"></script>
+  <!-- Core Scripts - Sequential Loading (like gallery) -->
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js"></script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
+  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js"></script>
   
   <!-- Non-critical JavaScript - Async loading -->
-  <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js"></script>
-  <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
   <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
   <script async src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/material-design-3-landing.js"></script>
 </body>
