@@ -10,22 +10,22 @@ const FONT_CACHE_EXPIRY_TIME = 365 * 24 * 60 * 60 * 1000; // 1 año para fuentes
 // Resources críticos para caché agresivo
 const CRITICAL_RESOURCES = [
   // Critical CSS files - Now loaded asynchronously
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-components.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css',
+  '/static/home/css/material-design-3-theme.css',
+  '/static/home/css/material-design-3-components.css',
+  '/static/home/css/material-design-3-enhancements.css',
+  '/static/home/css/material-design-3-landing.css',
+  '/static/home/css/chat-widget.css',
   
   // JavaScript resources
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/material-design-3-landing.js',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js',
+  '/static/vendor/showdown.min.js',
+  '/static/home/js/chat.js',
+  '/static/landing/js/contactForm.js',
+  '/static/home/js/material-design-3-landing.js',
+  '/static/home/js/utilities.js',
   
   // Cookie consent resources
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.css',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/cookie-consent/cookie-consent.js',
+  '/static/cookie-consent/cookie-consent.css',
+  '/static/cookie-consent/cookie-consent.js',
 ];
 
 // Fuentes críticas que se precargan
@@ -38,12 +38,12 @@ const FONT_RESOURCES = [
 
 // Videos que se cachean con estrategia diferente
 const VIDEO_RESOURCES = [
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones.mp4',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/cntro_de_mesa.mp4',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_decorativas.mp4',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/invitaciones_white.mp4',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/rotulos_iluminados.mp4',
-  'https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/video_marketing/velas_con_cruz_cristiana.mp4'
+  '/static/video_marketing/invitaciones.mp4',
+  '/static/video_marketing/cntro_de_mesa.mp4',
+  '/static/video_marketing/velas_decorativas.mp4',
+  '/static/video_marketing/invitaciones_white.mp4',
+  '/static/video_marketing/rotulos_iluminados.mp4',
+  '/static/video_marketing/velas_con_cruz_cristiana.mp4'
 ];
 
 // Instalación del Service Worker - Optimizada para performance

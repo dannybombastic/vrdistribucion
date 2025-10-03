@@ -53,7 +53,7 @@
   <meta property="og:description" content="Descubre nuestro portafolio de invitaciones personalizadas, centros de mesa y decoraciones únicas. 25 años creando eventos memorables en Cancún." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vrdistribucion.com/gallery" />
-  <meta property="og:image" content="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
+  <meta property="og:image" content="/static/home/img/vr_logo-removebg-preview.png" />
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -64,7 +64,7 @@
   <link rel="canonical" href="https://vrdistribucion.com/gallery" />
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" />
+  <link rel="icon" type="image/png" href="/static/home/img/vr_logo-removebg-preview.png" />
 
   <!-- Critical Resource Hints for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,8 +116,8 @@
     // Load non-critical stylesheets after page load
     window.addEventListener('load', function() {
       // Material Design CSS files
-      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css');
-      loadCSS('https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/enhanced-gallery-visual.css');
+      loadCSS('/static/home/css/material-design-3-theme.css');
+      loadCSS('/static/gallery/css/enhanced-gallery-visual.css');
     });
   </script>
   
@@ -125,8 +125,8 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-theme.css">
-    <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/enhanced-gallery-visual.css">
+    <link rel="stylesheet" href="/static/home/css/material-design-3-theme.css">
+    <link rel="stylesheet" href="/static/gallery/css/enhanced-gallery-visual.css">
   </noscript>
   
   <!-- Critical CSS - Gallery Optimized for LCP -->
@@ -453,11 +453,11 @@
 
   
   <!-- Gallery MCP Styles -->
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/gallery-mcp.css">
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/css/enhanced-gallery-hero.css">
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-enhancements.css">
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/material-design-3-landing.css">
-  <link rel="stylesheet" href="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/css/chat-widget.css">
+  <link rel="stylesheet" href="/static/gallery/css/gallery-mcp.css">
+  <link rel="stylesheet" href="/static/gallery/css/enhanced-gallery-hero.css">
+  <link rel="stylesheet" href="/static/home/css/material-design-3-enhancements.css">
+  <link rel="stylesheet" href="/static/home/css/material-design-3-landing.css">
+  <link rel="stylesheet" href="/static/home/css/chat-widget.css">
 </head>
 
 <body class="md-layout">
@@ -466,7 +466,7 @@
     <div class="md-container">
       <div class="md-header__content">
         <a href="/" aria-label="Ir a página principal">
-          <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-logo" />
+          <img src="/static/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-logo" />
         </a>
         
         <!-- Desktop Navigation -->
@@ -817,7 +817,7 @@
         <!-- Company Info -->
         <div class="md-footer__section md-footer__section--primary">
           <div class="md-footer__logo">
-            <img src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-footer__logo-img" />
+            <img src="/static/home/img/vr_logo-removebg-preview.png" alt="VR Distribución" class="md-footer__logo-img" />
             <div class="md-footer__logo-text">
               <h3 class="md-footer__company-name">VR Distribución</h3>
               <p class="md-footer__tagline">Virginia Ruiz • Diseño y Creatividad</p>
@@ -1043,23 +1043,23 @@
   </button>
 
   <!-- Enhanced Gallery Hero JavaScript -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/js/enhanced-gallery-hero.js" defer></script>
+  <script src="/static/gallery/js/enhanced-gallery-hero.js" defer></script>
 
   <!-- Core Application Scripts -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/vendor/showdown.min.js"></script>
+  <script src="/static/vendor/showdown.min.js"></script>
   
   <!-- Chat functionality -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/chat.js"></script>
+  <script src="/static/home/js/chat.js"></script>
 
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/home/js/utilities.js"></script>
+  <script src="/static/home/js/utilities.js"></script>
   
   <!-- Contact Form JavaScript -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/landing/js/contactForm.js"></script>
+  <script src="/static/landing/js/contactForm.js"></script>
   
   <!-- Gallery MCP JavaScript -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/js/gallery-mcp.js"></script>
+  <script src="/static/gallery/js/gallery-mcp.js"></script>
   
   <!-- Enhanced Gallery Visual Effects JavaScript -->
-  <script src="https://vrdistribucion.s3-accelerate.amazonaws.com/vrdistribucion/gallery/js/enhanced-gallery-visual.js"></script>
+  <script src="/static/gallery/js/enhanced-gallery-visual.js"></script>
 </body>
 </html>
