@@ -21,12 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Configure AWS CLI
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWSS3AK }}
-          aws-secret-access-key: ${{ secrets.AWSS3SAK }}
-          aws-region: us-east-1
           
       - name: copy into folder dependencies
         run: |
