@@ -31,7 +31,7 @@ const CRITICAL_RESOURCES = [
 // Fuentes críticas que se precargan
 const FONT_RESOURCES = [
   'https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxK.woff2',
-  'https://fonts.gstatic.com/s/robotoflex/v9/NaNnepOXO_NexZs0b5QrzlOHb8wCikXpYqmZsWI-__OGfttPZktqc2VdZ80KvCLZaPcSBZtOx2MdKjFrREmMKNeE.woff2',
+  'https://fonts.googleapis.com/css?family=Roboto&display=swap',
   'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Flex:wght@400;500;600;700&display=swap',
   'https://fonts.googleapis.com/icon?family=Material+Icons&display=swap'
 ];
