@@ -10,22 +10,22 @@ const FONT_CACHE_EXPIRY_TIME = 365 * 24 * 60 * 60 * 1000; // 1 año para fuentes
 // Resources críticos para caché agresivo
 const CRITICAL_RESOURCES = [
   // Critical CSS files - Now loaded asynchronously
-  '/static/home/css/material-design-3-theme.css',
-  '/static/home/css/material-design-3-components.css',
-  '/static/home/css/material-design-3-enhancements.css',
-  '/static/home/css/material-design-3-landing.css',
-  '/static/home/css/chat-widget.css',
+  'https://vrdistribucion.com/home/css/material-design-3-theme.css',
+  'https://vrdistribucion.com/home/css/material-design-3-components.css',
+  'https://vrdistribucion.com/home/css/material-design-3-enhancements.css',
+  'https://vrdistribucion.com/home/css/material-design-3-landing.css',
+  'https://vrdistribucion.com/home/css/chat-widget.css',
   
   // JavaScript resources
-  '/static/vendor/showdown.min.js',
-  '/static/home/js/chat.js',
-  '/static/landing/js/contactForm.js',
-  '/static/home/js/material-design-3-landing.js',
-  '/static/home/js/utilities.js',
+  'https://vrdistribucion.com/vendor/showdown.min.js',
+  'https://vrdistribucion.com/home/js/chat.js',
+  'https://vrdistribucion.com/landing/js/contactForm.js',
+  'https://vrdistribucion.com/home/js/material-design-3-landing.js',
+  'https://vrdistribucion.com/home/js/utilities.js',
   
   // Cookie consent resources
-  '/static/cookie-consent/cookie-consent.css',
-  '/static/cookie-consent/cookie-consent.js',
+  'https://vrdistribucion.com/cookie-consent/cookie-consent.css',
+  'https://vrdistribucion.com/cookie-consent/cookie-consent.js',
 ];
 
 // Fuentes críticas que se precargan
@@ -38,12 +38,12 @@ const FONT_RESOURCES = [
 
 // Videos que se cachean con estrategia diferente
 const VIDEO_RESOURCES = [
-  '/static/video_marketing/invitaciones.mp4',
-  '/static/video_marketing/cntro_de_mesa.mp4',
-  '/static/video_marketing/velas_decorativas.mp4',
-  '/static/video_marketing/invitaciones_white.mp4',
-  '/static/video_marketing/rotulos_iluminados.mp4',
-  '/static/video_marketing/velas_con_cruz_cristiana.mp4'
+  'https://vrdistribucion.com/video_marketing/invitaciones.mp4',
+  'https://vrdistribucion.com/video_marketing/cntro_de_mesa.mp4',
+  'https://vrdistribucion.com/video_marketing/velas_decorativas.mp4',
+  'https://vrdistribucion.com/video_marketing/invitaciones_white.mp4',
+  'https://vrdistribucion.com/video_marketing/rotulos_iluminados.mp4',
+  'https://vrdistribucion.com/video_marketing/velas_con_cruz_cristiana.mp4'
 ];
 
 // Instalación del Service Worker - Optimizada para performance
